@@ -35,8 +35,8 @@ export const SecureUsageRecommendationSchema = z.object({
 export type SecureUsageRecommendation = z.infer<typeof SecureUsageRecommendationSchema>;
 
 export const AnalysisResultSchema = z.object({
-    // Allow any number from AI, we'll clamp to 0-100 after
-    score: z.number().transform(val => Math.max(0, Math.min(100, val))),
+    // AI may return any number, we clamp to 0-100 in the code after parsing
+    score: z.number(),
     summary: z.string(),
     key_findings: z.array(LabeledFindingSchema), // Now labeled with categories
     data_collected: z.array(z.string()),
