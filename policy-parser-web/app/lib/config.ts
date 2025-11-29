@@ -242,7 +242,7 @@ export const CONFIG = {
             privacy: 'https://www.tiktok.com/legal/page/row/privacy-policy/en',
             terms: 'https://www.tiktok.com/legal/page/row/terms-of-service/en',
         },
-    } as Record<string, Partial<Record<PolicyType | 'privacy' | 'terms' | 'cookies', string>>>,
-} as const;
+    } as Record<string, Partial<Record<string, string>>>,
+};
 
 export type PolicyType = keyof typeof CONFIG.POLICY_TYPES;

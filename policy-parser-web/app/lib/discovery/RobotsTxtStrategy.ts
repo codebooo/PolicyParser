@@ -30,7 +30,7 @@ export class RobotsTxtStrategy implements DiscoveryStrategy {
         const robotsUrl = `https://${domain}/robots.txt`;
         try {
             const response = await got(robotsUrl, {
-                timeout: 5000,
+                timeout: { request: 5000 },
                 headers: { 'User-Agent': CONFIG.USER_AGENT }
             });
 

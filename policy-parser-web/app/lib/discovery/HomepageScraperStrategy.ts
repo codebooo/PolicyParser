@@ -16,13 +16,13 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
 
         try {
             const response = await got(url, {
-                timeout: 10000,
+                timeout: { request: 10000 },
                 headers: { 
                     'User-Agent': CONFIG.USER_AGENT,
                     // Request English version of pages
                     'Accept-Language': 'en-US,en;q=0.9',
                 },
-                retry: 1
+                retry: { limit: 1 } as any
             });
 
             const $ = cheerio.load(response.body);

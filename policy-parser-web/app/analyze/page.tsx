@@ -159,6 +159,8 @@ export default function AnalyzePage() {
       const { output } = await analyzeDomain(searchQuery);
 
       for await (const update of readStreamableValue(output)) {
+        if (!update) continue;
+        
         if (update.status === 'complete') {
           setAnalysisResults(update.data)
           setSourceUrl(update.data?.url || null)
@@ -235,6 +237,8 @@ export default function AnalyzePage() {
           const { output } = await analyzeSpecificPolicy(policy.url, policy.name);
           
           for await (const update of readStreamableValue(output)) {
+            if (!update) continue;
+            
             if (update.status === 'complete') {
               setPolicyResults(prev => prev.map((p, idx) => 
                 idx === i ? { ...p, status: 'complete', analysis: update.data } : p

@@ -1,8 +1,7 @@
 "use server";
 
 import { createClient } from '@/utils/supabase/server';
-import { analyzeDomain } from './actions';
-import { readStreamableValue } from '@ai-sdk/rsc';
+import { analyzeDomainInternal } from './actions';
 import crypto from 'crypto';
 
 // Generate a hash of the policy content for change detection
@@ -227,22 +226,14 @@ export async function checkSinglePolicyForUpdates(domain: string): Promise<{
     if (!policy) return { success: false, hasChanges: false, error: "Policy not found" };
 
     try {
-        // Re-analyze the domain
-        const { output } = await analyzeDomain(domain);
-        let newAnalysis: any = null;
-
-        for await (const update of readStreamableValue(output)) {
-            if (update.status === 'complete') {
-                newAnalysis = update.data;
-                break;
-            } else if (update.status === 'error') {
-                return { success: false, hasChanges: false, error: update.message };
-            }
+        // Re-analyze the domain using internal (non-streaming) function
+        const result = await analyzeDomainInternal(domain);
+        
+        if (!result.success || !result.data) {
+            return { success: false, hasChanges: false, error: result.error || "Analysis failed" };
         }
 
-        if (!newAnalysis) {
-            return { success: false, hasChanges: false, error: "Analysis failed" };
-        }
+        const newAnalysis = result.data;
 
         // Check if content has changed
         const newHash = newAnalysis.rawPolicyText 

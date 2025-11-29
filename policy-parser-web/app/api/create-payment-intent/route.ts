@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-    apiVersion: "2025-01-27.acacia" as any, // Cast to any to avoid TS error with latest version
-});
+// Lazy initialization to avoid build-time errors
+let stripeInstance: Stripe | null = null;
+function getStripe(): Stripe {
+    if (!stripeInstance) {
+        stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+            apiVersion: "2025-01-27.acacia" as any,
+        });
+    }
+    return stripeInstance;
+}
 
 export async function POST(req: Request) {
     try {
@@ -15,23 +22,25 @@ export async function POST(req: Request) {
                 { status: 500 }
             );
         }
+        
+        const stripe = getStripe();
 
         // Configure payment method types based on the selected method
-        let paymentMethodTypes: Stripe.PaymentIntentCreateParams.PaymentMethodType[] = ['card'];
+        let paymentMethodTypes: string[] = ['card'];
         
         if (paymentMethod === 'paypal') {
             paymentMethodTypes = ['paypal'];
         } else if (paymentMethod === 'klarna') {
             paymentMethodTypes = ['klarna'];
         } else {
-            // Default: card with automatic payment methods enabled
+            // Default: card
             paymentMethodTypes = ['card'];
         }
 
         const paymentIntentParams: Stripe.PaymentIntentCreateParams = {
             amount: amount,
             currency: "eur",
-            payment_method_types: paymentMethodTypes,
+            payment_method_types: paymentMethodTypes as any,
         };
 
         // Klarna requires additional shipping/billing info for some regions

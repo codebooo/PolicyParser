@@ -27,7 +27,7 @@ export class SitemapStrategy implements DiscoveryStrategy {
         for (const sitemapUrl of sitemaps) {
             try {
                 const response = await got(sitemapUrl, {
-                    timeout: 10000,
+                    timeout: { request: 10000 },
                     headers: { 'User-Agent': CONFIG.USER_AGENT }
                 });
 
@@ -48,7 +48,7 @@ export class SitemapStrategy implements DiscoveryStrategy {
                     const firstChild = result.sitemapindex.sitemap[0].loc[0];
                     // Quick fetch of child
                     try {
-                        const childResp = await got(firstChild, { timeout: 5000 });
+                        const childResp = await got(firstChild, { timeout: { request: 5000 } });
                         const childResult = await parseStringPromise(childResp.body);
                         if (childResult.urlset && childResult.urlset.url) {
                             urls = childResult.urlset.url.map((u: any) => u.loc[0]);

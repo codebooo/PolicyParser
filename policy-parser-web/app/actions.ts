@@ -179,6 +179,61 @@ export async function analyzeDomain(input: string) {
 }
 
 /**
+ * Internal (non-streaming) version of analyzeDomain for server-to-server calls
+ * Used by tracking system to check for policy updates
+ */
+export async function analyzeDomainInternal(input: string): Promise<{
+    success: boolean;
+    data?: any;
+    error?: string;
+}> {
+    try {
+        // Step 1: Identification
+        const identity = await identifyTarget(input);
+        logger.info('Internal analysis: Identity verified', identity);
+
+        // Step 2: Discovery
+        const engine = new PolicyDiscoveryEngine();
+        const candidate = await engine.discover(identity.cleanDomain);
+
+        if (!candidate) {
+            return { success: false, error: `Could not find a privacy policy for ${identity.cleanDomain}` };
+        }
+        logger.info('Internal analysis: Policy found', candidate);
+
+        // Step 3: Extraction
+        const extracted = await extractPolicyContent(candidate.url);
+        logger.info('Internal analysis: Content extracted', { length: extracted.rawLength });
+
+        // Step 4: Analysis
+        const { object: analysis } = await generateObject({
+            model: getGeminiModel(),
+            system: SYSTEM_PROMPT,
+            prompt: USER_PROMPT(extracted.markdown),
+            schema: AnalysisResultSchema,
+            mode: 'json'
+        });
+
+        // Calculate Score
+        const score = calculateScore(analysis);
+        analysis.score = score;
+
+        // Add URL and raw text to results
+        const resultsWithUrl = {
+            ...analysis,
+            url: candidate.url,
+            domain: identity.cleanDomain,
+            rawPolicyText: extracted.markdown
+        };
+
+        return { success: true, data: resultsWithUrl };
+    } catch (error: any) {
+        logger.error('Internal analysis failed', error);
+        return { success: false, error: error?.message || 'An unexpected error occurred' };
+    }
+}
+
+/**
  * PRO FEATURE: Discover all available policies for a company
  * Returns a list of found policy types and their URLs
  */
