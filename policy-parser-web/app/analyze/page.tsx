@@ -7,14 +7,14 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell } from "lucide-react"
 import { clsx } from "clsx"
-import { analyzeDomain, discoverAllPolicies, analyzeSpecificPolicy } from "../actions"
+import { analyzeDomain, discoverAllPolicies, analyzeSpecificPolicy, analyzeText } from "../actions"
 import { readStreamableValue } from "@ai-sdk/rsc"
 import { checkProStatus } from "../checkProStatus"
 import { trackPolicy, untrackPolicy, getTrackedPolicies } from "../trackingActions"
 import { submitCommunityScore, getCommunityScore, getUserVote } from "../communityActions"
 
 type AnalysisStep = "input" | "searching" | "processing" | "results"
-type InputMethod = "file" | "url"
+type InputMethod = "file" | "url" | "paste"
 type AnalysisMode = "single" | "comprehensive"
 type FindingCategory = "THREAT" | "WARNING" | "CAUTION" | "NORMAL" | "GOOD" | "BRILLIANT"
 
@@ -133,6 +133,10 @@ export default function AnalyzePage() {
   const [showVoteSlider, setShowVoteSlider] = useState(false)
   const [voteValue, setVoteValue] = useState(50)
 
+  // File Upload & Paste Text State
+  const [pastedText, setPastedText] = useState("")
+  const [uploadedFileName, setUploadedFileName] = useState<string | null>(null)
+
   useEffect(() => {
     checkProStatus().then(status => {
       setIsPro(status.isPro)
@@ -141,6 +145,12 @@ export default function AnalyzePage() {
   }, [])
 
   const startAnalysis = async () => {
+    // Handle file/paste text analysis
+    if (inputMethod === "file" || inputMethod === "paste") {
+      await startTextAnalysis();
+      return;
+    }
+
     if (!searchQuery) return;
 
     // If Pro and comprehensive mode, do multi-policy analysis
@@ -188,6 +198,77 @@ export default function AnalyzePage() {
       console.error("Analysis failed", error)
       setStep("input")
       alert("Analysis failed: " + (error?.message || "Unknown error"))
+    }
+  }
+
+  const startTextAnalysis = async () => {
+    if (!pastedText || pastedText.trim().length < 100) {
+      alert("Please paste at least 100 characters of policy text.");
+      return;
+    }
+
+    setStep("searching")
+    setProgressSteps([])
+    setStatusMessage("Analyzing your text...")
+    setAnalysisResults(null)
+
+    try {
+      const sourceName = uploadedFileName || "Pasted Text";
+      const { output } = await analyzeText(pastedText, sourceName);
+
+      for await (const update of readStreamableValue(output)) {
+        if (!update) continue;
+        
+        if (update.status === 'complete') {
+          setAnalysisResults(update.data)
+          setSourceUrl(null) // No URL for text analysis
+          setAnalyzedDomain(update.data?.domain || sourceName)
+          setStep("results")
+        } else if (update.status === 'error') {
+          setStep("input")
+          alert("Analysis failed: " + update.message)
+          break;
+        } else {
+          setStatusMessage(update.message)
+          setProgressSteps(prev => {
+            if (prev[prev.length - 1] !== update.message) {
+              return [...prev, update.message]
+            }
+            return prev
+          })
+        }
+      }
+    } catch (error: any) {
+      console.error("Text analysis failed", error)
+      setStep("input")
+      alert("Analysis failed: " + (error?.message || "Unknown error"))
+    }
+  }
+
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Check file type
+    const validTypes = ['text/plain', 'text/html', 'application/pdf'];
+    if (!validTypes.includes(file.type) && !file.name.endsWith('.txt') && !file.name.endsWith('.html') && !file.name.endsWith('.pdf')) {
+      alert("Please upload a .txt, .html, or .pdf file");
+      return;
+    }
+
+    // For PDF files, we'd need a PDF parser - for now just support text files
+    if (file.type === 'application/pdf' || file.name.endsWith('.pdf')) {
+      alert("PDF support coming soon. Please copy the text and use 'Paste Text' instead.");
+      return;
+    }
+
+    try {
+      const text = await file.text();
+      setPastedText(text);
+      setUploadedFileName(file.name);
+      setInputMethod("paste"); // Switch to paste view to show the text
+    } catch (error) {
+      alert("Failed to read file. Please try pasting the text instead.");
     }
   }
 
@@ -366,15 +447,6 @@ export default function AnalyzePage() {
           {/* Input Method Toggle */}
           <div className="flex items-center gap-2 p-1 bg-background/40 backdrop-blur-sm border border-white/10 rounded-lg">
             <Button
-              variant={inputMethod === "file" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setInputMethod("file")}
-              disabled // File upload needs rebuild
-            >
-              <UploadCloud className="h-4 w-4 mr-2" />
-              Upload File
-            </Button>
-            <Button
               variant={inputMethod === "url" ? "default" : "ghost"}
               size="sm"
               onClick={() => setInputMethod("url")}
@@ -386,6 +458,36 @@ export default function AnalyzePage() {
               <Search className="h-4 w-4 mr-2" />
               Search Company
             </Button>
+            <Button
+              variant={inputMethod === "paste" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setInputMethod("paste")}
+              className={clsx(
+                "transition-all",
+                inputMethod === "paste" && "shadow-[0_0_10px_rgba(6,182,212,0.3)]"
+              )}
+            >
+              <FileText className="h-4 w-4 mr-2" />
+              Paste Text
+            </Button>
+            <label className="cursor-pointer">
+              <input
+                id="file-upload"
+                type="file"
+                accept=".txt,.html,.htm"
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+              <span className={clsx(
+                "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 rounded-md px-3 py-1",
+                inputMethod === "file" 
+                  ? "bg-primary text-primary-foreground shadow hover:bg-primary/90 shadow-[0_0_10px_rgba(6,182,212,0.3)]" 
+                  : "hover:bg-accent hover:text-accent-foreground"
+              )}>
+                <UploadCloud className="h-4 w-4" />
+                Upload File
+              </span>
+            </label>
           </div>
 
           {/* Pro Mode Info */}
@@ -423,26 +525,75 @@ export default function AnalyzePage() {
           )}
 
           <div className="w-full max-w-xl space-y-6">
-            <div className="relative">
-              <Input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-12 pl-12 pr-4 bg-background/40 border-white/10 backdrop-blur-sm transition-all"
-                placeholder="e.g. 'Google', 'Spotify', or 'https://example.com/privacy'"
-                onKeyDown={(e) => e.key === "Enter" && startAnalysis()}
-              />
-              <Search className="absolute left-4 top-3.5 h-5 w-5 text-muted-foreground pointer-events-none" />
-            </div>
+            {/* URL Search Input */}
+            {inputMethod === "url" && (
+              <>
+                <div className="relative">
+                  <Input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full h-12 pl-12 pr-4 bg-background/40 border-white/10 backdrop-blur-sm transition-all"
+                    placeholder="e.g. 'Google', 'Spotify', or 'https://example.com/privacy'"
+                    onKeyDown={(e) => e.key === "Enter" && startAnalysis()}
+                  />
+                  <Search className="absolute left-4 top-3.5 h-5 w-5 text-muted-foreground pointer-events-none" />
+                </div>
 
-            <div className="p-4 rounded-lg bg-primary/5 border border-primary/10">
-              <div className="flex items-start gap-3">
-                <Info className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <p className="text-sm text-muted-foreground text-left">
-                  Enter a company name and our AI will automatically find and analyze their latest {analysisMode === "comprehensive" ? "Privacy Policy, Terms of Service, and all other legal documents" : "Privacy Policy"}.
-                </p>
-              </div>
-            </div>
+                <div className="p-4 rounded-lg bg-primary/5 border border-primary/10">
+                  <div className="flex items-start gap-3">
+                    <Info className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <p className="text-sm text-muted-foreground text-left">
+                      Enter a company name and our AI will automatically find and analyze their latest {analysisMode === "comprehensive" ? "Privacy Policy, Terms of Service, and all other legal documents" : "Privacy Policy"}.
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* Paste Text Input */}
+            {inputMethod === "paste" && (
+              <>
+                <div className="space-y-2">
+                  {uploadedFileName && (
+                    <div className="flex items-center justify-between text-sm text-muted-foreground p-2 bg-primary/5 rounded-lg">
+                      <span className="flex items-center gap-2">
+                        <FileText className="h-4 w-4" />
+                        {uploadedFileName}
+                      </span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => {
+                          setUploadedFileName(null);
+                          setPastedText("");
+                        }}
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  )}
+                  <Textarea
+                    value={pastedText}
+                    onChange={(e) => setPastedText(e.target.value)}
+                    className="w-full min-h-[200px] bg-background/40 border-white/10 backdrop-blur-sm transition-all resize-y"
+                    placeholder="Paste the privacy policy or terms of service text here..."
+                  />
+                  <p className="text-xs text-muted-foreground text-right">
+                    {pastedText.length.toLocaleString()} characters
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-lg bg-primary/5 border border-primary/10">
+                  <div className="flex items-start gap-3">
+                    <Info className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <p className="text-sm text-muted-foreground text-left">
+                      Paste any policy document text and our AI will analyze it. Minimum 100 characters required.
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
 
             {/* Main Action Button */}
             <Button
@@ -454,7 +605,7 @@ export default function AnalyzePage() {
                   : "shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.7)]"
               )}
               onClick={startAnalysis}
-              disabled={!searchQuery}
+              disabled={inputMethod === "url" ? !searchQuery : pastedText.length < 100}
             >
               {analysisMode === "comprehensive" ? (
                 <>

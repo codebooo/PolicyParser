@@ -242,6 +242,30 @@ export const CONFIG = {
             privacy: 'https://www.tiktok.com/legal/page/row/privacy-policy/en',
             terms: 'https://www.tiktok.com/legal/page/row/terms-of-service/en',
         },
+        'google.com': {
+            privacy: 'https://policies.google.com/privacy',
+            terms: 'https://policies.google.com/terms',
+        },
+        'youtube.com': {
+            privacy: 'https://policies.google.com/privacy',
+            terms: 'https://www.youtube.com/static?template=terms',
+        },
+        'linkedin.com': {
+            privacy: 'https://www.linkedin.com/legal/privacy-policy',
+            terms: 'https://www.linkedin.com/legal/user-agreement',
+        },
+        'amazon.com': {
+            privacy: 'https://www.amazon.com/gp/help/customer/display.html?nodeId=468496',
+            terms: 'https://www.amazon.com/gp/help/customer/display.html?nodeId=508088',
+        },
+        'microsoft.com': {
+            privacy: 'https://privacy.microsoft.com/en-us/privacystatement',
+            terms: 'https://www.microsoft.com/en-us/servicesagreement',
+        },
+        'apple.com': {
+            privacy: 'https://www.apple.com/legal/privacy/',
+            terms: 'https://www.apple.com/legal/internet-services/terms/site.html',
+        },
     } as Record<string, Partial<Record<string, string>>>,
 };
 

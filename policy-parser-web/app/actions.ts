@@ -234,6 +234,83 @@ export async function analyzeDomainInternal(input: string): Promise<{
 }
 
 /**
+ * Analyze policy text directly (for file uploads and paste text)
+ * Streaming version for UI with progress updates
+ */
+export async function analyzeText(text: string, sourceName?: string) {
+    const stream = createStreamableValue({
+        status: 'initializing',
+        message: 'Initializing analysis...',
+        step: 0,
+        data: null as any
+    });
+
+    (async () => {
+        try {
+            // Validate input
+            if (!text || text.trim().length < 100) {
+                throw new Error('Text is too short. Please provide at least 100 characters of policy text.');
+            }
+
+            // Step 1: Analyzing
+            stream.update({ status: 'analyzing', message: 'Analyzing legal text (this may take a moment)...', step: 1, data: null });
+
+            const { object: analysis } = await generateObject({
+                model: getGeminiModel(),
+                system: SYSTEM_PROMPT,
+                prompt: USER_PROMPT(text),
+                schema: AnalysisResultSchema,
+                mode: 'json'
+            });
+
+            // Calculate Score Deterministically
+            const score = calculateScore(analysis);
+            analysis.score = score;
+
+            // Add metadata to results
+            const resultsWithMeta = {
+                ...analysis,
+                url: null, // No URL for uploaded/pasted text
+                domain: sourceName || 'Uploaded Document',
+                rawPolicyText: text
+            };
+
+            // Step 2: Save to DB (if user is logged in)
+            stream.update({ status: 'saving', message: 'Saving results...', step: 2, data: null });
+            const supabase = await createClient();
+
+            const { data: { user } } = await supabase.auth.getUser();
+
+            if (user) {
+                await supabase.from('analyses').insert({
+                    user_id: user.id,
+                    domain: sourceName || 'uploaded_document',
+                    company_name: sourceName || 'Uploaded Document',
+                    policy_url: null,
+                    score: score,
+                    summary: analysis.summary,
+                    key_findings: analysis.key_findings,
+                    data_collected: analysis.data_collected,
+                    third_party_sharing: analysis.third_party_sharing,
+                    user_rights: analysis.user_rights,
+                    contact_info: analysis.contact_info,
+                    raw_text: text.substring(0, 50000) // Limit stored text size
+                });
+            }
+
+            stream.done({ status: 'complete', message: 'Analysis complete!', step: 3, data: resultsWithMeta });
+
+        } catch (error: any) {
+            logger.error('Text analysis failed', error);
+            const errorMessage = error?.message || 'An unexpected error occurred';
+            stream.done({ status: 'error', message: errorMessage, step: -1, data: null });
+        }
+    })();
+
+    return { output: stream.value };
+}
+
+/**
  * PRO FEATURE: Discover all available policies for a company
  * Returns a list of found policy types and their URLs
  */
@@ -250,10 +327,45 @@ export async function discoverAllPolicies(input: string): Promise<{
 
         const foundPolicies: { type: PolicyType; name: string; url: string }[] = [];
 
+        // Check if this is a special domain with known policy URLs
+        const specialDomain = CONFIG.SPECIAL_DOMAINS[domain] || 
+                              CONFIG.SPECIAL_DOMAINS[`www.${domain}`] ||
+                              CONFIG.SPECIAL_DOMAINS[domain.replace(/^www\./, '')];
+
         // Check all policy types in parallel
         const policyTypes = Object.entries(CONFIG.POLICY_TYPES) as [PolicyType, typeof CONFIG.POLICY_TYPES[PolicyType]][];
         
         const checks = policyTypes.map(async ([type, config]) => {
+            // First check if we have a special domain URL for this policy type
+            if (specialDomain && specialDomain[type]) {
+                const specialUrl = specialDomain[type]!;
+                try {
+                    const response = await got.head(specialUrl, {
+                        timeout: { request: 5000 },
+                        retry: { limit: 0 } as any,
+                        headers: { 
+                            // Use Googlebot UA for Meta domains
+                            'User-Agent': domain.includes('facebook') || domain.includes('meta') || domain.includes('instagram')
+                                ? 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+                                : CONFIG.USER_AGENT,
+                            'Accept-Language': 'en-US,en;q=0.9',
+                        },
+                        followRedirect: true
+                    });
+
+                    if (response.statusCode === 200) {
+                        return {
+                            type,
+                            name: config.name,
+                            url: specialUrl
+                        };
+                    }
+                } catch {
+                    // Special URL didn't work, fall through to standard checks
+                }
+            }
+
+            // Standard path checks
             for (const path of config.paths) {
                 const url = `${baseUrl}${path}`;
                 try {
