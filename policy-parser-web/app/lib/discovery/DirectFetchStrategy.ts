@@ -170,7 +170,12 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
 
             // Verify content looks like a privacy policy
             const body = response.body;
-            const lowerBody = body.toLowerCase().slice(0, 15000); // Check first 15KB
+            const bodyLength = body.length;
+            
+            // For large pages (like Facebook's 2MB page), scan more content
+            // Small pages: check first 15KB, Large pages (>100KB): check first 500KB
+            const scanSize = bodyLength > 100000 ? 500000 : 15000;
+            const lowerBody = body.toLowerCase().slice(0, scanSize);
 
             // Must have privacy-related content
             const privacyIndicators = [
@@ -192,7 +197,10 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
                 lowerBody.includes(indicator)
             );
             
-            const hasPrivacyContent = matchedIndicators.length >= 2; // Require at least 2 matches
+            // For bot-fetched pages (like Facebook), we trust the URL more since we know it works
+            // Regular pages need 2+ indicators, bot-fetched need just 1 indicator
+            const requiredIndicators = useBotUA ? 1 : 2;
+            const hasPrivacyContent = matchedIndicators.length >= requiredIndicators;
 
             // Check for login page indicators (should NOT have these predominantly)
             const loginIndicators = [
@@ -211,7 +219,7 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
             const isLikelyLoginPage = loginMatches >= 2;
 
             if (!hasPrivacyContent) {
-                logger.info(`DirectFetch: Skipping ${finalUrl} - insufficient privacy content (found: ${matchedIndicators.join(', ')})`);
+                logger.info(`DirectFetch: Skipping ${finalUrl} - insufficient privacy content (found ${matchedIndicators.length}/${requiredIndicators} required: ${matchedIndicators.join(', ')}) [scanned ${scanSize} of ${bodyLength} bytes]`);
                 return null;
             }
 

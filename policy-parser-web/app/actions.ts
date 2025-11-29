@@ -15,6 +15,81 @@ import { logger } from './lib/logger';
 import { CONFIG, PolicyType } from './lib/config';
 import got from 'got';
 
+/**
+ * Simple function to find and fetch a policy for testing purposes
+ * Used by /api/test-pawd and /api/test-ironclad endpoints
+ */
+export async function findAndFetchPolicy(input: string): Promise<{
+    success: boolean;
+    url?: string;
+    date?: string;
+    textLength?: number;
+    text?: string;
+    error?: string;
+}> {
+    try {
+        // Step 1: Identify the target
+        const identity = await identifyTarget(input);
+        logger.info('findAndFetchPolicy: Identified', identity);
+        
+        // Step 2: Discover policy URL
+        const engine = new PolicyDiscoveryEngine();
+        const candidate = await engine.discover(identity.cleanDomain);
+        
+        if (!candidate) {
+            return {
+                success: false,
+                error: `Could not find a privacy policy for ${identity.cleanDomain}`
+            };
+        }
+        
+        logger.info('findAndFetchPolicy: Found policy', candidate);
+        
+        // Step 3: Extract content to verify it works
+        const extracted = await extractPolicyContent(candidate.url);
+        
+        return {
+            success: true,
+            url: candidate.url,
+            date: new Date().toISOString(),
+            textLength: extracted.rawLength,
+            text: extracted.markdown
+        };
+    } catch (error: any) {
+        logger.error('findAndFetchPolicy failed', error);
+        return {
+            success: false,
+            error: error?.message || 'Unknown error'
+        };
+    }
+}
+
+/**
+ * Analyze a policy text (for testing endpoints)
+ * Used by /api/test-ironclad
+ */
+export async function analyzePolicy(text: string, url: string, userId?: string): Promise<{
+    privacyScore: number;
+    summary: string;
+    risks?: any[];
+}> {
+    const { object: analysis } = await generateObject({
+        model: getGeminiModel(),
+        system: SYSTEM_PROMPT,
+        prompt: USER_PROMPT(text),
+        schema: AnalysisResultSchema,
+        mode: 'json'
+    });
+
+    const score = calculateScore(analysis);
+    
+    return {
+        privacyScore: score,
+        summary: analysis.summary,
+        risks: analysis.key_findings
+    };
+}
+
 export async function analyzeDomain(input: string) {
     const stream = createStreamableValue({
         status: 'initializing',
