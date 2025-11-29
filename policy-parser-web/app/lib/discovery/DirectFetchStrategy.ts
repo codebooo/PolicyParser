@@ -36,6 +36,8 @@ const GOOGLEBOT_UA = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google
  * 
  * For Meta/Facebook family domains, uses Googlebot user-agent
  * because they block regular browser requests but allow search bots.
+ * 
+ * NEW: Also scans the main page footer for privacy policy links
  */
 export class DirectFetchStrategy implements DiscoveryStrategy {
     name = 'DirectFetchStrategy';
@@ -50,6 +52,8 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
         '/privacy/center',
         '/privacycenter',
         '/help/privacy',
+        '/privacypolicy',
+        '/privacy_policy',
     ];
 
     /**
@@ -60,6 +64,55 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
         return BOT_REQUIRED_DOMAINS.some(d => 
             d === domain.toLowerCase() || d === cleanDomain || d === `www.${cleanDomain}`
         );
+    }
+
+    /**
+     * Extract privacy policy URLs from page footer
+     * Most websites link to privacy policies in their footer
+     */
+    private extractFooterPrivacyLinks(html: string, domain: string): string[] {
+        const links: string[] = [];
+        
+        // Look for <footer> section first (most reliable)
+        const footerMatch = html.match(/<footer[^>]*>([\s\S]*?)<\/footer>/i);
+        const searchArea = footerMatch ? footerMatch[1] : html.slice(-50000); // Last 50KB if no footer tag
+        
+        // Regex to find links
+        const linkRegex = /<a[^>]*href=["']([^"']+)["'][^>]*>([^<]*(?:<[^>]*>[^<]*)*)<\/a>/gi;
+        let match;
+        
+        while ((match = linkRegex.exec(searchArea)) !== null) {
+            const href = match[1];
+            const linkText = match[2].replace(/<[^>]*>/g, '').toLowerCase().trim();
+            
+            // Check if link text matches our footer link patterns
+            const isPrivacyLink = CONFIG.FOOTER_LINK_PATTERNS.some(pattern => 
+                linkText.includes(pattern.toLowerCase())
+            );
+            
+            // Or check if URL matches our privacy URL patterns
+            const urlMatchesPattern = CONFIG.PRIVACY_URL_PATTERNS.some(pattern => 
+                pattern.test(href)
+            );
+            
+            if (isPrivacyLink || urlMatchesPattern) {
+                // Resolve relative URLs
+                let fullUrl = href;
+                if (href.startsWith('/')) {
+                    fullUrl = `https://${domain}${href}`;
+                } else if (!href.startsWith('http')) {
+                    fullUrl = `https://${domain}/${href}`;
+                }
+                
+                // Skip mailto, javascript, etc
+                if (fullUrl.startsWith('http') && !links.includes(fullUrl)) {
+                    links.push(fullUrl);
+                }
+            }
+        }
+        
+        logger.info(`DirectFetch: Found ${links.length} potential privacy links in footer`);
+        return links;
     }
 
     async execute(domain: string): Promise<PolicyCandidate[]> {
@@ -102,6 +155,42 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
                     return candidates;
                 }
             }
+        }
+
+        // NEW: Fetch main page and scan footer for privacy links
+        // This is the most reliable way to find policies since they're almost always in the footer
+        try {
+            const mainPageUrl = `https://${domain}`;
+            logger.info(`DirectFetch: Fetching main page ${mainPageUrl} to scan footer`);
+            
+            const response = await got(mainPageUrl, {
+                timeout: { request: 15000 },
+                retry: { limit: 1 } as any,
+                headers: {
+                    'User-Agent': useBotUA ? GOOGLEBOT_UA : CONFIG.USER_AGENT,
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                },
+                followRedirect: true,
+                throwHttpErrors: false,
+            });
+            
+            if (response.statusCode === 200) {
+                const footerLinks = this.extractFooterPrivacyLinks(response.body, domain);
+                
+                // Try footer links first (highest confidence)
+                for (const link of footerLinks.slice(0, 3)) { // Max 3 footer links
+                    const result = await this.tryUrl(link, domain, 'direct_fetch', useBotUA);
+                    if (result) {
+                        result.confidence = Math.min(result.confidence + 5, 98); // Boost for footer discovery
+                        result.methodDetail = 'Footer link discovery';
+                        candidates.push(result);
+                        if (candidates.length >= 1) return candidates; // Return first valid
+                    }
+                }
+            }
+        } catch (error: any) {
+            logger.info(`DirectFetch: Error fetching main page: ${error.message}`);
         }
 
         // Try priority paths in parallel with GET requests

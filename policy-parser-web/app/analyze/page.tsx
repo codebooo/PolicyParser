@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles } from "lucide-react"
+import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell } from "lucide-react"
 import { clsx } from "clsx"
 import { analyzeDomain, discoverAllPolicies, analyzeSpecificPolicy } from "../actions"
 import { readStreamableValue } from "@ai-sdk/rsc"
@@ -124,6 +124,14 @@ export default function AnalyzePage() {
 
   // Original Text Modal State
   const [showOriginalText, setShowOriginalText] = useState(false)
+  
+  // Dropdown States
+  const [dataCollectedOpen, setDataCollectedOpen] = useState(true)
+  const [thirdPartyOpen, setThirdPartyOpen] = useState(true)
+  
+  // Community Score Voting UI
+  const [showVoteSlider, setShowVoteSlider] = useState(false)
+  const [voteValue, setVoteValue] = useState(50)
 
   useEffect(() => {
     checkProStatus().then(status => {
@@ -289,7 +297,8 @@ export default function AnalyzePage() {
       await untrackPolicy(domain);
       setIsTracked(false);
     } else {
-      await trackPolicy(domain);
+      // Pass the policy URL and current analysis for change detection
+      await trackPolicy(domain, sourceUrl, displayedAnalysis);
       setIsTracked(true);
     }
   }
@@ -381,10 +390,29 @@ export default function AnalyzePage() {
               <div className="flex items-start gap-3">
                 <Zap className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" />
                 <div className="text-left">
-                  <p className="text-sm font-medium text-amber-400">Comprehensive Analysis</p>
+                  <p className="text-sm font-medium text-amber-400">Comprehensive Company Analysis</p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    We'll find and analyze all available policies: Privacy Policy, Terms of Service, Cookie Policy, Security Policy, GDPR/CCPA notices, AI Terms, and more.
+                    We'll scan the entire company and analyze all available policies: Privacy Policy, Terms of Service, Cookie Policy, Security Policy, GDPR/CCPA notices, AI Terms, Data Processing Agreements, and more.
                   </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Non-Pro Upgrade Prompt for Comprehensive */}
+          {!isPro && (
+            <div className="w-full max-w-xl p-4 rounded-lg bg-gradient-to-r from-primary/5 to-cyan-500/5 border border-primary/20">
+              <div className="flex items-start gap-3">
+                <FileStack className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                <div className="text-left">
+                  <p className="text-sm font-medium text-foreground">Want to analyze all company policies?</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Upgrade to Pro to analyze Privacy Policy, Terms of Service, Cookie Policy, and all other legal documents in one click.
+                  </p>
+                  <a href="/plans" className="inline-flex items-center gap-1 mt-2 text-xs text-primary hover:underline">
+                    <Zap className="h-3 w-3" />
+                    Upgrade to Pro
+                  </a>
                 </div>
               </div>
             </div>
@@ -407,18 +435,31 @@ export default function AnalyzePage() {
               <div className="flex items-start gap-3">
                 <Info className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <p className="text-sm text-muted-foreground text-left">
-                  Enter a company name and our AI will automatically find and analyze their latest {analysisMode === "comprehensive" ? "Privacy Policy and Terms of Service" : "Privacy Policy"}.
+                  Enter a company name and our AI will automatically find and analyze their latest {analysisMode === "comprehensive" ? "Privacy Policy, Terms of Service, and all other legal documents" : "Privacy Policy"}.
                 </p>
               </div>
             </div>
 
+            {/* Main Action Button */}
             <Button
               size="lg"
-              className="w-full max-w-xl text-lg h-12 rounded-lg shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.7)]"
+              className={clsx(
+                "w-full max-w-xl text-lg h-14 rounded-lg transition-all",
+                analysisMode === "comprehensive" 
+                  ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.7)]"
+                  : "shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.7)]"
+              )}
               onClick={startAnalysis}
               disabled={!searchQuery}
             >
-              Find & Analyze
+              {analysisMode === "comprehensive" ? (
+                <>
+                  <FileStack className="h-5 w-5 mr-2" />
+                  Search Whole Company
+                </>
+              ) : (
+                "Find & Analyze"
+              )}
             </Button>
           </div>
         </div>
@@ -530,7 +571,26 @@ export default function AnalyzePage() {
               <h1 className="text-4xl font-bold text-foreground">
                 {analysisMode === "comprehensive" && currentPolicyResult ? currentPolicyResult.name : "Analysis Results"}
               </h1>
-              {analyzedDomain && (
+              {/* Source URL Link - Always link to original policy, not just domain */}
+              {(sourceUrl || (analysisMode === "comprehensive" && currentPolicyResult?.url)) && (
+                <div className="flex items-center gap-2">
+                  <LinkIcon className="h-4 w-4 text-muted-foreground" />
+                  <a 
+                    href={analysisMode === "comprehensive" && currentPolicyResult?.url ? currentPolicyResult.url : sourceUrl!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-primary hover:underline truncate max-w-md"
+                  >
+                    {analysisMode === "comprehensive" && currentPolicyResult?.url 
+                      ? currentPolicyResult.url 
+                      : sourceUrl}
+                  </a>
+                  <span className="text-xs text-muted-foreground">
+                    (Original Source)
+                  </span>
+                </div>
+              )}
+              {analyzedDomain && !sourceUrl && !currentPolicyResult?.url && (
                 <p className="text-sm text-muted-foreground">
                   {analyzedDomain}
                 </p>
@@ -567,6 +627,155 @@ export default function AnalyzePage() {
               </CardContent>
             </Card>
           </div>
+
+          {/* Track Policy Card - Pro Feature */}
+          {userId && (
+            <Card className={clsx(
+              "border transition-all",
+              isTracked 
+                ? "bg-primary/10 border-primary/30" 
+                : "bg-white/5 border-white/10 hover:border-primary/30"
+            )}>
+              <CardContent className="p-4 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className={clsx(
+                    "h-10 w-10 rounded-lg flex items-center justify-center",
+                    isTracked ? "bg-primary/20 text-primary" : "bg-white/10 text-muted-foreground"
+                  )}>
+                    <Bell className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-foreground">
+                      {isTracked ? "Tracking this policy" : "Track this policy"}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {isTracked 
+                        ? "You'll be notified when this policy changes" 
+                        : "Get notified when this privacy policy is updated"
+                      }
+                    </p>
+                  </div>
+                </div>
+                <Button
+                  variant={isTracked ? "outline" : "default"}
+                  size="sm"
+                  onClick={handleTrackToggle}
+                  className={clsx(
+                    isTracked && "border-primary/30 text-primary hover:bg-primary/10"
+                  )}
+                >
+                  {isTracked ? (
+                    <>
+                      <CheckCircle2 className="h-4 w-4 mr-2" />
+                      Tracking
+                    </>
+                  ) : (
+                    <>
+                      <Bell className="h-4 w-4 mr-2" />
+                      Track Policy
+                    </>
+                  )}
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Community Score Section */}
+          <Card className="bg-background/40 border-white/10">
+            <CardContent className="p-6">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="h-14 w-14 rounded-full bg-violet-500/10 border border-violet-500/30 flex items-center justify-center">
+                    <Users className="h-7 w-7 text-violet-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Community Score</p>
+                    <div className="flex items-baseline gap-2">
+                      {communityScore !== null ? (
+                        <>
+                          <span className={clsx(
+                            "text-3xl font-bold",
+                            communityScore >= 80 ? "text-green-400" :
+                              communityScore >= 60 ? "text-yellow-400" :
+                                "text-red-500"
+                          )}>
+                            {communityScore}
+                          </span>
+                          <span className="text-muted-foreground text-sm">/100</span>
+                          <span className="text-xs text-muted-foreground">({voteCount} {voteCount === 1 ? 'vote' : 'votes'})</span>
+                        </>
+                      ) : (
+                        <span className="text-muted-foreground text-sm">No votes yet</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col gap-2 w-full md:w-auto">
+                  {userVote !== null ? (
+                    <div className="flex items-center gap-2">
+                      <Star className="h-4 w-4 text-amber-400 fill-amber-400" />
+                      <span className="text-sm text-muted-foreground">Your rating: <span className="text-foreground font-medium">{userVote}/100</span></span>
+                    </div>
+                  ) : userId ? (
+                    showVoteSlider ? (
+                      <div className="flex flex-col gap-3 p-4 rounded-lg bg-white/5 border border-white/10 min-w-[250px]">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-muted-foreground">Your rating:</span>
+                          <span className={clsx(
+                            "text-lg font-bold",
+                            voteValue >= 80 ? "text-green-400" :
+                              voteValue >= 60 ? "text-yellow-400" :
+                                "text-red-500"
+                          )}>{voteValue}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="0"
+                          max="100"
+                          value={voteValue}
+                          onChange={(e) => setVoteValue(Number(e.target.value))}
+                          className="w-full accent-primary"
+                        />
+                        <div className="flex gap-2">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setShowVoteSlider(false)}
+                            className="flex-1"
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            size="sm"
+                            onClick={() => {
+                              handleVote(voteValue);
+                              setShowVoteSlider(false);
+                            }}
+                            className="flex-1 bg-primary hover:bg-primary/90"
+                          >
+                            Submit
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setShowVoteSlider(true)}
+                        className="border-violet-500/30 text-violet-400 hover:bg-violet-500/10"
+                      >
+                        <Star className="h-4 w-4 mr-2" />
+                        Rate this policy
+                      </Button>
+                    )
+                  ) : (
+                    <p className="text-xs text-muted-foreground">Log in to rate this policy</p>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Secure Usage Recommendations */}
           {displayedAnalysis.secure_usage_recommendations && displayedAnalysis.secure_usage_recommendations.length > 0 && (
@@ -651,39 +860,77 @@ export default function AnalyzePage() {
             )}
           </div>
 
-          {/* Data Collected */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="bg-background/40 border-white/10">
-              <CardHeader>
-                <CardTitle>Data Collected</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {displayedAnalysis.data_collected?.map((item: string, i: number) => (
-                    <li key={i} className="flex items-center gap-2 text-sm">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+          {/* Data Collected & Third Party Sharing - Dropdowns */}
+          <div className="space-y-4">
+            {/* Data Collected Dropdown */}
+            <div className="border border-white/10 rounded-lg bg-background/40 overflow-hidden">
+              <button
+                onClick={() => setDataCollectedOpen(!dataCollectedOpen)}
+                className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <Eye className="h-4 w-4 text-primary" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-foreground">Data Collected</h3>
+                    <p className="text-xs text-muted-foreground">{displayedAnalysis.data_collected?.length || 0} data types identified</p>
+                  </div>
+                </div>
+                {dataCollectedOpen ? (
+                  <ChevronUp className="h-5 w-5 text-muted-foreground" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                )}
+              </button>
+              {dataCollectedOpen && (
+                <div className="px-4 pb-4 border-t border-white/5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-4">
+                    {displayedAnalysis.data_collected?.map((item: string, i: number) => (
+                      <div key={i} className="flex items-center gap-2 text-sm p-2 rounded-lg bg-white/5 border border-white/5">
+                        <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0"></div>
+                        <span className="truncate">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
-            <Card className="bg-background/40 border-white/10">
-              <CardHeader>
-                <CardTitle>Third Party Sharing</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {displayedAnalysis.third_party_sharing?.map((item: string, i: number) => (
-                    <li key={i} className="flex items-center gap-2 text-sm">
-                      <div className="h-1.5 w-1.5 rounded-full bg-orange-400"></div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            {/* Third Party Sharing Dropdown */}
+            <div className="border border-white/10 rounded-lg bg-background/40 overflow-hidden">
+              <button
+                onClick={() => setThirdPartyOpen(!thirdPartyOpen)}
+                className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-8 w-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
+                    <Users className="h-4 w-4 text-orange-400" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-foreground">Third Party Sharing</h3>
+                    <p className="text-xs text-muted-foreground">{displayedAnalysis.third_party_sharing?.length || 0} sharing partners identified</p>
+                  </div>
+                </div>
+                {thirdPartyOpen ? (
+                  <ChevronUp className="h-5 w-5 text-muted-foreground" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                )}
+              </button>
+              {thirdPartyOpen && (
+                <div className="px-4 pb-4 border-t border-white/5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-4">
+                    {displayedAnalysis.third_party_sharing?.map((item: string, i: number) => (
+                      <div key={i} className="flex items-center gap-2 text-sm p-2 rounded-lg bg-white/5 border border-white/5">
+                        <div className="h-1.5 w-1.5 rounded-full bg-orange-400 shrink-0"></div>
+                        <span className="truncate">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Comprehensive Mode Summary */}

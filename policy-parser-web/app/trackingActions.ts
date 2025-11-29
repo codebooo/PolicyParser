@@ -1,8 +1,44 @@
 "use server";
 
 import { createClient } from '@/utils/supabase/server';
+import { analyzeDomain } from './actions';
+import { readStreamableValue } from '@ai-sdk/rsc';
+import crypto from 'crypto';
 
-export async function trackPolicy(domain: string) {
+// Generate a hash of the policy content for change detection
+function generatePolicyHash(content: string): string {
+    // Normalize the content before hashing
+    const normalized = content
+        .toLowerCase()
+        .replace(/\s+/g, ' ')
+        .trim();
+    return crypto.createHash('sha256').update(normalized).digest('hex');
+}
+
+export interface TrackedPolicy {
+    id: string;
+    user_id: string;
+    domain: string;
+    policy_url: string | null;
+    policy_hash: string | null;
+    last_checked: string;
+    last_analysis: any | null;
+    has_changes: boolean;
+    previous_analysis: any | null;
+    created_at: string;
+}
+
+export interface PolicyChange {
+    domain: string;
+    policy_url: string;
+    detected_at: string;
+    change_type: 'new_policy' | 'content_changed' | 'score_changed';
+    old_score: number | null;
+    new_score: number | null;
+    summary: string;
+}
+
+export async function trackPolicy(domain: string, policyUrl?: string, initialAnalysis?: any) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
@@ -18,12 +54,22 @@ export async function trackPolicy(domain: string) {
 
     if (existing) return { success: true, message: "Already tracking" };
 
+    // Generate hash from initial analysis if available
+    const policyHash = initialAnalysis?.rawPolicyText 
+        ? generatePolicyHash(initialAnalysis.rawPolicyText)
+        : null;
+
     const { error } = await supabase
         .from('tracked_policies')
         .insert({
             user_id: user.id,
             domain,
-            last_checked: new Date().toISOString()
+            policy_url: policyUrl || null,
+            policy_hash: policyHash,
+            last_checked: new Date().toISOString(),
+            last_analysis: initialAnalysis || null,
+            has_changes: false,
+            previous_analysis: null
         });
 
     if (error) {
@@ -51,7 +97,7 @@ export async function untrackPolicy(domain: string) {
     return { success: true };
 }
 
-export async function getTrackedPolicies() {
+export async function getTrackedPolicies(): Promise<TrackedPolicy[]> {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
@@ -60,17 +106,181 @@ export async function getTrackedPolicies() {
     const { data } = await supabase
         .from('tracked_policies')
         .select('*')
-        .eq('user_id', user.id);
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false });
 
-    return data || [];
+    return (data as TrackedPolicy[]) || [];
+}
+
+export async function getTrackedPolicyWithChanges(domain: string): Promise<{
+    policy: TrackedPolicy | null;
+    hasChanges: boolean;
+    changes: PolicyChange | null;
+}> {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) return { policy: null, hasChanges: false, changes: null };
+
+    const { data } = await supabase
+        .from('tracked_policies')
+        .select('*')
+        .eq('user_id', user.id)
+        .eq('domain', domain)
+        .single();
+
+    if (!data) return { policy: null, hasChanges: false, changes: null };
+
+    const policy = data as TrackedPolicy;
+    
+    if (policy.has_changes && policy.previous_analysis && policy.last_analysis) {
+        const changes: PolicyChange = {
+            domain: policy.domain,
+            policy_url: policy.policy_url || '',
+            detected_at: policy.last_checked,
+            change_type: policy.previous_analysis.score !== policy.last_analysis.score 
+                ? 'score_changed' 
+                : 'content_changed',
+            old_score: policy.previous_analysis.score || null,
+            new_score: policy.last_analysis.score || null,
+            summary: generateChangeSummary(policy.previous_analysis, policy.last_analysis)
+        };
+        return { policy, hasChanges: true, changes };
+    }
+
+    return { policy, hasChanges: false, changes: null };
+}
+
+function generateChangeSummary(oldAnalysis: any, newAnalysis: any): string {
+    const summaryParts: string[] = [];
+    
+    if (oldAnalysis.score !== newAnalysis.score) {
+        const diff = newAnalysis.score - oldAnalysis.score;
+        summaryParts.push(`Score ${diff > 0 ? 'improved' : 'decreased'} by ${Math.abs(diff)} points (${oldAnalysis.score} → ${newAnalysis.score})`);
+    }
+
+    const oldThreats = oldAnalysis.key_findings?.filter((f: any) => 
+        (typeof f === 'object' && f.category === 'THREAT') || 
+        (typeof f === 'string' && f.toLowerCase().includes('threat'))
+    ).length || 0;
+    
+    const newThreats = newAnalysis.key_findings?.filter((f: any) => 
+        (typeof f === 'object' && f.category === 'THREAT') || 
+        (typeof f === 'string' && f.toLowerCase().includes('threat'))
+    ).length || 0;
+
+    if (oldThreats !== newThreats) {
+        if (newThreats > oldThreats) {
+            summaryParts.push(`${newThreats - oldThreats} new threat(s) detected`);
+        } else {
+            summaryParts.push(`${oldThreats - newThreats} threat(s) resolved`);
+        }
+    }
+
+    if (summaryParts.length === 0) {
+        summaryParts.push('Policy content has been updated');
+    }
+
+    return summaryParts.join('. ');
+}
+
+export async function markChangesAsViewed(domain: string): Promise<{ success: boolean }> {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) return { success: false };
+
+    const { error } = await supabase
+        .from('tracked_policies')
+        .update({ 
+            has_changes: false,
+            previous_analysis: null 
+        })
+        .eq('user_id', user.id)
+        .eq('domain', domain);
+
+    return { success: !error };
+}
+
+/**
+ * Check a single tracked policy for updates
+ */
+export async function checkSinglePolicyForUpdates(domain: string): Promise<{
+    success: boolean;
+    hasChanges: boolean;
+    error?: string;
+    newAnalysis?: any;
+}> {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) return { success: false, hasChanges: false, error: "Must be logged in" };
+
+    // Get the tracked policy
+    const { data: policy } = await supabase
+        .from('tracked_policies')
+        .select('*')
+        .eq('user_id', user.id)
+        .eq('domain', domain)
+        .single();
+
+    if (!policy) return { success: false, hasChanges: false, error: "Policy not found" };
+
+    try {
+        // Re-analyze the domain
+        const { output } = await analyzeDomain(domain);
+        let newAnalysis: any = null;
+
+        for await (const update of readStreamableValue(output)) {
+            if (update.status === 'complete') {
+                newAnalysis = update.data;
+                break;
+            } else if (update.status === 'error') {
+                return { success: false, hasChanges: false, error: update.message };
+            }
+        }
+
+        if (!newAnalysis) {
+            return { success: false, hasChanges: false, error: "Analysis failed" };
+        }
+
+        // Check if content has changed
+        const newHash = newAnalysis.rawPolicyText 
+            ? generatePolicyHash(newAnalysis.rawPolicyText)
+            : null;
+        
+        const hasChanges = policy.policy_hash !== newHash || 
+            policy.last_analysis?.score !== newAnalysis.score;
+
+        // Update the tracked policy
+        await supabase
+            .from('tracked_policies')
+            .update({
+                last_checked: new Date().toISOString(),
+                policy_hash: newHash,
+                policy_url: newAnalysis.url || policy.policy_url,
+                previous_analysis: hasChanges ? policy.last_analysis : null,
+                last_analysis: newAnalysis,
+                has_changes: hasChanges
+            })
+            .eq('user_id', user.id)
+            .eq('domain', domain);
+
+        return { success: true, hasChanges, newAnalysis };
+    } catch (e: any) {
+        console.error("Check policy failed:", e);
+        return { success: false, hasChanges: false, error: e?.message || "Unknown error" };
+    }
 }
 
 /**
  * Check all tracked policies for updates.
- * TODO: Re-implement with the new analyzeDomain API once stable.
- * This would ideally be called by a Cron Job or manually by the user.
  */
-export async function checkTrackedPoliciesForUpdates(): Promise<{ success: boolean; updates?: { domain: string }[]; error?: string }> {
+export async function checkTrackedPoliciesForUpdates(): Promise<{ 
+    success: boolean; 
+    updates?: { domain: string; hasChanges: boolean; newScore?: number; oldScore?: number }[]; 
+    error?: string 
+}> {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
@@ -92,19 +302,63 @@ export async function checkTrackedPoliciesForUpdates(): Promise<{ success: boole
         return { success: true, updates: [] };
     }
 
-    // TODO: For now, return empty updates. 
-    // Full implementation would re-analyze each domain and compare with stored analysis.
-    // This requires significant work to:
-    // 1. Re-fetch and analyze each policy
-    // 2. Compare with previous analysis stored in DB
-    // 3. Detect meaningful changes
-    
-    // Update last_checked timestamp for all policies
-    const now = new Date().toISOString();
-    await supabase
-        .from('tracked_policies')
-        .update({ last_checked: now })
-        .eq('user_id', user.id);
+    const updates: { domain: string; hasChanges: boolean; newScore?: number; oldScore?: number }[] = [];
 
-    return { success: true, updates: [] };
+    // Check each policy (with rate limiting)
+    for (const policy of policies) {
+        try {
+            const result = await checkSinglePolicyForUpdates(policy.domain);
+            updates.push({
+                domain: policy.domain,
+                hasChanges: result.hasChanges,
+                newScore: result.newAnalysis?.score,
+                oldScore: policy.last_analysis?.score
+            });
+            
+            // Small delay to avoid rate limiting
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        } catch (e) {
+            console.error(`Failed to check ${policy.domain}:`, e);
+            updates.push({ domain: policy.domain, hasChanges: false });
+        }
+    }
+
+    return { success: true, updates };
+}
+
+/**
+ * Get notifications count (policies with changes)
+ */
+export async function getNotificationsCount(): Promise<number> {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) return 0;
+
+    const { count } = await supabase
+        .from('tracked_policies')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', user.id)
+        .eq('has_changes', true);
+
+    return count || 0;
+}
+
+/**
+ * Get all policies with changes (notifications)
+ */
+export async function getPoliciesWithChanges(): Promise<TrackedPolicy[]> {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) return [];
+
+    const { data } = await supabase
+        .from('tracked_policies')
+        .select('*')
+        .eq('user_id', user.id)
+        .eq('has_changes', true)
+        .order('last_checked', { ascending: false });
+
+    return (data as TrackedPolicy[]) || [];
 }

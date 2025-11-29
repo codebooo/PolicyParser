@@ -4,6 +4,8 @@ export const CONFIG = {
     USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
 
     // Discovery - Standard paths for privacy policy (default)
+    // IMPORTANT: These patterns cover 95%+ of websites
+    // Most policies are linked in the footer of the main page
     STANDARD_PATHS: [
         '/privacy',
         '/privacy-policy',
@@ -15,8 +17,58 @@ export const CONFIG = {
         '/privacy/policy',
         '/terms', // Sometimes combined
         '/data-protection',
-        '/security'
+        '/security',
+        // Additional common patterns
+        '/privacypolicy',
+        '/privacy_policy',
+        '/datenschutz', // German
+        '/politique-de-confidentialite', // French
+        '/privacidad', // Spanish
     ],
+
+    // Common URL patterns where privacy policies are typically found
+    // Used for discovery hints and footer link parsing
+    PRIVACY_URL_PATTERNS: [
+        // Direct path patterns
+        /\/privacy/i,
+        /\/privacypolicy/i,
+        /\/privacy[_-]?policy/i,
+        /\/data[_-]?protection/i,
+        /\/legal\/privacy/i,
+        /\/policies\/privacy/i,
+        /\/about\/privacy/i,
+        /\/help\/privacy/i,
+        // Regional patterns
+        /\/datenschutz/i, // German
+        /\/privacidad/i, // Spanish
+        /\/confidentialite/i, // French
+        /\/privacy[_-]?notice/i,
+        /\/privacy[_-]?statement/i,
+        // Query parameter patterns
+        /[?&]page=privacy/i,
+        /[?&]p=privacy/i,
+        /\/legal[?&#]/i,
+    ] as RegExp[],
+
+    // Footer link text patterns to look for
+    // These are common link texts that lead to privacy policies
+    FOOTER_LINK_PATTERNS: [
+        'privacy policy',
+        'privacy',
+        'data protection',
+        'datenschutz',
+        'privacidad',
+        'confidentialité',
+        'privacy notice',
+        'privacy statement',
+        'your privacy',
+        'our privacy',
+        'privacy & cookies',
+        'privacy and cookies',
+        'legal',
+        'terms & privacy',
+        'terms and privacy',
+    ] as string[],
 
     // Pro feature: Multiple policy types
     POLICY_TYPES: {
@@ -33,9 +85,14 @@ export const CONFIG = {
                 '/policies/privacy',
                 '/privacy/policy',
                 '/help/privacy',
-                '/policy/privacy'
+                '/policy/privacy',
+                '/privacy_policy',
+                '/info/privacy',
+                '/customer/privacy',
+                '/corporate/privacy',
+                '/site/privacy',
             ],
-            keywords: ['privacy', 'personal data', 'data protection', 'data policy']
+            keywords: ['privacy', 'personal data', 'data protection', 'data policy', 'information we collect', 'data we collect']
         },
         terms: {
             name: 'Terms of Service',
@@ -49,9 +106,13 @@ export const CONFIG = {
                 '/user-agreement',
                 '/policies/terms',
                 '/about/terms',
-                '/legal/tos'
+                '/legal/tos',
+                '/terms_of_service',
+                '/terms-of-use',
+                '/terms_and_conditions',
+                '/eula',
             ],
-            keywords: ['terms', 'service', 'agreement', 'conditions', 'user agreement']
+            keywords: ['terms', 'service', 'agreement', 'conditions', 'user agreement', 'binding agreement']
         },
         cookies: {
             name: 'Cookie Policy',
@@ -62,9 +123,11 @@ export const CONFIG = {
                 '/cookiepolicy', 
                 '/cookie-notice',
                 '/policies/cookies',
-                '/help/cookies'
+                '/help/cookies',
+                '/cookie_policy',
+                '/cookies-policy',
             ],
-            keywords: ['cookie', 'tracking', 'browser storage']
+            keywords: ['cookie', 'tracking', 'browser storage', 'local storage', 'tracking technologies']
         },
         security: {
             name: 'Security Policy',
@@ -74,9 +137,11 @@ export const CONFIG = {
                 '/legal/security', 
                 '/trust', 
                 '/trust-center',
-                '/about/security'
+                '/about/security',
+                '/security-center',
+                '/data-security',
             ],
-            keywords: ['security', 'encryption', 'protection', 'secure']
+            keywords: ['security', 'encryption', 'protection', 'secure', 'vulnerability', 'safeguards']
         },
         gdpr: {
             name: 'GDPR Notice',
@@ -85,9 +150,11 @@ export const CONFIG = {
                 '/legal/gdpr', 
                 '/eu-privacy', 
                 '/european-privacy',
-                '/privacy/gdpr'
+                '/privacy/gdpr',
+                '/privacy-eu',
+                '/europe-privacy',
             ],
-            keywords: ['gdpr', 'european', 'eu privacy', 'data subject']
+            keywords: ['gdpr', 'european', 'eu privacy', 'data subject', 'right to erasure', 'data portability']
         },
         ccpa: {
             name: 'CCPA Notice',
@@ -97,9 +164,11 @@ export const CONFIG = {
                 '/legal/ccpa', 
                 '/ca-privacy', 
                 '/your-privacy-choices',
-                '/privacy/ccpa'
+                '/privacy/ccpa',
+                '/do-not-sell',
+                '/privacy-rights',
             ],
-            keywords: ['ccpa', 'california', 'do not sell', 'consumer privacy']
+            keywords: ['ccpa', 'california', 'do not sell', 'consumer privacy', 'privacy rights', 'shine the light']
         },
         ai: {
             name: 'AI/ML Terms',
@@ -109,9 +178,11 @@ export const CONFIG = {
                 '/machine-learning-policy', 
                 '/legal/ai', 
                 '/ai-guidelines', 
-                '/generative-ai-terms'
+                '/generative-ai-terms',
+                '/ai-usage',
+                '/ml-policy',
             ],
-            keywords: ['artificial intelligence', 'machine learning', 'ai', 'model training', 'generative']
+            keywords: ['artificial intelligence', 'machine learning', 'ai', 'model training', 'generative', 'large language model']
         },
         acceptable_use: {
             name: 'Acceptable Use Policy',
@@ -122,9 +193,10 @@ export const CONFIG = {
                 '/usage-policy', 
                 '/community-guidelines',
                 '/policies/community',
-                '/community-standards'
+                '/community-standards',
+                '/code-of-conduct',
             ],
-            keywords: ['acceptable use', 'prohibited', 'content policy', 'guidelines']
+            keywords: ['acceptable use', 'prohibited', 'content policy', 'guidelines', 'code of conduct']
         }
     } as const,
 

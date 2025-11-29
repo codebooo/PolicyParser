@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_placeholder", {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
     apiVersion: "2025-01-27.acacia" as any, // Cast to any to avoid TS error with latest version
 });
 
 export async function POST(req: Request) {
     try {
-        const { amount } = await req.json();
+        const { amount, paymentMethod } = await req.json();
 
         if (!process.env.STRIPE_SECRET_KEY) {
             return NextResponse.json(
@@ -16,13 +16,34 @@ export async function POST(req: Request) {
             );
         }
 
-        const paymentIntent = await stripe.paymentIntents.create({
+        // Configure payment method types based on the selected method
+        let paymentMethodTypes: Stripe.PaymentIntentCreateParams.PaymentMethodType[] = ['card'];
+        
+        if (paymentMethod === 'paypal') {
+            paymentMethodTypes = ['paypal'];
+        } else if (paymentMethod === 'klarna') {
+            paymentMethodTypes = ['klarna'];
+        } else {
+            // Default: card with automatic payment methods enabled
+            paymentMethodTypes = ['card'];
+        }
+
+        const paymentIntentParams: Stripe.PaymentIntentCreateParams = {
             amount: amount,
             currency: "eur",
-            automatic_payment_methods: {
-                enabled: true,
-            },
-        });
+            payment_method_types: paymentMethodTypes,
+        };
+
+        // Klarna requires additional shipping/billing info for some regions
+        if (paymentMethod === 'klarna') {
+            paymentIntentParams.payment_method_options = {
+                klarna: {
+                    preferred_locale: 'en-US',
+                }
+            };
+        }
+
+        const paymentIntent = await stripe.paymentIntents.create(paymentIntentParams);
 
         return NextResponse.json({ clientSecret: paymentIntent.client_secret });
     } catch (error: any) {

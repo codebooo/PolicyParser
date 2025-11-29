@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, X, Loader2 } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/utils/supabase/client"
 import { PaymentModal } from "@/components/PaymentModal"
@@ -12,7 +12,13 @@ import { PaymentModal } from "@/components/PaymentModal"
 export default function PlansPage() {
     const [loading, setLoading] = useState(false)
     const [isPaymentOpen, setIsPaymentOpen] = useState(false)
+    const [isVisible, setIsVisible] = useState(false)
     const router = useRouter()
+
+    useEffect(() => {
+        // Trigger fade-in animation on mount
+        setIsVisible(true)
+    }, [])
 
     const handleUpgradeClick = async () => {
         setLoading(true)
@@ -30,14 +36,14 @@ export default function PlansPage() {
 
     return (
         <div className="container mx-auto px-4 py-20">
-            <div className="text-center mb-16">
+            <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <h1 className="text-4xl font-bold mb-4">Simple, Transparent Pricing</h1>
                 <p className="text-muted-foreground text-lg">Choose the plan that fits your needs.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {/* Free Plan */}
-                <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:border-white/20 transition-all">
+                <Card className={`bg-white/5 border-white/10 backdrop-blur-sm hover:border-white/20 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <CardHeader>
                         <CardTitle className="text-2xl">Free</CardTitle>
                         <CardDescription>Essential protection for everyone.</CardDescription>
@@ -61,7 +67,7 @@ export default function PlansPage() {
                 </Card>
 
                 {/* Pro Plan */}
-                <Card className="bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/50 backdrop-blur-sm relative overflow-hidden">
+                <Card className={`bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/50 backdrop-blur-sm relative overflow-hidden transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
                     <CardHeader>
                         <CardTitle className="text-2xl">Pro</CardTitle>
@@ -101,7 +107,7 @@ export default function PlansPage() {
                 onClose={() => setIsPaymentOpen(false)}
             />
 
-            <div className="mt-12 flex justify-center">
+            <div className={`mt-12 flex justify-center transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <form action={async () => {
                     const { toggleProStatus } = await import('./actions');
                     await toggleProStatus();
