@@ -3,13 +3,29 @@ import { logger } from '../logger';
 
 /**
  * Gemini API keys for rotation when hitting rate limits.
- * Keys are rotated on each call to distribute load.
+ * Keys should be set as comma-separated values in GEMINI_API_KEYS env var,
+ * or a single key in GEMINI_API_KEY env var.
+ * 
+ * Example: GEMINI_API_KEYS=key1,key2,key3
  */
-const GEMINI_API_KEYS = [
-    'AIzaSyCkI2lVGTXy6ZU-pUcnUGEgz2Px6elVu6o',
-    'AIzaSyBPAVID8wf239kWZmRD3MToArCOie3lXAk',
-    'AIzaSyCDLMl4WxOEOjvipo_xF_Jspb-SKIvs-p4'
-];
+function getApiKeys(): string[] {
+    // Check for multiple keys first
+    const multipleKeys = process.env.GEMINI_API_KEYS;
+    if (multipleKeys) {
+        const keys = multipleKeys.split(',').map(k => k.trim()).filter(k => k.length > 0);
+        if (keys.length > 0) {
+            return keys;
+        }
+    }
+    
+    // Fall back to single key
+    const singleKey = process.env.GEMINI_API_KEY;
+    if (singleKey) {
+        return [singleKey];
+    }
+    
+    throw new Error('No Gemini API key configured. Set GEMINI_API_KEY or GEMINI_API_KEYS in .env.local');
+}
 
 /**
  * OpenRouter API key for Grok backup (x-ai/grok-3-beta)
@@ -25,9 +41,10 @@ let currentKeyIndex = 0;
  * Get the next API key in rotation
  */
 function getNextApiKey(): string {
-    const key = GEMINI_API_KEYS[currentKeyIndex];
-    currentKeyIndex = (currentKeyIndex + 1) % GEMINI_API_KEYS.length;
-    logger.info(`Using Gemini API key index: ${currentKeyIndex}`);
+    const keys = getApiKeys();
+    const key = keys[currentKeyIndex % keys.length];
+    currentKeyIndex = (currentKeyIndex + 1) % keys.length;
+    logger.info(`Using Gemini API key index: ${currentKeyIndex} of ${keys.length}`);
     return key;
 }
 
