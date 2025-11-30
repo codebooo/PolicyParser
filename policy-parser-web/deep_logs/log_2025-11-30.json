@@ -4314,5 +4314,878 @@
       "score": 80,
       "url": "https://modrinth.com/legal/terms"
     }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.452Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting intelligent discovery for: Github"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.456Z",
+    "level": "info",
+    "message": "Input 'Github' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.458Z",
+    "level": "info",
+    "message": "Found 'Github' in known companies map: github.com"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.461Z",
+    "level": "info",
+    "message": "Resolved 'Github' to 'github.com'"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.512Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: github.com"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.517Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Starting intelligent discovery for: github.com"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.519Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 1: Special domain lookup"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.521Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 2: Deep footer crawling"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:02.820Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5: Content validation"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:03.275Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Validated ai: https://github.com/features/ai"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:03.748Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Validated security: https://github.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.016Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Validated terms: https://docs.github.com/site-policy/github-terms/github-terms-of-service"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.136Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Validated privacy: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.138Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Complete! Found 4 validated policies in 1621ms"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.140Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special_domains:0 -> footer_crawl:4 -> validation:4/4"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.144Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Intelligent discovery complete! Found 4 validated policies"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.146Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phases: special_domains:0 -> footer_crawl:4 -> validation:4/4"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.221Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.227Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for docs.github.com/privacy"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.589Z",
+    "level": "error",
+    "message": "[PolicyCache] Error fetching cached version",
+    "data": {
+      "code": "42703",
+      "details": null,
+      "hint": null,
+      "message": "column policy_versions.analyzed_at does not exist"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.617Z",
+    "level": "info",
+    "message": "Starting discovery for docs.github.com"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.620Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.730Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 3 candidates"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.733Z",
+    "level": "info",
+    "message": "Found high-confidence match (95), stopping early."
+  },
+  {
+    "timestamp": "2025-11-30T20:28:04.735Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.211Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 218268
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.261Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 67131
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.439Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "length": 40432
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.467Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.483Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "markdownLength": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.486Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 546fee1b50ea90fb..."
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.489Z",
+    "level": "info",
+    "message": "Cache miss for Privacy Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.493Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.592Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 218268
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.634Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 67131
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.725Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "length": 40432
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.735Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.738Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://docs.github.com/site-policy/privacy-policies/github-privacy-statement",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "markdownLength": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.740Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 40432,
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "url": "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:05.743Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:45.649Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:45.655Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for docs.github.com/privacy"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.013Z",
+    "level": "error",
+    "message": "[PolicyCache] Failed to save version",
+    "data": {
+      "code": "PGRST204",
+      "details": null,
+      "hint": null,
+      "message": "Could not find the 'analyzed_at' column of 'policy_versions' in the schema cache"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.015Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 75,
+      "url": "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.073Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://docs.github.com/site-policy/github-terms/github-terms-of-service"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.080Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for docs.github.com/terms"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.284Z",
+    "level": "error",
+    "message": "[PolicyCache] Error fetching cached version",
+    "data": {
+      "code": "42703",
+      "details": null,
+      "hint": null,
+      "message": "column policy_versions.analyzed_at does not exist"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.333Z",
+    "level": "info",
+    "message": "Starting discovery for docs.github.com"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.336Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.603Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 3 candidates"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.606Z",
+    "level": "info",
+    "message": "Found high-confidence match (95), stopping early."
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.609Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.701Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 218268
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.755Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 67131
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.852Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "length": 40432
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.865Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.868Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "markdownLength": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.870Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 546fee1b50ea90fb..."
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.873Z",
+    "level": "info",
+    "message": "Cache miss for Terms of Service - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.875Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://docs.github.com/site-policy/github-terms/github-terms-of-service"
+  },
+  {
+    "timestamp": "2025-11-30T20:28:46.968Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 235081
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:47.017Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 71746
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:47.100Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub Terms of Service - GitHub Docs",
+      "length": 40926
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:47.114Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 46460
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:47.116Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://docs.github.com/site-policy/github-terms/github-terms-of-service",
+    "data": {
+      "title": "GitHub Terms of Service - GitHub Docs",
+      "markdownLength": 46460
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:47.119Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 40926,
+      "title": "GitHub Terms of Service - GitHub Docs",
+      "url": "https://docs.github.com/site-policy/github-terms/github-terms-of-service"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:28:47.121Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:20.525Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:20.530Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for docs.github.com/terms"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:20.852Z",
+    "level": "error",
+    "message": "[PolicyCache] Failed to save version",
+    "data": {
+      "code": "PGRST204",
+      "details": null,
+      "hint": null,
+      "message": "Could not find the 'analyzed_at' column of 'policy_versions' in the schema cache"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:20.854Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 100,
+      "url": "https://docs.github.com/site-policy/github-terms/github-terms-of-service"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:20.916Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://github.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:20.920Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for github.com/security policy"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.187Z",
+    "level": "error",
+    "message": "[PolicyCache] Error fetching cached version",
+    "data": {
+      "code": "42703",
+      "details": null,
+      "hint": null,
+      "message": "column policy_versions.analyzed_at does not exist"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.255Z",
+    "level": "info",
+    "message": "Starting discovery for github.com"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.257Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.593Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.595Z",
+    "level": "info",
+    "message": "Found high-confidence match (90), stopping early."
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.598Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.838Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 218268
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.879Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 67131
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.935Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "length": 40432
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.945Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.948Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://docs.github.com/site-policy/privacy-policies/github-privacy-statement",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "markdownLength": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.950Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 546fee1b50ea90fb..."
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.952Z",
+    "level": "info",
+    "message": "Cache miss for Security Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:21.954Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://github.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:22.253Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 520506
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:22.330Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 306806
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:22.516Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub Security",
+      "length": 902
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:22.528Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 1095
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:22.532Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://github.com/security",
+    "data": {
+      "title": "GitHub Security",
+      "markdownLength": 1095
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:22.534Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Security Policy content extracted successfully",
+    "data": {
+      "length": 902,
+      "title": "GitHub Security",
+      "url": "https://github.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:22.537Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.527Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Security Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.531Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for github.com/security policy"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.727Z",
+    "level": "error",
+    "message": "[PolicyCache] Failed to save version",
+    "data": {
+      "code": "PGRST204",
+      "details": null,
+      "hint": null,
+      "message": "Could not find the 'analyzed_at' column of 'policy_versions' in the schema cache"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.729Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Security Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://github.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.784Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://github.com/features/ai"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.790Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for github.com/ai/ml terms"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.985Z",
+    "level": "error",
+    "message": "[PolicyCache] Error fetching cached version",
+    "data": {
+      "code": "42703",
+      "details": null,
+      "hint": null,
+      "message": "column policy_versions.analyzed_at does not exist"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.988Z",
+    "level": "info",
+    "message": "Starting discovery for github.com"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:33.990Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.229Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.232Z",
+    "level": "info",
+    "message": "Found high-confidence match (90), stopping early."
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.236Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.435Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 218268
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.473Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 67131
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.539Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "length": 40432
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.550Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.554Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://docs.github.com/site-policy/privacy-policies/github-privacy-statement",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "markdownLength": 43766
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.557Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 546fee1b50ea90fb..."
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.560Z",
+    "level": "info",
+    "message": "Cache miss for AI/ML Terms - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.562Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://github.com/features/ai"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.866Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 421468
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:34.928Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 172042
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:35.078Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub AI · AI built into every step of your workflow",
+      "length": 2539
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:35.086Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 2669
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:35.089Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://github.com/features/ai",
+    "data": {
+      "title": "GitHub AI · AI built into every step of your workflow",
+      "markdownLength": 2669
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:35.093Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms content extracted successfully",
+    "data": {
+      "length": 2539,
+      "title": "GitHub AI · AI built into every step of your workflow",
+      "url": "https://github.com/features/ai"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:35.095Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:45.746Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:45.754Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for github.com/ai/ml terms"
+  },
+  {
+    "timestamp": "2025-11-30T20:29:46.010Z",
+    "level": "error",
+    "message": "[PolicyCache] Failed to save version",
+    "data": {
+      "code": "PGRST204",
+      "details": null,
+      "hint": null,
+      "message": "Could not find the 'analyzed_at' column of 'policy_versions' in the schema cache"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:29:46.012Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms complete",
+    "data": {
+      "score": 85,
+      "url": "https://github.com/features/ai"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T20:32:55.505Z",
+    "level": "info",
+    "message": "[PolicyVersions] Fetching history for github.com/privacy"
+  },
+  {
+    "timestamp": "2025-11-30T20:32:55.945Z",
+    "level": "error",
+    "message": "[PolicyVersions] Failed to fetch history",
+    "data": {
+      "code": "42703",
+      "details": null,
+      "hint": null,
+      "message": "column policy_versions.policy_url does not exist"
+    }
   }
 ]
