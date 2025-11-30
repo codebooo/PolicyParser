@@ -140,3 +140,4 @@ After completing any significant changes or updates to the project, make sure to
 
 ## 13. Always push changes to GitHub using GitHub MCP
 After making changes to the project, ensure that you push these updates to the GitHub repository using the GitHub MCP (Master Control Page). This practice helps maintain version control, allows for collaboration with other team members, and ensures that all changes are backed up in the remote repository. Regularly pushing changes also facilitates code reviews and continuous integration processes. Always update the README.md or any relevant documentation in the repository to reflect the latest changes made to the codebase.
+

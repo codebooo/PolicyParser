@@ -1,0 +1,4318 @@
+[
+  {
+    "timestamp": "2025-11-30T13:55:27.446Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting discovery for: Spotify"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:27.450Z",
+    "level": "info",
+    "message": "Input 'Spotify' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-11-30T13:55:27.452Z",
+    "level": "info",
+    "message": "Found 'Spotify' in known companies map: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:27.465Z",
+    "level": "info",
+    "message": "Resolved 'Spotify' to 'spotify.com'"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:27.505Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:27.507Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 1: Checking special domains"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:27.509Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found special domain config for spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:27.983Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found terms: https://www.spotify.com/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:28.138Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found privacy: https://www.spotify.com/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:28.154Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 2: Checking standard paths"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:28.483Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found security: https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:28.490Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found gdpr: https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:28.559Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found cookies: https://spotify.com/cookies"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:28.584Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ccpa: https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:28.589Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ai: https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:29.471Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found acceptable_use: https://spotify.com/acceptable-use"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:29.474Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Complete! Found 8 policies in 2028ms"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:29.658Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:55:29.670Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T13:55:30.138Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 217953
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:55:30.379Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 74966
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:55:31.088Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutzrichtlinie - Spotify",
+      "length": 56207
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:55:31.170Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 54914
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:55:31.171Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/privacy-policy/",
+    "data": {
+      "title": "Datenschutzrichtlinie - Spotify",
+      "markdownLength": 54914
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:55:31.175Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 56207,
+      "title": "Datenschutzrichtlinie - Spotify",
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:55:31.186Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T13:56:23.721Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T13:56:23.723Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 80,
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:23.894Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:23.905Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T13:56:24.361Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 154979
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:24.472Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 53265
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:24.681Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "length": 39130
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:24.701Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43201
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:24.703Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/end-user-agreement/",
+    "data": {
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "markdownLength": 43201
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:24.714Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 39130,
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:24.717Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T13:56:59.379Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T13:56:59.382Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 95,
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:59.551Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Cookie Policy",
+    "data": {
+      "url": "https://spotify.com/cookies"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:59.553Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/cookies"
+  },
+  {
+    "timestamp": "2025-11-30T13:56:59.984Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:56:59.991Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.191Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.206Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Cookie Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/cookies",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.208Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Cookie Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/cookies",
+      "error": "Failed to extract Cookie Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Cookie Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.376Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://spotify.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.379Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.591Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.598Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.753Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.755Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.756Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.904Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for GDPR Notice",
+    "data": {
+      "url": "https://spotify.com/gdpr"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:00.906Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.145Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.151Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.290Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.294Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.296Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.472Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for CCPA Notice",
+    "data": {
+      "url": "https://spotify.com/ccpa"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.487Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.695Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.700Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.837Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.839Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:01.841Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.030Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://spotify.com/ai-terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.049Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.278Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.285Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.428Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.434Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms extraction failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.446Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms analysis failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.606Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://spotify.com/acceptable-use"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.608Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/acceptable-use"
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.850Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.854Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:02.995Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:03.003Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/acceptable-use",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T13:57:03.005Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/acceptable-use",
+      "error": "Failed to extract Acceptable Use Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Acceptable Use Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:20:22.500Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting discovery for: Spotify"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:22.514Z",
+    "level": "info",
+    "message": "Input 'Spotify' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-11-30T14:20:22.517Z",
+    "level": "info",
+    "message": "Found 'Spotify' in known companies map: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:22.519Z",
+    "level": "info",
+    "message": "Resolved 'Spotify' to 'spotify.com'"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:22.549Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:22.551Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 1: Checking special domains"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:22.554Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found special domain config for spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:23.533Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found privacy: https://www.spotify.com/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:23.567Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found terms: https://www.spotify.com/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:23.569Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 2: Checking standard paths"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:23.881Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found cookies: https://spotify.com/cookies"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:23.884Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found security: https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:23.983Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found gdpr: https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:23.991Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ccpa: https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:24.013Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ai: https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:24.915Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found acceptable_use: https://spotify.com/acceptable-use"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:25.134Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Complete! Found 8 policies in 2634ms"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:25.850Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:20:25.875Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T14:20:26.785Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 217953
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:20:27.434Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 74966
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:20:28.335Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutzrichtlinie - Spotify",
+      "length": 56207
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:20:28.438Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 54914
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:20:28.444Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/privacy-policy/",
+    "data": {
+      "title": "Datenschutzrichtlinie - Spotify",
+      "markdownLength": 54914
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:20:28.456Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 56207,
+      "title": "Datenschutzrichtlinie - Spotify",
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:20:28.465Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T14:21:23.706Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T14:21:23.707Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 80,
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:21:23.856Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:21:23.857Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T14:21:25.096Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 154979
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:21:25.152Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 53265
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:21:25.283Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "length": 39130
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:21:25.296Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43201
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:21:25.304Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/end-user-agreement/",
+    "data": {
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "markdownLength": 43201
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:21:25.306Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 39130,
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:21:25.321Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T14:22:02.870Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T14:22:02.877Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 95,
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.010Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Cookie Policy",
+    "data": {
+      "url": "https://spotify.com/cookies"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.013Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/cookies"
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.667Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.672Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.803Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.812Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Cookie Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/cookies",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.814Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Cookie Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/cookies",
+      "error": "Failed to extract Cookie Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Cookie Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.972Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://spotify.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:03.975Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.205Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.210Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.333Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.338Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.344Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.552Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for GDPR Notice",
+    "data": {
+      "url": "https://spotify.com/gdpr"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.556Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.831Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:04.835Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.049Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.057Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.060Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.226Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for CCPA Notice",
+    "data": {
+      "url": "https://spotify.com/ccpa"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.229Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.427Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.450Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.597Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.601Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.605Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.771Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://spotify.com/ai-terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.773Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.974Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:05.983Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.134Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.138Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms extraction failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.147Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms analysis failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.339Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://spotify.com/acceptable-use"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.347Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/acceptable-use"
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.587Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.598Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.759Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.771Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/acceptable-use",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3647:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4693:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T14:22:06.778Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/acceptable-use",
+      "error": "Failed to extract Acceptable Use Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Acceptable Use Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4705:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.237Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting discovery for: Spotify"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.241Z",
+    "level": "info",
+    "message": "Input 'Spotify' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.244Z",
+    "level": "info",
+    "message": "Found 'Spotify' in known companies map: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.246Z",
+    "level": "info",
+    "message": "Resolved 'Spotify' to 'spotify.com'"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.275Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.277Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 1: Checking special domains"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.280Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found special domain config for spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.738Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found terms: https://www.spotify.com/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:12.842Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found acceptable_use: https://www.spotify.com/legal/user-guidelines/"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.083Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found privacy: https://www.spotify.com/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.119Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found cookies: https://www.spotify.com/legal/cookies-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.121Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 2: Checking standard paths"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.432Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ccpa: https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.438Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found gdpr: https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.448Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ai: https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.483Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found security: https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.486Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Complete! Found 8 policies in 1249ms"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.557Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:24:13.568Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T15:24:14.017Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 217953
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:24:14.103Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 74966
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:24:14.437Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutzrichtlinie - Spotify",
+      "length": 56207
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:24:14.491Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 54914
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:24:14.493Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/privacy-policy/",
+    "data": {
+      "title": "Datenschutzrichtlinie - Spotify",
+      "markdownLength": 54914
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:24:14.496Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 56207,
+      "title": "Datenschutzrichtlinie - Spotify",
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:24:14.497Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T15:25:04.671Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T15:25:04.673Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 80,
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:04.772Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:04.774Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T15:25:05.310Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 154979
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:05.342Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 53265
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:05.462Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "length": 39130
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:05.472Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43201
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:05.473Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/end-user-agreement/",
+    "data": {
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "markdownLength": 43201
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:05.476Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 39130,
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:05.478Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T15:25:38.735Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T15:25:38.737Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 95,
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:38.832Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Cookie Policy",
+    "data": {
+      "url": "https://www.spotify.com/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:38.834Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/cookies-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T15:25:39.312Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 99557
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:39.332Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 26386
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:39.395Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Cookie-Richtlinie - Spotify",
+      "length": 17775
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:39.404Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 17975
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:39.406Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/cookies-policy/",
+    "data": {
+      "title": "Cookie-Richtlinie - Spotify",
+      "markdownLength": 17975
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:39.409Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy content extracted successfully",
+    "data": {
+      "length": 17775,
+      "title": "Cookie-Richtlinie - Spotify",
+      "url": "https://www.spotify.com/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:25:39.411Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:23.229Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:23.238Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://www.spotify.com/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:23.642Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://spotify.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:23.655Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:24.195Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:24.291Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:24.837Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:24.854Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3651:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4697:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:24.867Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4709:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:25.291Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for GDPR Notice",
+    "data": {
+      "url": "https://spotify.com/gdpr"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:25.299Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:25.575Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:25.662Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:25.972Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:25.978Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3651:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4697:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:25.991Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4709:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:26.431Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for CCPA Notice",
+    "data": {
+      "url": "https://spotify.com/ccpa"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:26.448Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:26.773Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:26.826Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:27.191Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:27.201Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3651:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4697:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:27.214Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4709:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:27.589Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://spotify.com/ai-terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:27.598Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:27.842Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:27.857Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.145Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.153Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms extraction failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3651:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4697:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.161Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms analysis failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4709:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.478Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://www.spotify.com/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.485Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/user-guidelines/"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.848Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 73707
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.886Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 15267
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.945Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Spotify Richtlinien für Nutzer*innen - Spotify",
+      "length": 8525
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.949Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 8660
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.951Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/user-guidelines/",
+    "data": {
+      "title": "Spotify Richtlinien für Nutzer*innen - Spotify",
+      "markdownLength": 8660
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.960Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy content extracted successfully",
+    "data": {
+      "length": 8525,
+      "title": "Spotify Richtlinien für Nutzer*innen - Spotify",
+      "url": "https://www.spotify.com/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:26:28.963Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:47.061Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T15:26:47.069Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy complete",
+    "data": {
+      "score": 80,
+      "url": "https://www.spotify.com/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.121Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting discovery for: Spotify"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.124Z",
+    "level": "info",
+    "message": "Input 'Spotify' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.125Z",
+    "level": "info",
+    "message": "Found 'Spotify' in known companies map: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.127Z",
+    "level": "info",
+    "message": "Resolved 'Spotify' to 'spotify.com'"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.207Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.208Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 1: Checking special domains"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.210Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found special domain config for spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.857Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found privacy: https://www.spotify.com/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.865Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found acceptable_use: https://www.spotify.com/legal/user-guidelines/"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:51.908Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found terms: https://www.spotify.com/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.188Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found cookies: https://www.spotify.com/legal/cookies-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.191Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 2: Checking standard paths"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.455Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ccpa: https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.471Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found gdpr: https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.492Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ai: https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.499Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found security: https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.501Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Complete! Found 8 policies in 1380ms"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.555Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:54:52.562Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T15:54:53.214Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 217953
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:54:53.294Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 74966
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:54:53.607Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutzrichtlinie - Spotify",
+      "length": 56207
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:54:53.645Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 54914
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:54:53.647Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/privacy-policy/",
+    "data": {
+      "title": "Datenschutzrichtlinie - Spotify",
+      "markdownLength": 54914
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:54:53.650Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 56207,
+      "title": "Datenschutzrichtlinie - Spotify",
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:54:53.652Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T15:55:37.326Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T15:55:37.328Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 80,
+      "url": "https://www.spotify.com/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:55:37.398Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:55:37.399Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T15:55:37.948Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 154979
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:55:37.981Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 53265
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:55:38.056Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "length": 39130
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:55:38.064Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43201
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:55:38.065Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/end-user-agreement/",
+    "data": {
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "markdownLength": 43201
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:55:38.067Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 39130,
+      "title": "Allgemeine Nutzungsbedingungen - Spotify",
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:55:38.068Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:06.940Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:06.941Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 95,
+      "url": "https://www.spotify.com/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.020Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Cookie Policy",
+    "data": {
+      "url": "https://www.spotify.com/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.023Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/cookies-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.435Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 99557
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.450Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 26386
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.508Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Cookie-Richtlinie - Spotify",
+      "length": 17775
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.515Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 17975
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.516Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/cookies-policy/",
+    "data": {
+      "title": "Cookie-Richtlinie - Spotify",
+      "markdownLength": 17975
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.518Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy content extracted successfully",
+    "data": {
+      "length": 17775,
+      "title": "Cookie-Richtlinie - Spotify",
+      "url": "https://www.spotify.com/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:07.520Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.090Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.092Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://www.spotify.com/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.166Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://spotify.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.168Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.555Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.562Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.640Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.642Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3651:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4697:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.644Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4709:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.721Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for GDPR Notice",
+    "data": {
+      "url": "https://spotify.com/gdpr"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.723Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.910Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.915Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.972Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.974Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3651:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4697:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:32.976Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4709:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.041Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for CCPA Notice",
+    "data": {
+      "url": "https://spotify.com/ccpa"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.042Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.230Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.234Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.292Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.294Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3651:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4697:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.296Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4709:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.363Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://spotify.com/ai-terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.365Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.563Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.566Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.618Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.622Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms extraction failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3651:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4697:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.624Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms analysis failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4709:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.717Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://www.spotify.com/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.718Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/legal/user-guidelines/"
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.916Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 73707
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.924Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 15267
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.946Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Spotify Richtlinien für Nutzer*innen - Spotify",
+      "length": 8525
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.950Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 8660
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.952Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/legal/user-guidelines/",
+    "data": {
+      "title": "Spotify Richtlinien für Nutzer*innen - Spotify",
+      "markdownLength": 8660
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.954Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy content extracted successfully",
+    "data": {
+      "length": 8525,
+      "title": "Spotify Richtlinien für Nutzer*innen - Spotify",
+      "url": "https://www.spotify.com/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T15:56:33.955Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T15:57:04.983Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T15:57:04.985Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://www.spotify.com/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:42:57.597Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting discovery for: Spotify"
+  },
+  {
+    "timestamp": "2025-11-30T16:42:57.599Z",
+    "level": "info",
+    "message": "Input 'Spotify' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-11-30T16:42:57.602Z",
+    "level": "info",
+    "message": "Found 'Spotify' in known companies map: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T16:42:57.605Z",
+    "level": "info",
+    "message": "Resolved 'Spotify' to 'spotify.com'"
+  },
+  {
+    "timestamp": "2025-11-30T16:42:58.407Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T16:42:58.409Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 1: Checking special domains"
+  },
+  {
+    "timestamp": "2025-11-30T16:42:58.413Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found special domain config for spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:01.825Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found cookies: https://www.spotify.com/us/legal/cookies-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.148Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found privacy: https://www.spotify.com/us/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.189Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found terms: https://www.spotify.com/us/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.291Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found acceptable_use: https://www.spotify.com/us/legal/user-guidelines/"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.292Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 2: Checking standard paths"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.575Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ccpa: https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.601Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ai: https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.609Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found gdpr: https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.647Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found security: https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.649Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Complete! Found 8 policies in 5053ms"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.739Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://www.spotify.com/us/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:02.741Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/us/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:03.562Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 203648
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:03.655Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 68307
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:03.977Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Privacy Policy - Spotify",
+      "length": 48593
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:04.028Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 42186
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:04.030Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/us/legal/privacy-policy/",
+    "data": {
+      "title": "Privacy Policy - Spotify",
+      "markdownLength": 42186
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:04.032Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 48593,
+      "title": "Privacy Policy - Spotify",
+      "url": "https://www.spotify.com/us/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:04.034Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:43.275Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:43.277Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 80,
+      "url": "https://www.spotify.com/us/legal/privacy-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:43.368Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://www.spotify.com/us/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:43.371Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/us/legal/end-user-agreement/"
+  },
+  {
+    "timestamp": "2025-11-30T16:43:43.959Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 187061
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:43.983Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 69269
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:44.091Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Terms and Conditions of Use",
+      "length": 54147
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:44.102Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 58566
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:44.104Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/us/legal/end-user-agreement/",
+    "data": {
+      "title": "Terms and Conditions of Use",
+      "markdownLength": 58566
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:44.107Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 54147,
+      "title": "Terms and Conditions of Use",
+      "url": "https://www.spotify.com/us/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:43:44.115Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:17.511Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:17.512Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 95,
+      "url": "https://www.spotify.com/us/legal/end-user-agreement/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:17.602Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Cookie Policy",
+    "data": {
+      "url": "https://www.spotify.com/us/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:17.605Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/us/legal/cookies-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:17.956Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 75442
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:17.965Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 16025
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:18.030Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Cookies Policy - Spotify",
+      "length": 7711
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:18.036Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 8247
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:18.039Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/us/legal/cookies-policy/",
+    "data": {
+      "title": "Cookies Policy - Spotify",
+      "markdownLength": 8247
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:18.042Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy content extracted successfully",
+    "data": {
+      "length": 7711,
+      "title": "Cookies Policy - Spotify",
+      "url": "https://www.spotify.com/us/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:18.045Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.215Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.216Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy complete",
+    "data": {
+      "score": 65,
+      "url": "https://www.spotify.com/us/legal/cookies-policy/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.307Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://spotify.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.310Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.666Z",
+    "level": "info",
+    "message": "[fetchHtml] Detected non-English locale redirect: https://www.spotify.com/de/security/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.668Z",
+    "level": "info",
+    "message": "[fetchHtml] Trying English URL: https://www.spotify.com/us/security/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.790Z",
+    "level": "info",
+    "message": "[fetchHtml] Successfully fetched English version from: https://www.spotify.com/us/security/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.792Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.796Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.880Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.882Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy extraction failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3746:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4792:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.884Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy analysis failed",
+    "data": {
+      "url": "https://spotify.com/security",
+      "error": "Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4804:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.974Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for GDPR Notice",
+    "data": {
+      "url": "https://spotify.com/gdpr"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:53.976Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.181Z",
+    "level": "info",
+    "message": "[fetchHtml] Detected non-English locale redirect: https://www.spotify.com/de/gdpr/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.183Z",
+    "level": "info",
+    "message": "[fetchHtml] Trying English URL: https://www.spotify.com/us/gdpr/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.294Z",
+    "level": "info",
+    "message": "[fetchHtml] Successfully fetched English version from: https://www.spotify.com/us/gdpr/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.297Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.301Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.394Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.396Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3746:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4792:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.397Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] GDPR Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/gdpr",
+      "error": "Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract GDPR Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4804:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.559Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for CCPA Notice",
+    "data": {
+      "url": "https://spotify.com/ccpa"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.562Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.750Z",
+    "level": "info",
+    "message": "[fetchHtml] Detected non-English locale redirect: https://www.spotify.com/de/ccpa/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.752Z",
+    "level": "info",
+    "message": "[fetchHtml] Trying English URL: https://www.spotify.com/us/ccpa/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.861Z",
+    "level": "info",
+    "message": "[fetchHtml] Successfully fetched English version from: https://www.spotify.com/us/ccpa/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.863Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.866Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.957Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.959Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice extraction failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3746:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4792:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:54.961Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] CCPA Notice analysis failed",
+    "data": {
+      "url": "https://spotify.com/ccpa",
+      "error": "Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract CCPA Notice content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4804:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.049Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://spotify.com/ai-terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.050Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://spotify.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.248Z",
+    "level": "info",
+    "message": "[fetchHtml] Detected non-English locale redirect: https://www.spotify.com/de/ai-terms/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.250Z",
+    "level": "info",
+    "message": "[fetchHtml] Trying English URL: https://www.spotify.com/us/ai-terms/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.368Z",
+    "level": "info",
+    "message": "[fetchHtml] Successfully fetched English version from: https://www.spotify.com/us/ai-terms/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.370Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 21786
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.373Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8271
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.449Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.456Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms extraction failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:3746:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4792:29"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.458Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms analysis failed",
+    "data": {
+      "url": "https://spotify.com/ai-terms",
+      "error": "Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to extract AI/ML Terms content: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__c5fc553b._.js:4804:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.547Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://www.spotify.com/us/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.548Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/us/legal/user-guidelines/"
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.714Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 69881
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.721Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 13889
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.753Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Spotify User Guidelines - Spotify",
+      "length": 6957
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.778Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 7199
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.780Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/us/legal/user-guidelines/",
+    "data": {
+      "title": "Spotify User Guidelines - Spotify",
+      "markdownLength": 7199
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.782Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy content extracted successfully",
+    "data": {
+      "length": 6957,
+      "title": "Spotify User Guidelines - Spotify",
+      "url": "https://www.spotify.com/us/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:44:55.784Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:45:15.023Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:45:15.025Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://www.spotify.com/us/legal/user-guidelines/"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:22.508Z",
+    "level": "info",
+    "message": "Internal analysis: Identity verified",
+    "data": {
+      "originalInput": "spotify.com",
+      "cleanDomain": "spotify.com",
+      "rootDomain": "spotify.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:22.511Z",
+    "level": "info",
+    "message": "Starting discovery for spotify.com"
+  },
+  {
+    "timestamp": "2025-11-30T16:46:22.512Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-11-30T16:46:22.984Z",
+    "level": "info",
+    "message": "Running strategy: DirectFetchStrategy"
+  },
+  {
+    "timestamp": "2025-11-30T16:46:22.988Z",
+    "level": "info",
+    "message": "DirectFetch: Trying special domain URL for spotify.com: https://www.spotify.com/us/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T16:46:23.369Z",
+    "level": "info",
+    "message": "DirectFetch: Found valid policy at https://www.spotify.com/us/legal/privacy-policy/ (confidence: 105, indicators: 8)"
+  },
+  {
+    "timestamp": "2025-11-30T16:46:23.371Z",
+    "level": "info",
+    "message": "Strategy DirectFetchStrategy found 1 candidates"
+  },
+  {
+    "timestamp": "2025-11-30T16:46:23.373Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-11-30T16:46:23.375Z",
+    "level": "info",
+    "message": "Internal analysis: Policy found",
+    "data": {
+      "url": "https://www.spotify.com/us/legal/privacy-policy/",
+      "source": "special_domain",
+      "confidence": 98,
+      "foundAt": "2025-11-30T16:46:23.371Z",
+      "methodDetail": "Direct GET request"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:23.377Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/us/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-11-30T16:46:24.264Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 203648
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:24.331Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 68307
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:24.529Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Privacy Policy - Spotify",
+      "length": 48593
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:24.554Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 42186
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:24.563Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/us/legal/privacy-policy/",
+    "data": {
+      "title": "Privacy Policy - Spotify",
+      "markdownLength": 42186
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:24.569Z",
+    "level": "info",
+    "message": "Internal analysis: Content extracted",
+    "data": {
+      "length": 48593
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:46:24.572Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:50.324Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting discovery for: Steam"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:50.327Z",
+    "level": "info",
+    "message": "Input 'Steam' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-11-30T16:47:50.329Z",
+    "level": "info",
+    "message": "Found 'Steam' in known companies map: steampowered.com"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:50.332Z",
+    "level": "info",
+    "message": "Resolved 'Steam' to 'steampowered.com'"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:50.381Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: steampowered.com"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:50.383Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 1: Checking special domains"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:50.386Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phase 2: Checking standard paths"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:51.359Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found terms: https://steampowered.com/terms"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:51.368Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found security: https://steampowered.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:51.386Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found privacy: https://steampowered.com/privacy"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:51.399Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found gdpr: https://steampowered.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:51.427Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found cookies: https://steampowered.com/cookies"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:52.286Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found acceptable_use: https://steampowered.com/acceptable-use"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:52.291Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ai: https://steampowered.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:52.511Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Found ccpa: https://steampowered.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:52.513Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Complete! Found 8 policies in 2189ms"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:52.574Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://steampowered.com/privacy"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:47:52.576Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://steampowered.com/privacy"
+  },
+  {
+    "timestamp": "2025-11-30T16:47:53.346Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 781492
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:47:53.475Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 190532
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:47:53.961Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Steam Store",
+      "length": 4169
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:47:53.975Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:47:53.977Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://steampowered.com/privacy",
+    "data": {
+      "title": "Steam Store",
+      "markdownLength": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:47:53.980Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 4169,
+      "title": "Steam Store",
+      "url": "https://steampowered.com/privacy"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:47:53.982Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:48:10.241Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:48:10.243Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://steampowered.com/privacy"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:10.300Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://steampowered.com/terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:10.301Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://steampowered.com/terms"
+  },
+  {
+    "timestamp": "2025-11-30T16:48:11.313Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 781649
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:11.394Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 190534
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:11.824Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Steam Store",
+      "length": 4169
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:11.832Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:11.834Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://steampowered.com/terms",
+    "data": {
+      "title": "Steam Store",
+      "markdownLength": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:11.836Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 4169,
+      "title": "Steam Store",
+      "url": "https://steampowered.com/terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:11.840Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:48:27.674Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:48:27.678Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 85,
+      "url": "https://steampowered.com/terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:27.739Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Cookie Policy",
+    "data": {
+      "url": "https://steampowered.com/cookies"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:27.742Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://steampowered.com/cookies"
+  },
+  {
+    "timestamp": "2025-11-30T16:48:29.142Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 781648
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:29.250Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 190534
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:29.718Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Steam Store",
+      "length": 4169
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:29.728Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:29.732Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://steampowered.com/cookies",
+    "data": {
+      "title": "Steam Store",
+      "markdownLength": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:29.734Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy content extracted successfully",
+    "data": {
+      "length": 4169,
+      "title": "Steam Store",
+      "url": "https://steampowered.com/cookies"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:48:29.736Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:00.980Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:00.982Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Cookie Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://steampowered.com/cookies"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:01.050Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://steampowered.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:01.052Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://steampowered.com/security"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:02.224Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 781649
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:02.319Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 190534
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:02.698Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Steam Store",
+      "length": 4169
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:02.706Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:02.709Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://steampowered.com/security",
+    "data": {
+      "title": "Steam Store",
+      "markdownLength": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:02.711Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Security Policy content extracted successfully",
+    "data": {
+      "length": 4169,
+      "title": "Steam Store",
+      "url": "https://steampowered.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:02.713Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:08.539Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Security Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:08.541Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Security Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://steampowered.com/security"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:08.599Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for GDPR Notice",
+    "data": {
+      "url": "https://steampowered.com/gdpr"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:08.601Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://steampowered.com/gdpr"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:09.673Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 781649
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:09.737Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 190534
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:10.108Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Steam Store",
+      "length": 4169
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:10.117Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:10.119Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://steampowered.com/gdpr",
+    "data": {
+      "title": "Steam Store",
+      "markdownLength": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:10.123Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] GDPR Notice content extracted successfully",
+    "data": {
+      "length": 4169,
+      "title": "Steam Store",
+      "url": "https://steampowered.com/gdpr"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:10.126Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:27.181Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] GDPR Notice AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:27.184Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] GDPR Notice complete",
+    "data": {
+      "score": 85,
+      "url": "https://steampowered.com/gdpr"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:27.251Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for CCPA Notice",
+    "data": {
+      "url": "https://steampowered.com/ccpa"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:27.253Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://steampowered.com/ccpa"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:28.301Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 781649
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:28.413Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 190534
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:28.888Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Steam Store",
+      "length": 4169
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:28.897Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:28.899Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://steampowered.com/ccpa",
+    "data": {
+      "title": "Steam Store",
+      "markdownLength": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:28.902Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] CCPA Notice content extracted successfully",
+    "data": {
+      "length": 4169,
+      "title": "Steam Store",
+      "url": "https://steampowered.com/ccpa"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:28.904Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:43.396Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] CCPA Notice AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:43.398Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] CCPA Notice complete",
+    "data": {
+      "score": 85,
+      "url": "https://steampowered.com/ccpa"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:43.461Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://steampowered.com/ai-terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:43.463Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://steampowered.com/ai-terms"
+  },
+  {
+    "timestamp": "2025-11-30T16:49:44.475Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 781646
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:44.557Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 190532
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:44.950Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Steam Store",
+      "length": 4169
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:44.961Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:44.964Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://steampowered.com/ai-terms",
+    "data": {
+      "title": "Steam Store",
+      "markdownLength": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:44.966Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms content extracted successfully",
+    "data": {
+      "length": 4169,
+      "title": "Steam Store",
+      "url": "https://steampowered.com/ai-terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:49:44.968Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:50:01.695Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:50:01.697Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms complete",
+    "data": {
+      "score": 85,
+      "url": "https://steampowered.com/ai-terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:50:01.776Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://steampowered.com/acceptable-use"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:50:01.778Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://steampowered.com/acceptable-use"
+  },
+  {
+    "timestamp": "2025-11-30T16:50:02.801Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 781649
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:50:02.917Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 190534
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:50:03.392Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Steam Store",
+      "length": 4169
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:50:03.400Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:50:03.402Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://steampowered.com/acceptable-use",
+    "data": {
+      "title": "Steam Store",
+      "markdownLength": 5458
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:50:03.405Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy content extracted successfully",
+    "data": {
+      "length": 4169,
+      "title": "Steam Store",
+      "url": "https://steampowered.com/acceptable-use"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T16:50:03.407Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T16:50:15.328Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T16:50:15.331Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy complete",
+    "data": {
+      "score": 85,
+      "url": "https://steampowered.com/acceptable-use"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:11.237Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting intelligent discovery for: Modrinth"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:11.241Z",
+    "level": "info",
+    "message": "Input 'Modrinth' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-11-30T19:44:12.183Z",
+    "level": "info",
+    "message": "Resolved 'Modrinth' to 'modrinth.com'"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:12.240Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: modrinth.com"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:12.247Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Starting intelligent discovery for: modrinth.com"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:12.257Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 1: Special domain lookup"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:12.265Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 2: Deep footer crawling"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:13.139Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5: Content validation"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:13.569Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Validated terms: https://modrinth.com/legal/terms"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.050Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Validated privacy: https://modrinth.com/legal/privacy"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.489Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Content too short for security: 1415 chars"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.491Z",
+    "level": "warn",
+    "message": "[PolicyDiscovery] Failed validation for security: https://modrinth.com/legal/security - not a real policy"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.494Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Complete! Found 2 validated policies in 2247ms"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.497Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special_domains:0 -> footer_crawl:3 -> validation:2/3"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.499Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Intelligent discovery complete! Found 2 validated policies"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.502Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phases: special_domains:0 -> footer_crawl:3 -> validation:2/3"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.584Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://modrinth.com/legal/privacy"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:14.589Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://modrinth.com/legal/privacy"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:15.134Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 1452558
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:15.236Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 26464
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:15.396Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Privacy Policy",
+      "length": 9011
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:15.410Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 9978
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:15.416Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://modrinth.com/legal/privacy",
+    "data": {
+      "title": "Privacy Policy",
+      "markdownLength": 9978
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:15.431Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 9011,
+      "title": "Privacy Policy",
+      "url": "https://modrinth.com/legal/privacy"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:15.434Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:36.953Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:36.956Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 80,
+      "url": "https://modrinth.com/legal/privacy"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:37.040Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://modrinth.com/legal/terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:37.042Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://modrinth.com/legal/terms"
+  },
+  {
+    "timestamp": "2025-11-30T19:44:37.826Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 1470367
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:37.978Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 44203
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:38.083Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Terms of Use",
+      "length": 27164
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:38.091Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 27668
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:38.094Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://modrinth.com/legal/terms",
+    "data": {
+      "title": "Terms of Use",
+      "markdownLength": 27668
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:38.097Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 27164,
+      "title": "Terms of Use",
+      "url": "https://modrinth.com/legal/terms"
+    }
+  },
+  {
+    "timestamp": "2025-11-30T19:44:38.106Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-11-30T19:45:00.424Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-11-30T19:45:00.426Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 80,
+      "url": "https://modrinth.com/legal/terms"
+    }
+  }
+]

@@ -291,12 +291,19 @@ export const CONFIG = {
             terms: 'https://help.netflix.com/legal/termsofuse',
         },
         'spotify.com': {
-            privacy: 'https://www.spotify.com/legal/privacy-policy/',
-            terms: 'https://www.spotify.com/legal/end-user-agreement/',
+            // Use US English locale paths to avoid geo-redirects to local language
+            privacy: 'https://www.spotify.com/us/legal/privacy-policy/',
+            terms: 'https://www.spotify.com/us/legal/end-user-agreement/',
+            cookies: 'https://www.spotify.com/us/legal/cookies-policy/',
+            acceptable_use: 'https://www.spotify.com/us/legal/user-guidelines/',
+            // GDPR, CCPA, Security, and AI are covered in the main privacy policy
         },
         'www.spotify.com': {
-            privacy: 'https://www.spotify.com/legal/privacy-policy/',
-            terms: 'https://www.spotify.com/legal/end-user-agreement/',
+            // Use US English locale paths to avoid geo-redirects to local language
+            privacy: 'https://www.spotify.com/us/legal/privacy-policy/',
+            terms: 'https://www.spotify.com/us/legal/end-user-agreement/',
+            cookies: 'https://www.spotify.com/us/legal/cookies-policy/',
+            acceptable_use: 'https://www.spotify.com/us/legal/user-guidelines/',
         },
         'discord.com': {
             privacy: 'https://discord.com/privacy',
@@ -345,6 +352,26 @@ export const CONFIG = {
         'www.airbnb.com': {
             privacy: 'https://www.airbnb.com/help/article/2855',
             terms: 'https://www.airbnb.com/help/article/2908',
+        },
+        // Steam/Valve URLs - these are NOT at steampowered.com/privacy, they're at store.steampowered.com/privacy_agreement
+        'steampowered.com': {
+            privacy: 'https://store.steampowered.com/privacy_agreement/',
+            terms: 'https://store.steampowered.com/subscriber_agreement/',
+            cookies: 'https://store.steampowered.com/legal/',
+        },
+        'store.steampowered.com': {
+            privacy: 'https://store.steampowered.com/privacy_agreement/',
+            terms: 'https://store.steampowered.com/subscriber_agreement/',
+            cookies: 'https://store.steampowered.com/legal/',
+        },
+        'www.steampowered.com': {
+            privacy: 'https://store.steampowered.com/privacy_agreement/',
+            terms: 'https://store.steampowered.com/subscriber_agreement/',
+            cookies: 'https://store.steampowered.com/legal/',
+        },
+        'steamcommunity.com': {
+            privacy: 'https://store.steampowered.com/privacy_agreement/',
+            terms: 'https://store.steampowered.com/subscriber_agreement/',
         },
     } as Record<string, Partial<Record<string, string>>>,
 };

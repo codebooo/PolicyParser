@@ -243,7 +243,7 @@ export default function OriginalTextPage() {
               <Button 
                 variant="ghost" 
                 size="sm"
-                onClick={() => router.back()}
+                onClick={() => router.push('/analyze?returnToResults=true')}
                 className="hover:bg-white/10"
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />

@@ -5,14 +5,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell, List } from "lucide-react"
+import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell, List, Clock } from "lucide-react"
 import { clsx } from "clsx"
 import { analyzeDomain, discoverAllPolicies, analyzeSpecificPolicy, analyzeText } from "../actions"
 import { readStreamableValue } from "@ai-sdk/rsc"
 import { checkProStatus } from "../checkProStatus"
 import { trackPolicy, untrackPolicy, getTrackedPolicies } from "../trackingActions"
 import { submitCommunityScore, getCommunityScore, getUserVote } from "../communityActions"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
+import PolicyVersions from "@/components/PolicyVersions"
 
 type AnalysisStep = "input" | "searching" | "processing" | "results"
 type InputMethod = "file" | "url" | "paste"
@@ -108,6 +109,7 @@ interface PolicySection {
 
 export default function AnalyzePage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [step, setStep] = useState<AnalysisStep>("input")
   const [inputMethod, setInputMethod] = useState<InputMethod>("url")
   const [analysisMode, setAnalysisMode] = useState<AnalysisMode>("single")
@@ -157,6 +159,32 @@ export default function AnalyzePage() {
       setUserId(status.userId)
     })
   }, [])
+
+  // Restore analysis state when returning from original-text page
+  useEffect(() => {
+    const returnToResults = searchParams.get('returnToResults')
+    if (returnToResults === 'true') {
+      const savedState = sessionStorage.getItem('analysisState')
+      if (savedState) {
+        try {
+          const state = JSON.parse(savedState)
+          setStep(state.step || 'result')
+          setAnalysisMode(state.analysisMode || 'single')
+          setPolicyResults(state.policyResults || [])
+          setAnalysisResults(state.analysisResults || null)
+          setSelectedPolicyIndex(state.selectedPolicyIndex || 0)
+          setAnalyzedDomain(state.analyzedDomain || null)
+          setSourceUrl(state.sourceUrl || null)
+          // Clear the sessionStorage after restoring
+          sessionStorage.removeItem('analysisState')
+          // Clear the URL param
+          router.replace('/analyze', { scroll: false })
+        } catch (e) {
+          console.error('Failed to restore analysis state:', e)
+        }
+      }
+    }
+  }, [searchParams, router])
 
   const startAnalysis = async () => {
     // Handle file/paste text analysis
@@ -521,11 +549,36 @@ export default function AnalyzePage() {
         policyName: analysisMode === "comprehensive" && currentPolicyResult ? currentPolicyResult.name : "Privacy Policy",
         url: getCurrentPolicyUrl()
       }));
+      // Store full analysis state for returning to results
+      sessionStorage.setItem('analysisState', JSON.stringify({
+        step,
+        analysisMode,
+        policyResults,
+        analysisResults,
+        selectedPolicyIndex,
+        analyzedDomain,
+        sourceUrl
+      }));
       router.push('/analyze/original-text');
     }
   }
 
-  const currentPolicyResult = policyResults[selectedPolicyIndex];
+  // Filter out failed policies - only show successfully analyzed ones
+  const successfulPolicies = useMemo(() => 
+    policyResults.filter(p => p.status === 'complete' && p.analysis),
+    [policyResults]
+  );
+
+  // Map selectedPolicyIndex to the successful policies array
+  const selectedSuccessfulIndex = useMemo(() => {
+    if (successfulPolicies.length === 0) return 0;
+    // Find the successful policy that matches the current selection
+    const currentType = policyResults[selectedPolicyIndex]?.type;
+    const idx = successfulPolicies.findIndex(p => p.type === currentType);
+    return idx >= 0 ? idx : 0;
+  }, [successfulPolicies, policyResults, selectedPolicyIndex]);
+
+  const currentPolicyResult = successfulPolicies[selectedSuccessfulIndex] || policyResults[selectedPolicyIndex];
   const displayedAnalysis = analysisMode === "comprehensive" && currentPolicyResult?.analysis 
     ? currentPolicyResult.analysis 
     : analysisResults;
@@ -772,23 +825,26 @@ export default function AnalyzePage() {
 
       {step === "results" && displayedAnalysis && (
         <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 space-y-8">
-          {/* Policy Tabs for Comprehensive Mode */}
-          {analysisMode === "comprehensive" && policyResults.length > 1 && (
+          {/* Policy Tabs for Comprehensive Mode - Only show successfully analyzed policies */}
+          {analysisMode === "comprehensive" && successfulPolicies.length > 1 && (
             <div className="flex flex-wrap gap-2 p-2 bg-background/40 backdrop-blur-sm border border-white/10 rounded-lg">
-              {policyResults.map((policy, index) => (
+              {successfulPolicies.map((policy, index) => (
                 <Button
                   key={policy.type}
-                  variant={selectedPolicyIndex === index ? "default" : "ghost"}
+                  variant={selectedSuccessfulIndex === index ? "default" : "ghost"}
                   size="sm"
-                  onClick={() => setSelectedPolicyIndex(index)}
+                  onClick={() => {
+                    // Find the original index in policyResults to maintain compatibility
+                    const originalIndex = policyResults.findIndex(p => p.type === policy.type);
+                    setSelectedPolicyIndex(originalIndex >= 0 ? originalIndex : index);
+                  }}
                   className={clsx(
                     "transition-all",
-                    selectedPolicyIndex === index && "shadow-[0_0_10px_rgba(6,182,212,0.3)]",
-                    policy.status === 'error' && "text-red-400"
+                    selectedSuccessfulIndex === index && "shadow-[0_0_10px_rgba(6,182,212,0.3)]"
                   )}
                 >
                   {policy.name}
-                  {policy.status === 'complete' && policy.analysis?.score && (
+                  {policy.analysis?.score && (
                     <span className={clsx(
                       "ml-2 px-1.5 py-0.5 text-[10px] font-bold rounded",
                       policy.analysis.score >= 80 ? "bg-green-500/20 text-green-400" :
@@ -797,9 +853,6 @@ export default function AnalyzePage() {
                     )}>
                       {policy.analysis.score}
                     </span>
-                  )}
-                  {policy.status === 'error' && (
-                    <AlertTriangle className="ml-1 h-3 w-3 text-red-400" />
                   )}
                 </Button>
               ))}
@@ -855,6 +908,32 @@ export default function AnalyzePage() {
               <p className="text-muted-foreground text-lg">
                 {displayedAnalysis.summary}
               </p>
+              {/* Cache indicator - shows when results came from cache */}
+              {displayedAnalysis.fromCache && (
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="px-2 py-1 text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20 rounded-full flex items-center gap-1">
+                    <Zap className="h-3 w-3" />
+                    Loaded from cache • Saved API credits!
+                  </span>
+                  {displayedAnalysis.cachedAt && (
+                    <span className="text-xs text-muted-foreground">
+                      Cached {new Date(displayedAnalysis.cachedAt).toLocaleDateString()}
+                    </span>
+                  )}
+                </div>
+              )}
+              {/* Viewing historical version indicator */}
+              {displayedAnalysis.viewingVersion && (
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="px-2 py-1 text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full flex items-center gap-1">
+                    <Clock className="h-3 w-3" />
+                    Viewing historical version
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    from {new Date(displayedAnalysis.viewingVersion.date).toLocaleDateString()}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Score Card - Shows aggregate score in comprehensive mode */}
@@ -1090,6 +1169,30 @@ export default function AnalyzePage() {
             </CardContent>
           </Card>
 
+          {/* Policy Version History - PRO Feature */}
+          {analyzedDomain && (
+            <PolicyVersions 
+              domain={analyzedDomain}
+              policyType={analysisMode === "comprehensive" && currentPolicyResult?.type 
+                ? currentPolicyResult.type 
+                : 'privacy'
+              }
+              isPro={isPro}
+              onVersionSelect={(versionAnalysis) => {
+                // Update displayed analysis with historical version
+                if (analysisMode === "comprehensive" && currentPolicyResult) {
+                  setPolicyResults(prev => prev.map((p, idx) => 
+                    idx === selectedPolicyIndex 
+                      ? { ...p, analysis: versionAnalysis }
+                      : p
+                  ));
+                } else {
+                  setAnalysisResults(versionAnalysis);
+                }
+              }}
+            />
+          )}
+
           {/* Secure Usage Recommendations */}
           {displayedAnalysis.secure_usage_recommendations && displayedAnalysis.secure_usage_recommendations.length > 0 && (
             <Card className="bg-gradient-to-br from-green-500/5 to-emerald-500/5 border-green-500/20">
@@ -1294,30 +1397,33 @@ export default function AnalyzePage() {
             </div>
           </div>
 
-          {/* Comprehensive Mode Summary */}
-          {analysisMode === "comprehensive" && policyResults.length > 1 && (
+          {/* Comprehensive Mode Summary - Only show successfully analyzed policies */}
+          {analysisMode === "comprehensive" && successfulPolicies.length > 1 && (
             <Card className="bg-gradient-to-r from-primary/5 to-cyan-500/5 border-primary/20">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <FileStack className="h-5 w-5" />
-                  All Policies Overview
+                  All Policies Overview ({successfulPolicies.length} analyzed)
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {policyResults.map((policy, index) => (
+                  {successfulPolicies.map((policy, index) => (
                     <button
                       key={policy.type}
-                      onClick={() => setSelectedPolicyIndex(index)}
+                      onClick={() => {
+                        const originalIndex = policyResults.findIndex(p => p.type === policy.type);
+                        setSelectedPolicyIndex(originalIndex >= 0 ? originalIndex : index);
+                      }}
                       className={clsx(
                         "p-4 rounded-lg border transition-all text-left",
-                        selectedPolicyIndex === index 
+                        selectedSuccessfulIndex === index 
                           ? "bg-primary/10 border-primary/30" 
                           : "bg-background/40 border-white/10 hover:bg-white/5"
                       )}
                     >
                       <p className="font-medium text-sm">{policy.name}</p>
-                      {policy.status === 'complete' && policy.analysis?.score !== undefined && (
+                      {policy.analysis?.score !== undefined && (
                         <p className={clsx(
                           "text-2xl font-bold mt-1",
                           policy.analysis.score >= 80 ? "text-green-400" :
@@ -1326,9 +1432,6 @@ export default function AnalyzePage() {
                         )}>
                           {policy.analysis.score}
                         </p>
-                      )}
-                      {policy.status === 'error' && (
-                        <p className="text-sm text-red-400 mt-1">Error</p>
                       )}
                     </button>
                   ))}

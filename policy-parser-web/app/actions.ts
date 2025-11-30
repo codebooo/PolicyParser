@@ -4,7 +4,6 @@ import { createStreamableValue } from '@ai-sdk/rsc';
 import { identifyTarget } from './lib/identifier';
 import { PolicyDiscoveryEngine } from './lib/discovery/Engine';
 import { extractPolicyContent } from './lib/extractor';
-import { isValidPolicyUrl } from './lib/extractor/fetcher';
 import { SYSTEM_PROMPT, USER_PROMPT } from './lib/analyzer/prompt';
 import { calculateScore } from './lib/analyzer/scorer';
 import { AnalysisResultSchema } from './lib/types/analysis';
@@ -13,8 +12,7 @@ import { getGeminiModel } from './lib/ai/gemini';
 import { createClient } from '@/utils/supabase/server';
 import { logger } from './lib/logger';
 import { CONFIG, PolicyType } from './lib/config';
-import got from 'got';
-import * as cheerio from 'cheerio';
+import { checkPolicyCache, savePolicyVersion } from './versionActions';
 
 /**
  * Simple function to find and fetch a policy for testing purposes
@@ -106,8 +104,32 @@ export async function analyzeDomain(input: string) {
             const identity = await identifyTarget(input);
             logger.info('Identity verified', identity);
 
-            // Step 2: Discovery
-            stream.update({ status: 'discovering', message: `Searching for policy on ${identity.cleanDomain}...`, step: 2, data: null });
+            // Step 2: Check cache FIRST - save API credits! 💰
+            stream.update({ status: 'checking_cache', message: `Checking for cached analysis...`, step: 2, data: null });
+            const cacheResult = await checkPolicyCache(identity.cleanDomain, 'privacy');
+            
+            if (cacheResult.isCached && cacheResult.isUpToDate && cacheResult.cachedVersion) {
+                logger.info('🎉 CACHE HIT! Using cached analysis - saving API credits!');
+                stream.update({ status: 'cache_hit', message: `Found up-to-date cached analysis! Saving API credits...`, step: 3, data: null });
+                
+                const cachedData = {
+                    ...cacheResult.cachedVersion.analysis_data,
+                    url: cacheResult.cachedVersion.policy_url,
+                    domain: identity.cleanDomain,
+                    rawPolicyText: cacheResult.cachedVersion.raw_text,
+                    fromCache: true,
+                    cachedAt: cacheResult.cachedVersion.analyzed_at,
+                    versionId: cacheResult.cachedVersion.id
+                };
+                
+                stream.done({ status: 'complete', message: 'Analysis complete! (from cache)', step: 4, data: cachedData });
+                return;
+            }
+            
+            logger.info('Cache miss or outdated - performing fresh analysis');
+
+            // Step 3: Discovery
+            stream.update({ status: 'discovering', message: `Searching for policy on ${identity.cleanDomain}...`, step: 3, data: null });
             const engine = new PolicyDiscoveryEngine();
             const candidate = await engine.discover(identity.cleanDomain);
 
@@ -116,13 +138,13 @@ export async function analyzeDomain(input: string) {
             }
             logger.info('Policy found', candidate);
 
-            // Step 3: Extraction
-            stream.update({ status: 'extracting', message: `Reading policy from ${candidate.url}...`, step: 3, data: null });
+            // Step 4: Extraction
+            stream.update({ status: 'extracting', message: `Reading policy from ${candidate.url}...`, step: 4, data: null });
             const extracted = await extractPolicyContent(candidate.url);
             logger.info('Content extracted', { length: extracted.rawLength });
 
-            // Step 4: Analysis (using Gemini with key rotation)
-            stream.update({ status: 'analyzing', message: 'Analyzing legal text (this may take a moment)...', step: 4, data: null });
+            // Step 5: Analysis (using Gemini with key rotation)
+            stream.update({ status: 'analyzing', message: 'Analyzing legal text (this may take a moment)...', step: 5, data: null });
 
             const { object: analysis } = await generateObject({
                 model: getGeminiModel(),
@@ -144,8 +166,24 @@ export async function analyzeDomain(input: string) {
                 rawPolicyText: extracted.markdown // Include the original extracted text
             };
 
-            // Step 5: Save to DB
-            stream.update({ status: 'saving', message: 'Saving results...', step: 5, data: null });
+            // Step 6: Save to cache (version history) 📦
+            stream.update({ status: 'caching', message: 'Caching results for future use...', step: 6, data: null });
+            const versionResult = await savePolicyVersion(
+                identity.cleanDomain,
+                'privacy',
+                candidate.url,
+                extracted.markdown,
+                analysis,
+                score
+            );
+            
+            if (versionResult.success) {
+                logger.info(`Saved to version cache: ${versionResult.versionId}`);
+                (resultsWithUrl as any).versionId = versionResult.versionId;
+            }
+
+            // Step 7: Save to user's analysis history
+            stream.update({ status: 'saving', message: 'Saving results...', step: 7, data: null });
             const supabase = await createClient();
 
             const { data: { user } } = await supabase.auth.getUser();
@@ -167,7 +205,7 @@ export async function analyzeDomain(input: string) {
                 });
             }
 
-            stream.done({ status: 'complete', message: 'Analysis complete!', step: 6, data: resultsWithUrl });
+            stream.done({ status: 'complete', message: 'Analysis complete!', step: 8, data: resultsWithUrl });
 
         } catch (error: any) {
             logger.error('Analysis failed', error);
@@ -315,11 +353,16 @@ export async function analyzeText(text: string, sourceName?: string) {
  * PRO FEATURE: Discover all available policies for a company
  * Returns a list of found policy types and their URLs
  * 
- * ROBUST APPROACH:
- * 1. Check SPECIAL_DOMAINS config first (using GET requests for verification)
- * 2. Try standard paths with GET requests (HEAD requests often fail)
- * 3. FALLBACK: Scrape homepage for ALL policy links
- * 4. ULTIMATE FALLBACK: Search engines
+ * NEW v2.0 INTELLIGENT APPROACH:
+ * 1. Check SPECIAL_DOMAINS config first (verified company URLs)
+ * 2. Deep footer crawling (policies are almost always in footers)
+ * 3. Legal hub discovery (/legal, /policies pages)
+ * 4. Sitemap parsing for policy URLs
+ * 5. CONTENT VALIDATION - verify the page is actually a policy document
+ * 6. Search engine fallback with content validation
+ * 
+ * This approach doesn't just append "/privacy" to URLs - it intelligently
+ * crawls, validates, and verifies that discovered URLs are ACTUAL policy documents.
  */
 export async function discoverAllPolicies(input: string): Promise<{
     success: boolean;
@@ -327,238 +370,34 @@ export async function discoverAllPolicies(input: string): Promise<{
     policies?: { type: PolicyType; name: string; url: string }[];
     error?: string;
 }> {
-    const startTime = Date.now();
-    
     try {
-        logger.info(`[discoverAllPolicies] Starting discovery for: ${input}`);
+        logger.info(`[discoverAllPolicies] Starting intelligent discovery for: ${input}`);
         
         const identity = await identifyTarget(input);
         const domain = identity.cleanDomain;
-        const baseUrl = `https://${domain}`;
         
         logger.info(`[discoverAllPolicies] Resolved domain: ${domain}`);
 
-        const foundPolicies: { type: PolicyType; name: string; url: string }[] = [];
-        const checkedUrls = new Set<string>(); // Prevent duplicates
-
-        // Helper to add policy if not already added
-        const addPolicy = (type: PolicyType, name: string, url: string) => {
-            const normalizedUrl = url.toLowerCase().replace(/\/$/, '');
-            if (!checkedUrls.has(normalizedUrl)) {
-                checkedUrls.add(normalizedUrl);
-                foundPolicies.push({ type, name, url });
-                logger.info(`[discoverAllPolicies] Found ${type}: ${url}`);
-            }
-        };
-
-        // Helper to verify URL works with GET request
-        const verifyUrl = async (url: string): Promise<boolean> => {
-            try {
-                const response = await got(url, {
-                    timeout: { request: 10000 },
-                    retry: { limit: 1 } as any,
-                    headers: { 
-                        'User-Agent': CONFIG.USER_AGENT,
-                        'Accept-Language': 'en-US,en;q=0.9',
-                        'Accept': 'text/html,application/xhtml+xml'
-                    },
-                    followRedirect: true
-                });
-                
-                // Verify it's HTML and has content
-                const contentType = response.headers['content-type'] || '';
-                const isHtml = contentType.includes('text/html');
-                const hasContent = response.body.length > 1000;
-                const finalUrl = response.url;
-                
-                // Check it's not an auth page
-                if (!isValidPolicyUrl(finalUrl)) {
-                    logger.info(`[discoverAllPolicies] Skipping ${finalUrl} - auth page`);
-                    return false;
-                }
-                
-                return isHtml && hasContent;
-            } catch (e) {
-                return false;
-            }
-        };
-
-        // ============ PHASE 1: SPECIAL DOMAINS ============
-        logger.info(`[discoverAllPolicies] Phase 1: Checking special domains`);
+        // Use the new intelligent discovery engine
+        const { discoverPolicies } = await import('./lib/discovery/index');
+        const result = await discoverPolicies(domain);
         
-        const specialDomain = CONFIG.SPECIAL_DOMAINS[domain] || 
-                              CONFIG.SPECIAL_DOMAINS[`www.${domain}`] ||
-                              CONFIG.SPECIAL_DOMAINS[domain.replace(/^www\./, '')];
-
-        if (specialDomain) {
-            logger.info(`[discoverAllPolicies] Found special domain config for ${domain}`);
-            
-            const specialChecks = Object.entries(specialDomain).map(async ([type, url]) => {
-                if (url && typeof url === 'string') {
-                    const isValid = await verifyUrl(url);
-                    if (isValid) {
-                        const config = CONFIG.POLICY_TYPES[type as PolicyType];
-                        if (config) {
-                            addPolicy(type as PolicyType, config.name, url);
-                        }
-                    } else {
-                        logger.info(`[discoverAllPolicies] Special URL failed verification: ${url}`);
-                    }
-                }
-            });
-            
-            await Promise.all(specialChecks);
+        if (!result.success) {
+            return {
+                success: false,
+                error: result.error || 'Discovery failed'
+            };
         }
 
-        // ============ PHASE 2: STANDARD PATHS ============
-        logger.info(`[discoverAllPolicies] Phase 2: Checking standard paths`);
-        
-        const policyTypes = Object.entries(CONFIG.POLICY_TYPES) as [PolicyType, typeof CONFIG.POLICY_TYPES[PolicyType]][];
-        
-        const standardChecks = policyTypes.map(async ([type, config]) => {
-            // Skip if we already found this policy type
-            if (foundPolicies.some(p => p.type === type)) return;
-            
-            for (const path of config.paths) {
-                const url = `${baseUrl}${path}`;
-                const isValid = await verifyUrl(url);
-                if (isValid) {
-                    addPolicy(type, config.name, url);
-                    return; // Found one, stop checking other paths for this type
-                }
-            }
-        });
-        
-        await Promise.all(standardChecks);
+        // Convert to the expected format
+        const foundPolicies = result.policies.map(p => ({
+            type: p.type,
+            name: p.name,
+            url: p.url
+        }));
 
-        // ============ PHASE 3: HOMEPAGE SCRAPING FALLBACK ============
-        // If we found less than 2 policies, try scraping the homepage
-        if (foundPolicies.length < 2) {
-            logger.info(`[discoverAllPolicies] Phase 3: Homepage scraping fallback (found ${foundPolicies.length} so far)`);
-            
-            try {
-                const response = await got(baseUrl, {
-                    timeout: { request: 15000 },
-                    headers: { 
-                        'User-Agent': CONFIG.USER_AGENT,
-                        'Accept-Language': 'en-US,en;q=0.9',
-                    },
-                    retry: { limit: 1 } as any
-                });
-
-                const $ = cheerio.load(response.body);
-                const policyLinks: { url: string; text: string; type: PolicyType | null }[] = [];
-
-                // Find ALL links that might be policies
-                $('a').each((_, el) => {
-                    const href = $(el).attr('href');
-                    const text = $(el).text().trim().toLowerCase();
-                    
-                    if (!href) return;
-                    
-                    const lowerHref = href.toLowerCase();
-                    let detectedType: PolicyType | null = null;
-                    
-                    // Detect policy type from link text or URL
-                    if (text.includes('privacy') || lowerHref.includes('privacy')) {
-                        detectedType = 'privacy';
-                    } else if (text.includes('terms') || text.includes('user agreement') || lowerHref.includes('terms') || lowerHref.includes('useragreement')) {
-                        detectedType = 'terms';
-                    } else if (text.includes('cookie') || lowerHref.includes('cookie')) {
-                        detectedType = 'cookies';
-                    } else if (text.includes('security') || lowerHref.includes('security')) {
-                        detectedType = 'security';
-                    } else if (text.includes('gdpr') || lowerHref.includes('gdpr')) {
-                        detectedType = 'gdpr';
-                    } else if (text.includes('ccpa') || text.includes('california') || lowerHref.includes('ccpa')) {
-                        detectedType = 'ccpa';
-                    } else if (text.includes('acceptable use') || lowerHref.includes('acceptable-use') || lowerHref.includes('aup')) {
-                        detectedType = 'acceptable_use';
-                    }
-                    
-                    if (detectedType) {
-                        try {
-                            const absoluteUrl = new URL(href, baseUrl).toString();
-                            if (isValidPolicyUrl(absoluteUrl)) {
-                                policyLinks.push({ url: absoluteUrl, text, type: detectedType });
-                            }
-                        } catch {
-                            // Invalid URL, skip
-                        }
-                    }
-                });
-
-                logger.info(`[discoverAllPolicies] Found ${policyLinks.length} potential policy links on homepage`);
-
-                // Verify and add policies we don't already have
-                for (const link of policyLinks) {
-                    if (link.type && !foundPolicies.some(p => p.type === link.type)) {
-                        const isValid = await verifyUrl(link.url);
-                        if (isValid) {
-                            const config = CONFIG.POLICY_TYPES[link.type];
-                            addPolicy(link.type, config?.name || link.type, link.url);
-                        }
-                    }
-                }
-            } catch (e) {
-                logger.error(`[discoverAllPolicies] Homepage scraping failed`, e);
-            }
-        }
-
-        // ============ PHASE 4: SEARCH ENGINE FALLBACK ============
-        // If we STILL have no policies, use search engines
-        if (foundPolicies.length === 0) {
-            logger.info(`[discoverAllPolicies] Phase 4: Search engine fallback`);
-            
-            const searchTypes: PolicyType[] = ['privacy', 'terms'];
-            
-            for (const type of searchTypes) {
-                try {
-                    const query = `site:${domain} ${type === 'privacy' ? 'privacy policy' : 'terms of service'}`;
-                    
-                    const searchResponse = await got(`https://www.google.com/search?q=${encodeURIComponent(query)}&num=5`, {
-                        timeout: { request: 10000 },
-                        headers: {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                            'Accept': 'text/html',
-                        }
-                    });
-                    
-                    const $search = cheerio.load(searchResponse.body);
-                    const resultUrls: string[] = [];
-                    
-                    $search('a').each((_, el) => {
-                        const href = $search(el).attr('href');
-                        if (href && href.includes(domain) && (href.includes(type) || href.includes('policy'))) {
-                            try {
-                                const url = new URL(href.startsWith('/url?q=') ? decodeURIComponent(href.split('/url?q=')[1].split('&')[0]) : href);
-                                if (url.hostname.includes(domain.replace('www.', ''))) {
-                                    resultUrls.push(url.toString());
-                                }
-                            } catch {}
-                        }
-                    });
-                    
-                    for (const url of resultUrls.slice(0, 3)) {
-                        const isValid = await verifyUrl(url);
-                        if (isValid && !foundPolicies.some(p => p.type === type)) {
-                            const config = CONFIG.POLICY_TYPES[type];
-                            addPolicy(type, config.name, url);
-                            break;
-                        }
-                    }
-                } catch (e) {
-                    logger.error(`[discoverAllPolicies] Search fallback failed for ${type}`, e);
-                }
-            }
-        }
-
-        // Sort by policy type priority
-        const priority: PolicyType[] = ['privacy', 'terms', 'cookies', 'security', 'gdpr', 'ccpa', 'ai', 'acceptable_use'];
-        foundPolicies.sort((a, b) => priority.indexOf(a.type) - priority.indexOf(b.type));
-
-        const duration = Date.now() - startTime;
-        logger.info(`[discoverAllPolicies] Complete! Found ${foundPolicies.length} policies in ${duration}ms`);
+        logger.info(`[discoverAllPolicies] Intelligent discovery complete! Found ${foundPolicies.length} validated policies`);
+        logger.info(`[discoverAllPolicies] Phases: ${result.phasesCompleted.join(' -> ')}`);
 
         return {
             success: true,
@@ -577,8 +416,9 @@ export async function discoverAllPolicies(input: string): Promise<{
 /**
  * PRO FEATURE: Analyze a specific policy URL
  * For use after discoverAllPolicies to analyze individual policies
+ * Now with caching support to save API credits! 💰
  */
-export async function analyzeSpecificPolicy(url: string, policyType: string) {
+export async function analyzeSpecificPolicy(url: string, policyType: string, domain?: string) {
     const stream = createStreamableValue({
         status: 'initializing',
         message: 'Initializing analysis...',
@@ -590,7 +430,52 @@ export async function analyzeSpecificPolicy(url: string, policyType: string) {
     (async () => {
         try {
             logger.info(`[analyzeSpecificPolicy] Starting analysis for ${policyType}`, { url });
-            stream.update({ status: 'extracting', message: `Reading ${policyType}...`, step: 1, data: null, policyType });
+            
+            // Try to extract domain from URL if not provided
+            let policyDomain = domain;
+            if (!policyDomain) {
+                try {
+                    policyDomain = new URL(url).hostname.replace(/^www\./, '');
+                } catch {
+                    policyDomain = 'unknown';
+                }
+            }
+            
+            // Map policy name to type for caching
+            const cacheType = policyType.toLowerCase()
+                .replace(/privacy policy/i, 'privacy')
+                .replace(/terms of service|terms & conditions|terms/i, 'terms')
+                .replace(/cookie policy|cookies/i, 'cookies')
+                .replace(/data processing|dpa/i, 'dpa')
+                .replace(/acceptable use|aup/i, 'aup')
+                .replace(/security/i, 'security');
+            
+            // Step 1: Check cache first 💰
+            stream.update({ status: 'checking_cache', message: `Checking cache for ${policyType}...`, step: 1, data: null, policyType });
+            const cacheResult = await checkPolicyCache(policyDomain, cacheType);
+            
+            if (cacheResult.isCached && cacheResult.isUpToDate && cacheResult.cachedVersion) {
+                logger.info(`🎉 CACHE HIT for ${policyType}! Using cached analysis`);
+                stream.update({ status: 'cache_hit', message: `Found cached ${policyType}! Saving API credits...`, step: 2, data: null, policyType });
+                
+                const cachedData = {
+                    ...cacheResult.cachedVersion.analysis_data,
+                    url: cacheResult.cachedVersion.policy_url || url,
+                    policyType,
+                    rawPolicyText: cacheResult.cachedVersion.raw_text,
+                    fromCache: true,
+                    cachedAt: cacheResult.cachedVersion.analyzed_at,
+                    versionId: cacheResult.cachedVersion.id
+                };
+                
+                stream.done({ status: 'complete', message: 'Analysis complete! (from cache)', step: 3, data: cachedData, policyType });
+                return;
+            }
+            
+            logger.info(`Cache miss for ${policyType} - performing fresh analysis`);
+
+            // Step 2: Extract content
+            stream.update({ status: 'extracting', message: `Reading ${policyType}...`, step: 2, data: null, policyType });
             
             let extracted;
             try {
@@ -609,7 +494,8 @@ export async function analyzeSpecificPolicy(url: string, policyType: string) {
                 throw new Error(`Failed to extract ${policyType} content: ${extractError?.message || 'Unknown extraction error'}`);
             }
 
-            stream.update({ status: 'analyzing', message: `Analyzing ${policyType}...`, step: 2, data: null, policyType });
+            // Step 3: AI Analysis
+            stream.update({ status: 'analyzing', message: `Analyzing ${policyType}...`, step: 3, data: null, policyType });
 
             let analysis;
             try {
@@ -633,15 +519,27 @@ export async function analyzeSpecificPolicy(url: string, policyType: string) {
             const score = calculateScore(analysis);
             analysis.score = score;
 
+            // Step 4: Save to cache 📦
+            stream.update({ status: 'caching', message: `Caching ${policyType}...`, step: 4, data: null, policyType });
+            const versionResult = await savePolicyVersion(
+                policyDomain,
+                cacheType,
+                url,
+                extracted.markdown,
+                analysis,
+                score
+            );
+            
             const resultsWithMeta = {
                 ...analysis,
                 url,
                 policyType,
-                rawPolicyText: extracted.markdown // Include the original extracted text
+                rawPolicyText: extracted.markdown,
+                versionId: versionResult.versionId
             };
 
-            logger.info(`[analyzeSpecificPolicy] ${policyType} complete`, { score, url });
-            stream.done({ status: 'complete', message: 'Analysis complete!', step: 3, data: resultsWithMeta, policyType });
+            logger.info(`[analyzeSpecificPolicy] ${policyType} complete`, { score, url, versionId: versionResult.versionId });
+            stream.done({ status: 'complete', message: 'Analysis complete!', step: 5, data: resultsWithMeta, policyType });
 
         } catch (error: any) {
             logger.error(`[analyzeSpecificPolicy] ${policyType} analysis failed`, {
