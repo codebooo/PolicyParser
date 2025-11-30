@@ -1,17 +1,18 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell } from "lucide-react"
+import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell, List } from "lucide-react"
 import { clsx } from "clsx"
 import { analyzeDomain, discoverAllPolicies, analyzeSpecificPolicy, analyzeText } from "../actions"
 import { readStreamableValue } from "@ai-sdk/rsc"
 import { checkProStatus } from "../checkProStatus"
 import { trackPolicy, untrackPolicy, getTrackedPolicies } from "../trackingActions"
 import { submitCommunityScore, getCommunityScore, getUserVote } from "../communityActions"
+import { useRouter } from "next/navigation"
 
 type AnalysisStep = "input" | "searching" | "processing" | "results"
 type InputMethod = "file" | "url" | "paste"
@@ -98,7 +99,15 @@ const FINDING_CATEGORY_CONFIG: Record<FindingCategory, {
 // Sort order for findings (most severe first)
 const CATEGORY_SORT_ORDER: FindingCategory[] = ["THREAT", "WARNING", "CAUTION", "NORMAL", "GOOD", "BRILLIANT"];
 
+// Helper to extract sections from raw policy text for navigation
+interface PolicySection {
+  id: string;
+  title: string;
+  startIndex: number;
+}
+
 export default function AnalyzePage() {
+  const router = useRouter()
   const [step, setStep] = useState<AnalysisStep>("input")
   const [inputMethod, setInputMethod] = useState<InputMethod>("url")
   const [analysisMode, setAnalysisMode] = useState<AnalysisMode>("single")
@@ -121,13 +130,18 @@ export default function AnalyzePage() {
   const [voteCount, setVoteCount] = useState(0)
   const [userVote, setUserVote] = useState<number | null>(null)
   const [isTracked, setIsTracked] = useState(false)
+  const [trackingLoading, setTrackingLoading] = useState(false)
 
-  // Original Text Modal State
+  // Original Text Modal State - removed, now using dedicated page
   const [showOriginalText, setShowOriginalText] = useState(false)
   
   // Dropdown States
   const [dataCollectedOpen, setDataCollectedOpen] = useState(true)
   const [thirdPartyOpen, setThirdPartyOpen] = useState(true)
+  
+  // Expanded item states for long text
+  const [expandedDataItems, setExpandedDataItems] = useState<Set<number>>(new Set())
+  const [expandedThirdPartyItems, setExpandedThirdPartyItems] = useState<Set<number>>(new Set())
   
   // Community Score Voting UI
   const [showVoteSlider, setShowVoteSlider] = useState(false)
@@ -339,11 +353,14 @@ export default function AnalyzePage() {
         }
       }
 
-      // Use first successful analysis as main result
-      const firstSuccess = initialResults.find(r => r.status === 'complete');
-      if (firstSuccess?.analysis) {
-        setAnalysisResults(firstSuccess.analysis);
-        setSourceUrl(firstSuccess.url);
+      // Get the updated policyResults to find first success
+      // Note: We need to use a ref or callback to get the latest state
+      // For now, we'll set these based on the first policy
+      if (discovery.policies.length > 0) {
+        setSourceUrl(discovery.policies[0].url);
+        
+        // Fetch extra data for the domain
+        fetchExtraData(discovery.policies[0].url);
       }
 
       setStep("results")
@@ -375,27 +392,136 @@ export default function AnalyzePage() {
     }
   }
 
+  // Get the current policy URL for tracking (works for both single and comprehensive modes)
+  const getCurrentPolicyUrl = (): string | null => {
+    if (analysisMode === "comprehensive" && currentPolicyResult?.url) {
+      return currentPolicyResult.url;
+    }
+    return sourceUrl;
+  }
+
+  // Get the current domain for tracking
+  const getCurrentDomain = (): string | null => {
+    const url = getCurrentPolicyUrl();
+    if (url) {
+      try {
+        return new URL(url).hostname.replace(/^www\./, '');
+      } catch {
+        return analyzedDomain;
+      }
+    }
+    return analyzedDomain;
+  }
+
   const handleTrackToggle = async () => {
-    if (!sourceUrl) return;
-    const domain = new URL(sourceUrl).hostname.replace(/^www\./, '');
-    if (isTracked) {
-      await untrackPolicy(domain);
-      setIsTracked(false);
-    } else {
-      // Pass the policy URL and current analysis for change detection
-      await trackPolicy(domain, sourceUrl, displayedAnalysis);
-      setIsTracked(true);
+    const policyUrl = getCurrentPolicyUrl();
+    const domain = getCurrentDomain();
+    
+    if (!domain) {
+      alert("Unable to determine domain for tracking");
+      return;
+    }
+    
+    setTrackingLoading(true);
+    
+    try {
+      if (isTracked) {
+        const result = await untrackPolicy(domain);
+        if (result.success) {
+          setIsTracked(false);
+        } else {
+          alert(result.error || "Failed to untrack policy");
+        }
+      } else {
+        // Pass the policy URL and current analysis for change detection
+        const result = await trackPolicy(domain, policyUrl || undefined, displayedAnalysis);
+        if (result.success) {
+          setIsTracked(true);
+        } else {
+          alert(result.error || "Failed to track policy");
+        }
+      }
+    } catch (e: any) {
+      console.error("Track toggle error:", e);
+      alert("An error occurred while updating tracking");
+    } finally {
+      setTrackingLoading(false);
     }
   }
 
   const handleVote = async (score: number) => {
-    if (!sourceUrl) return;
-    const domain = new URL(sourceUrl).hostname.replace(/^www\./, '');
+    const domain = getCurrentDomain();
+    if (!domain) return;
+    
     const result = await submitCommunityScore(domain, score);
     if (result.success && 'averageScore' in result) {
       setCommunityScore(result.averageScore);
       setVoteCount(result.voteCount!);
       setUserVote(score);
+    }
+  }
+
+  // Toggle expanded state for data collected items
+  const toggleDataItemExpanded = (index: number) => {
+    setExpandedDataItems(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  }
+
+  // Toggle expanded state for third party items
+  const toggleThirdPartyItemExpanded = (index: number) => {
+    setExpandedThirdPartyItems(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  }
+
+  // Calculate aggregate score for comprehensive mode
+  const aggregateScore = useMemo(() => {
+    if (analysisMode !== "comprehensive" || policyResults.length === 0) return null;
+    
+    const completedResults = policyResults.filter(p => p.status === 'complete' && p.analysis?.score !== undefined);
+    if (completedResults.length === 0) return null;
+    
+    // Weighted average: Privacy Policy and Terms of Service are more important
+    let weightedSum = 0;
+    let totalWeight = 0;
+    
+    completedResults.forEach(p => {
+      let weight = 1;
+      if (p.type === 'privacy') weight = 3; // Privacy policy most important
+      else if (p.type === 'terms') weight = 2; // Terms second most important
+      else weight = 1;
+      
+      weightedSum += (p.analysis?.score || 0) * weight;
+      totalWeight += weight;
+    });
+    
+    return Math.round(weightedSum / totalWeight);
+  }, [analysisMode, policyResults]);
+
+  // Navigate to original text page
+  const openOriginalTextPage = () => {
+    if (displayedAnalysis?.rawPolicyText) {
+      // Store the analysis in sessionStorage for the original-text page
+      sessionStorage.setItem('originalTextData', JSON.stringify({
+        rawText: displayedAnalysis.rawPolicyText,
+        domain: analyzedDomain,
+        policyName: analysisMode === "comprehensive" && currentPolicyResult ? currentPolicyResult.name : "Privacy Policy",
+        url: getCurrentPolicyUrl()
+      }));
+      router.push('/analyze/original-text');
     }
   }
 
@@ -646,30 +772,6 @@ export default function AnalyzePage() {
 
       {step === "results" && displayedAnalysis && (
         <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 space-y-8">
-          {/* Original Text Modal */}
-          {showOriginalText && displayedAnalysis.rawPolicyText && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-              <div className="bg-background border border-white/10 rounded-xl max-w-4xl w-full max-h-[85vh] flex flex-col shadow-2xl">
-                <div className="flex items-center justify-between p-4 border-b border-white/10">
-                  <div className="flex items-center gap-2">
-                    <ScrollText className="h-5 w-5 text-primary" />
-                    <h3 className="text-lg font-semibold">Original Policy Text</h3>
-                  </div>
-                  <Button variant="ghost" size="sm" onClick={() => setShowOriginalText(false)}>
-                    <X className="h-5 w-5" />
-                  </Button>
-                </div>
-                <div className="flex-1 overflow-y-auto p-6">
-                  <div className="prose prose-invert prose-sm max-w-none">
-                    <pre className="whitespace-pre-wrap text-sm text-muted-foreground font-sans leading-relaxed">
-                      {displayedAnalysis.rawPolicyText}
-                    </pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
           {/* Policy Tabs for Comprehensive Mode */}
           {analysisMode === "comprehensive" && policyResults.length > 1 && (
             <div className="flex flex-wrap gap-2 p-2 bg-background/40 backdrop-blur-sm border border-white/10 rounded-lg">
@@ -715,7 +817,7 @@ export default function AnalyzePage() {
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    onClick={() => setShowOriginalText(true)}
+                    onClick={openOriginalTextPage}
                     className="border-white/10 hover:bg-white/5"
                   >
                     <ScrollText className="h-4 w-4 mr-2" />
@@ -755,30 +857,80 @@ export default function AnalyzePage() {
               </p>
             </div>
 
+            {/* Score Card - Shows aggregate score in comprehensive mode */}
             <Card className="w-full md:w-auto min-w-[300px] bg-background/60 backdrop-blur-xl border-primary/20 shadow-[0_0_30px_rgba(6,182,212,0.15)]">
-              <CardContent className="p-6 flex items-center justify-between gap-6">
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Privacy Score</p>
-                  <div className="flex items-baseline gap-1">
-                    <span className={clsx(
-                      "text-5xl font-black tracking-tighter",
-                      displayedAnalysis.score >= 80 ? "text-green-400" :
-                        displayedAnalysis.score >= 60 ? "text-yellow-400" :
-                          "text-red-500"
-                    )}>
-                      {displayedAnalysis.score}
-                    </span>
-                    <span className="text-muted-foreground font-medium">/100</span>
+              <CardContent className="p-6">
+                {analysisMode === "comprehensive" && aggregateScore !== null ? (
+                  <div className="space-y-4">
+                    {/* Aggregate Score */}
+                    <div className="flex items-center justify-between gap-6">
+                      <div>
+                        <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Overall Score</p>
+                        <div className="flex items-baseline gap-1">
+                          <span className={clsx(
+                            "text-5xl font-black tracking-tighter",
+                            aggregateScore >= 80 ? "text-green-400" :
+                              aggregateScore >= 60 ? "text-yellow-400" :
+                                "text-red-500"
+                          )}>
+                            {aggregateScore}
+                          </span>
+                          <span className="text-muted-foreground font-medium">/100</span>
+                        </div>
+                      </div>
+                      <div className={clsx(
+                        "h-20 w-20 rounded-full flex items-center justify-center border-4 shadow-inner",
+                        aggregateScore >= 80 ? "border-green-500/30 bg-green-500/10 text-green-400" :
+                          aggregateScore >= 60 ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400" :
+                            "border-red-500/30 bg-red-500/10 text-red-500"
+                      )}>
+                        <Shield className="h-8 w-8" />
+                      </div>
+                    </div>
+                    {/* Current Policy Score */}
+                    {displayedAnalysis.score !== undefined && (
+                      <div className="pt-3 border-t border-white/10">
+                        <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">
+                          {currentPolicyResult?.name || "Current"} Score
+                        </p>
+                        <span className={clsx(
+                          "text-2xl font-bold",
+                          displayedAnalysis.score >= 80 ? "text-green-400" :
+                            displayedAnalysis.score >= 60 ? "text-yellow-400" :
+                              "text-red-500"
+                        )}>
+                          {displayedAnalysis.score}
+                        </span>
+                        <span className="text-muted-foreground text-sm">/100</span>
+                      </div>
+                    )}
                   </div>
-                </div>
-                <div className={clsx(
-                  "h-20 w-20 rounded-full flex items-center justify-center border-4 shadow-inner",
-                  displayedAnalysis.score >= 80 ? "border-green-500/30 bg-green-500/10 text-green-400" :
-                    displayedAnalysis.score >= 60 ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400" :
-                      "border-red-500/30 bg-red-500/10 text-red-500"
-                )}>
-                  <ShieldAlert className="h-8 w-8" />
-                </div>
+                ) : (
+                  <div className="flex items-center justify-between gap-6">
+                    <div>
+                      <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Privacy Score</p>
+                      <div className="flex items-baseline gap-1">
+                        <span className={clsx(
+                          "text-5xl font-black tracking-tighter",
+                          displayedAnalysis.score >= 80 ? "text-green-400" :
+                            displayedAnalysis.score >= 60 ? "text-yellow-400" :
+                              "text-red-500"
+                        )}>
+                          {displayedAnalysis.score}
+                        </span>
+                        <span className="text-muted-foreground font-medium">/100</span>
+                      </div>
+                    </div>
+                    <div className={clsx(
+                      "h-20 w-20 rounded-full flex items-center justify-center border-4 shadow-inner",
+                      displayedAnalysis.score >= 80 ? "border-green-500/30 bg-green-500/10 text-green-400" :
+                        displayedAnalysis.score >= 60 ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400" :
+                          "border-red-500/30 bg-red-500/10 text-red-500"
+                    )}>
+                      <ShieldAlert className="h-8 w-8" />
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
@@ -805,7 +957,7 @@ export default function AnalyzePage() {
                     </h3>
                     <p className="text-xs text-muted-foreground">
                       {isTracked 
-                        ? "You'll be notified when this policy changes" 
+                        ? `You'll be notified when ${getCurrentDomain() || 'this policy'} changes` 
                         : "Get notified when this privacy policy is updated"
                       }
                     </p>
@@ -815,11 +967,17 @@ export default function AnalyzePage() {
                   variant={isTracked ? "outline" : "default"}
                   size="sm"
                   onClick={handleTrackToggle}
+                  disabled={trackingLoading}
                   className={clsx(
                     isTracked && "border-primary/30 text-primary hover:bg-primary/10"
                   )}
                 >
-                  {isTracked ? (
+                  {trackingLoading ? (
+                    <span className="flex items-center">
+                      <span className="h-4 w-4 mr-2 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                      {isTracked ? "Removing..." : "Adding..."}
+                    </span>
+                  ) : isTracked ? (
                     <>
                       <CheckCircle2 className="h-4 w-4 mr-2" />
                       Tracking
@@ -1015,7 +1173,7 @@ export default function AnalyzePage() {
             )}
           </div>
 
-          {/* Data Collected & Third Party Sharing - Dropdowns */}
+          {/* Data Collected & Third Party Sharing - Dropdowns with Expandable Items */}
           <div className="space-y-4">
             {/* Data Collected Dropdown */}
             <div className="border border-white/10 rounded-lg bg-background/40 overflow-hidden">
@@ -1024,7 +1182,7 @@ export default function AnalyzePage() {
                 className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors"
               >
                 <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
                     <Eye className="h-4 w-4 text-primary" />
                   </div>
                   <div className="text-left">
@@ -1033,20 +1191,44 @@ export default function AnalyzePage() {
                   </div>
                 </div>
                 {dataCollectedOpen ? (
-                  <ChevronUp className="h-5 w-5 text-muted-foreground" />
+                  <ChevronUp className="h-5 w-5 text-muted-foreground shrink-0" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                  <ChevronDown className="h-5 w-5 text-muted-foreground shrink-0" />
                 )}
               </button>
               {dataCollectedOpen && (
                 <div className="px-4 pb-4 border-t border-white/5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-4">
-                    {displayedAnalysis.data_collected?.map((item: string, i: number) => (
-                      <div key={i} className="flex items-center gap-2 text-sm p-2 rounded-lg bg-white/5 border border-white/5">
-                        <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0"></div>
-                        <span className="truncate">{item}</span>
-                      </div>
-                    ))}
+                    {displayedAnalysis.data_collected?.map((item: string, i: number) => {
+                      const isLong = item.length > 40;
+                      const isExpanded = expandedDataItems.has(i);
+                      
+                      return (
+                        <button
+                          key={i}
+                          onClick={() => isLong && toggleDataItemExpanded(i)}
+                          className={clsx(
+                            "flex items-start gap-2 text-sm p-2 rounded-lg bg-white/5 border border-white/5 text-left transition-all",
+                            isLong && "cursor-pointer hover:bg-white/10 hover:border-primary/20",
+                            !isLong && "cursor-default"
+                          )}
+                        >
+                          <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-1.5"></div>
+                          <span className={clsx(
+                            "flex-1",
+                            !isExpanded && isLong && "line-clamp-1"
+                          )}>
+                            {item}
+                          </span>
+                          {isLong && (
+                            <ChevronDown className={clsx(
+                              "h-4 w-4 text-muted-foreground shrink-0 transition-transform",
+                              isExpanded && "rotate-180"
+                            )} />
+                          )}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -1059,7 +1241,7 @@ export default function AnalyzePage() {
                 className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors"
               >
                 <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
+                  <div className="h-8 w-8 rounded-lg bg-orange-500/20 flex items-center justify-center shrink-0">
                     <Users className="h-4 w-4 text-orange-400" />
                   </div>
                   <div className="text-left">
@@ -1068,20 +1250,44 @@ export default function AnalyzePage() {
                   </div>
                 </div>
                 {thirdPartyOpen ? (
-                  <ChevronUp className="h-5 w-5 text-muted-foreground" />
+                  <ChevronUp className="h-5 w-5 text-muted-foreground shrink-0" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                  <ChevronDown className="h-5 w-5 text-muted-foreground shrink-0" />
                 )}
               </button>
               {thirdPartyOpen && (
                 <div className="px-4 pb-4 border-t border-white/5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-4">
-                    {displayedAnalysis.third_party_sharing?.map((item: string, i: number) => (
-                      <div key={i} className="flex items-center gap-2 text-sm p-2 rounded-lg bg-white/5 border border-white/5">
-                        <div className="h-1.5 w-1.5 rounded-full bg-orange-400 shrink-0"></div>
-                        <span className="truncate">{item}</span>
-                      </div>
-                    ))}
+                    {displayedAnalysis.third_party_sharing?.map((item: string, i: number) => {
+                      const isLong = item.length > 40;
+                      const isExpanded = expandedThirdPartyItems.has(i);
+                      
+                      return (
+                        <button
+                          key={i}
+                          onClick={() => isLong && toggleThirdPartyItemExpanded(i)}
+                          className={clsx(
+                            "flex items-start gap-2 text-sm p-2 rounded-lg bg-white/5 border border-white/5 text-left transition-all",
+                            isLong && "cursor-pointer hover:bg-white/10 hover:border-orange-500/20",
+                            !isLong && "cursor-default"
+                          )}
+                        >
+                          <div className="h-1.5 w-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5"></div>
+                          <span className={clsx(
+                            "flex-1",
+                            !isExpanded && isLong && "line-clamp-1"
+                          )}>
+                            {item}
+                          </span>
+                          {isLong && (
+                            <ChevronDown className={clsx(
+                              "h-4 w-4 text-muted-foreground shrink-0 transition-transform",
+                              isExpanded && "rotate-180"
+                            )} />
+                          )}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               )}

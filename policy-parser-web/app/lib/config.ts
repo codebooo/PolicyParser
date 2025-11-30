@@ -266,6 +266,86 @@ export const CONFIG = {
             privacy: 'https://www.apple.com/legal/privacy/',
             terms: 'https://www.apple.com/legal/internet-services/terms/site.html',
         },
+        'ebay.com': {
+            privacy: 'https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260',
+            terms: 'https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259',
+        },
+        'www.ebay.com': {
+            privacy: 'https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260',
+            terms: 'https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259',
+        },
+        'paypal.com': {
+            privacy: 'https://www.paypal.com/us/legalhub/privacy-full',
+            terms: 'https://www.paypal.com/us/legalhub/useragreement-full',
+        },
+        'www.paypal.com': {
+            privacy: 'https://www.paypal.com/us/legalhub/privacy-full',
+            terms: 'https://www.paypal.com/us/legalhub/useragreement-full',
+        },
+        'netflix.com': {
+            privacy: 'https://help.netflix.com/legal/privacy',
+            terms: 'https://help.netflix.com/legal/termsofuse',
+        },
+        'www.netflix.com': {
+            privacy: 'https://help.netflix.com/legal/privacy',
+            terms: 'https://help.netflix.com/legal/termsofuse',
+        },
+        'spotify.com': {
+            privacy: 'https://www.spotify.com/legal/privacy-policy/',
+            terms: 'https://www.spotify.com/legal/end-user-agreement/',
+        },
+        'www.spotify.com': {
+            privacy: 'https://www.spotify.com/legal/privacy-policy/',
+            terms: 'https://www.spotify.com/legal/end-user-agreement/',
+        },
+        'discord.com': {
+            privacy: 'https://discord.com/privacy',
+            terms: 'https://discord.com/terms',
+        },
+        'reddit.com': {
+            privacy: 'https://www.reddit.com/policies/privacy-policy',
+            terms: 'https://www.redditinc.com/policies/user-agreement',
+        },
+        'www.reddit.com': {
+            privacy: 'https://www.reddit.com/policies/privacy-policy',
+            terms: 'https://www.redditinc.com/policies/user-agreement',
+        },
+        'twitch.tv': {
+            privacy: 'https://www.twitch.tv/p/legal/privacy-notice/',
+            terms: 'https://www.twitch.tv/p/legal/terms-of-service/',
+        },
+        'www.twitch.tv': {
+            privacy: 'https://www.twitch.tv/p/legal/privacy-notice/',
+            terms: 'https://www.twitch.tv/p/legal/terms-of-service/',
+        },
+        'openai.com': {
+            privacy: 'https://openai.com/policies/privacy-policy',
+            terms: 'https://openai.com/policies/terms-of-use',
+        },
+        'www.openai.com': {
+            privacy: 'https://openai.com/policies/privacy-policy',
+            terms: 'https://openai.com/policies/terms-of-use',
+        },
+        'zoom.us': {
+            privacy: 'https://explore.zoom.us/en/privacy/',
+            terms: 'https://explore.zoom.us/en/terms/',
+        },
+        'dropbox.com': {
+            privacy: 'https://www.dropbox.com/privacy',
+            terms: 'https://www.dropbox.com/terms',
+        },
+        'uber.com': {
+            privacy: 'https://www.uber.com/legal/en/document/?name=privacy-notice',
+            terms: 'https://www.uber.com/legal/en/document/?name=general-terms-of-use',
+        },
+        'airbnb.com': {
+            privacy: 'https://www.airbnb.com/help/article/2855',
+            terms: 'https://www.airbnb.com/help/article/2908',
+        },
+        'www.airbnb.com': {
+            privacy: 'https://www.airbnb.com/help/article/2855',
+            terms: 'https://www.airbnb.com/help/article/2908',
+        },
     } as Record<string, Partial<Record<string, string>>>,
 };
 

@@ -39,17 +39,27 @@ export interface PolicyChange {
 
 export async function trackPolicy(domain: string, policyUrl?: string, initialAnalysis?: any) {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    if (!user) return { success: false, error: "Must be logged in" };
+    if (authError) {
+        console.error("Auth error in trackPolicy:", authError);
+        return { success: false, error: "Authentication error: " + authError.message };
+    }
+
+    if (!user) return { success: false, error: "Must be logged in to track policies" };
 
     // Check if already tracked
-    const { data: existing } = await supabase
+    const { data: existing, error: checkError } = await supabase
         .from('tracked_policies')
         .select('id')
         .eq('user_id', user.id)
         .eq('domain', domain)
         .single();
+
+    if (checkError && checkError.code !== 'PGRST116') {
+        // PGRST116 means no rows found, which is expected
+        console.error("Check existing error:", checkError);
+    }
 
     if (existing) return { success: true, message: "Already tracking" };
 
@@ -58,22 +68,39 @@ export async function trackPolicy(domain: string, policyUrl?: string, initialAna
         ? generatePolicyHash(initialAnalysis.rawPolicyText)
         : null;
 
+    // Prepare a slimmed-down analysis to avoid storage issues
+    // Remove the rawPolicyText from stored analysis as it's often very large
+    let storedAnalysis = null;
+    if (initialAnalysis) {
+        const { rawPolicyText, ...analysisWithoutText } = initialAnalysis;
+        storedAnalysis = analysisWithoutText;
+    }
+
+    const insertData = {
+        user_id: user.id,
+        domain,
+        policy_url: policyUrl || null,
+        policy_hash: policyHash,
+        last_checked: new Date().toISOString(),
+        last_analysis: storedAnalysis,
+        has_changes: false,
+        previous_analysis: null
+    };
+
+    console.log("Inserting tracked policy:", { domain, policyUrl, hasAnalysis: !!storedAnalysis });
+
     const { error } = await supabase
         .from('tracked_policies')
-        .insert({
-            user_id: user.id,
-            domain,
-            policy_url: policyUrl || null,
-            policy_hash: policyHash,
-            last_checked: new Date().toISOString(),
-            last_analysis: initialAnalysis || null,
-            has_changes: false,
-            previous_analysis: null
-        });
+        .insert(insertData);
 
     if (error) {
-        console.error("Track error:", error);
-        return { success: false, error: "Failed to track policy" };
+        console.error("Track error details:", {
+            code: error.code,
+            message: error.message,
+            details: error.details,
+            hint: error.hint
+        });
+        return { success: false, error: `Failed to track policy: ${error.message}` };
     }
 
     return { success: true };

@@ -28,8 +28,19 @@
 - [x] Add Secure Usage Recommendations box.
 - [x] Fix PAWD to prefer English/original policies.
 - [x] Fix login page redirect detection (Facebook, Instagram, etc.).
+- [x] Enable deep logging by default with file persistence.
+- [x] Improve policy analysis error handling and logging.
+- [x] Fix track policy button (requires tracked_policies table).
 
 ## Changelog
+
+### [2025-11-30] - Deep Logging & Track Policy Fixes
+- **Feature**: Enabled deep logging by default - logs are now saved to `/deep_logs/` folder
+- **Fix**: Improved `analyzeSpecificPolicy` with detailed step-by-step error logging
+- **Fix**: Improved `extractPolicyContent` with comprehensive error handling and debugging
+- **Fix**: Track policy now shows detailed error messages instead of generic failures
+- **Fix**: Track policy now excludes `rawPolicyText` from stored analysis to prevent storage issues
+- **Migration**: Added `supabase/migrations/20241130_create_tracked_policies.sql` - MUST be run on Supabase
 
 ### [2025-11-29] - Key Findings Labels & Secure Usage
 - **Feature**: Added labeled key findings with 6 severity categories:

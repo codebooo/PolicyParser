@@ -134,3 +134,9 @@ When suggesting changes that affect core functionality:
 
 ## 11. Use /taskkill
 Before using a terminal, make sure to kill any existing processes that might interfere with your task. Use the command `/taskkill` to terminate those processes safely. That way, you can avoid potential conflicts and ensure a smooth execution of your tasks.
+
+## 12. Always Update Notion using Notion MCP
+After completing any significant changes or updates to the project, make sure to document these changes in the Notion MCP (Master Control Page). This helps keep track of progress, decisions made, and any important information that may be useful for future reference. Regularly updating the Notion MCP ensures that all team members are aligned and have access to the latest project details. Dont create new pages if there is already an existing one with the same idea. Then just update that one.
+
+## 13. Always push changes to GitHub using GitHub MCP
+After making changes to the project, ensure that you push these updates to the GitHub repository using the GitHub MCP (Master Control Page). This practice helps maintain version control, allows for collaboration with other team members, and ensures that all changes are backed up in the remote repository. Regularly pushing changes also facilitates code reviews and continuous integration processes. Always update the README.md or any relevant documentation in the repository to reflect the latest changes made to the codebase.

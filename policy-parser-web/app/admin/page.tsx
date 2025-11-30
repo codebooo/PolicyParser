@@ -3,8 +3,9 @@ import { redirect } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Users, FileText, Activity } from "lucide-react";
+import { Users, FileText, Activity, ScrollText, ExternalLink } from "lucide-react";
 import { clsx } from "clsx";
+import Link from "next/link";
 
 export default async function AdminPage() {
     const supabase = await createClient();
@@ -16,6 +17,7 @@ export default async function AdminPage() {
 
     const { count: userCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true });
     const { count: analysisCount } = await supabase.from('analyses').select('*', { count: 'exact', head: true });
+    const { count: logCount } = await supabase.from('deep_logs').select('*', { count: 'exact', head: true });
 
     const { data: recentAnalyses } = await supabase
         .from('analyses')
@@ -25,10 +27,19 @@ export default async function AdminPage() {
 
     return (
         <div className="container mx-auto py-12 px-4">
-            <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
+            <div className="flex items-center justify-between mb-8">
+                <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+                <Link href="/admin/logs">
+                    <Button variant="outline">
+                        <ScrollText className="h-4 w-4 mr-2" />
+                        View Deep Logs
+                        <ExternalLink className="h-3 w-3 ml-2" />
+                    </Button>
+                </Link>
+            </div>
 
             {/* Stats Grid */}
-            <div className="grid gap-6 md:grid-cols-3 mb-12">
+            <div className="grid gap-6 md:grid-cols-4 mb-12">
                 <Card className="bg-white/5 border-white/10">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-muted-foreground">Total Users</CardTitle>
@@ -45,6 +56,15 @@ export default async function AdminPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{analysisCount || 0}</div>
+                    </CardContent>
+                </Card>
+                <Card className="bg-white/5 border-white/10">
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium text-muted-foreground">Deep Log Entries</CardTitle>
+                        <ScrollText className="h-4 w-4 text-purple-400" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{logCount || 0}</div>
                     </CardContent>
                 </Card>
                 <Card className="bg-white/5 border-white/10">
