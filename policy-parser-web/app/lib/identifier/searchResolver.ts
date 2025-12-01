@@ -3,6 +3,7 @@ import * as cheerio from 'cheerio';
 import { CONFIG } from '../config';
 import { logger } from '../logger';
 import { deepLogger } from '../deepLogger';
+import { isBlockedDomain } from '../discovery/domainValidator';
 
 /**
  * Search result from a single engine
@@ -29,9 +30,119 @@ interface VerifiedDomain {
 /**
  * Common company name to domain mappings for popular services.
  * This provides a fallback when search engines block requests.
+ * 
+ * EXPANDED to include international banks and companies
  */
 const KNOWN_COMPANIES: Record<string, string> = {
-    // Search & Social
+    // ============================================
+    // BANKS & FINANCIAL INSTITUTIONS (International)
+    // ============================================
+    // German Banks
+    'berenberg': 'berenberg.de',
+    'berenberg bank': 'berenberg.de',
+    'deutsche bank': 'deutsche-bank.de',
+    'deutschebank': 'deutsche-bank.de',
+    'commerzbank': 'commerzbank.de',
+    'sparkasse': 'sparkasse.de',
+    'dkb': 'dkb.de',
+    'ing diba': 'ing.de',
+    'ingdiba': 'ing.de',
+    'n26': 'n26.com',
+    'comdirect': 'comdirect.de',
+    'targobank': 'targobank.de',
+    'postbank': 'postbank.de',
+    'hypovereinsbank': 'hypovereinsbank.de',
+    'hvb': 'hypovereinsbank.de',
+    'landesbank': 'lbbw.de',
+    'lbbw': 'lbbw.de',
+    'helaba': 'helaba.de',
+    'kfw': 'kfw.de',
+    
+    // Swiss Banks
+    'ubs': 'ubs.com',
+    'credit suisse': 'credit-suisse.com',
+    'creditsuisse': 'credit-suisse.com',
+    'julius baer': 'juliusbaer.com',
+    'juliusbaer': 'juliusbaer.com',
+    'pictet': 'pictet.com',
+    'lombard odier': 'lombardodier.com',
+    
+    // UK Banks
+    'barclays': 'barclays.co.uk',
+    'hsbc': 'hsbc.com',
+    'lloyds': 'lloydsbank.com',
+    'natwest': 'natwest.com',
+    'rbs': 'rbs.co.uk',
+    'santander': 'santander.co.uk',
+    'halifax': 'halifax.co.uk',
+    'nationwide': 'nationwide.co.uk',
+    'monzo': 'monzo.com',
+    'revolut': 'revolut.com',
+    'starling': 'starlingbank.com',
+    
+    // French Banks
+    'bnp paribas': 'bnpparibas.com',
+    'bnpparibas': 'bnpparibas.com',
+    'societe generale': 'societegenerale.com',
+    'societegenerale': 'societegenerale.com',
+    'credit agricole': 'credit-agricole.com',
+    'creditagricole': 'credit-agricole.com',
+    'la banque postale': 'labanquepostale.fr',
+    
+    // Spanish Banks
+    'santander spain': 'santander.com',
+    'banco santander': 'santander.com',
+    'bbva': 'bbva.com',
+    'caixabank': 'caixabank.com',
+    'sabadell': 'bancsabadell.com',
+    
+    // Italian Banks
+    'unicredit': 'unicredit.it',
+    'intesa sanpaolo': 'intesasanpaolo.com',
+    'intesasanpaolo': 'intesasanpaolo.com',
+    'banca mediolanum': 'bancamediolanum.it',
+    
+    // Dutch Banks
+    'ing': 'ing.com',
+    'rabobank': 'rabobank.com',
+    'abn amro': 'abnamro.com',
+    'abnamro': 'abnamro.com',
+    
+    // Nordic Banks
+    'nordea': 'nordea.com',
+    'danske bank': 'danskebank.com',
+    'danskebank': 'danskebank.com',
+    'handelsbanken': 'handelsbanken.com',
+    'seb': 'seb.se',
+    'swedbank': 'swedbank.com',
+    'dnb': 'dnb.no',
+    
+    // Japanese Banks
+    'mufg': 'mufg.jp',
+    'mitsubishi ufj': 'mufg.jp',
+    'mizuho': 'mizuhogroup.com',
+    'sumitomo mitsui': 'smfg.co.jp',
+    'smbc': 'smbc.co.jp',
+    
+    // Chinese Banks
+    'icbc': 'icbc.com.cn',
+    'bank of china': 'boc.cn',
+    'china construction bank': 'ccb.com',
+    'agricultural bank of china': 'abchina.com',
+    
+    // Australian Banks
+    'commonwealth bank': 'commbank.com.au',
+    'commbank': 'commbank.com.au',
+    'westpac': 'westpac.com.au',
+    'anz': 'anz.com.au',
+    'nab': 'nab.com.au',
+    
+    // Canadian Banks
+    'rbc': 'rbc.com',
+    'td bank': 'td.com',
+    'scotiabank': 'scotiabank.com',
+    'bmo': 'bmo.com',
+    'cibc': 'cibc.com',
     'google': 'google.com',
     'youtube': 'youtube.com',
     'facebook': 'facebook.com',
@@ -699,20 +810,25 @@ async function searchGoogle(companyName: string): Promise<SearchResult> {
                 const parsedUrl = new URL(response.url);
                 const domain = parsedUrl.hostname.replace(/^www\./, '');
                 
-                deepLogger.logSearchQuery('google', query, {
-                    success: true,
-                    domain,
-                    url: response.url,
-                    responseTime
-                });
-                
-                return {
-                    engine: 'google',
-                    domain,
-                    url: response.url,
-                    confidence: 85,
-                    responseTime
-                };
+                // CRITICAL: Skip blocked domains like LinkedIn, social media, etc.
+                if (isBlockedDomain(response.url)) {
+                    deepLogger.log('search', 'google_blocked', 'warn', `Google result blocked (social media/third-party): ${domain}`, { domain, url: response.url });
+                } else {
+                    deepLogger.logSearchQuery('google', query, {
+                        success: true,
+                        domain,
+                        url: response.url,
+                        responseTime
+                    });
+                    
+                    return {
+                        engine: 'google',
+                        domain,
+                        url: response.url,
+                        confidence: 85,
+                        responseTime
+                    };
+                }
             } catch {
                 // URL parsing failed
             }
@@ -722,30 +838,38 @@ async function searchGoogle(companyName: string): Promise<SearchResult> {
         if (response.statusCode === 200) {
             const $ = cheerio.load(response.body);
             
-            // Try to find first result link
-            const firstLink = $('a[href^="http"]:not([href*="google"])').first().attr('href');
-            
-            if (firstLink) {
+            // Try to find first non-blocked result link
+            const allLinks = $('a[href^="http"]:not([href*="google"])');
+            for (let i = 0; i < allLinks.length; i++) {
+                const linkHref = $(allLinks[i]).attr('href');
+                if (!linkHref) continue;
+                
+                // Skip blocked domains
+                if (isBlockedDomain(linkHref)) {
+                    deepLogger.log('search', 'google_skip_blocked', 'debug', `Skipping blocked result: ${linkHref}`);
+                    continue;
+                }
+                
                 try {
-                    const parsedUrl = new URL(firstLink);
+                    const parsedUrl = new URL(linkHref);
                     const domain = parsedUrl.hostname.replace(/^www\./, '');
                     
                     deepLogger.logSearchQuery('google', query, {
                         success: true,
                         domain,
-                        url: firstLink,
+                        url: linkHref,
                         responseTime
                     });
                     
                     return {
                         engine: 'google',
                         domain,
-                        url: firstLink,
+                        url: linkHref,
                         confidence: 70,
                         responseTime
                     };
                 } catch {
-                    // Continue
+                    // Continue to next link
                 }
             }
         }
@@ -829,34 +953,45 @@ async function searchBing(companyName: string): Promise<SearchResult> {
                 'cite'
             ];
             
+            // Iterate through all selectors and results to find first non-blocked domain
             for (const selector of selectors) {
-                const element = $(selector).first();
-                let firstLink = element.attr('href') || element.text();
+                const elements = $(selector);
                 
-                if (firstLink && firstLink.startsWith('http')) {
-                    try {
-                        const parsedUrl = new URL(firstLink);
-                        const domain = parsedUrl.hostname.replace(/^www\./, '');
-                        
-                        // Skip bing/microsoft domains
-                        if (domain.includes('bing.') || domain.includes('microsoft.')) continue;
-                        
-                        deepLogger.logSearchQuery('bing', query, {
-                            success: true,
-                            domain,
-                            url: firstLink,
-                            responseTime
-                        });
-                        
-                        return {
-                            engine: 'bing',
-                            domain,
-                            url: firstLink,
-                            confidence: 80,
-                            responseTime
-                        };
-                    } catch {
-                        continue;
+                for (let i = 0; i < elements.length; i++) {
+                    const element = $(elements[i]);
+                    let linkHref = element.attr('href') || element.text();
+                    
+                    if (linkHref && linkHref.startsWith('http')) {
+                        try {
+                            const parsedUrl = new URL(linkHref);
+                            const domain = parsedUrl.hostname.replace(/^www\./, '');
+                            
+                            // Skip bing/microsoft domains
+                            if (domain.includes('bing.') || domain.includes('microsoft.')) continue;
+                            
+                            // CRITICAL: Skip blocked domains like LinkedIn, social media, etc.
+                            if (isBlockedDomain(linkHref)) {
+                                deepLogger.log('search', 'bing_skip_blocked', 'debug', `Skipping blocked result: ${domain}`, { domain, url: linkHref });
+                                continue;
+                            }
+                            
+                            deepLogger.logSearchQuery('bing', query, {
+                                success: true,
+                                domain,
+                                url: linkHref,
+                                responseTime
+                            });
+                            
+                            return {
+                                engine: 'bing',
+                                domain,
+                                url: linkHref,
+                                confidence: 80,
+                                responseTime
+                            };
+                        } catch {
+                            continue;
+                        }
                     }
                 }
             }
@@ -933,38 +1068,47 @@ async function searchDuckDuckGo(companyName: string): Promise<SearchResult> {
         if (response.statusCode === 200) {
             const $ = cheerio.load(response.body);
             
-            // DuckDuckGo HTML version result links
-            const firstResult = $('.result__a').first();
-            const firstLink = firstResult.attr('href');
+            // DuckDuckGo HTML version result links - iterate through all results
+            const allResults = $('.result__a');
             
-            if (firstLink) {
-                try {
-                    // DuckDuckGo may use relative URLs
-                    const fullUrl = firstLink.startsWith('//') ? `https:${firstLink}` : firstLink;
-                    const parsedUrl = new URL(fullUrl);
-                    const domain = parsedUrl.hostname.replace(/^www\./, '');
-                    
-                    // Skip duckduckgo domains
-                    if (domain.includes('duckduckgo.')) {
-                        throw new Error('DuckDuckGo domain');
+            for (let i = 0; i < allResults.length; i++) {
+                const linkHref = $(allResults[i]).attr('href');
+                
+                if (linkHref) {
+                    try {
+                        // DuckDuckGo may use relative URLs
+                        const fullUrl = linkHref.startsWith('//') ? `https:${linkHref}` : linkHref;
+                        const parsedUrl = new URL(fullUrl);
+                        const domain = parsedUrl.hostname.replace(/^www\./, '');
+                        
+                        // Skip duckduckgo domains
+                        if (domain.includes('duckduckgo.')) {
+                            continue;
+                        }
+                        
+                        // CRITICAL: Skip blocked domains like LinkedIn, social media, etc.
+                        if (isBlockedDomain(fullUrl)) {
+                            deepLogger.log('search', 'duckduckgo_skip_blocked', 'debug', `Skipping blocked result: ${domain}`, { domain, url: fullUrl });
+                            continue;
+                        }
+                        
+                        deepLogger.logSearchQuery('duckduckgo', query, {
+                            success: true,
+                            domain,
+                            url: fullUrl,
+                            responseTime
+                        });
+                        
+                        return {
+                            engine: 'duckduckgo',
+                            domain,
+                            url: fullUrl,
+                            confidence: 80,
+                            responseTime
+                        };
+                    } catch {
+                        // Continue to next result
                     }
-                    
-                    deepLogger.logSearchQuery('duckduckgo', query, {
-                        success: true,
-                        domain,
-                        url: fullUrl,
-                        responseTime
-                    });
-                    
-                    return {
-                        engine: 'duckduckgo',
-                        domain,
-                        url: fullUrl,
-                        confidence: 80,
-                        responseTime
-                    };
-                } catch {
-                    // Continue to error handling
                 }
             }
         }

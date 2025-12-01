@@ -6,86 +6,315 @@ import * as cheerio from 'cheerio';
 import { URL } from 'url';
 import { logger } from '../logger';
 import { isValidPolicyUrl } from '../extractor/fetcher';
+import { 
+    isPrivacyUrl, 
+    isPrivacyLinkText, 
+    scoreLinkText, 
+    scorePrivacyUrl,
+    FOOTER_LINK_PATTERNS 
+} from './multilingual';
+import { isBlockedUrl, validateUrlForDomain } from './domainValidator';
 
+/**
+ * Enhanced Homepage Scraper Strategy with Multilingual Support
+ * 
+ * This strategy scans the website homepage (and subpages) for privacy policy links,
+ * with special focus on footer links where policies are typically located.
+ * 
+ * Key improvements:
+ * - Multilingual support (190+ languages)
+ * - Deep footer scanning (multiple footer detection methods)
+ * - Domain validation (blocks social media profiles)
+ * - Content area prioritization (footer > nav > body)
+ */
 export class HomepageScraperStrategy implements DiscoveryStrategy {
     name = 'HomepageScraperStrategy';
 
+    /**
+     * Extended multilingual privacy keywords for link detection
+     */
+    private readonly PRIVACY_KEYWORDS = [
+        // English
+        'privacy', 'data protection', 'personal data', 'data policy',
+        // German
+        'datenschutz', 'datenschutzerklärung', 'datenschutzrichtlinie', 'impressum',
+        // French
+        'confidentialité', 'vie privée', 'données personnelles', 'mentions légales',
+        // Spanish
+        'privacidad', 'protección de datos', 'datos personales', 'aviso legal',
+        // Italian
+        'privacy', 'riservatezza', 'protezione dei dati', 'informativa',
+        // Portuguese
+        'privacidade', 'proteção de dados', 'dados pessoais',
+        // Dutch
+        'privacy', 'gegevensbescherming', 'privacybeleid',
+        // Russian
+        'конфиденциальность', 'защита данных', 'персональные данные',
+        // Japanese
+        'プライバシー', '個人情報', '個人情報保護',
+        // Chinese
+        '隐私', '隐私政策', '个人信息', '隱私', '隱私政策',
+        // Korean
+        '개인정보', '개인정보처리방침', '프라이버시',
+        // Turkish
+        'gizlilik', 'kişisel veriler', 'kvkk', 'aydınlatma',
+        // Polish
+        'prywatność', 'ochrona danych', 'polityka prywatności',
+        // Swedish
+        'integritet', 'dataskydd', 'personuppgifter',
+        // Norwegian
+        'personvern', 'personopplysninger',
+        // Danish
+        'privatliv', 'databeskyttelse', 'persondata',
+        // Finnish
+        'tietosuoja', 'yksityisyys', 'henkilötiedot',
+        // Czech
+        'soukromí', 'ochrana údajů', 'osobní údaje',
+        // Hungarian
+        'adatvédelem', 'személyes adatok',
+        // Greek
+        'απόρρητο', 'προστασία δεδομένων',
+        // Arabic
+        'الخصوصية', 'حماية البيانات',
+        // Hebrew
+        'פרטיות', 'הגנת מידע',
+        // Thai
+        'ความเป็นส่วนตัว', 'นโยบายความเป็นส่วนตัว',
+        // Vietnamese
+        'quyền riêng tư', 'bảo mật',
+        // Indonesian/Malay
+        'privasi', 'perlindungan data',
+    ];
+
+    /**
+     * Footer detection selectors (in priority order)
+     */
+    private readonly FOOTER_SELECTORS = [
+        'footer',
+        '[role="contentinfo"]',
+        '.footer',
+        '#footer',
+        '.site-footer',
+        '.page-footer',
+        '.global-footer',
+        '.main-footer',
+        '[class*="footer"]',
+        '[id*="footer"]',
+    ];
+
+    /**
+     * Legal section selectors
+     */
+    private readonly LEGAL_SECTION_SELECTORS = [
+        '[class*="legal"]',
+        '[id*="legal"]',
+        '[class*="policy"]',
+        '[class*="terms"]',
+        '.bottom-links',
+        '.footer-links',
+        '.footer-legal',
+        '.legal-links',
+    ];
+
     async execute(domain: string): Promise<PolicyCandidate[]> {
         const candidates: PolicyCandidate[] = [];
-        const url = `https://${domain}`;
+        const baseUrl = `https://${domain}`;
 
         try {
-            const response = await got(url, {
-                timeout: { request: 10000 },
+            // Fetch homepage
+            const response = await got(baseUrl, {
+                timeout: { request: 15000 },
                 headers: { 
                     'User-Agent': CONFIG.USER_AGENT,
-                    // Request English version of pages
-                    'Accept-Language': 'en-US,en;q=0.9',
+                    // Accept multiple languages to get localized footer links
+                    'Accept-Language': 'en-US,en;q=0.9,de;q=0.8,fr;q=0.7,es;q=0.6',
                 },
-                retry: { limit: 1 } as any
+                retry: { limit: 2 } as any,
+                followRedirect: true,
+                throwHttpErrors: false,
             });
+
+            if (response.statusCode !== 200) {
+                logger.info(`HomepageScraper: ${baseUrl} returned status ${response.statusCode}`);
+                return candidates;
+            }
 
             const $ = cheerio.load(response.body);
-            const links: { href: string, text: string, context: string }[] = [];
+            
+            // Collect links with context information
+            const links: { 
+                href: string; 
+                text: string; 
+                context: 'footer' | 'legal' | 'nav' | 'body';
+                score: number;
+            }[] = [];
 
-            // Find all links
-            $('a').each((i, el) => {
-                const href = $(el).attr('href');
-                const text = $(el).text().trim();
+            // PHASE 1: Deep footer scanning (highest priority)
+            for (const selector of this.FOOTER_SELECTORS) {
+                $(selector).find('a').each((i, el) => {
+                    this.processLink($, el, baseUrl, domain, 'footer', links);
+                });
+            }
 
-                if (href) {
-                    // Check if inside footer or nav for higher confidence
-                    const parentFooter = $(el).closest('footer').length > 0;
-                    const parentNav = $(el).closest('nav').length > 0;
-                    const context = parentFooter ? 'footer' : (parentNav ? 'nav' : 'body');
+            // PHASE 2: Legal section scanning
+            for (const selector of this.LEGAL_SECTION_SELECTORS) {
+                $(selector).find('a').each((i, el) => {
+                    this.processLink($, el, baseUrl, domain, 'legal', links);
+                });
+            }
 
-                    links.push({ href, text, context });
-                }
+            // PHASE 3: Navigation scanning (medium priority)
+            $('nav a, [role="navigation"] a').each((i, el) => {
+                this.processLink($, el, baseUrl, domain, 'nav', links);
             });
 
-            // Filter and score
-            links.forEach(link => {
-                const lowerText = link.text.toLowerCase();
-                const lowerHref = link.href.toLowerCase();
-
-                const isPrivacy = lowerText.includes('privacy') || lowerHref.includes('privacy');
-                const isLegal = lowerText.includes('legal') || lowerHref.includes('legal');
-                const isTerms = lowerText.includes('terms') || lowerHref.includes('terms');
-
-                if (isPrivacy || isLegal || isTerms) {
-                    try {
-                        // Normalize URL
-                        const absoluteUrl = new URL(link.href, url).toString();
-                        
-                        // Skip if it's an auth page
-                        if (!isValidPolicyUrl(absoluteUrl)) {
-                            logger.info(`Skipping link ${absoluteUrl} - appears to be auth page`);
-                            return;
-                        }
-
-                        // Calculate confidence
-                        let confidence = 60;
-                        if (link.context === 'footer') confidence += 20;
-                        if (lowerText === 'privacy policy') confidence += 15;
-                        if (lowerText === 'privacy') confidence += 10;
-
-                        candidates.push({
-                            url: absoluteUrl,
-                            source: 'footer_link',
-                            confidence: Math.min(confidence, 95),
-                            foundAt: new Date(),
-                            methodDetail: `Found link "${link.text}" in ${link.context}`
-                        });
-                    } catch (e) {
-                        // Invalid URL
+            // PHASE 4: Full page scan for any remaining privacy links
+            // (Only if we haven't found enough in footer/nav)
+            if (links.length < 3) {
+                $('a').each((i, el) => {
+                    // Skip if already in footer/legal/nav
+                    const inFooter = $(el).closest('footer, [role="contentinfo"]').length > 0;
+                    const inNav = $(el).closest('nav, [role="navigation"]').length > 0;
+                    if (!inFooter && !inNav) {
+                        this.processLink($, el, baseUrl, domain, 'body', links);
                     }
-                }
+                });
+            }
+
+            // De-duplicate by URL and sort by score
+            const seenUrls = new Set<string>();
+            const uniqueLinks = links.filter(link => {
+                if (seenUrls.has(link.href)) return false;
+                seenUrls.add(link.href);
+                return true;
             });
 
-        } catch (error) {
-            // Homepage fetch failed
+            // Sort by score (highest first)
+            uniqueLinks.sort((a, b) => b.score - a.score);
+
+            logger.info(`HomepageScraper: Found ${uniqueLinks.length} unique privacy-related links on ${domain}`);
+
+            // Convert to candidates (top 5)
+            for (const link of uniqueLinks.slice(0, 5)) {
+                // Final domain validation
+                const validation = validateUrlForDomain(link.href, domain);
+                if (!validation.isValid) {
+                    logger.info(`HomepageScraper: Skipping ${link.href} - ${validation.reason || 'Failed validation'}`);
+                    continue;
+                }
+
+                // Calculate final confidence
+                let confidence = 50 + link.score;
+                
+                // Context bonuses
+                if (link.context === 'footer') confidence += 15;
+                if (link.context === 'legal') confidence += 12;
+                if (link.context === 'nav') confidence += 5;
+                
+                // Domain match bonus
+                confidence += Math.floor(validation.confidence / 10);
+
+                candidates.push({
+                    url: link.href,
+                    source: 'footer_link',
+                    confidence: Math.min(confidence, 98),
+                    foundAt: new Date(),
+                    methodDetail: `Found "${link.text.slice(0, 50)}" in ${link.context} (score: ${link.score})`
+                });
+            }
+
+        } catch (error: any) {
+            logger.error(`HomepageScraper: Error fetching ${baseUrl}`, error.message);
         }
 
         return candidates;
+    }
+
+    /**
+     * Process a link element and add to candidates if it looks like a privacy link
+     */
+    private processLink(
+        $: cheerio.CheerioAPI,
+        el: any,  // Cheerio element type
+        baseUrl: string,
+        domain: string,
+        context: 'footer' | 'legal' | 'nav' | 'body',
+        links: { href: string; text: string; context: typeof context; score: number }[]
+    ): void {
+        const href = $(el).attr('href');
+        const text = $(el).text().trim();
+        const title = $(el).attr('title') || '';
+        const ariaLabel = $(el).attr('aria-label') || '';
+
+        if (!href || href === '#' || href.startsWith('javascript:') || href.startsWith('mailto:')) {
+            return;
+        }
+
+        // Combine all text for matching
+        const combinedText = `${text} ${title} ${ariaLabel}`.toLowerCase();
+        const lowerHref = href.toLowerCase();
+
+        // Check if this is a privacy-related link
+        const hasPrivacyKeyword = this.PRIVACY_KEYWORDS.some(kw => 
+            combinedText.includes(kw.toLowerCase()) || lowerHref.includes(kw.toLowerCase())
+        );
+
+        // Also use the multilingual matcher
+        const isPrivacyText = isPrivacyLinkText(combinedText);
+        const isPrivacyHref = isPrivacyUrl(href);
+
+        if (!hasPrivacyKeyword && !isPrivacyText && !isPrivacyHref) {
+            return;
+        }
+
+        try {
+            // Resolve to absolute URL
+            const absoluteUrl = new URL(href, baseUrl).toString();
+
+            // Skip blocked domains (social media, etc.)
+            if (isBlockedUrl(absoluteUrl)) {
+                logger.info(`HomepageScraper: Skipping blocked URL ${absoluteUrl}`);
+                return;
+            }
+
+            // Skip auth pages
+            if (!isValidPolicyUrl(absoluteUrl)) {
+                logger.info(`HomepageScraper: Skipping auth URL ${absoluteUrl}`);
+                return;
+            }
+
+            // Calculate relevance score
+            let score = 0;
+
+            // Text scoring using multilingual scorer
+            score += scoreLinkText(combinedText);
+
+            // URL scoring using multilingual scorer
+            score += scorePrivacyUrl(href);
+
+            // Exact match bonuses
+            const exactMatches = [
+                'privacy policy', 'privacy', 'datenschutz', 'confidentialité',
+                'privacidad', 'プライバシーポリシー', '隐私政策', '개인정보처리방침'
+            ];
+            if (exactMatches.some(m => combinedText.trim() === m)) {
+                score += 25;
+            }
+
+            // Path bonuses
+            if (/\/(privacy|datenschutz|confidentialite|privacidad)($|\/)/i.test(lowerHref)) {
+                score += 20;
+            }
+
+            links.push({
+                href: absoluteUrl,
+                text: text.slice(0, 100), // Truncate for logging
+                context,
+                score
+            });
+
+        } catch (e) {
+            // Invalid URL, skip
+        }
     }
 }

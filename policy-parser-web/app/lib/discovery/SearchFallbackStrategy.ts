@@ -4,6 +4,7 @@ import { CONFIG } from '../config';
 import got from 'got';
 import * as cheerio from 'cheerio';
 import { logger } from '../logger';
+import { isBlockedDomain } from './domainValidator';
 
 export class SearchFallbackStrategy implements DiscoveryStrategy {
     name = 'SearchFallbackStrategy';
@@ -56,19 +57,27 @@ export class SearchFallbackStrategy implements DiscoveryStrategy {
             const $ = cheerio.load(response.body);
 
             $('.result__a').each((i, el) => {
-                if (i >= 3) return;
+                if (i >= 5) return; // Check more results to find non-blocked ones
 
                 const href = $(el).attr('href');
                 const text = $(el).text().trim();
 
                 if (href && href.includes(domain)) {
-                    candidates.push({
-                        url: href,
-                        source: 'search_fallback',
-                        confidence: 50 - (i * 10),
-                        foundAt: new Date(),
-                        methodDetail: `DuckDuckGo result #${i + 1}: "${text}"`
-                    });
+                    // CRITICAL: Skip blocked domains (LinkedIn, social media, etc.)
+                    if (isBlockedDomain(href)) {
+                        logger.info(`SearchFallback: Skipping blocked DuckDuckGo result: ${href}`);
+                        return; // continue to next result
+                    }
+                    
+                    if (candidates.length < 3) { // Only add first 3 valid results
+                        candidates.push({
+                            url: href,
+                            source: 'search_fallback',
+                            confidence: 50 - (candidates.length * 10),
+                            foundAt: new Date(),
+                            methodDetail: `DuckDuckGo result #${i + 1}: "${text}"`
+                        });
+                    }
                 }
             });
         } catch (error: any) {
@@ -101,19 +110,27 @@ export class SearchFallbackStrategy implements DiscoveryStrategy {
             const $ = cheerio.load(response.body);
 
             $('li.b_algo h2 a').each((i, el) => {
-                if (i >= 3) return;
+                if (i >= 5) return; // Check more results to find non-blocked ones
 
                 const href = $(el).attr('href');
                 const text = $(el).text().trim();
 
                 if (href && (href.includes(domain) || href.includes('privacy'))) {
-                    candidates.push({
-                        url: href,
-                        source: 'search_fallback',
-                        confidence: 45 - (i * 10),
-                        foundAt: new Date(),
-                        methodDetail: `Bing result #${i + 1}: "${text}"`
-                    });
+                    // CRITICAL: Skip blocked domains (LinkedIn, social media, etc.)
+                    if (isBlockedDomain(href)) {
+                        logger.info(`SearchFallback: Skipping blocked Bing result: ${href}`);
+                        return; // continue to next result
+                    }
+                    
+                    if (candidates.length < 3) { // Only add first 3 valid results
+                        candidates.push({
+                            url: href,
+                            source: 'search_fallback',
+                            confidence: 45 - (candidates.length * 10),
+                            foundAt: new Date(),
+                            methodDetail: `Bing result #${i + 1}: "${text}"`
+                        });
+                    }
                 }
             });
         } catch (error: any) {

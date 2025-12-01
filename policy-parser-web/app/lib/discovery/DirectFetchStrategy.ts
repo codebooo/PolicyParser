@@ -4,6 +4,8 @@ import { CONFIG } from '../config';
 import got from 'got';
 import { logger } from '../logger';
 import { isValidPolicyUrl } from '../extractor/fetcher';
+import { isBlockedDomain } from './domainValidator';
+import { getPrivacyTermsForUrl, isPrivacyRelatedText } from './multilingual';
 
 /**
  * Domains that require special handling (bot user-agent) to work
@@ -69,6 +71,7 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
     /**
      * Extract privacy policy URLs from page footer
      * Most websites link to privacy policies in their footer
+     * NOW: Supports 190+ languages using multilingual detection
      */
     private extractFooterPrivacyLinks(html: string, domain: string): string[] {
         const links: string[] = [];
@@ -76,6 +79,9 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
         // Look for <footer> section first (most reliable)
         const footerMatch = html.match(/<footer[^>]*>([\s\S]*?)<\/footer>/i);
         const searchArea = footerMatch ? footerMatch[1] : html.slice(-50000); // Last 50KB if no footer tag
+        
+        // Get privacy terms for this domain's language
+        const privacyTerms = getPrivacyTermsForUrl(`https://${domain}`);
         
         // Regex to find links
         const linkRegex = /<a[^>]*href=["']([^"']+)["'][^>]*>([^<]*(?:<[^>]*>[^<]*)*)<\/a>/gi;
@@ -85,17 +91,26 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
             const href = match[1];
             const linkText = match[2].replace(/<[^>]*>/g, '').toLowerCase().trim();
             
-            // Check if link text matches our footer link patterns
+            // CRITICAL: Skip blocked domains (LinkedIn, social media, etc.)
+            if (isBlockedDomain(href)) {
+                logger.info(`DirectFetch: Skipping blocked URL in footer: ${href}`);
+                continue;
+            }
+            
+            // Check if link text matches our footer link patterns (standard)
             const isPrivacyLink = CONFIG.FOOTER_LINK_PATTERNS.some(pattern => 
                 linkText.includes(pattern.toLowerCase())
             );
+            
+            // MULTILINGUAL: Check if link text is privacy-related in any of 190+ languages
+            const isMultilingualPrivacyLink = isPrivacyRelatedText(linkText, privacyTerms);
             
             // Or check if URL matches our privacy URL patterns
             const urlMatchesPattern = CONFIG.PRIVACY_URL_PATTERNS.some(pattern => 
                 pattern.test(href)
             );
             
-            if (isPrivacyLink || urlMatchesPattern) {
+            if (isPrivacyLink || isMultilingualPrivacyLink || urlMatchesPattern) {
                 // Resolve relative URLs
                 let fullUrl = href;
                 if (href.startsWith('/')) {
@@ -111,7 +126,7 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
             }
         }
         
-        logger.info(`DirectFetch: Found ${links.length} potential privacy links in footer`);
+        logger.info(`DirectFetch: Found ${links.length} potential privacy links in footer (multilingual detection active)`);
         return links;
     }
 
@@ -267,6 +282,7 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
             const lowerBody = body.toLowerCase().slice(0, scanSize);
 
             // Must have privacy-related content
+            // ENHANCED: Now includes 190+ language support for privacy terms
             const privacyIndicators = [
                 'privacy',
                 'personal data',
@@ -278,8 +294,56 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
                 'how we use',
                 'your data',
                 'your information',
-                'datenschutz', // German
-                'privacidad', // Spanish
+                // German
+                'datenschutz',
+                'datenschutzerklärung',
+                'datenschutzerklaerung',
+                'datenschutzhinweise',
+                'personenbezogene daten',
+                // Spanish
+                'privacidad',
+                'política de privacidad',
+                'datos personales',
+                'protección de datos',
+                // French
+                'confidentialité',
+                'politique de confidentialité',
+                'données personnelles',
+                'protection des données',
+                // Italian
+                'privacy',
+                'informativa privacy',
+                'dati personali',
+                'protezione dei dati',
+                // Portuguese
+                'privacidade',
+                'política de privacidade',
+                'dados pessoais',
+                // Dutch
+                'privacybeleid',
+                'privacyverklaring',
+                'persoonsgegevens',
+                // Polish
+                'polityka prywatności',
+                'dane osobowe',
+                // Russian
+                'конфиденциальность',
+                'политика конфиденциальности',
+                'персональные данные',
+                // Chinese
+                '隐私',
+                '隐私政策',
+                '個人資料',
+                // Japanese
+                'プライバシー',
+                'プライバシーポリシー',
+                '個人情報',
+                // Korean
+                '개인정보',
+                '개인정보처리방침',
+                // Arabic
+                'الخصوصية',
+                'سياسة الخصوصية',
             ];
 
             const matchedIndicators = privacyIndicators.filter(indicator => 
