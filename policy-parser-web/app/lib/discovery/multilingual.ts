@@ -291,16 +291,28 @@ export const PRIVACY_URL_PATTERNS: RegExp[] = [
 /**
  * Link text patterns that indicate a privacy policy link (multilingual)
  * These are used to identify privacy links in page footers
+ * ENHANCED with high-frequency terms from policy-keyword-analyzer
  */
 export const FOOTER_LINK_PATTERNS: string[] = [
-    // English
+    // English - High confidence from analyzer
     'privacy policy', 'privacy', 'data protection', 'data privacy',
     'privacy notice', 'privacy statement', 'your privacy', 'legal',
     'terms & privacy', 'privacy & terms', 'privacy & cookies',
+    'personal data', 'personal information', 'information we collect',
+    'how we use information', 'data we collect', 'your rights',
+    'third parties', 'third-party', 'cookies policy', 'cookie policy',
+    'data processing', 'data controller', 'data subject rights',
+    'consent', 'consent preferences', 'privacy preferences',
+    'gdpr', 'ccpa', 'california privacy', 'do not sell',
     
-    // German
+    // German - Enhanced with analyzer keywords
     'datenschutz', 'datenschutzerklärung', 'datenschutzrichtlinie',
     'rechtliches', 'impressum', 'rechtliche hinweise',
+    'personenbezogene daten', 'verarbeitung', 'datenverarbeitung',
+    'einwilligung', 'ihre rechte', 'betroffenenrechte',
+    'nutzung', 'informationen', 'datenschutzhinweise',
+    'widerspruch', 'löschung', 'auskunft', 'berichtigung',
+    'verantwortlicher', 'dsgvo', 'cookies', 'speicherung',
     
     // French
     'confidentialité', 'politique de confidentialité', 'vie privée',

@@ -22,6 +22,40 @@ export const CONTENT_REQUIREMENTS = {
 };
 
 /**
+ * HIGH CONFIDENCE policy keywords from analyzing 22 real policy documents
+ * These terms appear in 60%+ of policy documents with high frequency
+ * Source: scripts/policy-keyword-analyzer/output/policy-keywords.json
+ */
+export const HIGH_CONFIDENCE_KEYWORDS = [
+    // English - Top tier (90%+ document frequency)
+    'information', 'data', 'personal', 'privacy', 'cookies', 'consent',
+    // English - High tier (70-90% document frequency)
+    'rights', 'access', 'legal', 'collect', 'security', 'third-party',
+    'protection', 'processing', 'law', 'share', 'delete', 'control',
+    'collected', 'protect', 'laws', 'party', 'parties',
+    // German equivalents
+    'daten', 'datenschutz', 'verarbeitung', 'personenbezogenen',
+    'einwilligung', 'nutzung', 'informationen', 'speichern',
+    'gespeichert', 'rechte', 'widerspruch', 'löschung',
+];
+
+/**
+ * KEY BIGRAMS that strongly indicate policy content
+ * Source: Top bigram frequencies from policy-keyword-analyzer
+ */
+export const POLICY_BIGRAMS = [
+    'personal data', 'personal information', 'data protection',
+    'privacy policy', 'data privacy', 'applicable law', 'privacy framework',
+    'intellectual property', 'legal obligations', 'legitimate interest',
+    'legitimate interests', 'credit card', 'social media',
+    'contact information', 'privacy rights', 'law enforcement',
+    'third party', 'third parties', 'information collect',
+    'data collect', 'share personal', 'data collected',
+    // German bigrams
+    'personenbezogenen daten', 'personenbezogene daten', 'personenbezogener daten',
+];
+
+/**
  * Key topics that MUST appear in a valid privacy policy
  * At least 2 of these should be present
  */
@@ -337,6 +371,41 @@ export function countNegativeIndicators(text: string): number {
 }
 
 /**
+ * Count high-confidence policy keywords and bigrams
+ */
+export function countHighConfidenceKeywords(text: string): { 
+    keywordCount: number; 
+    bigramCount: number; 
+    foundKeywords: string[];
+    foundBigrams: string[];
+} {
+    const lowerText = text.toLowerCase();
+    const foundKeywords: string[] = [];
+    const foundBigrams: string[] = [];
+    
+    // Count high confidence keywords
+    for (const keyword of HIGH_CONFIDENCE_KEYWORDS) {
+        if (lowerText.includes(keyword.toLowerCase())) {
+            foundKeywords.push(keyword);
+        }
+    }
+    
+    // Count bigrams (stronger signal)
+    for (const bigram of POLICY_BIGRAMS) {
+        if (lowerText.includes(bigram.toLowerCase())) {
+            foundBigrams.push(bigram);
+        }
+    }
+    
+    return {
+        keywordCount: foundKeywords.length,
+        bigramCount: foundBigrams.length,
+        foundKeywords,
+        foundBigrams
+    };
+}
+
+/**
  * Main content validation function
  * Returns whether the content appears to be a genuine privacy policy
  */
@@ -359,11 +428,14 @@ export function validatePolicyContent(text: string): ContentValidationResult {
     // Language detection
     const detectedLanguage = detectLanguage(text);
     
-    // Privacy keyword analysis
+    // Privacy keyword analysis (original multilingual)
     const keywordResult = countPrivacyKeywords(text);
     if (keywordResult.count < CONTENT_REQUIREMENTS.MIN_PRIVACY_KEYWORDS) {
         issues.push(`Not enough privacy keywords (${keywordResult.count}, need ${CONTENT_REQUIREMENTS.MIN_PRIVACY_KEYWORDS})`);
     }
+    
+    // NEW: High-confidence keyword analysis from policy analyzer
+    const highConfidenceResult = countHighConfidenceKeywords(text);
     
     // Required topics check
     const topicsFound = findRequiredTopics(text, detectedLanguage);
@@ -379,20 +451,28 @@ export function validatePolicyContent(text: string): ContentValidationResult {
         issues.push(`More negative indicators (${negativeIndicators}) than positive (${positiveIndicators}) - may not be a privacy policy`);
     }
     
-    // Calculate confidence score
-    let confidence = 50; // Base score
+    // Calculate confidence score (ENHANCED)
+    let confidence = 40; // Lower base score
     
     // Length bonus/penalty
     if (characterCount >= 2000) confidence += 10;
     if (characterCount >= 5000) confidence += 10;
+    if (characterCount >= 10000) confidence += 5;  // Very long policies
     if (characterCount < 500) confidence -= 30;
     
-    // Keyword bonus
-    if (keywordResult.count >= 10) confidence += 15;
-    if (keywordResult.count >= 20) confidence += 10;
+    // Original keyword bonus
+    if (keywordResult.count >= 10) confidence += 10;
+    if (keywordResult.count >= 20) confidence += 5;
+    
+    // NEW: High-confidence keyword bonus (stronger signal)
+    confidence += highConfidenceResult.keywordCount * 2;  // +2 per keyword
+    confidence += highConfidenceResult.bigramCount * 5;   // +5 per bigram (very strong)
+    
+    // Cap high-confidence bonus at 30
+    const highConfBonus = Math.min(30, highConfidenceResult.keywordCount * 2 + highConfidenceResult.bigramCount * 5);
     
     // Topics bonus
-    if (topicsFound.length >= 5) confidence += 15;
+    if (topicsFound.length >= 5) confidence += 10;
     if (topicsFound.length >= 10) confidence += 10;
     
     // Indicator adjustment
@@ -402,11 +482,14 @@ export function validatePolicyContent(text: string): ContentValidationResult {
     // Ensure bounds
     confidence = Math.max(0, Math.min(100, confidence));
     
-    // Final validity check
+    // Final validity check (ENHANCED)
+    // Now uses high-confidence keywords as primary signal
     const isValid = 
         characterCount >= CONTENT_REQUIREMENTS.MIN_LENGTH &&
-        keywordResult.count >= CONTENT_REQUIREMENTS.MIN_PRIVACY_KEYWORDS &&
-        topicsFound.length >= CONTENT_REQUIREMENTS.MIN_SECTIONS &&
+        (keywordResult.count >= CONTENT_REQUIREMENTS.MIN_PRIVACY_KEYWORDS || 
+         highConfidenceResult.keywordCount >= 5) &&  // Allow high-conf keywords as alternative
+        (topicsFound.length >= CONTENT_REQUIREMENTS.MIN_SECTIONS ||
+         highConfidenceResult.bigramCount >= 3) &&   // Allow bigrams as alternative
         negativeIndicators <= positiveIndicators + 2 &&
         confidence >= 40;
     

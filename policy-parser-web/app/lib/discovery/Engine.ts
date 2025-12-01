@@ -9,6 +9,8 @@ import { logger } from '../logger';
 import { deepLogger } from '../deepLogger';
 import { CONFIG } from '../config';
 import { deepScanPrivacyPage } from './deepLinkScanner';
+import { validatePolicyContent, quickRejectCheck, countHighConfidenceKeywords } from './contentValidator';
+import got from 'got';
 
 export class PolicyDiscoveryEngine {
     private strategies: DiscoveryStrategy[];
@@ -163,6 +165,70 @@ export class PolicyDiscoveryEngine {
         // Return best
         let best = allCandidates[0];
         
+        // ============ CONTENT VALIDATION ============
+        // Verify the top candidate actually contains policy content
+        // If not, this triggers deeper search
+        logger.info(`[discovery] Validating top candidate content: ${best.url}`);
+        deepLogger.log('discovery', 'content_validation_start', 'info',
+            `Validating content of top candidate`, {
+                url: best.url,
+                initialConfidence: best.confidence
+            });
+        
+        const contentValidation = await this.validateCandidateContent(best.url);
+        
+        if (!contentValidation.isValid && contentValidation.shouldDeepSearch) {
+            logger.info(`[discovery] Top candidate failed content validation, searching deeper...`);
+            deepLogger.log('discovery', 'content_validation_failed', 'warn',
+                `Top candidate failed content validation, triggering deep search`, {
+                    url: best.url,
+                    validationConfidence: contentValidation.confidence
+                });
+            
+            // Try the next few candidates
+            let foundValidCandidate = false;
+            for (let i = 1; i < Math.min(allCandidates.length, 5); i++) {
+                const candidate = allCandidates[i];
+                const validation = await this.validateCandidateContent(candidate.url);
+                
+                if (validation.isValid) {
+                    logger.info(`[discovery] Found valid policy at ${candidate.url}`);
+                    deepLogger.log('discovery', 'alternative_candidate_valid', 'info',
+                        `Alternative candidate passed validation`, {
+                            url: candidate.url,
+                            confidence: validation.confidence
+                        });
+                    
+                    best = {
+                        ...candidate,
+                        confidence: Math.max(candidate.confidence, validation.confidence),
+                        methodDetail: `Content-validated alternative: ${candidate.methodDetail}`
+                    };
+                    foundValidCandidate = true;
+                    break;
+                }
+            }
+            
+            if (!foundValidCandidate) {
+                // Adjust confidence of best candidate down since content validation failed
+                best.confidence = Math.max(best.confidence - 20, 30);
+                best.methodDetail = `${best.methodDetail} (content validation inconclusive)`;
+            }
+        } else if (contentValidation.isValid) {
+            // Boost confidence if content validation passed
+            logger.info(`[discovery] Content validation PASSED for ${best.url}`);
+            deepLogger.log('discovery', 'content_validation_passed', 'info',
+                `Top candidate passed content validation`, {
+                    url: best.url,
+                    validationConfidence: contentValidation.confidence
+                });
+            
+            // Boost confidence based on content validation
+            const boost = Math.min(10, Math.floor(contentValidation.confidence / 10));
+            best.confidence = Math.min(best.confidence + boost, 98);
+            best.methodDetail = `${best.methodDetail} (content validated: ${contentValidation.confidence}%)`;
+        }
+        
         // ============ DEEP LINK SCANNING ============
         // For privacy policies, try to find nested/more specific pages
         // This handles German patterns like /datenschutz/ -> /datenschutz/datenschutzerklaerung/
@@ -215,5 +281,64 @@ export class PolicyDiscoveryEngine {
 
         logger.info(`Policy found`, { url: best.url, source: best.source, confidence: best.confidence, foundAt: best.foundAt, methodDetail: best.methodDetail });
         return best;
+    }
+
+    /**
+     * Fetch and validate content of a URL to verify it's actually a policy
+     */
+    private async validateCandidateContent(url: string): Promise<{
+        isValid: boolean;
+        confidence: number;
+        shouldDeepSearch: boolean;
+    }> {
+        try {
+            const response = await got(url, {
+                timeout: { request: 10000 },
+                headers: {
+                    'User-Agent': CONFIG.USER_AGENT,
+                    'Accept': 'text/html,application/xhtml+xml',
+                    'Accept-Language': 'en-US,en;q=0.9,de;q=0.8',
+                },
+                retry: { limit: 1 } as any,
+                followRedirect: true,
+                throwHttpErrors: false,
+            });
+
+            if (response.statusCode !== 200) {
+                logger.info(`[validateCandidateContent] ${url} returned ${response.statusCode}`);
+                return { isValid: false, confidence: 0, shouldDeepSearch: false };
+            }
+
+            const content = response.body;
+
+            // Quick rejection check first
+            const quickCheck = quickRejectCheck(content);
+            if (quickCheck.rejected) {
+                logger.info(`[validateCandidateContent] Quick reject: ${quickCheck.reason}`);
+                return { isValid: false, confidence: 0, shouldDeepSearch: true };
+            }
+
+            // Full validation
+            const validation = validatePolicyContent(content);
+            
+            // Also check high-confidence keywords
+            const highConfResult = countHighConfidenceKeywords(content);
+            
+            logger.info(`[validateCandidateContent] Validation result for ${url}`, {
+                isValid: validation.isValid,
+                confidence: validation.confidence,
+                keywords: highConfResult.keywordCount,
+                bigrams: highConfResult.bigramCount,
+            });
+
+            return {
+                isValid: validation.isValid,
+                confidence: validation.confidence,
+                shouldDeepSearch: !validation.isValid && content.length > 500
+            };
+        } catch (error: any) {
+            logger.error(`[validateCandidateContent] Error validating ${url}`, error.message);
+            return { isValid: false, confidence: 0, shouldDeepSearch: false };
+        }
     }
 }
