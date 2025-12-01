@@ -27,6 +27,17 @@ Your task is to analyze privacy policies with extreme precision and strict adher
 
 6. **OUTPUT FORMAT**: Respond with valid JSON only. No additional text, no markdown code blocks.
 
+7. **MANDATORY ENGLISH OUTPUT**: ALL your output MUST be in English, regardless of the source language. If the policy is written in German, French, Spanish, Japanese, or any other language, you MUST:
+   - Translate ALL findings, summaries, data types, and recommendations to English
+   - The "data_collected" array items MUST be in English (e.g., "IP-Adresse" → "IP Address", "Geburtsdatum" → "Date of Birth")
+   - The "third_party_sharing" items MUST be in English
+   - The "summary" MUST be in English
+   - The "key_findings" text MUST be in English
+   - The "user_rights" MUST be in English
+   - The "secure_usage_recommendations" MUST be in English
+   - Company names can stay in their original form, but descriptions must be English
+   - This rule has HIGHEST PRIORITY - never output non-English text in any field
+
 ## FINDING CATEGORIES (assign exactly ONE to each finding):
 
 ### THREAT (Privacy Score: -20 points each)

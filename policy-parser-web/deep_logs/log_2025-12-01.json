@@ -500,5 +500,682 @@
     "timestamp": "2025-12-01T18:03:19.597Z",
     "level": "info",
     "message": "[PolicyVersions] Comparing 229cdc30-5d21-42d5-b948-4123289981ed vs e12ce836-1dd0-4545-a9a6-07aaa64b3141"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:30.018Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "berenberg.de",
+      "cleanDomain": "berenberg.de",
+      "rootDomain": "berenberg.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:30.065Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for berenberg.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:30.467Z",
+    "level": "info",
+    "message": "Starting discovery for berenberg.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:30.468Z",
+    "level": "info",
+    "message": "Found SPECIAL_DOMAIN config for berenberg.de: https://www.berenberg.de/datenschutz/datenschutzerklaerung/"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:30.471Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.berenberg.de/datenschutz/datenschutzerklaerung/"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.486Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 123734
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.610Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 58117
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.921Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutzerklärung - Berenberg",
+      "length": 25774
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.967Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 27143
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.969Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.berenberg.de/datenschutz/datenschutzerklaerung/",
+    "data": {
+      "title": "Datenschutzerklärung - Berenberg",
+      "markdownLength": 27143
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.976Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: f690d2cbf5d91fc7..."
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.987Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache exists but policy has CHANGED"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.990Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:33.992Z",
+    "level": "info",
+    "message": "Starting discovery for berenberg.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.002Z",
+    "level": "info",
+    "message": "Found SPECIAL_DOMAIN config for berenberg.de: https://www.berenberg.de/datenschutz/datenschutzerklaerung/"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.005Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://www.berenberg.de/datenschutz/datenschutzerklaerung/",
+      "source": "special_domain",
+      "confidence": 99,
+      "foundAt": "2025-12-01T18:29:34.004Z",
+      "methodDetail": "Special domain configuration for berenberg.de"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.006Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.berenberg.de/datenschutz/datenschutzerklaerung/"
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.403Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 123734
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.467Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 58117
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.653Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutzerklärung - Berenberg",
+      "length": 25774
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.665Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 27143
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.682Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.berenberg.de/datenschutz/datenschutzerklaerung/",
+    "data": {
+      "title": "Datenschutzerklärung - Berenberg",
+      "markdownLength": 27143
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.685Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 25774
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:29:34.687Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-01T18:30:10.070Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for berenberg.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:30:10.574Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 631ad813-0f0e-4ba6-a218-11fbe7f0544b"
+  },
+  {
+    "timestamp": "2025-12-01T18:30:10.585Z",
+    "level": "info",
+    "message": "Saved to version cache: 631ad813-0f0e-4ba6-a218-11fbe7f0544b"
+  },
+  {
+    "timestamp": "2025-12-01T18:32:08.676Z",
+    "level": "info",
+    "message": "[PolicyVersions] Fetching history for berenberg.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:49.850Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "webnetz.de",
+      "cleanDomain": "webnetz.de",
+      "rootDomain": "webnetz.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:39:49.860Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for webnetz.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:50.552Z",
+    "level": "info",
+    "message": "Starting discovery for webnetz.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:50.554Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:52.795Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 2 unique privacy-related links on webnetz.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:52.798Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:52.800Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T18:39:52.801Z",
+    "level": "info",
+    "message": "Running deep link scan from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:52.802Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://webnetz.de/datenschutz (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:52.805Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:53.131Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=false"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:53.153Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 15 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T18:39:53.157Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:05.630Z",
+    "level": "info",
+    "message": "[DeepScanner] No deeper policy found, original URL is best"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:05.632Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:05.633Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://webnetz.de/datenschutz",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T18:39:52.797Z",
+      "methodDetail": "Found \"Datenschutzerklärung\" in footer (score: 170)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:05.635Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:05.944Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 360233
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:06.001Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 103302
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:06.243Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Untitled",
+      "length": 83259
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:06.293Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 89681
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:06.294Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://webnetz.de/datenschutz",
+    "data": {
+      "title": "Untitled",
+      "markdownLength": 89681
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:06.298Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 41e241e74143dbaf..."
+  },
+  {
+    "timestamp": "2025-12-01T18:40:06.300Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:06.302Z",
+    "level": "info",
+    "message": "Starting discovery for webnetz.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:06.303Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:07.643Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 2 unique privacy-related links on webnetz.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:07.644Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:07.646Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T18:40:07.647Z",
+    "level": "info",
+    "message": "Running deep link scan from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:07.648Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://webnetz.de/datenschutz (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:07.649Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:08.054Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=false"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:08.101Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 15 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:08.103Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.323Z",
+    "level": "info",
+    "message": "[DeepScanner] No deeper policy found, original URL is best"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.325Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.326Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://webnetz.de/datenschutz",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T18:40:07.644Z",
+      "methodDetail": "Found \"Datenschutzerklärung\" in footer (score: 170)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.327Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://webnetz.de/datenschutz",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T18:40:07.644Z",
+      "methodDetail": "Found \"Datenschutzerklärung\" in footer (score: 170)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.328Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.724Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 360233
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.758Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 103302
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.911Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Untitled",
+      "length": 83259
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.936Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 89681
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.939Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://webnetz.de/datenschutz",
+    "data": {
+      "title": "Untitled",
+      "markdownLength": 89681
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.942Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 83259
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:40:15.952Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-01T18:41:17.728Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for webnetz.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:41:18.607Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version b5b85844-d43c-440d-99e6-c0153b2e80ad"
+  },
+  {
+    "timestamp": "2025-12-01T18:41:18.608Z",
+    "level": "info",
+    "message": "Saved to version cache: b5b85844-d43c-440d-99e6-c0153b2e80ad"
+  },
+  {
+    "timestamp": "2025-12-01T18:41:41.258Z",
+    "level": "info",
+    "message": "[PolicyVersions] Fetching history for webnetz.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:07.480Z",
+    "level": "info",
+    "message": "Input 'webnetz' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-01T18:45:08.725Z",
+    "level": "info",
+    "message": "Resolved 'webnetz' to 'webnetz.de'"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:08.818Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "webnetz",
+      "cleanDomain": "webnetz.de",
+      "rootDomain": "webnetz.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:45:08.827Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for webnetz.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:09.176Z",
+    "level": "info",
+    "message": "Starting discovery for webnetz.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:09.178Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.185Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 2 unique privacy-related links on webnetz.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.187Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.189Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.191Z",
+    "level": "info",
+    "message": "Running deep link scan from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.192Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://webnetz.de/datenschutz (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.197Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.549Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=false"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.583Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 15 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:11.585Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.196Z",
+    "level": "info",
+    "message": "[DeepScanner] No deeper policy found, original URL is best"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.199Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.200Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://webnetz.de/datenschutz",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T18:45:11.187Z",
+      "methodDetail": "Found \"Datenschutzerklärung\" in footer (score: 170)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.202Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://webnetz.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.538Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 360233
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.580Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 103302
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.859Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Untitled",
+      "length": 83259
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.907Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 89681
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.909Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://webnetz.de/datenschutz",
+    "data": {
+      "title": "Untitled",
+      "markdownLength": 89681
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.911Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 41e241e74143dbaf..."
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.913Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is UP TO DATE!"
+  },
+  {
+    "timestamp": "2025-12-01T18:45:22.916Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
   }
 ]

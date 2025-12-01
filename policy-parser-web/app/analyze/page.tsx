@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef, useMemo } from "react"
+import { useState, useEffect, useRef, useMemo, Suspense } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -107,7 +107,7 @@ interface PolicySection {
   startIndex: number;
 }
 
-export default function AnalyzePage() {
+function AnalyzeContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [step, setStep] = useState<AnalysisStep>("input")
@@ -1257,7 +1257,7 @@ export default function AnalyzePage() {
                         )}
                       >
                         {/* Label row - icon and label at top */}
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-2 mb-1">
                           <IconComponent className={clsx("h-4 w-4 shrink-0", config.textColor)} />
                           <span className={clsx(
                             "text-[11px] font-bold uppercase tracking-wider",
@@ -1267,7 +1267,7 @@ export default function AnalyzePage() {
                           </span>
                         </div>
                         {/* Description text below */}
-                        <p className="text-sm leading-relaxed text-foreground/90">{text}</p>
+                        <p className="text-sm leading-relaxed text-foreground/90 ml-6">{text}</p>
                       </div>
                     );
                   })
@@ -1443,5 +1443,13 @@ export default function AnalyzePage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function AnalyzePage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
+      <AnalyzeContent />
+    </Suspense>
   )
 }
