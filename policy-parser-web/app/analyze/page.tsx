@@ -1251,22 +1251,23 @@ export default function AnalyzePage() {
                       <div 
                         key={index} 
                         className={clsx(
-                          "p-4 rounded-lg border flex items-start gap-3",
+                          "p-4 rounded-lg border",
                           config.bgColor,
                           config.borderColor
                         )}
                       >
-                        <IconComponent className={clsx("h-5 w-5 shrink-0 mt-0.5", config.textColor)} />
-                        <div className="flex-1 min-w-0">
+                        {/* Label row - icon and label at top */}
+                        <div className="flex items-center gap-2 mb-2">
+                          <IconComponent className={clsx("h-4 w-4 shrink-0", config.textColor)} />
                           <span className={clsx(
-                            "inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded mb-2",
-                            config.textColor,
-                            config.bgColor
+                            "text-[11px] font-bold uppercase tracking-wider",
+                            config.textColor
                           )}>
                             {config.label}
                           </span>
-                          <p className="text-sm leading-relaxed">{text}</p>
                         </div>
+                        {/* Description text below */}
+                        <p className="text-sm leading-relaxed text-foreground/90">{text}</p>
                       </div>
                     );
                   })

@@ -1,5 +1,5 @@
 /**
- * INTELLIGENT POLICY DISCOVERY ENGINE v2.0
+ * INTELLIGENT POLICY DISCOVERY ENGINE v3.0
  * 
  * A ground-breaking, multi-phase approach to finding actual policy documents.
  * This doesn't just append "/privacy" - it intelligently crawls, validates,
@@ -11,6 +11,7 @@
  * 3. Legal/help page discovery and crawling
  * 4. Sitemap parsing
  * 5. Intelligent content validation (verify it's actually a policy)
+ * 5.5. Deep Link Scanning (follow hub pages to find actual policies) - NEW!
  * 6. Search engine fallback with content validation
  */
 
@@ -18,6 +19,7 @@ import got from 'got';
 import * as cheerio from 'cheerio';
 import { CONFIG, PolicyType } from '../config';
 import { logger } from '../logger';
+import { deepScanPrivacyPage } from './deepLinkScanner';
 
 export interface DiscoveredPolicy {
     type: PolicyType;
@@ -239,14 +241,43 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
         }
         phasesCompleted.push(`validation:${validatedPolicies.length}/${discoveredPolicies.size}`);
 
+        // ============ PHASE 5.5: DEEP LINK SCANNING ============
+        // For privacy policies, follow the link and look for nested/specific policy pages
+        // This is critical for German banks where /datenschutz/ is often just a hub
+        logger.info(`[PolicyDiscovery] Phase 5.5: Deep link scanning for actual policy pages`);
+        const enhancedPolicies: DiscoveredPolicy[] = [];
+        
+        for (const policy of validatedPolicies) {
+            if (policy.type === 'privacy') {
+                // Try to find a more specific privacy policy page
+                const deepResult = await deepScanPrivacyPage(policy.url, cleanDomain, 2);
+                
+                if (deepResult && deepResult.confidence > 80) {
+                    logger.info(`[PolicyDiscovery] Deep scan found better privacy URL: ${deepResult.foundUrl} (confidence: ${deepResult.confidence})`);
+                    enhancedPolicies.push({
+                        ...policy,
+                        url: deepResult.foundUrl,
+                        confidence: 'high',
+                        source: 'content_analysis',
+                    });
+                } else {
+                    enhancedPolicies.push(policy);
+                }
+            } else {
+                enhancedPolicies.push(policy);
+            }
+        }
+        
+        phasesCompleted.push(`deep_scan:${enhancedPolicies.filter(p => p.source === 'content_analysis').length}`);
+
         // ============ PHASE 6: SEARCH ENGINE FALLBACK ============
-        const foundTypes = new Set(validatedPolicies.map(p => p.type));
+        const foundTypes = new Set(enhancedPolicies.map(p => p.type));
         if (!foundTypes.has('privacy') || !foundTypes.has('terms')) {
             logger.info(`[PolicyDiscovery] Phase 6: Search engine fallback`);
             const searchPolicies = await searchEngineFallback(cleanDomain, foundTypes);
             searchPolicies.forEach(p => {
                 if (!foundTypes.has(p.type)) {
-                    validatedPolicies.push(p);
+                    enhancedPolicies.push(p);
                 }
             });
             phasesCompleted.push(`search:${searchPolicies.length}`);
@@ -254,16 +285,16 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
 
         // Sort by priority
         const priority: PolicyType[] = ['privacy', 'terms', 'cookies', 'security', 'gdpr', 'ccpa', 'ai', 'acceptable_use'];
-        validatedPolicies.sort((a, b) => priority.indexOf(a.type) - priority.indexOf(b.type));
+        enhancedPolicies.sort((a, b) => priority.indexOf(a.type) - priority.indexOf(b.type));
 
         const duration = Date.now() - startTime;
-        logger.info(`[PolicyDiscovery] Complete! Found ${validatedPolicies.length} validated policies in ${duration}ms`);
+        logger.info(`[PolicyDiscovery] Complete! Found ${enhancedPolicies.length} validated policies in ${duration}ms`);
         logger.info(`[PolicyDiscovery] Phases: ${phasesCompleted.join(' -> ')}`);
 
         return {
             success: true,
             domain: cleanDomain,
-            policies: validatedPolicies,
+            policies: enhancedPolicies,
             discoveryTime: duration,
             phasesCompleted
         };

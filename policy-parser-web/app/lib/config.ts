@@ -373,6 +373,19 @@ export const CONFIG = {
             privacy: 'https://store.steampowered.com/privacy_agreement/',
             terms: 'https://store.steampowered.com/subscriber_agreement/',
         },
+        // German Banks - specific privacy policy paths
+        'berenberg.de': {
+            privacy: 'https://www.berenberg.de/datenschutz/datenschutzerklaerung/',
+        },
+        'www.berenberg.de': {
+            privacy: 'https://www.berenberg.de/datenschutz/datenschutzerklaerung/',
+        },
+        'deutsche-bank.de': {
+            privacy: 'https://www.deutsche-bank.de/pk/footer/datenschutzhinweise.html',
+        },
+        'commerzbank.de': {
+            privacy: 'https://www.commerzbank.de/de/footer/datenschutz.html',
+        },
     } as Record<string, Partial<Record<string, string>>>,
 };
 

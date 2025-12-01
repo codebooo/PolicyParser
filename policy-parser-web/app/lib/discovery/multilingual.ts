@@ -151,9 +151,15 @@ export const MULTILINGUAL_PRIVACY_PATHS: string[] = [
     // English
     '/privacy', '/privacy-policy', '/privacy-notice', '/privacy-statement',
     '/legal/privacy', '/policies/privacy', '/about/privacy',
-    // German
+    // German - INCLUDING NESTED PATHS (common German bank pattern)
     '/datenschutz', '/datenschutzerklaerung', '/datenschutzerklarung',
-    '/rechtliches/datenschutz', '/impressum',
+    '/datenschutz/datenschutzerklaerung', '/datenschutz/datenschutzerklarung',  // NESTED - Berenberg pattern
+    '/datenschutz/datenschutzhinweise', '/datenschutz/datenschutzrichtlinie',
+    '/rechtliches/datenschutz', '/rechtliches/datenschutzerklaerung',
+    '/legal/datenschutz', '/legal/datenschutzerklaerung',
+    '/impressum/datenschutz', '/datenschutzhinweise',
+    '/de/datenschutz', '/de/datenschutzerklaerung',
+    '/de/privacy', '/de/privacy-policy',
     // French
     '/confidentialite', '/politique-de-confidentialite', '/vie-privee',
     '/mentions-legales', '/donnees-personnelles',

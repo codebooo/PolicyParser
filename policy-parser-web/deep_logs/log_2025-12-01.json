@@ -274,5 +274,231 @@
     "timestamp": "2025-12-01T17:29:49.288Z",
     "level": "info",
     "message": "Saved to version cache: e12ce836-1dd0-4545-a9a6-07aaa64b3141"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:46.631Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "berenberg.de",
+      "cleanDomain": "berenberg.de",
+      "rootDomain": "berenberg.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:46.645Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for berenberg.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:47.043Z",
+    "level": "info",
+    "message": "Starting discovery for berenberg.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:47.044Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:47.960Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 3 unique privacy-related links on berenberg.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:47.962Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 3 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:47.963Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T18:02:47.964Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.berenberg.de/datenschutz/"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.334Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 101696
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.384Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 33473
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.530Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutz - Berenberg",
+      "length": 786
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.539Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 801
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.541Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.berenberg.de/datenschutz/",
+    "data": {
+      "title": "Datenschutz - Berenberg",
+      "markdownLength": 801
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.545Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: c78282a9f4886251..."
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.548Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache exists but policy has CHANGED"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.550Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.561Z",
+    "level": "info",
+    "message": "Starting discovery for berenberg.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.563Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.924Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 3 unique privacy-related links on berenberg.de"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.925Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 3 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.926Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.927Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://www.berenberg.de/datenschutz/",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T18:02:48.925Z",
+      "methodDetail": "Found \"Datenschutz\" in footer (score: 175)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:48.928Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.berenberg.de/datenschutz/"
+  },
+  {
+    "timestamp": "2025-12-01T18:02:49.338Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 101696
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:49.362Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 33473
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:49.429Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutz - Berenberg",
+      "length": 786
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:49.431Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 801
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:49.432Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.berenberg.de/datenschutz/",
+    "data": {
+      "title": "Datenschutz - Berenberg",
+      "markdownLength": 801
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:49.433Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 786
+    }
+  },
+  {
+    "timestamp": "2025-12-01T18:02:49.435Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-01T18:03:04.127Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for berenberg.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:03:04.348Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 229cdc30-5d21-42d5-b948-4123289981ed"
+  },
+  {
+    "timestamp": "2025-12-01T18:03:04.350Z",
+    "level": "info",
+    "message": "Saved to version cache: 229cdc30-5d21-42d5-b948-4123289981ed"
+  },
+  {
+    "timestamp": "2025-12-01T18:03:11.380Z",
+    "level": "info",
+    "message": "[PolicyVersions] Fetching history for berenberg.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T18:03:19.597Z",
+    "level": "info",
+    "message": "[PolicyVersions] Comparing 229cdc30-5d21-42d5-b948-4123289981ed vs e12ce836-1dd0-4545-a9a6-07aaa64b3141"
   }
 ]
