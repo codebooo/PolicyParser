@@ -1,6 +1,7 @@
 import got, { RequestError } from 'got';
 import { CONFIG } from '../config';
 import { logger } from '../logger';
+import { handleRateLimitResponse } from '../discovery/rateLimiter';
 
 /**
  * ENHANCED FETCHER
@@ -218,6 +219,9 @@ async function fetchHtmlCore(url: string, userAgent: string): Promise<{ body: st
             
             // Handle rate limiting (429)
             if (response.statusCode === 429) {
+                // Notify central rate limiter about this domain
+                handleRateLimitResponse(url, response.headers['retry-after'] as string);
+                
                 const retryAfter = parseRetryAfter(response.headers['retry-after'] as string);
                 const backoffTime = Math.min(retryAfter * Math.pow(2, attempt), 60000);
                 

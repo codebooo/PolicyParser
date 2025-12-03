@@ -11,11 +11,13 @@ import { logger } from '../logger';
 // Per-domain request tracking
 const domainLastRequestTime: Map<string, number> = new Map();
 const domainRequestCount: Map<string, number> = new Map();
+const domainRateLimited: Map<string, number> = new Map(); // Track domains that returned 429
 
-// Configuration
-const MIN_REQUEST_INTERVAL_MS = 1500;  // 1.5 seconds between requests to same domain
-const BURST_PROTECTION_WINDOW_MS = 10000;  // 10 second window
-const MAX_REQUESTS_PER_WINDOW = 6;  // Max 6 requests per 10 seconds = 0.6 req/sec
+// Configuration - Conservative to avoid rate limiting
+const MIN_REQUEST_INTERVAL_MS = 2000;  // 2 seconds between requests to same domain
+const BURST_PROTECTION_WINDOW_MS = 15000;  // 15 second window  
+const MAX_REQUESTS_PER_WINDOW = 5;  // Max 5 requests per 15 seconds = 0.33 req/sec
+const RATE_LIMITED_COOLDOWN_MS = 30000;  // 30 seconds cooldown after 429
 
 /**
  * Parse Retry-After header value
@@ -89,6 +91,16 @@ function incrementRequestCount(domain: string): void {
 export async function enforceRateLimit(url: string): Promise<void> {
     const domain = extractDomain(url);
     const now = Date.now();
+    
+    // Check if domain was recently rate-limited (429)
+    const rateLimitedUntil = domainRateLimited.get(domain);
+    if (rateLimitedUntil && now < rateLimitedUntil) {
+        const waitTime = rateLimitedUntil - now;
+        logger.info(`[rateLimiter] Domain ${domain} was rate-limited, waiting ${waitTime}ms cooldown`);
+        await sleep(waitTime, true);
+        domainRateLimited.delete(domain);
+    }
+    
     const lastRequest = domainLastRequestTime.get(domain);
     
     // Check burst protection
@@ -126,9 +138,12 @@ export async function enforceRateLimit(url: string): Promise<void> {
  */
 export async function handleRateLimitResponse(url: string, retryAfterHeader?: string): Promise<number> {
     const domain = extractDomain(url);
-    const waitTime = parseRetryAfter(retryAfterHeader);
+    const waitTime = Math.max(parseRetryAfter(retryAfterHeader), RATE_LIMITED_COOLDOWN_MS);
     
     logger.warn(`[rateLimiter] 429 received for ${domain}, enforcing ${waitTime}ms backoff`);
+    
+    // Mark domain as rate-limited with cooldown period
+    domainRateLimited.set(domain, Date.now() + waitTime);
     
     // Reset the request count and set a future timestamp
     domainRequestCount.set(domain, 0);
@@ -145,8 +160,10 @@ export function clearRateLimitTracking(domain?: string): void {
         const normalizedDomain = extractDomain(domain);
         domainLastRequestTime.delete(normalizedDomain);
         domainRequestCount.delete(normalizedDomain);
+        domainRateLimited.delete(normalizedDomain);
     } else {
         domainLastRequestTime.clear();
         domainRequestCount.clear();
+        domainRateLimited.clear();
     }
 }
