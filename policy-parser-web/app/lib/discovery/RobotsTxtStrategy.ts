@@ -4,6 +4,7 @@ import { CONFIG } from '../config';
 import got from 'got';
 import robotsParser from 'robots-parser';
 import { logger } from '../logger';
+import { enforceRateLimit } from './rateLimiter';
 
 export class RobotsTxtStrategy implements DiscoveryStrategy {
     name = 'RobotsTxtStrategy';
@@ -29,10 +30,24 @@ export class RobotsTxtStrategy implements DiscoveryStrategy {
     async getSitemaps(domain: string): Promise<string[]> {
         const robotsUrl = `https://${domain}/robots.txt`;
         try {
+            // Enforce rate limiting before request
+            await enforceRateLimit(robotsUrl);
+            
             const response = await got(robotsUrl, {
                 timeout: { request: 5000 },
-                headers: { 'User-Agent': CONFIG.USER_AGENT }
+                headers: { 'User-Agent': CONFIG.USER_AGENT },
+                throwHttpErrors: false,
             });
+            
+            // Handle rate limiting
+            if (response.statusCode === 429) {
+                logger.warn(`[RobotsTxtStrategy] Rate limited (429) on ${robotsUrl}`);
+                return [];
+            }
+            
+            if (response.statusCode !== 200) {
+                return [];
+            }
 
             const robot = robotsParser(robotsUrl, response.body);
             return robot.getSitemaps();

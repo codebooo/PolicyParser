@@ -16,6 +16,7 @@ import { logger } from '../logger';
 import { CONFIG } from '../config';
 import { isPrivacyUrl, isPrivacyLinkText, scorePrivacyUrl, scoreLinkText } from './multilingual';
 import { isBlockedUrl, validateUrlForDomain } from './domainValidator';
+import { enforceRateLimit } from './rateLimiter';
 
 export interface DeepScanResult {
     originalUrl: string;
@@ -154,6 +155,9 @@ async function scanPage(
     try {
         logger.info(`[DeepScanner] Scanning page at depth ${depth}: ${url}`);
         
+        // Enforce rate limiting before request
+        await enforceRateLimit(url);
+        
         const response = await got(url, {
             timeout: { request: 10000 },
             headers: {
@@ -161,10 +165,16 @@ async function scanPage(
                 'Accept': 'text/html,application/xhtml+xml',
                 'Accept-Language': 'de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7,fr;q=0.6,es;q=0.5',
             },
-            retry: { limit: 1 } as any,
+            retry: { limit: 0 } as any,  // Handle retries ourselves
             followRedirect: true,
             throwHttpErrors: false,
         });
+        
+        // Handle rate limiting
+        if (response.statusCode === 429) {
+            logger.warn(`[DeepScanner] Rate limited (429) on ${url}`);
+            return;
+        }
         
         if (response.statusCode !== 200) {
             logger.info(`[DeepScanner] Page returned ${response.statusCode}`);
@@ -351,6 +361,9 @@ async function tryNestedPaths(
         visited.add(normalizedTest);
         
         try {
+            // Enforce rate limiting before request
+            await enforceRateLimit(testUrl);
+            
             const response = await got(testUrl, {
                 timeout: { request: 5000 },
                 headers: {
@@ -361,6 +374,12 @@ async function tryNestedPaths(
                 followRedirect: true,
                 throwHttpErrors: false,
             });
+            
+            // Handle rate limiting
+            if (response.statusCode === 429) {
+                logger.warn(`[DeepScanner] Rate limited (429) on ${testUrl}, stopping nested path search`);
+                break;  // Stop trying more paths if rate limited
+            }
             
             if (response.statusCode === 200 && response.body.length > 2000) {
                 // Verify it's actually a policy page

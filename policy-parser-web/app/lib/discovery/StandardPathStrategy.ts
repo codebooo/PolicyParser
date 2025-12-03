@@ -4,6 +4,7 @@ import { CONFIG } from '../config';
 import got from 'got';
 import { logger } from '../logger';
 import { isValidPolicyUrl } from '../extractor/fetcher';
+import { enforceRateLimit } from './rateLimiter';
 
 export class StandardPathStrategy implements DiscoveryStrategy {
     name = 'StandardPathStrategy';
@@ -17,10 +18,13 @@ export class StandardPathStrategy implements DiscoveryStrategy {
         if (specialConfig?.privacy) {
             logger.info(`Using special privacy URL for ${domain}: ${specialConfig.privacy}`);
             try {
+                // Enforce rate limiting before request
+                await enforceRateLimit(specialConfig.privacy);
+                
                 // Use GET instead of HEAD - some servers (like Facebook) don't respond well to HEAD
                 const response = await got(specialConfig.privacy, {
                     timeout: { request: 10000 },
-                    retry: { limit: 2 } as any,
+                    retry: { limit: 1 } as any,
                     headers: { 
                         'User-Agent': CONFIG.USER_AGENT,
                         'Accept-Language': 'en-US,en;q=0.9',

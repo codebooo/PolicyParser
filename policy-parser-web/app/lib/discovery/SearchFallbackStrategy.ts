@@ -5,6 +5,7 @@ import got from 'got';
 import * as cheerio from 'cheerio';
 import { logger } from '../logger';
 import { isBlockedDomain } from './domainValidator';
+import { enforceRateLimit } from './rateLimiter';
 
 export class SearchFallbackStrategy implements DiscoveryStrategy {
     name = 'SearchFallbackStrategy';
@@ -39,15 +40,23 @@ export class SearchFallbackStrategy implements DiscoveryStrategy {
         const url = `https://html.duckduckgo.com/html/?q=${query}`;
 
         try {
+            // Enforce rate limiting before request
+            await enforceRateLimit(url);
+            
             const response = await got(url, {
                 headers: { 
                     'User-Agent': CONFIG.USER_AGENT,
                     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 },
                 timeout: { request: 10000 },
-                retry: { limit: 1 } as any,
+                retry: { limit: 0 } as any,
                 throwHttpErrors: false,
             });
+
+            if (response.statusCode === 429) {
+                logger.warn(`DuckDuckGo rate limited (429)`);
+                return candidates;
+            }
 
             if (response.statusCode !== 200) {
                 logger.info(`DuckDuckGo returned status ${response.statusCode}`);
@@ -93,15 +102,23 @@ export class SearchFallbackStrategy implements DiscoveryStrategy {
         const url = `https://www.bing.com/search?q=${query}`;
 
         try {
+            // Enforce rate limiting before request
+            await enforceRateLimit(url);
+            
             const response = await got(url, {
                 headers: { 
                     'User-Agent': CONFIG.USER_AGENT,
                     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 },
                 timeout: { request: 10000 },
-                retry: { limit: 1 } as any,
+                retry: { limit: 0 } as any,
                 throwHttpErrors: false,
             });
+
+            if (response.statusCode === 429) {
+                logger.warn(`Bing rate limited (429)`);
+                return candidates;
+            }
 
             if (response.statusCode !== 200) {
                 return candidates;
