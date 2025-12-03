@@ -1,6 +1,66 @@
-import got from 'got';
+import got, { RequestError } from 'got';
 import { CONFIG } from '../config';
 import { logger } from '../logger';
+
+/**
+ * ENHANCED FETCHER
+ * ================
+ * Optimized policy page fetching with:
+ * - Smart retries with timeout handling
+ * - Locale-aware fetching for German/EU domains
+ * - Bot and cookie handling for complex sites
+ * - Rate limiting (429) handling with exponential backoff
+ */
+
+// ============ RATE LIMITING PROTECTION ============
+// Track last request time per domain to avoid hitting rate limits
+const domainLastRequestTime: Map<string, number> = new Map();
+const MIN_REQUEST_INTERVAL_MS = 1000; // Minimum 1 second between requests to same domain
+
+/**
+ * Parse Retry-After header (can be seconds or HTTP date)
+ */
+function parseRetryAfter(retryAfter: string | undefined): number {
+    if (!retryAfter) return 5000; // Default 5 seconds
+    
+    const seconds = parseInt(retryAfter, 10);
+    if (!isNaN(seconds)) {
+        return Math.min(seconds * 1000, 60000); // Cap at 60 seconds
+    }
+    
+    // Try parsing as HTTP date
+    const date = new Date(retryAfter);
+    if (!isNaN(date.getTime())) {
+        const waitMs = date.getTime() - Date.now();
+        return Math.min(Math.max(waitMs, 1000), 60000);
+    }
+    
+    return 5000;
+}
+
+/**
+ * Sleep function with optional jitter to avoid thundering herd
+ */
+function sleep(ms: number, addJitter = true): Promise<void> {
+    const jitter = addJitter ? Math.random() * 500 : 0;
+    return new Promise(resolve => setTimeout(resolve, ms + jitter));
+}
+
+/**
+ * Enforce rate limit - ensures minimum time between requests to same domain
+ */
+async function enforceRateLimit(domain: string): Promise<void> {
+    const lastRequest = domainLastRequestTime.get(domain);
+    if (lastRequest) {
+        const elapsed = Date.now() - lastRequest;
+        if (elapsed < MIN_REQUEST_INTERVAL_MS) {
+            const waitTime = MIN_REQUEST_INTERVAL_MS - elapsed;
+            logger.info(`[fetcher] Rate limiting: waiting ${waitTime}ms before request to ${domain}`);
+            await sleep(waitTime, false);
+        }
+    }
+    domainLastRequestTime.set(domain, Date.now());
+}
 
 /**
  * URLs or patterns that indicate authentication walls or non-policy pages
@@ -113,38 +173,108 @@ function getEnglishUrlVariants(url: string): string[] {
 }
 
 /**
- * Core fetch function without locale handling
+ * Core fetch function with 429 handling and exponential backoff
  */
 async function fetchHtmlCore(url: string, userAgent: string): Promise<{ body: string; finalUrl: string }> {
-    const response = await got(url, {
-        timeout: { request: CONFIG.TIMEOUT_MS },
-        headers: { 
-            'User-Agent': userAgent,
-            // Request English version of pages
-            'Accept-Language': 'en-US,en;q=0.9',
-            // Some sites check this
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        },
-        retry: {
-            limit: CONFIG.MAX_RETRIES
-        } as any,
-        followRedirect: true,
-        // Check final URL after redirects
-        hooks: {
-            afterResponse: [
-                (response, retryWithMergedOptions) => {
-                    // Check if we got redirected to a login page
-                    const finalUrl = response.url;
-                    if (!isValidPolicyUrl(finalUrl)) {
-                        throw new Error(`Redirected to authentication page: ${finalUrl}`);
-                    }
-                    return response;
-                }
-            ]
-        }
-    });
+    // Extract domain for rate limiting
+    let domain: string;
+    try {
+        domain = new URL(url).hostname;
+    } catch {
+        domain = url;
+    }
     
-    return { body: response.body, finalUrl: response.url };
+    // Enforce rate limiting before making request
+    await enforceRateLimit(domain);
+    
+    const maxRetries = CONFIG.MAX_RETRIES || 3;
+    let lastError: Error | null = null;
+    
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+        try {
+            const response = await got(url, {
+                timeout: { request: CONFIG.TIMEOUT_MS },
+                headers: { 
+                    'User-Agent': userAgent,
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                },
+                retry: { limit: 0 }, // Handle retries ourselves for better 429 control
+                followRedirect: true,
+                throwHttpErrors: false, // Handle status codes ourselves
+                hooks: {
+                    afterResponse: [
+                        (response) => {
+                            // Check if we got redirected to a login page
+                            const finalUrl = response.url;
+                            if (!isValidPolicyUrl(finalUrl)) {
+                                throw new Error(`Redirected to authentication page: ${finalUrl}`);
+                            }
+                            return response;
+                        }
+                    ]
+                }
+            });
+            
+            // Handle rate limiting (429)
+            if (response.statusCode === 429) {
+                const retryAfter = parseRetryAfter(response.headers['retry-after'] as string);
+                const backoffTime = Math.min(retryAfter * Math.pow(2, attempt), 60000);
+                
+                logger.warn(`[fetcher] Rate limited (429) on ${url}, attempt ${attempt + 1}/${maxRetries + 1}, waiting ${backoffTime}ms`);
+                
+                if (attempt < maxRetries) {
+                    await sleep(backoffTime, true);
+                    // Update the domain's last request time after waiting
+                    domainLastRequestTime.set(domain, Date.now());
+                    continue; // Retry
+                } else {
+                    throw new Error(`Rate limited (429) after ${maxRetries + 1} attempts. Please try again later.`);
+                }
+            }
+            
+            // Handle server errors (5xx) with retry
+            if (response.statusCode >= 500) {
+                const backoffTime = 2000 * Math.pow(2, attempt);
+                logger.warn(`[fetcher] Server error (${response.statusCode}) on ${url}, attempt ${attempt + 1}/${maxRetries + 1}`);
+                
+                if (attempt < maxRetries) {
+                    await sleep(backoffTime, true);
+                    continue;
+                } else {
+                    throw new Error(`Server error (${response.statusCode}) after ${maxRetries + 1} attempts`);
+                }
+            }
+            
+            // Handle other error status codes
+            if (response.statusCode >= 400) {
+                throw new Error(`HTTP error ${response.statusCode}: ${response.statusMessage}`);
+            }
+            
+            // Success!
+            return { body: response.body, finalUrl: response.url };
+            
+        } catch (error: any) {
+            lastError = error;
+            
+            // Handle request errors (timeouts, network issues)
+            if (error instanceof RequestError) {
+                const backoffTime = 2000 * Math.pow(2, attempt);
+                logger.warn(`[fetcher] Request error on ${url}: ${error.message}, attempt ${attempt + 1}/${maxRetries + 1}`);
+                
+                if (attempt < maxRetries) {
+                    await sleep(backoffTime, true);
+                    continue;
+                }
+            }
+            
+            // Non-retryable error or max retries exceeded
+            throw error;
+        }
+    }
+    
+    // Should not reach here, but just in case
+    throw lastError || new Error(`Failed to fetch ${url} after ${maxRetries + 1} attempts`);
 }
 
 export async function fetchHtml(url: string): Promise<string> {

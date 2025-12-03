@@ -10,7 +10,8 @@ import { deepLogger } from '../deepLogger';
 import { CONFIG } from '../config';
 import { deepScanPrivacyPage } from './deepLinkScanner';
 import { validatePolicyContent, quickRejectCheck, countHighConfidenceKeywords } from './contentValidator';
-import got from 'got';
+import { enforceRateLimit } from './rateLimiter';
+import got, { RequestError } from 'got';
 
 export class PolicyDiscoveryEngine {
     private strategies: DiscoveryStrategy[];
@@ -285,6 +286,7 @@ export class PolicyDiscoveryEngine {
 
     /**
      * Fetch and validate content of a URL to verify it's actually a policy
+     * Includes rate limiting protection
      */
     private async validateCandidateContent(url: string): Promise<{
         isValid: boolean;
@@ -292,6 +294,9 @@ export class PolicyDiscoveryEngine {
         shouldDeepSearch: boolean;
     }> {
         try {
+            // Enforce rate limiting before making request
+            await enforceRateLimit(url);
+            
             const response = await got(url, {
                 timeout: { request: 10000 },
                 headers: {
@@ -299,10 +304,17 @@ export class PolicyDiscoveryEngine {
                     'Accept': 'text/html,application/xhtml+xml',
                     'Accept-Language': 'en-US,en;q=0.9,de;q=0.8',
                 },
-                retry: { limit: 1 } as any,
+                retry: { limit: 0 } as any, // Handle retries ourselves
                 followRedirect: true,
                 throwHttpErrors: false,
             });
+
+            // Handle rate limiting
+            if (response.statusCode === 429) {
+                logger.warn(`[validateCandidateContent] Rate limited (429) for ${url}`);
+                // Don't fail validation entirely, just return inconclusive
+                return { isValid: false, confidence: 0, shouldDeepSearch: false };
+            }
 
             if (response.statusCode !== 200) {
                 logger.info(`[validateCandidateContent] ${url} returned ${response.statusCode}`);
@@ -337,6 +349,12 @@ export class PolicyDiscoveryEngine {
                 shouldDeepSearch: !validation.isValid && content.length > 500
             };
         } catch (error: any) {
+            // Check if it's a rate limit error from got
+            if (error instanceof RequestError && error.response?.statusCode === 429) {
+                logger.warn(`[validateCandidateContent] Rate limited for ${url}`);
+                return { isValid: false, confidence: 0, shouldDeepSearch: false };
+            }
+            
             logger.error(`[validateCandidateContent] Error validating ${url}`, error.message);
             return { isValid: false, confidence: 0, shouldDeepSearch: false };
         }

@@ -6,6 +6,7 @@ import { logger } from '../logger';
 import { isValidPolicyUrl } from '../extractor/fetcher';
 import { isBlockedDomain } from './domainValidator';
 import { getPrivacyTermsForUrl, isPrivacyRelatedText } from './multilingual';
+import { enforceRateLimit } from './rateLimiter';
 
 /**
  * Domains that require special handling (bot user-agent) to work
@@ -178,9 +179,12 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
             const mainPageUrl = `https://${domain}`;
             logger.info(`DirectFetch: Fetching main page ${mainPageUrl} to scan footer`);
             
+            // Enforce rate limiting before request
+            await enforceRateLimit(mainPageUrl);
+            
             const response = await got(mainPageUrl, {
                 timeout: { request: 15000 },
-                retry: { limit: 1 } as any,
+                retry: { limit: 0 } as any,  // Handle retries ourselves
                 headers: {
                     'User-Agent': useBotUA ? GOOGLEBOT_UA : CONFIG.USER_AGENT,
                     'Accept-Language': 'en-US,en;q=0.9',
@@ -189,6 +193,12 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
                 followRedirect: true,
                 throwHttpErrors: false,
             });
+            
+            // Handle rate limiting
+            if (response.statusCode === 429) {
+                logger.warn(`DirectFetch: Rate limited (429) by ${domain}`);
+                return candidates;
+            }
             
             if (response.statusCode === 200) {
                 const footerLinks = this.extractFooterPrivacyLinks(response.body, domain);
@@ -243,12 +253,15 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
 
     private async tryUrl(url: string, domain: string, source: PolicySource, useBotUA: boolean = false): Promise<PolicyCandidate | null> {
         try {
+            // Enforce rate limiting before request
+            await enforceRateLimit(url);
+            
             // Determine which user agent to use
             const userAgent = useBotUA ? GOOGLEBOT_UA : CONFIG.USER_AGENT;
             
             const response = await got(url, {
                 timeout: { request: 12000 },
-                retry: { limit: 1 } as any,
+                retry: { limit: 0 } as any,  // Handle retries ourselves
                 headers: {
                     'User-Agent': userAgent,
                     'Accept-Language': 'en-US,en;q=0.9',
@@ -257,6 +270,12 @@ export class DirectFetchStrategy implements DiscoveryStrategy {
                 followRedirect: true,
                 throwHttpErrors: false,
             });
+
+            // Handle rate limiting
+            if (response.statusCode === 429) {
+                logger.warn(`DirectFetch: Rate limited (429) for ${url}`);
+                return null;
+            }
 
             // Accept 200 status only for reliability
             if (response.statusCode !== 200) {

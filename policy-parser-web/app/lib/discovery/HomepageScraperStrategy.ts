@@ -14,6 +14,7 @@ import {
     FOOTER_LINK_PATTERNS 
 } from './multilingual';
 import { isBlockedUrl, validateUrlForDomain } from './domainValidator';
+import { enforceRateLimit } from './rateLimiter';
 
 /**
  * Enhanced Homepage Scraper Strategy with Multilingual Support
@@ -121,6 +122,9 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
         const baseUrl = `https://${domain}`;
 
         try {
+            // Enforce rate limiting before request
+            await enforceRateLimit(baseUrl);
+            
             // Fetch homepage
             const response = await got(baseUrl, {
                 timeout: { request: 15000 },
@@ -129,10 +133,16 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
                     // Accept multiple languages to get localized footer links
                     'Accept-Language': 'en-US,en;q=0.9,de;q=0.8,fr;q=0.7,es;q=0.6',
                 },
-                retry: { limit: 2 } as any,
+                retry: { limit: 1 } as any,  // Reduced retries, we handle 429 ourselves
                 followRedirect: true,
                 throwHttpErrors: false,
             });
+
+            // Handle rate limiting
+            if (response.statusCode === 429) {
+                logger.warn(`HomepageScraper: Rate limited (429) by ${domain}`);
+                return candidates;
+            }
 
             if (response.statusCode !== 200) {
                 logger.info(`HomepageScraper: ${baseUrl} returned status ${response.statusCode}`);
