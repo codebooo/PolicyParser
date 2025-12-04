@@ -271,12 +271,17 @@ export default function BrainDashboard() {
                                     </div>
                                 )}
 
-                                <div className="flex items-center justify-between mb-8">
+                                <div className="flex items-center justify-between mb-4">
                                     <div>
                                         <div className="text-sm text-gray-400 mb-1">Confidence Score</div>
                                         <div className="text-5xl font-black text-white">
                                             {(prediction.score * 100).toFixed(1)}%
                                         </div>
+                                        {prediction.rawScore !== undefined && prediction.rawScore !== prediction.score && (
+                                            <div className="text-xs text-gray-500 mt-1">
+                                                Raw: {(prediction.rawScore * 100).toFixed(1)}% (adjusted after analysis)
+                                            </div>
+                                        )}
                                     </div>
                                     <div className={`px-4 py-2 rounded-full font-bold ${prediction.score > 0.8 ? 'bg-green-500/20 text-green-400' :
                                         prediction.score > 0.5 ? 'bg-yellow-500/20 text-yellow-400' :
@@ -286,6 +291,29 @@ export default function BrainDashboard() {
                                             prediction.score > 0.5 ? 'Medium' :
                                                 'Low')}
                                     </div>
+                                </div>
+
+                                {/* Analysis Status */}
+                                <div className="mb-6 p-3 bg-black/30 rounded-lg">
+                                    <div className="flex items-center gap-2 text-sm">
+                                        {prediction.pageAnalyzed ? (
+                                            <span className="text-green-400">✓ Page analyzed</span>
+                                        ) : (
+                                            <span className="text-yellow-400">⚠ Page not analyzed</span>
+                                        )}
+                                        {prediction.contentLength > 0 && (
+                                            <span className="text-gray-500">({(prediction.contentLength / 1000).toFixed(1)}KB)</span>
+                                        )}
+                                        {prediction.isHomepage && (
+                                            <span className="text-orange-400 ml-2">📍 Homepage detected</span>
+                                        )}
+                                    </div>
+                                    {prediction.analysisNote && (
+                                        <div className="text-xs text-yellow-300 mt-2">{prediction.analysisNote}</div>
+                                    )}
+                                    {prediction.fetchError && (
+                                        <div className="text-xs text-red-400 mt-2">Error: {prediction.fetchError}</div>
+                                    )}
                                 </div>
 
                                 {/* Feature Breakdown - All 24 Carl Features */}

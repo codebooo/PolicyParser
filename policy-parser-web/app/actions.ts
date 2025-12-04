@@ -721,17 +721,137 @@ export async function testBrainPrediction(
 ) {
     const carl = await getCarl();
     
-    const features = extractCarlFeatures(linkText, url, context, 'https://example.com');
+    // Determine the base URL for feature extraction
+    let baseUrl = 'https://example.com';
+    let pageContent: string | undefined = undefined;
+    let fetchError: string | undefined = undefined;
+    
+    try {
+        // Parse the URL to get the base domain
+        const urlObj = new URL(url.startsWith('http') ? url : `https://${url}`);
+        baseUrl = `${urlObj.protocol}//${urlObj.hostname}`;
+        
+        // Actually fetch the page content to analyze
+        logger.info(`[Carl Test] Fetching page content from: ${urlObj.toString()}`);
+        
+        try {
+            const html = await fetchHtml(urlObj.toString());
+            if (html && html.length > 0) {
+                pageContent = html;
+                logger.info(`[Carl Test] Fetched ${pageContent.length} chars of content`);
+            } else {
+                fetchError = 'Empty response';
+            }
+        } catch (fetchErr) {
+            fetchError = fetchErr instanceof Error ? fetchErr.message : 'Failed to fetch page';
+            logger.warn(`[Carl Test] Could not fetch page: ${fetchError}`);
+        }
+    } catch (e) {
+        fetchError = e instanceof Error ? e.message : 'Invalid URL';
+        logger.warn(`[Carl Test] URL parse error: ${fetchError}`);
+    }
+    
+    // Extract features with actual page content
+    const features = extractCarlFeatures(linkText, url, context, baseUrl, pageContent);
     const prediction = carl.predict(features);
+    
+    // Determine if this looks like a homepage vs actual policy page
+    const isHomepage = checkIfHomepage(url);
+    
+    // Adjust confidence if it's a homepage without policy content
+    let adjustedScore = prediction.score;
+    let adjustedConfidence = prediction.confidence;
+    let analysisNote = '';
+    
+    if (isHomepage && pageContent) {
+        // If it's a homepage, check if it actually contains policy content
+        const hasPrivacyContent = checkPageForPolicyContent(pageContent);
+        if (!hasPrivacyContent) {
+            // Homepage without policy content should have low score
+            adjustedScore = Math.min(prediction.score, 0.2);
+            adjustedConfidence = 'low';
+            analysisNote = 'This appears to be a homepage, not a privacy policy page.';
+        }
+    } else if (!pageContent && !fetchError) {
+        analysisNote = 'Could not analyze page content.';
+    }
 
     return {
         features,
         featureNames: getCarlFeatureNames(),
-        score: prediction.score,
-        isPolicy: prediction.isPolicy,
-        confidence: prediction.confidence,
-        generation: prediction.generation
+        score: adjustedScore,
+        rawScore: prediction.score,
+        isPolicy: adjustedScore > 0.5,
+        confidence: adjustedConfidence,
+        generation: prediction.generation,
+        pageAnalyzed: !!pageContent,
+        contentLength: pageContent?.length || 0,
+        fetchError,
+        analysisNote,
+        isHomepage
     };
+}
+
+/**
+ * Check if a URL appears to be a homepage (no path or just /)
+ */
+function checkIfHomepage(url: string): boolean {
+    try {
+        const urlObj = new URL(url.startsWith('http') ? url : `https://${url}`);
+        const path = urlObj.pathname;
+        // Homepage has no path, just /, or index.html/php
+        return path === '/' || path === '' || /^\/(index\.(html?|php|asp))?$/i.test(path);
+    } catch {
+        return false;
+    }
+}
+
+/**
+ * Check if page content contains privacy policy indicators
+ */
+function checkPageForPolicyContent(content: string): boolean {
+    const lowerContent = content.toLowerCase();
+    
+    // Strong indicators that this IS a privacy policy
+    const strongIndicators = [
+        'privacy policy', 'privacy notice', 'data protection policy',
+        'datenschutzerklärung', 'datenschutzrichtlinie', 'datenschutzhinweise',
+        'politique de confidentialité', 'política de privacidad',
+        'we collect', 'we may collect', 'personal information',
+        'personenbezogene daten', 'datenerhebung', 'datenverarbeitung',
+        'your rights', 'ihre rechte', 'right to access', 'right to erasure',
+        'gdpr', 'dsgvo', 'ccpa'
+    ];
+    
+    // Count how many strong indicators are present
+    let strongMatches = 0;
+    for (const indicator of strongIndicators) {
+        if (lowerContent.includes(indicator)) {
+            strongMatches++;
+        }
+    }
+    
+    // Also check for structural elements common in policies
+    const structuralPatterns = [
+        /what (information|data) (we|do we) collect/i,
+        /how we use your (data|information)/i,
+        /third.?part(y|ies)/i,
+        /cookie(s)? (policy|notice)/i,
+        /data retention/i,
+        /contact us.*privacy/i,
+        /welche daten.*erheben/i,
+        /wie.*verwenden.*daten/i
+    ];
+    
+    let structuralMatches = 0;
+    for (const pattern of structuralPatterns) {
+        if (pattern.test(lowerContent)) {
+            structuralMatches++;
+        }
+    }
+    
+    // Consider it a policy if we have at least 2 strong indicators or 3 structural matches
+    return strongMatches >= 2 || structuralMatches >= 3 || (strongMatches >= 1 && structuralMatches >= 1);
 }
 
 export async function trainBrain(
