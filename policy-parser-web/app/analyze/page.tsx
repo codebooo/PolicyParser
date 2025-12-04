@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell, List, Clock } from "lucide-react"
 import { clsx } from "clsx"
-import { analyzeDomain, discoverAllPolicies, analyzeSpecificPolicy, analyzeText } from "../actions"
+import { analyzeDomain, discoverAllPolicies, analyzeSpecificPolicy, analyzeText, submitPolicyFeedback } from "../actions"
 import { readStreamableValue } from "@ai-sdk/rsc"
 import { checkProStatus } from "../checkProStatus"
 import { trackPolicy, untrackPolicy, getTrackedPolicies } from "../trackingActions"
@@ -46,52 +46,52 @@ interface PolicyAnalysisResult {
 }
 
 // Category styling configuration
-const FINDING_CATEGORY_CONFIG: Record<FindingCategory, { 
-  label: string; 
-  bgColor: string; 
-  textColor: string; 
+const FINDING_CATEGORY_CONFIG: Record<FindingCategory, {
+  label: string;
+  bgColor: string;
+  textColor: string;
   borderColor: string;
   icon: React.ComponentType<{ className?: string }>;
 }> = {
-  THREAT: { 
-    label: "THREAT", 
-    bgColor: "bg-red-500/10", 
-    textColor: "text-red-500", 
+  THREAT: {
+    label: "THREAT",
+    bgColor: "bg-red-500/10",
+    textColor: "text-red-500",
     borderColor: "border-red-500/30",
     icon: AlertOctagon
   },
-  WARNING: { 
-    label: "WARNING", 
-    bgColor: "bg-orange-500/10", 
-    textColor: "text-orange-400", 
+  WARNING: {
+    label: "WARNING",
+    bgColor: "bg-orange-500/10",
+    textColor: "text-orange-400",
     borderColor: "border-orange-500/30",
     icon: AlertTriangle
   },
-  CAUTION: { 
-    label: "CAUTION", 
-    bgColor: "bg-yellow-500/10", 
-    textColor: "text-yellow-400", 
+  CAUTION: {
+    label: "CAUTION",
+    bgColor: "bg-yellow-500/10",
+    textColor: "text-yellow-400",
     borderColor: "border-yellow-500/30",
     icon: CircleAlert
   },
-  NORMAL: { 
-    label: "NORMAL", 
-    bgColor: "bg-slate-500/10", 
-    textColor: "text-slate-400", 
+  NORMAL: {
+    label: "NORMAL",
+    bgColor: "bg-slate-500/10",
+    textColor: "text-slate-400",
     borderColor: "border-slate-500/30",
     icon: Info
   },
-  GOOD: { 
-    label: "GOOD", 
-    bgColor: "bg-green-500/10", 
-    textColor: "text-green-400", 
+  GOOD: {
+    label: "GOOD",
+    bgColor: "bg-green-500/10",
+    textColor: "text-green-400",
     borderColor: "border-green-500/30",
     icon: CircleCheck
   },
-  BRILLIANT: { 
-    label: "BRILLIANT", 
-    bgColor: "bg-cyan-500/10", 
-    textColor: "text-cyan-400", 
+  BRILLIANT: {
+    label: "BRILLIANT",
+    bgColor: "bg-cyan-500/10",
+    textColor: "text-cyan-400",
     borderColor: "border-cyan-500/30",
     icon: Sparkles
   },
@@ -136,15 +136,15 @@ function AnalyzeContent() {
 
   // Original Text Modal State - removed, now using dedicated page
   const [showOriginalText, setShowOriginalText] = useState(false)
-  
+
   // Dropdown States
   const [dataCollectedOpen, setDataCollectedOpen] = useState(true)
   const [thirdPartyOpen, setThirdPartyOpen] = useState(true)
-  
+
   // Expanded item states for long text
   const [expandedDataItems, setExpandedDataItems] = useState<Set<number>>(new Set())
   const [expandedThirdPartyItems, setExpandedThirdPartyItems] = useState<Set<number>>(new Set())
-  
+
   // Community Score Voting UI
   const [showVoteSlider, setShowVoteSlider] = useState(false)
   const [voteValue, setVoteValue] = useState(50)
@@ -152,6 +152,11 @@ function AnalyzeContent() {
   // File Upload & Paste Text State
   const [pastedText, setPastedText] = useState("")
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null)
+
+  // Feedback State
+  const [feedbackSent, setFeedbackSent] = useState(false)
+  const [correctUrlInput, setCorrectUrlInput] = useState("")
+  const [showFeedbackInput, setShowFeedbackInput] = useState(false)
 
   useEffect(() => {
     checkProStatus().then(status => {
@@ -187,6 +192,11 @@ function AnalyzeContent() {
   }, [searchParams, router])
 
   const startAnalysis = async () => {
+    // Reset feedback state for new analysis
+    setFeedbackSent(false);
+    setShowFeedbackInput(false);
+    setCorrectUrlInput('');
+
     // Handle file/paste text analysis
     if (inputMethod === "file" || inputMethod === "paste") {
       await startTextAnalysis();
@@ -212,7 +222,7 @@ function AnalyzeContent() {
 
       for await (const update of readStreamableValue(output)) {
         if (!update) continue;
-        
+
         if (update.status === 'complete') {
           setAnalysisResults(update.data)
           setSourceUrl(update.data?.url || null)
@@ -260,7 +270,7 @@ function AnalyzeContent() {
 
       for await (const update of readStreamableValue(output)) {
         if (!update) continue;
-        
+
         if (update.status === 'complete') {
           setAnalysisResults(update.data)
           setSourceUrl(null) // No URL for text analysis
@@ -346,36 +356,36 @@ function AnalyzeContent() {
 
       // Step 2: Analyze each policy
       setStatusMessage("Analyzing policies...")
-      
+
       for (let i = 0; i < discovery.policies.length; i++) {
         const policy = discovery.policies[i];
-        
-        setPolicyResults(prev => prev.map((p, idx) => 
+
+        setPolicyResults(prev => prev.map((p, idx) =>
           idx === i ? { ...p, status: 'analyzing' } : p
         ));
-        
+
         setProgressSteps(prev => [...prev, `Analyzing ${policy.name}...`])
-        
+
         try {
           const { output } = await analyzeSpecificPolicy(policy.url, policy.name);
-          
+
           for await (const update of readStreamableValue(output)) {
             if (!update) continue;
-            
+
             if (update.status === 'complete') {
-              setPolicyResults(prev => prev.map((p, idx) => 
+              setPolicyResults(prev => prev.map((p, idx) =>
                 idx === i ? { ...p, status: 'complete', analysis: update.data } : p
               ));
               setProgressSteps(prev => [...prev, `✓ ${policy.name} analyzed (Score: ${update.data?.score || 'N/A'})`])
             } else if (update.status === 'error') {
-              setPolicyResults(prev => prev.map((p, idx) => 
+              setPolicyResults(prev => prev.map((p, idx) =>
                 idx === i ? { ...p, status: 'error', error: update.message } : p
               ));
               setProgressSteps(prev => [...prev, `✗ ${policy.name} failed: ${update.message}`])
             }
           }
         } catch (e: any) {
-          setPolicyResults(prev => prev.map((p, idx) => 
+          setPolicyResults(prev => prev.map((p, idx) =>
             idx === i ? { ...p, status: 'error', error: e?.message || 'Unknown error' } : p
           ));
         }
@@ -386,7 +396,7 @@ function AnalyzeContent() {
       // For now, we'll set these based on the first policy
       if (discovery.policies.length > 0) {
         setSourceUrl(discovery.policies[0].url);
-        
+
         // Fetch extra data for the domain
         fetchExtraData(discovery.policies[0].url);
       }
@@ -444,14 +454,14 @@ function AnalyzeContent() {
   const handleTrackToggle = async () => {
     const policyUrl = getCurrentPolicyUrl();
     const domain = getCurrentDomain();
-    
+
     if (!domain) {
       alert("Unable to determine domain for tracking");
       return;
     }
-    
+
     setTrackingLoading(true);
-    
+
     try {
       if (isTracked) {
         const result = await untrackPolicy(domain);
@@ -480,7 +490,7 @@ function AnalyzeContent() {
   const handleVote = async (score: number) => {
     const domain = getCurrentDomain();
     if (!domain) return;
-    
+
     const result = await submitCommunityScore(domain, score);
     if (result.success && 'averageScore' in result) {
       setCommunityScore(result.averageScore);
@@ -518,24 +528,24 @@ function AnalyzeContent() {
   // Calculate aggregate score for comprehensive mode
   const aggregateScore = useMemo(() => {
     if (analysisMode !== "comprehensive" || policyResults.length === 0) return null;
-    
+
     const completedResults = policyResults.filter(p => p.status === 'complete' && p.analysis?.score !== undefined);
     if (completedResults.length === 0) return null;
-    
+
     // Weighted average: Privacy Policy and Terms of Service are more important
     let weightedSum = 0;
     let totalWeight = 0;
-    
+
     completedResults.forEach(p => {
       let weight = 1;
       if (p.type === 'privacy') weight = 3; // Privacy policy most important
       else if (p.type === 'terms') weight = 2; // Terms second most important
       else weight = 1;
-      
+
       weightedSum += (p.analysis?.score || 0) * weight;
       totalWeight += weight;
     });
-    
+
     return Math.round(weightedSum / totalWeight);
   }, [analysisMode, policyResults]);
 
@@ -564,7 +574,7 @@ function AnalyzeContent() {
   }
 
   // Filter out failed policies - only show successfully analyzed ones
-  const successfulPolicies = useMemo(() => 
+  const successfulPolicies = useMemo(() =>
     policyResults.filter(p => p.status === 'complete' && p.analysis),
     [policyResults]
   );
@@ -579,8 +589,8 @@ function AnalyzeContent() {
   }, [successfulPolicies, policyResults, selectedPolicyIndex]);
 
   const currentPolicyResult = successfulPolicies[selectedSuccessfulIndex] || policyResults[selectedPolicyIndex];
-  const displayedAnalysis = analysisMode === "comprehensive" && currentPolicyResult?.analysis 
-    ? currentPolicyResult.analysis 
+  const displayedAnalysis = analysisMode === "comprehensive" && currentPolicyResult?.analysis
+    ? currentPolicyResult.analysis
     : analysisResults;
 
   return (
@@ -659,8 +669,8 @@ function AnalyzeContent() {
               />
               <span className={clsx(
                 "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 rounded-md px-3 py-1",
-                inputMethod === "file" 
-                  ? "bg-primary text-primary-foreground shadow hover:bg-primary/90 shadow-[0_0_10px_rgba(6,182,212,0.3)]" 
+                inputMethod === "file"
+                  ? "bg-primary text-primary-foreground shadow hover:bg-primary/90 shadow-[0_0_10px_rgba(6,182,212,0.3)]"
                   : "hover:bg-accent hover:text-accent-foreground"
               )}>
                 <UploadCloud className="h-4 w-4" />
@@ -779,7 +789,7 @@ function AnalyzeContent() {
               size="lg"
               className={clsx(
                 "w-full max-w-xl text-lg h-14 rounded-lg transition-all",
-                analysisMode === "comprehensive" 
+                analysisMode === "comprehensive"
                   ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.7)]"
                   : "shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.7)]"
               )}
@@ -867,9 +877,9 @@ function AnalyzeContent() {
                   Back to Search
                 </Button>
                 {displayedAnalysis.rawPolicyText && (
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={openOriginalTextPage}
                     className="border-white/10 hover:bg-white/5"
                   >
@@ -885,14 +895,14 @@ function AnalyzeContent() {
               {(sourceUrl || (analysisMode === "comprehensive" && currentPolicyResult?.url)) && (
                 <div className="flex items-center gap-2">
                   <LinkIcon className="h-4 w-4 text-muted-foreground" />
-                  <a 
+                  <a
                     href={analysisMode === "comprehensive" && currentPolicyResult?.url ? currentPolicyResult.url : sourceUrl!}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-primary hover:underline truncate max-w-md"
                   >
-                    {analysisMode === "comprehensive" && currentPolicyResult?.url 
-                      ? currentPolicyResult.url 
+                    {analysisMode === "comprehensive" && currentPolicyResult?.url
+                      ? currentPolicyResult.url
                       : sourceUrl}
                   </a>
                   <span className="text-xs text-muted-foreground">
@@ -913,7 +923,7 @@ function AnalyzeContent() {
                 <div className="flex items-center gap-2 mt-2">
                   <span className="px-2 py-1 text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20 rounded-full flex items-center gap-1">
                     <Zap className="h-3 w-3" />
-                    Loaded from cache • Saved API credits!
+                    Loaded from cache
                   </span>
                   {displayedAnalysis.cachedAt && (
                     <span className="text-xs text-muted-foreground">
@@ -1018,8 +1028,8 @@ function AnalyzeContent() {
           {userId && (
             <Card className={clsx(
               "border transition-all",
-              isTracked 
-                ? "bg-primary/10 border-primary/30" 
+              isTracked
+                ? "bg-primary/10 border-primary/30"
                 : "bg-white/5 border-white/10 hover:border-primary/30"
             )}>
               <CardContent className="p-4 flex items-center justify-between">
@@ -1035,8 +1045,8 @@ function AnalyzeContent() {
                       {isTracked ? "Tracking this policy" : "Track this policy"}
                     </h3>
                     <p className="text-xs text-muted-foreground">
-                      {isTracked 
-                        ? `You'll be notified when ${getCurrentDomain() || 'this policy'} changes` 
+                      {isTracked
+                        ? `You'll be notified when ${getCurrentDomain() || 'this policy'} changes`
                         : "Get notified when this privacy policy is updated"
                       }
                     </p>
@@ -1102,7 +1112,7 @@ function AnalyzeContent() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex flex-col gap-2 w-full md:w-auto">
                   {userVote !== null ? (
                     <div className="flex items-center gap-2">
@@ -1171,18 +1181,18 @@ function AnalyzeContent() {
 
           {/* Policy Version History - PRO Feature */}
           {analyzedDomain && (
-            <PolicyVersions 
+            <PolicyVersions
               domain={analyzedDomain}
-              policyType={analysisMode === "comprehensive" && currentPolicyResult?.type 
-                ? currentPolicyResult.type 
+              policyType={analysisMode === "comprehensive" && currentPolicyResult?.type
+                ? currentPolicyResult.type
                 : 'privacy'
               }
               isPro={isPro}
               onVersionSelect={(versionAnalysis) => {
                 // Update displayed analysis with historical version
                 if (analysisMode === "comprehensive" && currentPolicyResult) {
-                  setPolicyResults(prev => prev.map((p, idx) => 
-                    idx === selectedPolicyIndex 
+                  setPolicyResults(prev => prev.map((p, idx) =>
+                    idx === selectedPolicyIndex
                       ? { ...p, analysis: versionAnalysis }
                       : p
                   ));
@@ -1204,8 +1214,8 @@ function AnalyzeContent() {
               </CardHeader>
               <CardContent className="space-y-3">
                 {displayedAnalysis.secure_usage_recommendations.map((rec: SecureUsageRecommendation, index: number) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className={clsx(
                       "flex items-start gap-3 p-3 rounded-lg border",
                       rec.priority === 'high' ? "bg-green-500/10 border-green-500/30" :
@@ -1246,10 +1256,10 @@ function AnalyzeContent() {
                     const text = isLabeledFinding ? (finding as LabeledFinding).text : (finding as string);
                     const config = FINDING_CATEGORY_CONFIG[category];
                     const IconComponent = config.icon;
-                    
+
                     return (
-                      <div 
-                        key={index} 
+                      <div
+                        key={index}
                         className={clsx(
                           "p-4 rounded-lg border",
                           config.bgColor,
@@ -1306,7 +1316,7 @@ function AnalyzeContent() {
                     {displayedAnalysis.data_collected?.map((item: string, i: number) => {
                       const isLong = item.length > 40;
                       const isExpanded = expandedDataItems.has(i);
-                      
+
                       return (
                         <button
                           key={i}
@@ -1365,7 +1375,7 @@ function AnalyzeContent() {
                     {displayedAnalysis.third_party_sharing?.map((item: string, i: number) => {
                       const isLong = item.length > 40;
                       const isExpanded = expandedThirdPartyItems.has(i);
-                      
+
                       return (
                         <button
                           key={i}
@@ -1418,8 +1428,8 @@ function AnalyzeContent() {
                       }}
                       className={clsx(
                         "p-4 rounded-lg border transition-all text-left",
-                        selectedSuccessfulIndex === index 
-                          ? "bg-primary/10 border-primary/30" 
+                        selectedSuccessfulIndex === index
+                          ? "bg-primary/10 border-primary/30"
                           : "bg-background/40 border-white/10 hover:bg-white/5"
                       )}
                     >
@@ -1440,6 +1450,89 @@ function AnalyzeContent() {
               </CardContent>
             </Card>
           )}
+
+          {/* Admin / Feedback Section */}
+          <Card className="bg-background/40 border-white/10">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Sparkles className="h-4 w-4 text-primary" />
+                Help Improve Our AI
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!feedbackSent ? (
+                <div className="space-y-4">
+                  <p className="text-sm text-muted-foreground">
+                    Did we find the correct policy? Your feedback trains our Neural Network.
+                  </p>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-green-500/30 hover:bg-green-500/10 hover:text-green-400"
+                      onClick={() => {
+                        // Immediately update UI
+                        setFeedbackSent(true);
+                        
+                        // Run training in background (don't await)
+                        const domain = analyzedDomain || '';
+                        const url = analysisMode === "comprehensive" && currentPolicyResult?.url ? currentPolicyResult.url : sourceUrl || '';
+                        if (domain && url) {
+                          submitPolicyFeedback(domain, url).catch(console.error);
+                        }
+                      }}
+                    >
+                      <CheckCircle2 className="h-4 w-4 mr-2" />
+                      Yes, Correct
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-red-500/30 hover:bg-red-500/10 hover:text-red-400"
+                      onClick={() => setShowFeedbackInput(true)}
+                    >
+                      <X className="h-4 w-4 mr-2" />
+                      No, Incorrect
+                    </Button>
+                  </div>
+
+                  {showFeedbackInput && (
+                    <div className="space-y-2 animate-in fade-in slide-in-from-top-2">
+                      <Input
+                        placeholder="Paste the correct policy URL here..."
+                        value={correctUrlInput}
+                        onChange={(e) => setCorrectUrlInput(e.target.value)}
+                        className="bg-background/60"
+                      />
+                      <Button
+                        size="sm"
+                        disabled={!correctUrlInput}
+                        onClick={() => {
+                          // Immediately update UI
+                          setFeedbackSent(true);
+                          setShowFeedbackInput(false);
+                          
+                          // Run training in background (don't await)
+                          const domain = analyzedDomain || '';
+                          const incorrectUrl = analysisMode === "comprehensive" && currentPolicyResult?.url ? currentPolicyResult.url : sourceUrl || '';
+                          if (domain && correctUrlInput) {
+                            submitPolicyFeedback(domain, correctUrlInput, incorrectUrl).catch(console.error);
+                          }
+                        }}
+                      >
+                        Submit Correction
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 text-green-400 animate-in fade-in">
+                  <CheckCircle2 className="h-5 w-5" />
+                  <p className="text-sm font-medium">Thank you! The Neural Network has been updated.</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </div>
       )}
     </div>
