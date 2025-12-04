@@ -11,6 +11,8 @@ import { CONFIG } from '../config';
 import { deepScanPrivacyPage } from './deepLinkScanner';
 import { validatePolicyContent, quickRejectCheck, countHighConfidenceKeywords } from './contentValidator';
 import { enforceRateLimit } from './rateLimiter';
+import { extractCarlFeatures } from '../carl/FeatureExtractor';
+import { getCarl } from '../carl/Carl';
 import got, { RequestError } from 'got';
 
 export class PolicyDiscoveryEngine {
@@ -286,6 +288,7 @@ export class PolicyDiscoveryEngine {
 
     /**
      * Fetch and validate content of a URL to verify it's actually a policy
+     * Uses Carl neural network + heuristic validation
      * Includes rate limiting protection
      */
     private async validateCandidateContent(url: string): Promise<{
@@ -330,23 +333,52 @@ export class PolicyDiscoveryEngine {
                 return { isValid: false, confidence: 0, shouldDeepSearch: true };
             }
 
-            // Full validation
+            // Use Carl for neural network validation
+            let carlConfidence = 0;
+            try {
+                const carl = await getCarl();
+                const features = extractCarlFeatures(
+                    'Privacy Policy',  // Generic link text
+                    url,
+                    'footer',          // Assume footer context
+                    new URL(url).origin,
+                    content            // Pass actual page content
+                );
+                const prediction = carl.predict(features);
+                carlConfidence = prediction.score * 100;
+                logger.info(`[validateCandidateContent] Carl confidence for ${url}: ${carlConfidence.toFixed(1)}%`);
+            } catch (e) {
+                logger.warn(`[validateCandidateContent] Carl not available, using heuristics only`);
+            }
+
+            // Full heuristic validation
             const validation = validatePolicyContent(content);
             
             // Also check high-confidence keywords
             const highConfResult = countHighConfidenceKeywords(content);
             
+            // Combine Carl and heuristic scores
+            // If Carl is confident (>70%) OR heuristics pass, consider it valid
+            const combinedConfidence = carlConfidence > 0 
+                ? Math.round(carlConfidence * 0.6 + validation.confidence * 0.4)
+                : validation.confidence;
+            
+            const isValid = carlConfidence >= 70 || validation.isValid || 
+                           (carlConfidence >= 50 && highConfResult.keywordCount >= 3);
+            
             logger.info(`[validateCandidateContent] Validation result for ${url}`, {
-                isValid: validation.isValid,
-                confidence: validation.confidence,
+                isValid,
+                carlConfidence: carlConfidence.toFixed(1),
+                heuristicConfidence: validation.confidence,
+                combinedConfidence,
                 keywords: highConfResult.keywordCount,
                 bigrams: highConfResult.bigramCount,
             });
 
             return {
-                isValid: validation.isValid,
-                confidence: validation.confidence,
-                shouldDeepSearch: !validation.isValid && content.length > 500
+                isValid,
+                confidence: combinedConfidence,
+                shouldDeepSearch: !isValid && content.length > 500
             };
         } catch (error: any) {
             // Check if it's a rate limit error from got

@@ -1,6 +1,6 @@
 export const CONFIG = {
     MAX_RETRIES: 2,
-    TIMEOUT_MS: 15000,
+    TIMEOUT_MS: 30000,
     USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
 
     // Discovery - Standard paths for privacy policy (default)
@@ -75,11 +75,11 @@ export const CONFIG = {
         privacy: {
             name: 'Privacy Policy',
             paths: [
-                '/privacy', 
-                '/privacy-policy', 
-                '/legal/privacy', 
-                '/legal/privacy-policy', 
-                '/data-protection', 
+                '/privacy',
+                '/privacy-policy',
+                '/legal/privacy',
+                '/legal/privacy-policy',
+                '/data-protection',
                 '/privacypolicy',
                 '/about/privacy',
                 '/policies/privacy',
@@ -97,12 +97,12 @@ export const CONFIG = {
         terms: {
             name: 'Terms of Service',
             paths: [
-                '/terms', 
-                '/tos', 
-                '/terms-of-service', 
-                '/legal/terms', 
-                '/terms-and-conditions', 
-                '/termsofservice', 
+                '/terms',
+                '/tos',
+                '/terms-of-service',
+                '/legal/terms',
+                '/terms-and-conditions',
+                '/termsofservice',
                 '/user-agreement',
                 '/policies/terms',
                 '/about/terms',
@@ -117,10 +117,10 @@ export const CONFIG = {
         cookies: {
             name: 'Cookie Policy',
             paths: [
-                '/cookies', 
-                '/cookie-policy', 
-                '/legal/cookies', 
-                '/cookiepolicy', 
+                '/cookies',
+                '/cookie-policy',
+                '/legal/cookies',
+                '/cookiepolicy',
                 '/cookie-notice',
                 '/policies/cookies',
                 '/help/cookies',
@@ -132,10 +132,10 @@ export const CONFIG = {
         security: {
             name: 'Security Policy',
             paths: [
-                '/security', 
-                '/security-policy', 
-                '/legal/security', 
-                '/trust', 
+                '/security',
+                '/security-policy',
+                '/legal/security',
+                '/trust',
                 '/trust-center',
                 '/about/security',
                 '/security-center',
@@ -146,9 +146,9 @@ export const CONFIG = {
         gdpr: {
             name: 'GDPR Notice',
             paths: [
-                '/gdpr', 
-                '/legal/gdpr', 
-                '/eu-privacy', 
+                '/gdpr',
+                '/legal/gdpr',
+                '/eu-privacy',
                 '/european-privacy',
                 '/privacy/gdpr',
                 '/privacy-eu',
@@ -159,10 +159,10 @@ export const CONFIG = {
         ccpa: {
             name: 'CCPA Notice',
             paths: [
-                '/ccpa', 
-                '/california-privacy', 
-                '/legal/ccpa', 
-                '/ca-privacy', 
+                '/ccpa',
+                '/california-privacy',
+                '/legal/ccpa',
+                '/ca-privacy',
                 '/your-privacy-choices',
                 '/privacy/ccpa',
                 '/do-not-sell',
@@ -173,11 +173,11 @@ export const CONFIG = {
         ai: {
             name: 'AI/ML Terms',
             paths: [
-                '/ai-terms', 
-                '/ai-policy', 
-                '/machine-learning-policy', 
-                '/legal/ai', 
-                '/ai-guidelines', 
+                '/ai-terms',
+                '/ai-policy',
+                '/machine-learning-policy',
+                '/legal/ai',
+                '/ai-guidelines',
                 '/generative-ai-terms',
                 '/ai-usage',
                 '/ml-policy',
@@ -187,10 +187,10 @@ export const CONFIG = {
         acceptable_use: {
             name: 'Acceptable Use Policy',
             paths: [
-                '/acceptable-use', 
-                '/aup', 
-                '/legal/acceptable-use', 
-                '/usage-policy', 
+                '/acceptable-use',
+                '/aup',
+                '/legal/acceptable-use',
+                '/usage-policy',
                 '/community-guidelines',
                 '/policies/community',
                 '/community-standards',
@@ -203,7 +203,7 @@ export const CONFIG = {
     // Scoring
     MIN_CONTENT_LENGTH: 500,
     REQUIRED_KEYWORDS: ['privacy', 'personal data', 'collection', 'information'],
-    
+
     // Special domain handling - sites that require specific policy paths
     // because they redirect standard paths to login
     // NOTE: Meta domains require Googlebot User-Agent (handled in DirectFetchStrategy and fetcher)
@@ -385,6 +385,21 @@ export const CONFIG = {
         },
         'commerzbank.de': {
             privacy: 'https://www.commerzbank.de/de/footer/datenschutz.html',
+        },
+        'iphh.net': {
+            privacy: 'https://www.iphh.net/de/datenschutz.html',
+        },
+        'www.iphh.net': {
+            privacy: 'https://www.iphh.net/de/datenschutz.html',
+        },
+        // B&H Photo - policies are in a help center page with anchors
+        'bhphotovideo.com': {
+            privacy: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
+            terms: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
+        },
+        'www.bhphotovideo.com': {
+            privacy: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
+            terms: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
         },
     } as Record<string, Partial<Record<string, string>>>,
 };

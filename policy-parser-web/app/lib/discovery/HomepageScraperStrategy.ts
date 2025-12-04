@@ -6,15 +6,17 @@ import * as cheerio from 'cheerio';
 import { URL } from 'url';
 import { logger } from '../logger';
 import { isValidPolicyUrl } from '../extractor/fetcher';
-import { 
-    isPrivacyUrl, 
-    isPrivacyLinkText, 
-    scoreLinkText, 
+import {
+    isPrivacyUrl,
+    isPrivacyLinkText,
+    scoreLinkText,
     scorePrivacyUrl,
-    FOOTER_LINK_PATTERNS 
+    FOOTER_LINK_PATTERNS
 } from './multilingual';
 import { isBlockedUrl, validateUrlForDomain } from './domainValidator';
 import { enforceRateLimit } from './rateLimiter';
+import { extractCarlFeatures } from '../carl/FeatureExtractor';
+import { getCarl } from '../carl/Carl';
 
 /**
  * Enhanced Homepage Scraper Strategy with Multilingual Support
@@ -120,15 +122,23 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
     async execute(domain: string): Promise<PolicyCandidate[]> {
         const candidates: PolicyCandidate[] = [];
         const baseUrl = `https://${domain}`;
+        
+        // Get Carl for neural network scoring
+        let carl: Awaited<ReturnType<typeof getCarl>> | null = null;
+        try {
+            carl = await getCarl();
+        } catch (e) {
+            logger.warn('HomepageScraper: Could not load Carl, using heuristic scoring only');
+        }
 
         try {
             // Enforce rate limiting before request
             await enforceRateLimit(baseUrl);
-            
+
             // Fetch homepage
             const response = await got(baseUrl, {
                 timeout: { request: 15000 },
-                headers: { 
+                headers: {
                     'User-Agent': CONFIG.USER_AGENT,
                     // Accept multiple languages to get localized footer links
                     'Accept-Language': 'en-US,en;q=0.9,de;q=0.8,fr;q=0.7,es;q=0.6',
@@ -150,11 +160,11 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
             }
 
             const $ = cheerio.load(response.body);
-            
+
             // Collect links with context information
-            const links: { 
-                href: string; 
-                text: string; 
+            const links: {
+                href: string;
+                text: string;
                 context: 'footer' | 'legal' | 'nav' | 'body';
                 score: number;
             }[] = [];
@@ -204,7 +214,7 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
 
             logger.info(`HomepageScraper: Found ${uniqueLinks.length} unique privacy-related links on ${domain}`);
 
-            // Convert to candidates (top 5)
+            // Convert to candidates (top 5) - use Carl for smarter scoring
             for (const link of uniqueLinks.slice(0, 5)) {
                 // Final domain validation
                 const validation = validateUrlForDomain(link.href, domain);
@@ -213,14 +223,47 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
                     continue;
                 }
 
-                // Calculate final confidence
-                let confidence = 50 + link.score;
+                // Calculate confidence using Carl if available
+                let confidence: number;
+                let methodDetail: string;
                 
-                // Context bonuses
-                if (link.context === 'footer') confidence += 15;
-                if (link.context === 'legal') confidence += 12;
-                if (link.context === 'nav') confidence += 5;
-                
+                if (carl) {
+                    // Use Carl's neural network for scoring
+                    const features = extractCarlFeatures(
+                        link.text,           // linkText
+                        link.href,           // url
+                        link.context,        // context (footer, nav, body, legal)
+                        baseUrl,             // baseUrl
+                        undefined            // pageContent (not fetched yet)
+                    );
+                    const prediction = carl.predict(features);
+                    
+                    // Carl returns 0-1, convert to 0-100 confidence
+                    // But also factor in the heuristic score as a sanity check
+                    const carlScore = prediction.score * 100;
+                    const heuristicScore = 50 + link.score;
+                    
+                    // Weighted combination: 70% Carl, 30% heuristics
+                    confidence = Math.round(carlScore * 0.7 + heuristicScore * 0.3);
+                    
+                    // Context bonuses still apply (Carl may not have full context info)
+                    if (link.context === 'footer') confidence += 10;
+                    if (link.context === 'legal') confidence += 8;
+                    
+                    methodDetail = `Carl: ${Math.round(carlScore)}%, Heuristic: ${Math.round(heuristicScore)}%, Context: ${link.context}`;
+                    logger.info(`HomepageScraper: Carl scored "${link.text.slice(0, 30)}" at ${carlScore.toFixed(1)}%`);
+                } else {
+                    // Fallback to heuristic scoring
+                    confidence = 50 + link.score;
+                    
+                    // Context bonuses
+                    if (link.context === 'footer') confidence += 15;
+                    if (link.context === 'legal') confidence += 12;
+                    if (link.context === 'nav') confidence += 5;
+                    
+                    methodDetail = `Found "${link.text.slice(0, 50)}" in ${link.context} (score: ${link.score})`;
+                }
+
                 // Domain match bonus
                 confidence += Math.floor(validation.confidence / 10);
 
@@ -229,7 +272,7 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
                     source: 'footer_link',
                     confidence: Math.min(confidence, 98),
                     foundAt: new Date(),
-                    methodDetail: `Found "${link.text.slice(0, 50)}" in ${link.context} (score: ${link.score})`
+                    methodDetail
                 });
             }
 
@@ -265,7 +308,7 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
         const lowerHref = href.toLowerCase();
 
         // Check if this is a privacy-related link
-        const hasPrivacyKeyword = this.PRIVACY_KEYWORDS.some(kw => 
+        const hasPrivacyKeyword = this.PRIVACY_KEYWORDS.some(kw =>
             combinedText.includes(kw.toLowerCase()) || lowerHref.includes(kw.toLowerCase())
         );
 
@@ -314,6 +357,15 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
             // Path bonuses
             if (/\/(privacy|datenschutz|confidentialite|privacidad)($|\/)/i.test(lowerHref)) {
                 score += 20;
+            }
+
+            // PDF Bonus - if it looks like a policy and is a PDF, that's often the "official" doc
+            if (lowerHref.endsWith('.pdf')) {
+                // Only boost if it also has privacy keywords
+                if (score > 10 || hasPrivacyKeyword) {
+                    score += 15;
+                    logger.info(`HomepageScraper: Found PDF policy candidate: ${absoluteUrl} (score boost +15)`);
+                }
             }
 
             links.push({
