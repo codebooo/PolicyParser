@@ -20,6 +20,7 @@ import * as cheerio from 'cheerio';
 import { CONFIG, PolicyType } from '../config';
 import { logger } from '../logger';
 import { deepScanPrivacyPage } from './deepLinkScanner';
+import { Carl, getCarl, extractCarlFeatures } from '../carl';
 
 export interface DiscoveredPolicy {
     type: PolicyType;
@@ -27,6 +28,7 @@ export interface DiscoveredPolicy {
     url: string;
     confidence: 'high' | 'medium' | 'low';
     source: 'special_domain' | 'footer_link' | 'legal_page' | 'sitemap' | 'search_engine' | 'content_analysis';
+    neuralScore?: number; // Added neural score
 }
 
 export interface DiscoveryResult {
@@ -179,11 +181,15 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
     const startTime = Date.now();
     const phasesCompleted: string[] = [];
     const discoveredPolicies = new Map<PolicyType, DiscoveredPolicy>();
-    
+
     const baseUrl = domain.startsWith('http') ? domain : `https://${domain}`;
     const cleanDomain = new URL(baseUrl).hostname.replace(/^www\./, '');
 
     logger.info(`[PolicyDiscovery] Starting intelligent discovery for: ${cleanDomain}`);
+
+    // Initialize Carl Neural Network
+    const nn = await getCarl();
+
 
     try {
         // ============ PHASE 1: SPECIAL DOMAIN LOOKUP ============
@@ -194,7 +200,7 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
 
         // ============ PHASE 2: DEEP FOOTER CRAWLING ============
         logger.info(`[PolicyDiscovery] Phase 2: Deep footer crawling`);
-        const footerPolicies = await crawlFooterLinks(baseUrl, cleanDomain);
+        const footerPolicies = await crawlFooterLinks(baseUrl, cleanDomain, nn);
         footerPolicies.forEach(p => {
             if (!discoveredPolicies.has(p.type)) {
                 discoveredPolicies.set(p.type, p);
@@ -205,7 +211,7 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
         // ============ PHASE 3: LEGAL HUB DISCOVERY ============
         if (discoveredPolicies.size < 2) {
             logger.info(`[PolicyDiscovery] Phase 3: Legal hub discovery`);
-            const legalHubPolicies = await crawlLegalHubs(baseUrl, cleanDomain);
+            const legalHubPolicies = await crawlLegalHubs(baseUrl, cleanDomain, nn);
             legalHubPolicies.forEach(p => {
                 if (!discoveredPolicies.has(p.type)) {
                     discoveredPolicies.set(p.type, p);
@@ -229,7 +235,7 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
         // ============ PHASE 5: CONTENT VALIDATION ============
         logger.info(`[PolicyDiscovery] Phase 5: Content validation`);
         const validatedPolicies: DiscoveredPolicy[] = [];
-        
+
         for (const [type, policy] of discoveredPolicies) {
             const isValid = await validatePolicyContent(policy.url, type);
             if (isValid) {
@@ -246,12 +252,12 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
         // This is critical for German banks where /datenschutz/ is often just a hub
         logger.info(`[PolicyDiscovery] Phase 5.5: Deep link scanning for actual policy pages`);
         const enhancedPolicies: DiscoveredPolicy[] = [];
-        
+
         for (const policy of validatedPolicies) {
             if (policy.type === 'privacy') {
                 // Try to find a more specific privacy policy page
                 const deepResult = await deepScanPrivacyPage(policy.url, cleanDomain, 2);
-                
+
                 if (deepResult && deepResult.confidence > 80) {
                     logger.info(`[PolicyDiscovery] Deep scan found better privacy URL: ${deepResult.foundUrl} (confidence: ${deepResult.confidence})`);
                     enhancedPolicies.push({
@@ -267,7 +273,7 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
                 enhancedPolicies.push(policy);
             }
         }
-        
+
         phasesCompleted.push(`deep_scan:${enhancedPolicies.filter(p => p.source === 'content_analysis').length}`);
 
         // ============ PHASE 6: SEARCH ENGINE FALLBACK ============
@@ -317,27 +323,27 @@ export async function discoverPolicies(domain: string): Promise<DiscoveryResult>
  */
 async function checkSpecialDomains(domain: string, baseUrl: string): Promise<DiscoveredPolicy[]> {
     const policies: DiscoveredPolicy[] = [];
-    
-    const specialConfig = CONFIG.SPECIAL_DOMAINS[domain] || 
-                          CONFIG.SPECIAL_DOMAINS[`www.${domain}`] ||
-                          CONFIG.SPECIAL_DOMAINS[domain.replace(/^www\./, '')];
+
+    const specialConfig = CONFIG.SPECIAL_DOMAINS[domain] ||
+        CONFIG.SPECIAL_DOMAINS[`www.${domain}`] ||
+        CONFIG.SPECIAL_DOMAINS[domain.replace(/^www\./, '')];
 
     if (!specialConfig) return policies;
 
     const checks = Object.entries(specialConfig).map(async ([type, url]) => {
         if (!url || typeof url !== 'string') return null;
-        
+
         try {
             const response = await got(url, {
                 timeout: { request: 8000 },
-                headers: { 
+                headers: {
                     'User-Agent': CRAWLER_UA,
                     'Accept-Language': 'en-US,en;q=0.9'
                 },
                 followRedirect: true,
                 retry: { limit: 1 } as any
             });
-            
+
             if (response.statusCode === 200 && response.body.length > 1000) {
                 return {
                     type: type as PolicyType,
@@ -360,13 +366,13 @@ async function checkSpecialDomains(domain: string, baseUrl: string): Promise<Dis
 /**
  * Phase 2: Deep footer crawling - most policies are linked in footers
  */
-async function crawlFooterLinks(baseUrl: string, domain: string): Promise<DiscoveredPolicy[]> {
+async function crawlFooterLinks(baseUrl: string, domain: string, nn?: Carl): Promise<DiscoveredPolicy[]> {
     const policies: DiscoveredPolicy[] = [];
-    
+
     try {
         const response = await got(baseUrl, {
             timeout: { request: 15000 },
-            headers: { 
+            headers: {
                 'User-Agent': CRAWLER_UA,
                 'Accept-Language': 'en-US,en;q=0.9'
             },
@@ -374,7 +380,7 @@ async function crawlFooterLinks(baseUrl: string, domain: string): Promise<Discov
         });
 
         const $ = cheerio.load(response.body);
-        const foundLinks = new Map<PolicyType, { url: string; score: number }>();
+        const foundLinks = new Map<PolicyType, { url: string; score: number; neuralScore?: number }>();
 
         // Try each footer selector
         for (const selector of FOOTER_SELECTORS) {
@@ -384,7 +390,7 @@ async function crawlFooterLinks(baseUrl: string, domain: string): Promise<Discov
             $footer.find('a').each((_, el) => {
                 const href = $(el).attr('href');
                 const linkText = $(el).text().trim().toLowerCase();
-                
+
                 if (!href) return;
 
                 // Try to make absolute URL
@@ -401,9 +407,14 @@ async function crawlFooterLinks(baseUrl: string, domain: string): Promise<Discov
                         if (pattern.test(linkText) || pattern.test(href)) {
                             const score = linkText.length > 0 && pattern.test(linkText) ? 2 : 1;
                             const existing = foundLinks.get(type as PolicyType);
-                            
+
                             if (!existing || existing.score < score) {
-                                foundLinks.set(type as PolicyType, { url: absoluteUrl, score });
+                                let neuralScore = 0;
+                                if (nn) {
+                                    const features = extractCarlFeatures(linkText, href, 'footer', baseUrl);
+                                    neuralScore = nn.predict(features).score;
+                                }
+                                foundLinks.set(type as PolicyType, { url: absoluteUrl, score, neuralScore });
                             }
                             break;
                         }
@@ -416,7 +427,7 @@ async function crawlFooterLinks(baseUrl: string, domain: string): Promise<Discov
         $('a').each((_, el) => {
             const href = $(el).attr('href');
             const linkText = $(el).text().trim().toLowerCase();
-            
+
             if (!href) return;
 
             // Skip if already found with higher score
@@ -428,17 +439,22 @@ async function crawlFooterLinks(baseUrl: string, domain: string): Promise<Discov
                     // Only match if BOTH text and URL suggest it's a policy
                     const textMatch = pattern.test(linkText);
                     const urlMatch = pattern.test(href);
-                    
+
                     if (textMatch && (urlMatch || href.includes('legal') || href.includes('policy'))) {
                         try {
                             const absoluteUrl = new URL(href, baseUrl).toString();
                             // Skip legal hub pages
                             if (!LEGAL_HUB_PATTERNS.some(p => p.test(absoluteUrl))) {
                                 if (!existing || existing.score < 1) {
-                                    foundLinks.set(type as PolicyType, { url: absoluteUrl, score: 1 });
+                                    let neuralScore = 0;
+                                    if (nn) {
+                                        const features = extractCarlFeatures(linkText, href, 'body', baseUrl);
+                                        neuralScore = nn.predict(features).score;
+                                    }
+                                    foundLinks.set(type as PolicyType, { url: absoluteUrl, score: 1, neuralScore });
                                 }
                             }
-                        } catch {}
+                        } catch { }
                         break;
                     }
                 }
@@ -452,7 +468,8 @@ async function crawlFooterLinks(baseUrl: string, domain: string): Promise<Discov
                 name: CONFIG.POLICY_TYPES[type]?.name || type,
                 url,
                 confidence: 'medium',
-                source: 'footer_link'
+                source: 'footer_link',
+                neuralScore: (foundLinks.get(type)?.neuralScore) || 0
             });
         }
 
@@ -466,7 +483,7 @@ async function crawlFooterLinks(baseUrl: string, domain: string): Promise<Discov
 /**
  * Phase 3: Crawl legal hub pages (e.g., /legal, /policies)
  */
-async function crawlLegalHubs(baseUrl: string, domain: string): Promise<DiscoveredPolicy[]> {
+async function crawlLegalHubs(baseUrl: string, domain: string, nn?: Carl): Promise<DiscoveredPolicy[]> {
     const policies: DiscoveredPolicy[] = [];
     const legalHubPaths = ['/legal', '/policies', '/about/legal', '/company/legal', '/help/legal', '/legal-notices'];
 
@@ -475,7 +492,7 @@ async function crawlLegalHubs(baseUrl: string, domain: string): Promise<Discover
             const hubUrl = new URL(path, baseUrl).toString();
             const response = await got(hubUrl, {
                 timeout: { request: 10000 },
-                headers: { 
+                headers: {
                     'User-Agent': CRAWLER_UA,
                     'Accept-Language': 'en-US,en;q=0.9'
                 },
@@ -486,11 +503,11 @@ async function crawlLegalHubs(baseUrl: string, domain: string): Promise<Discover
             if (response.statusCode !== 200) continue;
 
             const $ = cheerio.load(response.body);
-            
+
             $('a').each((_, el) => {
                 const href = $(el).attr('href');
                 const linkText = $(el).text().trim().toLowerCase();
-                
+
                 if (!href) return;
 
                 for (const [type, patterns] of Object.entries(POLICY_LINK_PATTERNS)) {
@@ -502,16 +519,18 @@ async function crawlLegalHubs(baseUrl: string, domain: string): Promise<Discover
                                 if (!LEGAL_HUB_PATTERNS.some(p => p.test(absoluteUrl))) {
                                     const exists = policies.some(p => p.type === type);
                                     if (!exists) {
+                                        const features = extractCarlFeatures(linkText, href, 'legal_hub', baseUrl);
                                         policies.push({
                                             type: type as PolicyType,
                                             name: CONFIG.POLICY_TYPES[type as PolicyType]?.name || type,
                                             url: absoluteUrl,
                                             confidence: 'medium',
-                                            source: 'legal_page'
+                                            source: 'legal_page',
+                                            neuralScore: nn ? nn.predict(features).score : 0
                                         });
                                     }
                                 }
-                            } catch {}
+                            } catch { }
                             break;
                         }
                     }
@@ -551,10 +570,10 @@ async function parseSitemaps(baseUrl: string, domain: string): Promise<Discovere
             if (response.statusCode !== 200) continue;
 
             const $ = cheerio.load(response.body, { xmlMode: true });
-            
+
             $('url loc, sitemap loc').each((_, el) => {
                 const url = $(el).text().trim();
-                
+
                 for (const [type, patterns] of Object.entries(POLICY_LINK_PATTERNS)) {
                     for (const pattern of patterns) {
                         if (pattern.test(url)) {
@@ -592,7 +611,7 @@ async function validatePolicyContent(url: string, type: PolicyType): Promise<boo
     try {
         const response = await got(url, {
             timeout: { request: 12000 },
-            headers: { 
+            headers: {
                 'User-Agent': CRAWLER_UA,
                 'Accept-Language': 'en-US,en;q=0.9'
             },
@@ -602,13 +621,13 @@ async function validatePolicyContent(url: string, type: PolicyType): Promise<boo
         if (response.statusCode !== 200) return false;
 
         const $ = cheerio.load(response.body);
-        
+
         // Remove scripts, styles, nav, headers (noise)
         $('script, style, nav, header, noscript, iframe').remove();
-        
+
         // Get text content
         const textContent = $('body').text().toLowerCase();
-        
+
         // Check minimum length (policies are usually substantial documents)
         if (textContent.length < 2000) {
             logger.debug(`[PolicyDiscovery] Content too short for ${type}: ${textContent.length} chars`);
@@ -618,7 +637,7 @@ async function validatePolicyContent(url: string, type: PolicyType): Promise<boo
         // Check for required keywords
         const keywords = POLICY_VALIDATION_KEYWORDS[type];
         let matchedKeywords = 0;
-        
+
         for (const keyword of keywords) {
             if (textContent.includes(keyword.toLowerCase())) {
                 matchedKeywords++;
@@ -628,7 +647,7 @@ async function validatePolicyContent(url: string, type: PolicyType): Promise<boo
         // Require at least 3 keyword matches for validation
         const minMatches = type === 'ai' ? 2 : 3; // AI terms are rarer
         const isValid = matchedKeywords >= minMatches;
-        
+
         if (!isValid) {
             logger.debug(`[PolicyDiscovery] Insufficient keywords for ${type}: ${matchedKeywords}/${keywords.length} (need ${minMatches})`);
         }
@@ -659,7 +678,7 @@ async function searchEngineFallback(domain: string, foundTypes: Set<PolicyType>)
         try {
             // Use DuckDuckGo HTML (more reliable than Google scraping)
             const searchUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`;
-            
+
             const response = await got(searchUrl, {
                 timeout: { request: 10000 },
                 headers: {
@@ -680,7 +699,7 @@ async function searchEngineFallback(domain: string, foundTypes: Set<PolicyType>)
                     if (match) {
                         try {
                             resultUrls.push(decodeURIComponent(match[1]));
-                        } catch {}
+                        } catch { }
                     } else if (href.startsWith('http')) {
                         resultUrls.push(href);
                     }
