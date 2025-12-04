@@ -107,6 +107,69 @@ const AGGRESSIVE_ANTIBOT_DOMAINS = [
 ];
 
 /**
+ * Fetch from Wayback Machine as last resort fallback
+ * Returns null if not available or fails
+ */
+async function fetchFromWaybackMachine(url: string): Promise<{ body: string; finalUrl: string } | null> {
+    try {
+        logger.info(`[fetcher] Trying Wayback Machine for ${url}`);
+        
+        // First, check if Wayback has this URL
+        const availabilityUrl = `https://archive.org/wayback/available?url=${encodeURIComponent(url)}`;
+        const availResponse = await got(availabilityUrl, {
+            timeout: { request: 10000 },
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (compatible; PolicyParser/1.0)',
+                'Accept': 'application/json',
+            },
+        });
+        
+        const availability = JSON.parse(availResponse.body);
+        
+        if (!availability?.archived_snapshots?.closest?.available) {
+            logger.info(`[fetcher] No Wayback snapshot available for ${url}`);
+            return null;
+        }
+        
+        const snapshotUrl = availability.archived_snapshots.closest.url;
+        const snapshotTimestamp = availability.archived_snapshots.closest.timestamp;
+        
+        logger.info(`[fetcher] Found Wayback snapshot from ${snapshotTimestamp}: ${snapshotUrl}`);
+        
+        // Fetch the actual snapshot
+        const snapshotResponse = await got(snapshotUrl, {
+            timeout: { request: 15000 },
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml',
+            },
+            followRedirect: true,
+        });
+        
+        if (snapshotResponse.statusCode === 200) {
+            // Remove Wayback Machine toolbar injection from the HTML
+            let body = snapshotResponse.body;
+            
+            // Remove Wayback toolbar scripts and styles
+            body = body.replace(/<!-- BEGIN WAYBACK TOOLBAR INSERT -->[\s\S]*?<!-- END WAYBACK TOOLBAR INSERT -->/gi, '');
+            body = body.replace(/<script[^>]*archive\.org[^>]*>[\s\S]*?<\/script>/gi, '');
+            body = body.replace(/<link[^>]*archive\.org[^>]*>/gi, '');
+            
+            logger.info(`[fetcher] Successfully fetched from Wayback Machine (${body.length} chars)`);
+            return {
+                body,
+                finalUrl: url, // Use original URL, not Wayback URL
+            };
+        }
+        
+        return null;
+    } catch (error: any) {
+        logger.warn(`[fetcher] Wayback Machine fallback failed: ${error.message}`);
+        return null;
+    }
+}
+
+/**
  * Alternative user agents to try when initial request fails
  */
 const FALLBACK_USER_AGENTS = [
@@ -467,6 +530,20 @@ export async function fetchResource(url: string): Promise<FetchResult> {
 
     // All UAs failed
     if (lastError?.message === 'HTTP_403_FORBIDDEN') {
+        // Try Wayback Machine as last resort
+        logger.info(`[fetchResource] All UAs failed with 403, trying Wayback Machine fallback...`);
+        const waybackResult = await fetchFromWaybackMachine(url);
+        
+        if (waybackResult) {
+            logger.info(`[fetchResource] Successfully retrieved from Wayback Machine`);
+            return {
+                body: waybackResult.body,
+                buffer: Buffer.from(waybackResult.body, 'utf-8'),
+                contentType: 'text/html',
+                url: waybackResult.finalUrl,
+            };
+        }
+        
         throw new Error(`Access forbidden (403). The website is blocking automated requests.`);
     }
     
