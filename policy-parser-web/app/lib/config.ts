@@ -392,14 +392,16 @@ export const CONFIG = {
         'www.iphh.net': {
             privacy: 'https://www.iphh.net/de/datenschutz.html',
         },
-        // B&H Photo - policies are in a help center page with anchors
+        // B&H Photo - privacy policy is at a separate help center page
         'bhphotovideo.com': {
-            privacy: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
+            privacy: 'https://www.bhphotovideo.com/find/HelpCenter/PrivacySecurity.jsp',
             terms: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
+            cookies: 'https://www.bhphotovideo.com/find/HelpCenter/CookiesNotice.jsp',
         },
         'www.bhphotovideo.com': {
-            privacy: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
+            privacy: 'https://www.bhphotovideo.com/find/HelpCenter/PrivacySecurity.jsp',
             terms: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
+            cookies: 'https://www.bhphotovideo.com/find/HelpCenter/CookiesNotice.jsp',
         },
     } as Record<string, Partial<Record<string, string>>>,
 };
