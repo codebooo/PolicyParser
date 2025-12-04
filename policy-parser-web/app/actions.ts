@@ -758,22 +758,69 @@ export async function testBrainPrediction(
     // Determine if this looks like a homepage vs actual policy page
     const isHomepage = checkIfHomepage(url);
     
-    // Adjust confidence if it's a homepage without policy content
+    // Check URL strength - does it strongly suggest a policy?
+    const urlLower = url.toLowerCase();
+    const strongPolicyUrl = urlLower.includes('/privacy-policy') || 
+                            urlLower.includes('/privacy_policy') ||
+                            urlLower.includes('/privacypolicy') ||
+                            urlLower.includes('/datenschutz') ||
+                            urlLower.includes('/policies/privacy') ||
+                            urlLower.includes('/legal/privacy');
+    
+    // Adjust confidence based on actual analysis
     let adjustedScore = prediction.score;
     let adjustedConfidence = prediction.confidence;
     let analysisNote = '';
     
-    if (isHomepage && pageContent) {
+    // CRITICAL: If we couldn't fetch the page (404, network error, etc.), 
+    // we can't trust URL-based features alone
+    if (fetchError) {
+        // Page doesn't exist or couldn't be fetched - very low confidence
+        adjustedScore = Math.min(prediction.score * 0.1, 0.15); // Cap at 15% max
+        adjustedConfidence = 'low';
+        analysisNote = `Cannot verify - page fetch failed. URL patterns alone are not reliable.`;
+        logger.info(`[Carl Test] Fetch failed, reducing score from ${prediction.score.toFixed(2)} to ${adjustedScore.toFixed(2)}`);
+    } else if (!pageContent || pageContent.length < 100) {
+        // Empty or very short response - suspicious
+        adjustedScore = Math.min(prediction.score, 0.2);
+        adjustedConfidence = 'low';
+        analysisNote = 'Page content is empty or too short to analyze.';
+    } else if (isHomepage) {
         // If it's a homepage, check if it actually contains policy content
-        const hasPrivacyContent = checkPageForPolicyContent(pageContent);
-        if (!hasPrivacyContent) {
+        const contentAnalysis = analyzePageContent(pageContent);
+        if (!contentAnalysis.isPolicy) {
             // Homepage without policy content should have low score
             adjustedScore = Math.min(prediction.score, 0.2);
             adjustedConfidence = 'low';
             analysisNote = 'This appears to be a homepage, not a privacy policy page.';
         }
-    } else if (!pageContent && !fetchError) {
-        analysisNote = 'Could not analyze page content.';
+    } else if (pageContent) {
+        // We have content - analyze it more thoroughly
+        const contentAnalysis = analyzePageContent(pageContent);
+        
+        if (contentAnalysis.isPolicy) {
+            // Content confirms this is a policy - trust the raw score
+            adjustedScore = prediction.score;
+            adjustedConfidence = prediction.confidence;
+            analysisNote = `Verified: ${contentAnalysis.matchCount} policy indicators found.`;
+        } else if (strongPolicyUrl && pageContent.length > 5000) {
+            // URL strongly suggests policy AND substantial content exists
+            // This is likely a policy in another language or unusual format
+            // Use a weighted approach instead of hard cap
+            adjustedScore = Math.max(prediction.score * 0.85, 0.6); // At least 60% if URL is strong
+            adjustedConfidence = 'medium';
+            analysisNote = 'URL strongly indicates a policy page. Content may be in another language or format.';
+        } else if (strongPolicyUrl) {
+            // Strong policy URL but less content
+            adjustedScore = Math.max(prediction.score * 0.7, 0.5);
+            adjustedConfidence = 'medium';
+            analysisNote = 'URL suggests a policy page, but content analysis is inconclusive.';
+        } else {
+            // Weak URL signals and no content match
+            adjustedScore = Math.min(prediction.score, 0.35);
+            adjustedConfidence = 'low';
+            analysisNote = 'Could not verify this is a privacy policy from content analysis.';
+        }
     }
 
     return {
@@ -810,6 +857,17 @@ function checkIfHomepage(url: string): boolean {
  * Check if page content contains privacy policy indicators
  */
 function checkPageForPolicyContent(content: string): boolean {
+    return analyzePageContent(content).isPolicy;
+}
+
+interface ContentAnalysis {
+    isPolicy: boolean;
+    matchCount: number;
+    strongMatches: number;
+    structuralMatches: number;
+}
+
+function analyzePageContent(content: string): ContentAnalysis {
     const lowerContent = content.toLowerCase();
     
     // Strong indicators that this IS a privacy policy
@@ -817,10 +875,13 @@ function checkPageForPolicyContent(content: string): boolean {
         'privacy policy', 'privacy notice', 'data protection policy',
         'datenschutzerklärung', 'datenschutzrichtlinie', 'datenschutzhinweise',
         'politique de confidentialité', 'política de privacidad',
+        'informativa sulla privacy', 'privacybeleid', 'integritetspolicy',
         'we collect', 'we may collect', 'personal information',
         'personenbezogene daten', 'datenerhebung', 'datenverarbeitung',
         'your rights', 'ihre rechte', 'right to access', 'right to erasure',
-        'gdpr', 'dsgvo', 'ccpa'
+        'gdpr', 'dsgvo', 'ccpa', 'lgpd', 'pipeda',
+        'data controller', 'data processor', 'personal data',
+        'cookies we use', 'information we collect', 'how we protect'
     ];
     
     // Count how many strong indicators are present
@@ -840,7 +901,12 @@ function checkPageForPolicyContent(content: string): boolean {
         /data retention/i,
         /contact us.*privacy/i,
         /welche daten.*erheben/i,
-        /wie.*verwenden.*daten/i
+        /wie.*verwenden.*daten/i,
+        /your (privacy )?choices/i,
+        /opt.?out/i,
+        /do not sell/i,
+        /effective date/i,
+        /last (updated|modified)/i
     ];
     
     let structuralMatches = 0;
@@ -850,8 +916,17 @@ function checkPageForPolicyContent(content: string): boolean {
         }
     }
     
+    const totalMatches = strongMatches + structuralMatches;
+    
     // Consider it a policy if we have at least 2 strong indicators or 3 structural matches
-    return strongMatches >= 2 || structuralMatches >= 3 || (strongMatches >= 1 && structuralMatches >= 1);
+    const isPolicy = strongMatches >= 2 || structuralMatches >= 3 || (strongMatches >= 1 && structuralMatches >= 1);
+    
+    return {
+        isPolicy,
+        matchCount: totalMatches,
+        strongMatches,
+        structuralMatches
+    };
 }
 
 export async function trainBrain(
