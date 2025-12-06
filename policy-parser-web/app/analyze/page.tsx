@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell, List, Clock } from "lucide-react"
+import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Info, ChevronDown, ChevronUp, Search, Globe, Link as LinkIcon, Lock, ShieldAlert, Eye, EyeOff, Zap, FileStack, ChevronRight, X, ScrollText, Shield, AlertOctagon, AlertCircle, CircleAlert, CircleCheck, Sparkles, Star, Users, Bell, List, Clock, Calendar } from "lucide-react"
 import { clsx } from "clsx"
 import { analyzeDomain, discoverAllPolicies, analyzeSpecificPolicy, analyzeText, submitPolicyFeedback } from "../actions"
 import { readStreamableValue } from "@ai-sdk/rsc"
@@ -180,6 +180,10 @@ function AnalyzeContent() {
           setSelectedPolicyIndex(state.selectedPolicyIndex || 0)
           setAnalyzedDomain(state.analyzedDomain || null)
           setSourceUrl(state.sourceUrl || null)
+          // Restore feedback state to prevent multiple feedback submissions
+          if (state.feedbackSent !== undefined) {
+            setFeedbackSent(state.feedbackSent)
+          }
           // Clear the sessionStorage after restoring
           sessionStorage.removeItem('analysisState')
           // Clear the URL param
@@ -567,7 +571,8 @@ function AnalyzeContent() {
         analysisResults,
         selectedPolicyIndex,
         analyzedDomain,
-        sourceUrl
+        sourceUrl,
+        feedbackSent  // Preserve feedback state
       }));
       router.push('/analyze/original-text');
     }
@@ -811,11 +816,43 @@ function AnalyzeContent() {
 
       {(step === "searching" || step === "processing") && (
         <div className="flex flex-col items-center justify-center py-20 space-y-8 animate-in fade-in duration-500">
-          <div className="relative h-24 w-24">
-            <div className="absolute inset-0 border-4 border-white/10 rounded-full"></div>
-            <div className="absolute inset-0 border-4 border-primary rounded-full border-t-transparent animate-spin"></div>
-            <Globe className="absolute inset-0 m-auto h-8 w-8 text-primary animate-pulse" />
+          {/* Magnifying Glass Scanning Animation */}
+          <div className="relative h-32 w-32 flex items-center justify-center">
+            {/* Outer glow ring */}
+            <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+
+            {/* Main magnifying glass container */}
+            <div className="relative animate-[scan_2s_ease-in-out_infinite]">
+              {/* Glass circle */}
+              <div className="w-20 h-20 rounded-full border-4 border-primary bg-primary/10 backdrop-blur-sm flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.3)]">
+                {/* Inner scanning line */}
+                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-[scanLine_1.5s_ease-in-out_infinite]" />
+              </div>
+
+              {/* Handle */}
+              <div className="absolute -bottom-4 -right-4 w-4 h-12 bg-gradient-to-b from-primary to-cyan-600 rounded-full rotate-45 origin-top shadow-lg" />
+            </div>
+
+            {/* Orbiting dots */}
+            <div className="absolute inset-0 animate-[spin_3s_linear_infinite]">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rounded-full" />
+            </div>
+            <div className="absolute inset-0 animate-[spin_4s_linear_infinite_reverse]">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-cyan-400 rounded-full" />
+            </div>
           </div>
+
+          <style jsx>{`
+            @keyframes scan {
+              0%, 100% { transform: translateX(-8px) rotate(-5deg); }
+              50% { transform: translateX(8px) rotate(5deg); }
+            }
+            @keyframes scanLine {
+              0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
+              50% { opacity: 1; transform: scaleX(1); }
+            }
+          `}</style>
+
           <div className="text-center space-y-4 max-w-md">
             <h2 className="text-2xl font-bold text-foreground">{statusMessage}</h2>
             <div className="space-y-2 text-left bg-background/60 p-4 rounded-lg border border-white/10 backdrop-blur-md h-64 overflow-y-auto">
@@ -914,6 +951,15 @@ function AnalyzeContent() {
                 <p className="text-sm text-muted-foreground">
                   {analyzedDomain}
                 </p>
+              )}
+              {/* Policy Last Updated Date */}
+              {displayedAnalysis.last_updated && (
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground">
+                    Policy last updated: <span className="font-medium text-foreground">{displayedAnalysis.last_updated}</span>
+                  </span>
+                </div>
               )}
               <p className="text-muted-foreground text-lg">
                 {displayedAnalysis.summary}
@@ -1028,56 +1074,75 @@ function AnalyzeContent() {
           {userId && (
             <Card className={clsx(
               "border transition-all",
-              isTracked
-                ? "bg-primary/10 border-primary/30"
-                : "bg-white/5 border-white/10 hover:border-primary/30"
+              !isPro
+                ? "bg-white/5 border-white/10 opacity-75"
+                : isTracked
+                  ? "bg-primary/10 border-primary/30"
+                  : "bg-white/5 border-white/10 hover:border-primary/30"
             )}>
               <CardContent className="p-4 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className={clsx(
                     "h-10 w-10 rounded-lg flex items-center justify-center",
-                    isTracked ? "bg-primary/20 text-primary" : "bg-white/10 text-muted-foreground"
+                    isTracked && isPro ? "bg-primary/20 text-primary" : "bg-white/10 text-muted-foreground"
                   )}>
                     <Bell className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-foreground">
-                      {isTracked ? "Tracking this policy" : "Track this policy"}
+                    <h3 className="font-medium text-foreground flex items-center gap-2">
+                      {isTracked && isPro ? "Tracking this policy" : "Track this policy"}
+                      {!isPro && (
+                        <span className="px-1.5 py-0.5 text-[10px] font-bold bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded">PRO</span>
+                      )}
                     </h3>
                     <p className="text-xs text-muted-foreground">
-                      {isTracked
-                        ? `You'll be notified when ${getCurrentDomain() || 'this policy'} changes`
-                        : "Get notified when this privacy policy is updated"
+                      {!isPro
+                        ? "Upgrade to Pro to get notified when policies change"
+                        : isTracked
+                          ? `You'll be notified when ${getCurrentDomain() || 'this policy'} changes`
+                          : "Get notified when this privacy policy is updated"
                       }
                     </p>
                   </div>
                 </div>
-                <Button
-                  variant={isTracked ? "outline" : "default"}
-                  size="sm"
-                  onClick={handleTrackToggle}
-                  disabled={trackingLoading}
-                  className={clsx(
-                    isTracked && "border-primary/30 text-primary hover:bg-primary/10"
-                  )}
-                >
-                  {trackingLoading ? (
-                    <span className="flex items-center">
-                      <span className="h-4 w-4 mr-2 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                      {isTracked ? "Removing..." : "Adding..."}
-                    </span>
-                  ) : isTracked ? (
-                    <>
-                      <CheckCircle2 className="h-4 w-4 mr-2" />
-                      Tracking
-                    </>
-                  ) : (
-                    <>
-                      <Bell className="h-4 w-4 mr-2" />
-                      Track Policy
-                    </>
-                  )}
-                </Button>
+                {isPro ? (
+                  <Button
+                    variant={isTracked ? "outline" : "default"}
+                    size="sm"
+                    onClick={handleTrackToggle}
+                    disabled={trackingLoading}
+                    className={clsx(
+                      isTracked && "border-primary/30 text-primary hover:bg-primary/10"
+                    )}
+                  >
+                    {trackingLoading ? (
+                      <span className="flex items-center">
+                        <span className="h-4 w-4 mr-2 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                        {isTracked ? "Removing..." : "Adding..."}
+                      </span>
+                    ) : isTracked ? (
+                      <>
+                        <CheckCircle2 className="h-4 w-4 mr-2" />
+                        Tracking
+                      </>
+                    ) : (
+                      <>
+                        <Bell className="h-4 w-4 mr-2" />
+                        Track Policy
+                      </>
+                    )}
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-amber-500/30 text-amber-400 hover:bg-amber-500/10"
+                    onClick={() => window.location.href = '/plans'}
+                  >
+                    <Zap className="h-4 w-4 mr-2" />
+                    Upgrade
+                  </Button>
+                )}
               </CardContent>
             </Card>
           )}
@@ -1473,7 +1538,7 @@ function AnalyzeContent() {
                       onClick={() => {
                         // Immediately update UI
                         setFeedbackSent(true);
-                        
+
                         // Run training in background (don't await)
                         const domain = analyzedDomain || '';
                         const url = analysisMode === "comprehensive" && currentPolicyResult?.url ? currentPolicyResult.url : sourceUrl || '';
@@ -1511,7 +1576,7 @@ function AnalyzeContent() {
                           // Immediately update UI
                           setFeedbackSent(true);
                           setShowFeedbackInput(false);
-                          
+
                           // Run training in background (don't await)
                           const domain = analyzedDomain || '';
                           const incorrectUrl = analysisMode === "comprehensive" && currentPolicyResult?.url ? currentPolicyResult.url : sourceUrl || '';

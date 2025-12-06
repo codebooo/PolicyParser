@@ -12,6 +12,7 @@ import { generateObject } from 'ai';
 import { getGeminiModel } from './lib/ai/gemini';
 import { createClient } from '@/utils/supabase/server';
 import { logger } from './lib/logger';
+import { logAnalysis, updateAnalysisFeedback } from './lib/analysisStore';
 import { CONFIG, PolicyType } from './lib/config';
 import { checkPolicyCache, savePolicyVersion } from './versionActions';
 import { getCarl, extractCarlFeatures, getCarlFeatureNames, CARL_FEATURE_COUNT } from './lib/carl';
@@ -137,7 +138,7 @@ export async function analyzeDomain(input: string) {
             logger.info('Cache miss or outdated - performing fresh analysis');
 
             // Step 3: Discovery (using JARVIS - 5x faster! 🚀)
-            stream.update({ status: 'discovering', message: `🤖 JARVIS searching for policy on ${identity.cleanDomain}...`, step: 3, data: null });
+            stream.update({ status: 'discovering', message: `Searching for privacy policy on ${identity.cleanDomain}...`, step: 3, data: null });
             const jarvisResult = await discoverWithJarvis(identity.cleanDomain, {
                 maxWorkers: 10,
                 timeout: 10000,
@@ -219,11 +220,33 @@ export async function analyzeDomain(input: string) {
                 });
             }
 
+            // Log to file-based analysis store for admin dashboard
+            await logAnalysis({
+                domain: identity.cleanDomain,
+                url: candidate.url,
+                timestamp: new Date().toISOString(),
+                success: true,
+                score,
+                policyType: 'privacy',
+                analysisTimeMs: Date.now() - Date.now()
+            });
+
             stream.done({ status: 'complete', message: 'Analysis complete!', step: 8, data: resultsWithUrl });
 
         } catch (error: any) {
             logger.error('Analysis failed', error);
             const errorMessage = error?.message || 'An unexpected error occurred';
+
+            // Log failure to analysis store
+            await logAnalysis({
+                domain: input,
+                url: null,
+                timestamp: new Date().toISOString(),
+                success: false,
+                error: errorMessage,
+                policyType: 'privacy'
+            });
+
             stream.done({ status: 'error', message: errorMessage, step: -1, data: null });
         }
     })();
@@ -622,6 +645,10 @@ export async function submitPolicyFeedback(
                 logger.warn(`[Feedback] Failed to fetch incorrect URL for Carl training: ${incorrectUrl}`);
             }
         }
+
+        // Update analysis store with feedback
+        const feedbackType = incorrectUrl ? 'negative' : 'positive';
+        await updateAnalysisFeedback(domain, feedbackType, correctUrl);
 
         return { success: true };
     } catch (error: any) {

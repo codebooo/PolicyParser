@@ -85,8 +85,8 @@ export class Jarvis {
         const cleanDomain = domain.replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/$/, '');
         const baseUrl = `https://${cleanDomain}`;
 
-        logger.info(`[Jarvis] 🤖 Starting parallel discovery for: ${cleanDomain}`);
-        logger.info(`[Jarvis] Workers: ${this.options.maxWorkers}, Timeout: ${this.options.timeout}ms`);
+        logger.info(`[Discovery] Starting parallel search for: ${cleanDomain}`);
+        logger.info(`[Discovery] Workers: ${this.options.maxWorkers}, Timeout: ${this.options.timeout}ms`);
 
         this.emitProgress('initializing', `Initializing ${this.options.maxWorkers} workers...`, 0, 0, 0);
 
@@ -94,7 +94,7 @@ export class Jarvis {
             // ============ PHASE 0: CHECK SPECIAL DOMAINS ============
             const specialPolicies = this.checkSpecialDomains(cleanDomain);
             if (specialPolicies.length > 0) {
-                logger.info(`[Jarvis] ⚡ Found ${specialPolicies.length} special domain policies`);
+                logger.info(`[Discovery] Found ${specialPolicies.length} special domain policies`);
 
                 return {
                     success: true,

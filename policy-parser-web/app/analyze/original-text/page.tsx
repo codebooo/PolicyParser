@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeft, ScrollText, List, Search, ChevronUp, ExternalLink, Copy, Check } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { clsx } from "clsx"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 interface PolicySection {
   id: string;
@@ -31,7 +33,7 @@ export default function OriginalTextPage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [copied, setCopied] = useState(false)
   const [navCollapsed, setNavCollapsed] = useState(false)
-  
+
   const contentRef = useRef<HTMLDivElement>(null)
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map())
 
@@ -42,7 +44,7 @@ export default function OriginalTextPage() {
       try {
         const parsed = JSON.parse(storedData) as OriginalTextData
         setData(parsed)
-        
+
         // Extract sections from the text
         const extractedSections = extractSections(parsed.rawText)
         setSections(extractedSections)
@@ -58,18 +60,18 @@ export default function OriginalTextPage() {
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500)
-      
+
       // Update active section based on scroll position
       if (sectionRefs.current.size > 0) {
         let currentActive: string | null = null
-        
+
         sectionRefs.current.forEach((element, id) => {
           const rect = element.getBoundingClientRect()
           if (rect.top <= 150) {
             currentActive = id
           }
         })
-        
+
         if (currentActive) {
           setActiveSection(currentActive)
         }
@@ -84,7 +86,7 @@ export default function OriginalTextPage() {
   const extractSections = (text: string): PolicySection[] => {
     const sections: PolicySection[] = []
     const lines = text.split('\n')
-    
+
     // Common section patterns in privacy policies
     const headingPatterns = [
       /^#+\s+(.+)$/,                           // Markdown headings
@@ -93,17 +95,17 @@ export default function OriginalTextPage() {
       /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*):?$/,  // Title Case headings
       /^(What|How|Why|When|Who|Your|Our|The|Data|Information|Privacy|Cookie|Security|Contact|Changes|Rights|Third|Collection|Use|Sharing|Retention|Children|International|Updates?|Notice|Policy).+$/i,
     ]
-    
+
     let sectionCounter = 0
-    
+
     lines.forEach((line, index) => {
       const trimmedLine = line.trim()
       if (!trimmedLine || trimmedLine.length < 3 || trimmedLine.length > 100) return
-      
+
       let isHeading = false
       let level = 2
       let title = trimmedLine
-      
+
       // Check each pattern
       for (const pattern of headingPatterns) {
         const match = trimmedLine.match(pattern)
@@ -122,7 +124,7 @@ export default function OriginalTextPage() {
           break
         }
       }
-      
+
       // Additional heuristic: short lines followed by longer content
       if (!isHeading && trimmedLine.length < 60) {
         const nextLine = lines[index + 1]?.trim()
@@ -135,7 +137,7 @@ export default function OriginalTextPage() {
           }
         }
       }
-      
+
       if (isHeading) {
         sectionCounter++
         sections.push({
@@ -145,7 +147,7 @@ export default function OriginalTextPage() {
         })
       }
     })
-    
+
     // If we didn't find many sections, create some based on paragraphs
     if (sections.length < 3) {
       const paragraphs = text.split(/\n\n+/)
@@ -162,17 +164,17 @@ export default function OriginalTextPage() {
         }
       })
     }
-    
+
     return sections.slice(0, 20) // Limit to 20 sections for usability
   }
 
   // Format text with section markers
   const formattedText = useMemo(() => {
     if (!data?.rawText) return ''
-    
+
     let text = data.rawText
     let sectionIndex = 0
-    
+
     // Add IDs to sections in the text
     sections.forEach(section => {
       const escapedTitle = section.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -180,7 +182,7 @@ export default function OriginalTextPage() {
       text = text.replace(pattern, `$1<span id="${section.id}" class="section-marker"></span>$2`)
       sectionIndex++
     })
-    
+
     return text
   }, [data?.rawText, sections])
 
@@ -190,17 +192,17 @@ export default function OriginalTextPage() {
       setSearchResults([])
       return
     }
-    
+
     const indices: number[] = []
     const lowerText = data.rawText.toLowerCase()
     const lowerQuery = searchQuery.toLowerCase()
     let index = lowerText.indexOf(lowerQuery)
-    
+
     while (index !== -1 && indices.length < 100) {
       indices.push(index)
       index = lowerText.indexOf(lowerQuery, index + 1)
     }
-    
+
     setSearchResults(indices)
     setCurrentSearchIndex(0)
   }, [searchQuery, data?.rawText])
@@ -240,8 +242,8 @@ export default function OriginalTextPage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 size="sm"
                 onClick={() => router.push('/analyze?returnToResults=true')}
                 className="hover:bg-white/10"
@@ -258,7 +260,7 @@ export default function OriginalTextPage() {
                 )}
               </div>
             </div>
-            
+
             <div className="flex items-center gap-2">
               {/* Search */}
               <div className="relative">
@@ -276,7 +278,7 @@ export default function OriginalTextPage() {
                   </span>
                 )}
               </div>
-              
+
               {/* Actions */}
               <Button
                 variant="outline"
@@ -287,7 +289,7 @@ export default function OriginalTextPage() {
                 {copied ? <Check className="h-4 w-4 mr-2" /> : <Copy className="h-4 w-4 mr-2" />}
                 {copied ? "Copied!" : "Copy"}
               </Button>
-              
+
               {data.url && (
                 <a href={data.url} target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="sm" className="border-white/10">
@@ -305,58 +307,50 @@ export default function OriginalTextPage() {
         <div className="flex gap-8">
           {/* Main Content */}
           <div className="flex-1 min-w-0">
-            <div 
+            <div
               ref={contentRef}
               className="prose prose-invert prose-sm max-w-none bg-background/40 border border-white/10 rounded-xl p-6 sm:p-8"
             >
-              <pre className="whitespace-pre-wrap text-sm text-muted-foreground font-sans leading-relaxed m-0 bg-transparent border-0 p-0">
-                {data.rawText.split('\n').map((line, index) => {
-                  const section = sections.find(s => 
-                    s.title.toLowerCase() === line.trim().toLowerCase() ||
-                    line.trim().toLowerCase().includes(s.title.toLowerCase())
-                  )
-                  
-                  if (section) {
-                    return (
-                      <span 
-                        key={index}
-                        id={section.id}
-                        ref={(el) => {
-                          if (el) sectionRefs.current.set(section.id, el)
-                        }}
-                        className={clsx(
-                          "block scroll-mt-24",
-                          section.level === 1 
-                            ? "text-lg font-bold text-foreground mt-8 mb-2" 
-                            : "font-semibold text-foreground/90 mt-6 mb-1"
-                        )}
-                      >
-                        {line}
-                        {'\n'}
-                      </span>
-                    )
-                  }
-                  
-                  // Highlight search results
-                  if (searchQuery && line.toLowerCase().includes(searchQuery.toLowerCase())) {
-                    const parts = line.split(new RegExp(`(${searchQuery})`, 'gi'))
-                    return (
-                      <span key={index}>
-                        {parts.map((part, i) => 
-                          part.toLowerCase() === searchQuery.toLowerCase() ? (
-                            <mark key={i} className="bg-yellow-500/30 text-yellow-200 rounded px-0.5">{part}</mark>
-                          ) : (
-                            part
-                          )
-                        )}
-                        {'\n'}
-                      </span>
-                    )
-                  }
-                  
-                  return line + '\n'
-                })}
-              </pre>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  h1: ({ children }) => (
+                    <h1 className="text-2xl font-bold text-foreground mt-8 mb-4 scroll-mt-24">{children}</h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="text-xl font-semibold text-foreground mt-6 mb-3 scroll-mt-24">{children}</h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-lg font-semibold text-foreground/90 mt-4 mb-2">{children}</h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-muted-foreground leading-relaxed mb-4">{children}</p>
+                  ),
+                  strong: ({ children }) => (
+                    <strong className="font-bold text-foreground">{children}</strong>
+                  ),
+                  em: ({ children }) => (
+                    <em className="italic text-foreground/90">{children}</em>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc list-inside space-y-1 mb-4 text-muted-foreground">{children}</ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="list-decimal list-inside space-y-1 mb-4 text-muted-foreground">{children}</ol>
+                  ),
+                  li: ({ children }) => (
+                    <li className="text-muted-foreground">{children}</li>
+                  ),
+                  a: ({ children, href }) => (
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{children}</a>
+                  ),
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 border-primary/30 pl-4 my-4 italic text-muted-foreground">{children}</blockquote>
+                  ),
+                }}
+              >
+                {data.rawText}
+              </ReactMarkdown>
             </div>
           </div>
 
@@ -379,7 +373,7 @@ export default function OriginalTextPage() {
                   navCollapsed && "rotate-180"
                 )} />
               </button>
-              
+
               {!navCollapsed && (
                 <nav className="max-h-[calc(100vh-200px)] overflow-y-auto p-2">
                   <ul className="space-y-1">
@@ -400,7 +394,7 @@ export default function OriginalTextPage() {
                       </li>
                     ))}
                   </ul>
-                  
+
                   {sections.length === 0 && (
                     <p className="text-sm text-muted-foreground p-3">
                       No sections detected in this document.
@@ -421,7 +415,7 @@ export default function OriginalTextPage() {
             const sectionList = sections.map(s => s.title).join('\n')
             const selected = prompt('Jump to section:\n\n' + sectionList + '\n\nEnter section name:')
             if (selected) {
-              const section = sections.find(s => 
+              const section = sections.find(s =>
                 s.title.toLowerCase().includes(selected.toLowerCase())
               )
               if (section) scrollToSection(section.id)
