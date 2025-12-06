@@ -1,70 +1,64 @@
 import { logger } from '../logger';
 
-// Polyfill DOMMatrix for pdfjs-dist in Node.js environment (Next.js server actions)
-if (typeof global !== 'undefined' && typeof (global as any).DOMMatrix === 'undefined') {
-    (global as any).DOMMatrix = class DOMMatrix {
-        a: number = 1; b: number = 0; c: number = 0; d: number = 1; e: number = 0; f: number = 0;
-        m11: number = 1; m12: number = 0; m13: number = 0; m14: number = 0;
-        m21: number = 0; m22: number = 1; m23: number = 0; m24: number = 0;
-        m31: number = 0; m32: number = 0; m33: number = 1; m34: number = 0;
-        m41: number = 0; m42: number = 0; m43: number = 0; m44: number = 1;
-        is2D: boolean = true;
-        isIdentity: boolean = true;
-
-        constructor(init?: string | number[]) {
-            if (Array.isArray(init)) {
-                if (init.length >= 6) {
-                    this.a = init[0]; this.b = init[1]; this.c = init[2];
-                    this.d = init[3]; this.e = init[4]; this.f = init[5];
-                }
-            }
-        }
-        multiply() { return this; }
-        translate() { return this; }
-        scale() { return this; }
-        rotate() { return this; }
-        rotateFromVector() { return this; }
-        flipX() { return this; }
-        flipY() { return this; }
-        skewX() { return this; }
-        skewY() { return this; }
-        inverse() { return this; }
-        transformPoint() { return { x: 0, y: 0, z: 0, w: 1 }; }
-        toFloat32Array() { return new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]); }
-        toFloat64Array() { return new Float64Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]); }
-        toString() { return `matrix(${this.a}, ${this.b}, ${this.c}, ${this.d}, ${this.e}, ${this.f})`; }
-    };
+// -----------------------------------------------------------------------------
+// POLYFILLS
+// -----------------------------------------------------------------------------
+// pdf.js (used by pdf-parse) requires DOMMatrix/Canvas logic even in Node
+if (typeof global !== 'undefined') {
+    if (typeof (global as any).DOMMatrix === 'undefined') {
+        (global as any).DOMMatrix = class DOMMatrix {
+            constructor() { }
+            multiply() { return this; }
+            translate() { return this; }
+            scale() { return this; }
+            toString() { return 'matrix(1, 0, 0, 1, 0, 0)'; }
+        };
+    }
 }
 
 /**
- * Parse PDF buffer and extract text content
+ * Robust extraction of text from PDF Buffer.
  * 
- * Using pdf-parse v2.4.5 which exports PDFParse class.
- * Includes DOMMatrix polyfill for pdfjs-dist compatibility.
+ * ARCHITECTURAL NOTE:
+ * We use a specific runtime-require hack to bypass Next.js/Webpack static analysis.
+ * The error "Cannot find module as expression is too dynamic" occurs because
+ * Webpack tries to bundle the internal worker loading logic of pdf.js.
+ * By using `eval('require')`, we force this to be treated as a purely runtime
+ * Node.js operation, skipping the bundler entirely for this dependency.
  */
 export async function parsePdf(buffer: Buffer): Promise<string> {
     try {
-        // pdf-parse v2.4.5 exports PDFParse as a class
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        const { PDFParse } = require('pdf-parse');
+        // 1. Bypass Webpack bundling for this specific module
+        // This effectively tells Next.js: "Don't touch this, it's for Node runtime only"
+        const runtimeRequire = eval('require');
+        const pdfParse = runtimeRequire('pdf-parse');
 
-        // Create parser instance with Uint8Array
-        const parser = new PDFParse(new Uint8Array(buffer));
+        // 2. Parse the buffer
+        // pdf-parse is a function that takes the buffer and options
+        const data = await pdfParse(buffer);
 
-        // Get text using the getText method
-        const result = await parser.getText();
-        const text = result.text;
+        // 3. Extract and clean text
+        const text = data.text || '';
 
-        // Clean up the text
         const cleanedText = text
+            .replace(/\r\n/g, '\n')      // Normalize line endings
             .replace(/\n\s*\n/g, '\n\n') // Normalize paragraphs
-            .replace(/\s+/g, ' ')        // Normalize spaces  
+            .replace(/[ \t]+/g, ' ')     // Normalize horizontal whitespace
             .trim();
 
-        logger.info(`[parsePdf] Extracted ${cleanedText.length} chars from PDF`);
+        logger.info(`[parsePdf] Extracted ${cleanedText.length} chars from PDF using runtime parser (Pages: ${data.numpages})`);
+
         return cleanedText;
+
     } catch (error: any) {
-        logger.error('[parsePdf] Failed to parse PDF', error);
-        throw new Error(`Failed to parse PDF: ${error.message}`);
+        // 4. Detailed error logging
+        logger.error('[parsePdf] CRITICAL: PDF parsing failed', {
+            error: error.message,
+            stack: error.stack,
+            bufferSize: buffer ? buffer.length : 0
+        });
+
+        // Fallback for empty/failed parsing to prevent app crash
+        throw new Error(`PDF Parsing Failed: ${error.message}`);
     }
 }
