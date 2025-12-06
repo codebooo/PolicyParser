@@ -150,6 +150,40 @@ export class Jarvis {
             };
 
         } catch (error: any) {
+            // On timeout or error, try the old TURBO discovery as fallback
+            logger.warn(`[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine`);
+
+            try {
+                const { discoverPolicies } = await import('../discovery/index');
+                const turboResult = await discoverPolicies(cleanDomain);
+
+                if (turboResult.success && turboResult.policies.length > 0) {
+                    const duration = Date.now() - startTime;
+                    logger.info(`[Jarvis] ✅ TURBO fallback succeeded! Found ${turboResult.policies.length} policies`);
+
+                    // Convert TURBO policies to Jarvis format
+                    const policies: JarvisPolicy[] = turboResult.policies.map(p => ({
+                        type: p.type,
+                        name: p.name,
+                        url: p.url,
+                        confidence: p.confidence,
+                        source: p.source as any,
+                        neuralScore: p.neuralScore
+                    }));
+
+                    return {
+                        success: true,
+                        domain: cleanDomain,
+                        policies,
+                        discoveryTimeMs: duration,
+                        workersUsed: 0,
+                        candidatesFound: policies.length
+                    };
+                }
+            } catch (fallbackError: any) {
+                logger.error(`[Jarvis] TURBO fallback also failed`, fallbackError);
+            }
+
             const duration = Date.now() - startTime;
             logger.error(`[Jarvis] ❌ Discovery failed`, error);
             this.emitProgress('error', error.message, 0, 0, duration);
