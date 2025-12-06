@@ -39,19 +39,21 @@ if (typeof global !== 'undefined' && typeof (global as any).DOMMatrix === 'undef
 /**
  * Parse PDF buffer and extract text content
  * 
- * Using pdf-parse which works in Node.js server environment.
+ * Using pdf-parse v2.4.5 which exports PDFParse class.
  * Includes DOMMatrix polyfill for pdfjs-dist compatibility.
  */
 export async function parsePdf(buffer: Buffer): Promise<string> {
     try {
-        // Use require for CommonJS module - pdf-parse v2.4.5
+        // pdf-parse v2.4.5 exports PDFParse as a class
         // eslint-disable-next-line @typescript-eslint/no-require-imports
-        const pdfParse = require('pdf-parse');
+        const { PDFParse } = require('pdf-parse');
 
-        // pdf-parse expects a Buffer directly
-        const data = await pdfParse(buffer);
+        // Create parser instance with Uint8Array
+        const parser = new PDFParse(new Uint8Array(buffer));
 
-        const text = data.text;
+        // Get text using the getText method
+        const result = await parser.getText();
+        const text = result.text;
 
         // Clean up the text
         const cleanedText = text
@@ -59,7 +61,7 @@ export async function parsePdf(buffer: Buffer): Promise<string> {
             .replace(/\s+/g, ' ')        // Normalize spaces  
             .trim();
 
-        logger.info(`[parsePdf] Extracted ${cleanedText.length} chars from PDF (${data.numpages} pages)`);
+        logger.info(`[parsePdf] Extracted ${cleanedText.length} chars from PDF`);
         return cleanedText;
     } catch (error: any) {
         logger.error('[parsePdf] Failed to parse PDF', error);
