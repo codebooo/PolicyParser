@@ -29,15 +29,42 @@ if (typeof global !== 'undefined') {
 export async function parsePdf(buffer: Buffer): Promise<string> {
     try {
         // 1. Bypass Webpack bundling for this specific module
-        // This effectively tells Next.js: "Don't touch this, it's for Node runtime only"
         const runtimeRequire = eval('require');
-        const pdfParse = runtimeRequire('pdf-parse');
+        const pdfModule = runtimeRequire('pdf-parse');
 
-        // 2. Parse the buffer
-        // pdf-parse is a function that takes the buffer and options
-        const data = await pdfParse(buffer);
+        // 2. Dynamically resolve the correct parser function/class
+        let parserFunc: any;
 
-        // 3. Extract and clean text
+        // Strategy A: Check for PDFParse class property (v2.4.5 specific)
+        if (pdfModule.PDFParse) {
+            parserFunc = (buf: Buffer) => {
+                const parser = new pdfModule.PDFParse(new Uint8Array(buf));
+                return parser.getText();
+            };
+        }
+        // Strategy B: Check if module itself is a function (older versions / default export)
+        else if (typeof pdfModule === 'function') {
+            parserFunc = pdfModule;
+        }
+        // Strategy C: Check for default export that is a function
+        else if (pdfModule.default && typeof pdfModule.default === 'function') {
+            parserFunc = pdfModule.default;
+        }
+        // Strategy D: Check for default.PDFParse
+        else if (pdfModule.default && pdfModule.default.PDFParse) {
+            parserFunc = (buf: Buffer) => {
+                const parser = new pdfModule.default.PDFParse(new Uint8Array(buf));
+                return parser.getText();
+            };
+        }
+        else {
+            throw new Error(`Could not find valid PDF parser in module. Keys: ${Object.keys(pdfModule).join(', ')}`);
+        }
+
+        // 3. Parse the buffer using the resolved strategy
+        const data = await parserFunc(buffer);
+
+        // 4. Extract and clean text
         const text = data.text || '';
 
         const cleanedText = text
