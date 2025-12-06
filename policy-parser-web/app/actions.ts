@@ -3,6 +3,7 @@
 import { createStreamableValue } from '@ai-sdk/rsc';
 import { identifyTarget } from './lib/identifier';
 import { PolicyDiscoveryEngine } from './lib/discovery/Engine';
+import { Jarvis, discoverWithJarvis } from './lib/jarvis';
 import { extractPolicyContent } from './lib/extractor';
 import { SYSTEM_PROMPT, USER_PROMPT } from './lib/analyzer/prompt';
 import { calculateScore } from './lib/analyzer/scorer';
@@ -34,18 +35,22 @@ export async function findAndFetchPolicy(input: string): Promise<{
         const identity = await identifyTarget(input);
         logger.info('findAndFetchPolicy: Identified', identity);
 
-        // Step 2: Discover policy URL
-        const engine = new PolicyDiscoveryEngine();
-        const candidate = await engine.discover(identity.cleanDomain);
+        // Step 2: Discover policy URL (using JARVIS! 🚀)
+        const jarvisResult = await discoverWithJarvis(identity.cleanDomain, {
+            maxWorkers: 10,
+            timeout: 10000,
+            targetPolicies: ['privacy']
+        });
 
-        if (!candidate) {
+        if (!jarvisResult.success || jarvisResult.policies.length === 0) {
             return {
                 success: false,
                 error: `Could not find a privacy policy for ${identity.cleanDomain}`
             };
         }
 
-        logger.info('findAndFetchPolicy: Found policy', candidate);
+        const candidate = jarvisResult.policies.find(p => p.type === 'privacy') || jarvisResult.policies[0];
+        logger.info(`findAndFetchPolicy: JARVIS found policy in ${jarvisResult.discoveryTimeMs}ms`, candidate);
 
         // Step 3: Extract content to verify it works
         const extracted = await extractPolicyContent(candidate.url);
@@ -131,15 +136,21 @@ export async function analyzeDomain(input: string) {
 
             logger.info('Cache miss or outdated - performing fresh analysis');
 
-            // Step 3: Discovery
-            stream.update({ status: 'discovering', message: `Searching for policy on ${identity.cleanDomain}...`, step: 3, data: null });
-            const engine = new PolicyDiscoveryEngine();
-            const candidate = await engine.discover(identity.cleanDomain);
+            // Step 3: Discovery (using JARVIS - 5x faster! 🚀)
+            stream.update({ status: 'discovering', message: `🤖 JARVIS searching for policy on ${identity.cleanDomain}...`, step: 3, data: null });
+            const jarvisResult = await discoverWithJarvis(identity.cleanDomain, {
+                maxWorkers: 10,
+                timeout: 10000,
+                useCarl: true,
+                targetPolicies: ['privacy']
+            });
 
-            if (!candidate) {
+            if (!jarvisResult.success || jarvisResult.policies.length === 0) {
                 throw new Error(`Could not find a privacy policy for ${identity.cleanDomain}`);
             }
-            logger.info('Policy found', candidate);
+
+            const candidate = jarvisResult.policies.find(p => p.type === 'privacy') || jarvisResult.policies[0];
+            logger.info(`Policy found by JARVIS in ${jarvisResult.discoveryTimeMs}ms`, candidate);
 
             // Step 4: Extraction
             stream.update({ status: 'extracting', message: `Reading policy from ${candidate.url}...`, step: 4, data: null });
@@ -374,16 +385,19 @@ export async function discoverAllPolicies(input: string): Promise<{
     error?: string;
 }> {
     try {
-        logger.info(`[discoverAllPolicies] Starting intelligent discovery for: ${input}`);
+        logger.info(`[discoverAllPolicies] 🤖 Starting JARVIS parallel discovery for: ${input}`);
 
         const identity = await identifyTarget(input);
         const domain = identity.cleanDomain;
 
         logger.info(`[discoverAllPolicies] Resolved domain: ${domain}`);
 
-        // Use the new intelligent discovery engine
-        const { discoverPolicies } = await import('./lib/discovery/index');
-        const result = await discoverPolicies(domain);
+        // Use JARVIS - parallel discovery with 10 workers! 🚀
+        const result = await discoverWithJarvis(domain, {
+            maxWorkers: 10,
+            timeout: 15000,
+            useCarl: true
+        });
 
         if (!result.success) {
             return {
@@ -399,8 +413,8 @@ export async function discoverAllPolicies(input: string): Promise<{
             url: p.url
         }));
 
-        logger.info(`[discoverAllPolicies] Intelligent discovery complete! Found ${foundPolicies.length} validated policies`);
-        logger.info(`[discoverAllPolicies] Phases: ${result.phasesCompleted.join(' -> ')}`);
+        logger.info(`[discoverAllPolicies] 🤖 JARVIS complete! Found ${foundPolicies.length} policies in ${result.discoveryTimeMs}ms`);
+        logger.info(`[discoverAllPolicies] Workers: ${result.workersUsed}, Candidates: ${result.candidatesFound}`);
 
         return {
             success: true,
@@ -408,7 +422,7 @@ export async function discoverAllPolicies(input: string): Promise<{
             policies: foundPolicies
         };
     } catch (error: any) {
-        logger.error('[discoverAllPolicies] Discovery failed', error);
+        logger.error('[discoverAllPolicies] JARVIS discovery failed', error);
         return {
             success: false,
             error: error?.message || 'Failed to discover policies'
@@ -579,9 +593,9 @@ export async function submitPolicyFeedback(
         try {
             const html = await fetchHtml(correctUrl).catch(() => '');
             const features = extractCarlFeatures(
-                html.substring(0, 1000), 
-                correctUrl, 
-                'footer', 
+                html.substring(0, 1000),
+                correctUrl,
+                'footer',
                 domain,
                 html // Pass full content for better feature extraction
             );
@@ -596,9 +610,9 @@ export async function submitPolicyFeedback(
             try {
                 const html = await fetchHtml(incorrectUrl).catch(() => '');
                 const features = extractCarlFeatures(
-                    html.substring(0, 1000), 
-                    incorrectUrl, 
-                    'footer', 
+                    html.substring(0, 1000),
+                    incorrectUrl,
+                    'footer',
                     domain,
                     html
                 );
@@ -701,7 +715,7 @@ export async function clearAllCache(): Promise<{ success: boolean; count?: numbe
 export async function getBrainStats() {
     const carl = await getCarl();
     const stats = carl.getStats();
-    
+
     return {
         generation: stats.generation,
         trainingCount: stats.trainingCount,
@@ -720,20 +734,20 @@ export async function testBrainPrediction(
     context: 'footer' | 'nav' | 'body' | 'legal_hub'
 ) {
     const carl = await getCarl();
-    
+
     // Determine the base URL for feature extraction
     let baseUrl = 'https://example.com';
     let pageContent: string | undefined = undefined;
     let fetchError: string | undefined = undefined;
-    
+
     try {
         // Parse the URL to get the base domain
         const urlObj = new URL(url.startsWith('http') ? url : `https://${url}`);
         baseUrl = `${urlObj.protocol}//${urlObj.hostname}`;
-        
+
         // Actually fetch the page content to analyze
         logger.info(`[Carl Test] Fetching page content from: ${urlObj.toString()}`);
-        
+
         try {
             const html = await fetchHtml(urlObj.toString());
             if (html && html.length > 0) {
@@ -750,28 +764,28 @@ export async function testBrainPrediction(
         fetchError = e instanceof Error ? e.message : 'Invalid URL';
         logger.warn(`[Carl Test] URL parse error: ${fetchError}`);
     }
-    
+
     // Extract features with actual page content
     const features = extractCarlFeatures(linkText, url, context, baseUrl, pageContent);
     const prediction = carl.predict(features);
-    
+
     // Determine if this looks like a homepage vs actual policy page
     const isHomepage = checkIfHomepage(url);
-    
+
     // Check URL strength - does it strongly suggest a policy?
     const urlLower = url.toLowerCase();
-    const strongPolicyUrl = urlLower.includes('/privacy-policy') || 
-                            urlLower.includes('/privacy_policy') ||
-                            urlLower.includes('/privacypolicy') ||
-                            urlLower.includes('/datenschutz') ||
-                            urlLower.includes('/policies/privacy') ||
-                            urlLower.includes('/legal/privacy');
-    
+    const strongPolicyUrl = urlLower.includes('/privacy-policy') ||
+        urlLower.includes('/privacy_policy') ||
+        urlLower.includes('/privacypolicy') ||
+        urlLower.includes('/datenschutz') ||
+        urlLower.includes('/policies/privacy') ||
+        urlLower.includes('/legal/privacy');
+
     // Adjust confidence based on actual analysis
     let adjustedScore = prediction.score;
     let adjustedConfidence = prediction.confidence;
     let analysisNote = '';
-    
+
     // CRITICAL: If we couldn't fetch the page (404, network error, etc.), 
     // we can't trust URL-based features alone
     if (fetchError) {
@@ -797,7 +811,7 @@ export async function testBrainPrediction(
     } else if (pageContent) {
         // We have content - analyze it more thoroughly
         const contentAnalysis = analyzePageContent(pageContent);
-        
+
         if (contentAnalysis.isPolicy) {
             // Content confirms this is a policy - trust the raw score
             adjustedScore = prediction.score;
@@ -869,7 +883,7 @@ interface ContentAnalysis {
 
 function analyzePageContent(content: string): ContentAnalysis {
     const lowerContent = content.toLowerCase();
-    
+
     // Strong indicators that this IS a privacy policy
     const strongIndicators = [
         'privacy policy', 'privacy notice', 'data protection policy',
@@ -883,7 +897,7 @@ function analyzePageContent(content: string): ContentAnalysis {
         'data controller', 'data processor', 'personal data',
         'cookies we use', 'information we collect', 'how we protect'
     ];
-    
+
     // Count how many strong indicators are present
     let strongMatches = 0;
     for (const indicator of strongIndicators) {
@@ -891,7 +905,7 @@ function analyzePageContent(content: string): ContentAnalysis {
             strongMatches++;
         }
     }
-    
+
     // Also check for structural elements common in policies
     const structuralPatterns = [
         /what (information|data) (we|do we) collect/i,
@@ -908,19 +922,19 @@ function analyzePageContent(content: string): ContentAnalysis {
         /effective date/i,
         /last (updated|modified)/i
     ];
-    
+
     let structuralMatches = 0;
     for (const pattern of structuralPatterns) {
         if (pattern.test(lowerContent)) {
             structuralMatches++;
         }
     }
-    
+
     const totalMatches = strongMatches + structuralMatches;
-    
+
     // Consider it a policy if we have at least 2 strong indicators or 3 structural matches
     const isPolicy = strongMatches >= 2 || structuralMatches >= 3 || (strongMatches >= 1 && structuralMatches >= 1);
-    
+
     return {
         isPolicy,
         matchCount: totalMatches,
@@ -949,7 +963,7 @@ export async function trainBrain(
 export async function retrainBrain() {
     const carl = await getCarl();
     const result = await carl.retrain();
-    
+
     return {
         success: true,
         generation: result.generation,
@@ -961,7 +975,7 @@ export async function retrainBrain() {
 export async function resetBrain() {
     const carl = await getCarl();
     await carl.reset();
-    
+
     return {
         success: true,
         message: 'Carl has been reset to factory settings'
@@ -1001,7 +1015,7 @@ export async function getAdminCacheList(): Promise<{
 }> {
     try {
         const supabase = await createClient();
-        
+
         // Check admin
         const { data: { user } } = await supabase.auth.getUser();
         if (user?.email !== ADMIN_EMAIL) {
@@ -1032,7 +1046,7 @@ export async function getAdminCacheList(): Promise<{
 export async function deleteCacheItem(id: string): Promise<{ success: boolean; error?: string }> {
     try {
         const supabase = await createClient();
-        
+
         // Check admin
         const { data: { user } } = await supabase.auth.getUser();
         if (user?.email !== ADMIN_EMAIL) {
@@ -1063,7 +1077,7 @@ export async function deleteCacheItem(id: string): Promise<{ success: boolean; e
 export async function deleteCacheByDomain(domain: string): Promise<{ success: boolean; count?: number; error?: string }> {
     try {
         const supabase = await createClient();
-        
+
         // Check admin
         const { data: { user } } = await supabase.auth.getUser();
         if (user?.email !== ADMIN_EMAIL) {
@@ -1111,7 +1125,7 @@ export async function getAdminStats(): Promise<{
 }> {
     try {
         const supabase = await createClient();
-        
+
         // Check admin
         const { data: { user } } = await supabase.auth.getUser();
         if (user?.email !== ADMIN_EMAIL) {
@@ -1164,7 +1178,7 @@ export async function getAdminRecentAnalyses(): Promise<{
 }> {
     try {
         const supabase = await createClient();
-        
+
         // Check admin
         const { data: { user } } = await supabase.auth.getUser();
         if (user?.email !== ADMIN_EMAIL) {
@@ -1199,7 +1213,7 @@ export async function getAdminUsers(): Promise<{
 }> {
     try {
         const supabase = await createClient();
-        
+
         // Check admin
         const { data: { user } } = await supabase.auth.getUser();
         if (user?.email !== ADMIN_EMAIL) {

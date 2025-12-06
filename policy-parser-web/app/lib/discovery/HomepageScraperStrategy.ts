@@ -122,7 +122,7 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
     async execute(domain: string): Promise<PolicyCandidate[]> {
         const candidates: PolicyCandidate[] = [];
         const baseUrl = `https://${domain}`;
-        
+
         // Get Carl for neural network scoring
         let carl: Awaited<ReturnType<typeof getCarl>> | null = null;
         try {
@@ -165,7 +165,7 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
             const links: {
                 href: string;
                 text: string;
-                context: 'footer' | 'legal' | 'nav' | 'body';
+                context: 'footer' | 'legal_hub' | 'nav' | 'body';
                 score: number;
             }[] = [];
 
@@ -179,7 +179,7 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
             // PHASE 2: Legal section scanning
             for (const selector of this.LEGAL_SECTION_SELECTORS) {
                 $(selector).find('a').each((i, el) => {
-                    this.processLink($, el, baseUrl, domain, 'legal', links);
+                    this.processLink($, el, baseUrl, domain, 'legal_hub', links);
                 });
             }
 
@@ -226,7 +226,7 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
                 // Calculate confidence using Carl if available
                 let confidence: number;
                 let methodDetail: string;
-                
+
                 if (carl) {
                     // Use Carl's neural network for scoring
                     const features = extractCarlFeatures(
@@ -237,30 +237,30 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
                         undefined            // pageContent (not fetched yet)
                     );
                     const prediction = carl.predict(features);
-                    
+
                     // Carl returns 0-1, convert to 0-100 confidence
                     // But also factor in the heuristic score as a sanity check
                     const carlScore = prediction.score * 100;
                     const heuristicScore = 50 + link.score;
-                    
+
                     // Weighted combination: 70% Carl, 30% heuristics
                     confidence = Math.round(carlScore * 0.7 + heuristicScore * 0.3);
-                    
+
                     // Context bonuses still apply (Carl may not have full context info)
                     if (link.context === 'footer') confidence += 10;
-                    if (link.context === 'legal') confidence += 8;
-                    
+                    if (link.context === 'legal_hub') confidence += 8;
+
                     methodDetail = `Carl: ${Math.round(carlScore)}%, Heuristic: ${Math.round(heuristicScore)}%, Context: ${link.context}`;
                     logger.info(`HomepageScraper: Carl scored "${link.text.slice(0, 30)}" at ${carlScore.toFixed(1)}%`);
                 } else {
                     // Fallback to heuristic scoring
                     confidence = 50 + link.score;
-                    
+
                     // Context bonuses
                     if (link.context === 'footer') confidence += 15;
-                    if (link.context === 'legal') confidence += 12;
+                    if (link.context === 'legal_hub') confidence += 12;
                     if (link.context === 'nav') confidence += 5;
-                    
+
                     methodDetail = `Found "${link.text.slice(0, 50)}" in ${link.context} (score: ${link.score})`;
                 }
 
@@ -291,7 +291,7 @@ export class HomepageScraperStrategy implements DiscoveryStrategy {
         el: any,  // Cheerio element type
         baseUrl: string,
         domain: string,
-        context: 'footer' | 'legal' | 'nav' | 'body',
+        context: 'footer' | 'legal_hub' | 'nav' | 'body',
         links: { href: string; text: string; context: typeof context; score: number }[]
     ): void {
         const href = $(el).attr('href');
