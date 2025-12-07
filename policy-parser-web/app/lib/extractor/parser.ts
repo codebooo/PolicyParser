@@ -76,7 +76,7 @@ export function parseContent(html: string, url: string): ParsedContent {
         const reader = new Readability(doc.window.document);
         const article = reader.parse();
 
-        if (article && article.textContent && article.textContent.length > 500) {
+        if (article && article.textContent && article.textContent.length > 200) {
             return {
                 title: article.title || 'Untitled',
                 content: article.content || '',
@@ -92,8 +92,21 @@ export function parseContent(html: string, url: string): ParsedContent {
     // Fallback: extract text directly (works for React apps like Facebook)
     const directExtract = extractTextDirectly(html, url);
 
+    // Check if URL itself strongly indicates a privacy policy
+    const lowerUrl = url.toLowerCase();
+    const isPrivacyUrl =
+        lowerUrl.includes('/privacy') ||
+        lowerUrl.includes('/datenschutz') ||
+        lowerUrl.includes('/confidentialite') ||
+        lowerUrl.includes('/privacidad') ||
+        lowerUrl.includes('privacy-policy') ||
+        lowerUrl.includes('data-protection');
+
+    // Lower threshold for pages with privacy-indicating URLs (JS-rendered sites)
+    const minTextLength = isPrivacyUrl ? 100 : 200;
+
     // Verify we got meaningful content
-    if (directExtract.textContent.length < 500) {
+    if (directExtract.textContent.length < minTextLength) {
         throw new Error('Failed to parse content: insufficient text extracted');
     }
 
