@@ -403,6 +403,13 @@ export const CONFIG = {
             terms: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp',
             cookies: 'https://www.bhphotovideo.com/find/HelpCenter/Policies.jsp#cookiesNotice',
         },
+        // Xiaomi - uses JS-heavy site, global URL has static content
+        'mi.com': {
+            privacy: 'https://privacy.mi.com/all/en_US/',
+        },
+        'www.mi.com': {
+            privacy: 'https://privacy.mi.com/all/en_US/',
+        },
     } as Record<string, Partial<Record<string, string>>>,
 };
 

@@ -113,7 +113,7 @@ const AGGRESSIVE_ANTIBOT_DOMAINS = [
 async function fetchFromWaybackMachine(url: string): Promise<{ body: string; finalUrl: string } | null> {
     try {
         logger.info(`[fetcher] Trying Wayback Machine for ${url}`);
-        
+
         // First, check if Wayback has this URL
         const availabilityUrl = `https://archive.org/wayback/available?url=${encodeURIComponent(url)}`;
         const availResponse = await got(availabilityUrl, {
@@ -123,19 +123,19 @@ async function fetchFromWaybackMachine(url: string): Promise<{ body: string; fin
                 'Accept': 'application/json',
             },
         });
-        
+
         const availability = JSON.parse(availResponse.body);
-        
+
         if (!availability?.archived_snapshots?.closest?.available) {
             logger.info(`[fetcher] No Wayback snapshot available for ${url}`);
             return null;
         }
-        
+
         const snapshotUrl = availability.archived_snapshots.closest.url;
         const snapshotTimestamp = availability.archived_snapshots.closest.timestamp;
-        
+
         logger.info(`[fetcher] Found Wayback snapshot from ${snapshotTimestamp}: ${snapshotUrl}`);
-        
+
         // Fetch the actual snapshot
         const snapshotResponse = await got(snapshotUrl, {
             timeout: { request: 15000 },
@@ -145,28 +145,141 @@ async function fetchFromWaybackMachine(url: string): Promise<{ body: string; fin
             },
             followRedirect: true,
         });
-        
+
         if (snapshotResponse.statusCode === 200) {
             // Remove Wayback Machine toolbar injection from the HTML
             let body = snapshotResponse.body;
-            
+
             // Remove Wayback toolbar scripts and styles
             body = body.replace(/<!-- BEGIN WAYBACK TOOLBAR INSERT -->[\s\S]*?<!-- END WAYBACK TOOLBAR INSERT -->/gi, '');
             body = body.replace(/<script[^>]*archive\.org[^>]*>[\s\S]*?<\/script>/gi, '');
             body = body.replace(/<link[^>]*archive\.org[^>]*>/gi, '');
-            
+
             logger.info(`[fetcher] Successfully fetched from Wayback Machine (${body.length} chars)`);
             return {
                 body,
                 finalUrl: url, // Use original URL, not Wayback URL
             };
         }
-        
+
         return null;
     } catch (error: any) {
         logger.warn(`[fetcher] Wayback Machine fallback failed: ${error.message}`);
         return null;
     }
+}
+
+/**
+ * Fetch from Google Cache as fallback
+ * Returns null if not available or fails
+ */
+async function fetchFromGoogleCache(url: string): Promise<{ body: string; finalUrl: string } | null> {
+    try {
+        logger.info(`[fetcher] Trying Google Cache for ${url}`);
+
+        const cacheUrl = `https://webcache.googleusercontent.com/search?q=cache:${encodeURIComponent(url)}`;
+
+        const response = await got(cacheUrl, {
+            timeout: { request: 15000 },
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml',
+                'Accept-Language': 'en-US,en;q=0.9',
+            },
+            followRedirect: true,
+            throwHttpErrors: false,
+        });
+
+        if (response.statusCode === 200 && response.body.length > 500) {
+            // Remove Google Cache header/banner
+            let body = response.body;
+            body = body.replace(/<div[^>]*id="bN015htcoyT__google-cache-hdr"[^>]*>[\s\S]*?<\/div>/gi, '');
+            body = body.replace(/<style[^>]*>[\s\S]*?google-cache[\s\S]*?<\/style>/gi, '');
+
+            logger.info(`[fetcher] Successfully fetched from Google Cache (${body.length} chars)`);
+            return {
+                body,
+                finalUrl: url,
+            };
+        }
+
+        logger.info(`[fetcher] Google Cache not available for ${url}`);
+        return null;
+    } catch (error: any) {
+        logger.warn(`[fetcher] Google Cache fallback failed: ${error.message}`);
+        return null;
+    }
+}
+
+/**
+ * Alternative URL patterns to try when primary URL fails or has insufficient content
+ */
+const ALTERNATIVE_URL_PATTERNS = [
+    // Global/English versions
+    (url: string) => url.replace(/\/de\//, '/en/'),
+    (url: string) => url.replace(/\/de\//, '/global/'),
+    (url: string) => url.replace(/\/de\//, '/us/'),
+    (url: string) => url.replace(/\/fr\//, '/en/'),
+    (url: string) => url.replace(/\/es\//, '/en/'),
+    // Common alternative paths
+    (url: string) => url.replace(/\/privacy\/?$/, '/legal/privacy'),
+    (url: string) => url.replace(/\/privacy\/?$/, '/about/privacy'),
+    (url: string) => url.replace(/\/privacy\/?$/, '/privacy-policy'),
+    (url: string) => url + '/index.html',
+    (url: string) => url.replace(/\/$/, '') + '.html',
+];
+
+/**
+ * Try alternative URL patterns when primary fails
+ */
+async function tryAlternativeUrls(originalUrl: string, userAgent: string): Promise<{ body: string; finalUrl: string; contentType: string; buffer: Buffer } | null> {
+    logger.info(`[fetcher] Trying alternative URL patterns for ${originalUrl}`);
+
+    for (const transform of ALTERNATIVE_URL_PATTERNS) {
+        const altUrl = transform(originalUrl);
+
+        // Skip if same as original or invalid transformation
+        if (altUrl === originalUrl || !altUrl.startsWith('http')) {
+            continue;
+        }
+
+        try {
+            logger.debug(`[fetcher] Trying alternative: ${altUrl}`);
+            const result = await fetchHtmlCore(altUrl, userAgent);
+
+            // Check if we got meaningful content
+            if (result.body.length > 1000) {
+                logger.info(`[fetcher] Alternative URL succeeded: ${altUrl}`);
+                return result;
+            }
+        } catch (error: any) {
+            // Silently continue to next alternative
+        }
+    }
+
+    return null;
+}
+
+/**
+ * Cascade through all fallback sources
+ */
+async function cascadeFallbacks(url: string): Promise<{ body: string; finalUrl: string } | null> {
+    logger.info(`[fetcher] Starting fallback cascade for ${url}`);
+
+    // 1. Try Google Cache first (usually has JS-rendered content)
+    const googleResult = await fetchFromGoogleCache(url);
+    if (googleResult && googleResult.body.length > 500) {
+        return googleResult;
+    }
+
+    // 2. Try Wayback Machine
+    const waybackResult = await fetchFromWaybackMachine(url);
+    if (waybackResult && waybackResult.body.length > 500) {
+        return waybackResult;
+    }
+
+    logger.info(`[fetcher] All fallback sources exhausted for ${url}`);
+    return null;
 }
 
 /**
@@ -422,10 +535,10 @@ export async function fetchResource(url: string): Promise<FetchResult> {
     // Determine if we need to use Googlebot UA
     const useBotUA = requiresBotUA(url);
     const isAggressiveAntibot = hasAggressiveAntibot(url);
-    
+
     // Build list of user agents to try
     let userAgentsToTry: string[] = [];
-    
+
     if (useBotUA) {
         logger.info(`Using Googlebot UA for ${url}`);
         userAgentsToTry = [GOOGLEBOT_UA];
@@ -437,10 +550,10 @@ export async function fetchResource(url: string): Promise<FetchResult> {
     }
 
     let lastError: Error | null = null;
-    
+
     for (let uaIndex = 0; uaIndex < userAgentsToTry.length; uaIndex++) {
         const userAgent = userAgentsToTry[uaIndex];
-        
+
         try {
             let { body, finalUrl, contentType, buffer } = await fetchHtmlCore(url, userAgent);
 
@@ -506,7 +619,7 @@ export async function fetchResource(url: string): Promise<FetchResult> {
             };
         } catch (error: any) {
             lastError = error;
-            
+
             // If we got a 403, try the next user agent
             if (error.message === 'HTTP_403_FORBIDDEN') {
                 logger.warn(`[fetchResource] Got 403 with UA #${uaIndex + 1}, trying next...`);
@@ -514,39 +627,52 @@ export async function fetchResource(url: string): Promise<FetchResult> {
                 await sleep(500 + Math.random() * 500, false);
                 continue;
             }
-            
+
             // For other errors, if we still have UAs to try and it's a network error
-            if (uaIndex < userAgentsToTry.length - 1 && 
+            if (uaIndex < userAgentsToTry.length - 1 &&
                 (error instanceof RequestError || error.message.includes('HTTP'))) {
                 logger.warn(`[fetchResource] Error with UA #${uaIndex + 1}: ${error.message}, trying next...`);
                 await sleep(500, false);
                 continue;
             }
-            
+
             // Non-retryable error or last UA failed
             break;
         }
     }
 
-    // All UAs failed
-    if (lastError?.message === 'HTTP_403_FORBIDDEN') {
-        // Try Wayback Machine as last resort
-        logger.info(`[fetchResource] All UAs failed with 403, trying Wayback Machine fallback...`);
-        const waybackResult = await fetchFromWaybackMachine(url);
-        
-        if (waybackResult) {
-            logger.info(`[fetchResource] Successfully retrieved from Wayback Machine`);
-            return {
-                body: waybackResult.body,
-                buffer: Buffer.from(waybackResult.body, 'utf-8'),
-                contentType: 'text/html',
-                url: waybackResult.finalUrl,
-            };
-        }
-        
-        throw new Error(`Access forbidden (403). The website is blocking automated requests.`);
+    // All UAs failed - try fallback cascade
+    logger.info(`[fetchResource] All UAs failed, trying fallback cascade...`);
+
+    // Try alternative URL patterns first (might find a working version)
+    const altResult = await tryAlternativeUrls(url, CONFIG.USER_AGENT);
+    if (altResult && altResult.body.length > 500) {
+        logger.info(`[fetchResource] Alternative URL succeeded`);
+        return {
+            body: altResult.body,
+            buffer: altResult.buffer,
+            contentType: altResult.contentType,
+            url: altResult.finalUrl,
+        };
     }
-    
+
+    // Try cache sources (Google Cache, Wayback)
+    const cacheResult = await cascadeFallbacks(url);
+    if (cacheResult) {
+        logger.info(`[fetchResource] Cache fallback succeeded`);
+        return {
+            body: cacheResult.body,
+            buffer: Buffer.from(cacheResult.body, 'utf-8'),
+            contentType: 'text/html',
+            url: cacheResult.finalUrl,
+        };
+    }
+
+    // Provide specific error messages
+    if (lastError?.message === 'HTTP_403_FORBIDDEN') {
+        throw new Error(`Access forbidden (403). The website is blocking automated requests. Try again later or use a different URL.`);
+    }
+
     logger.error(`Failed to fetch resource from ${url}`, lastError?.message);
     throw new Error(`Failed to fetch content: ${lastError?.message || 'Unknown error'}`);
 }
