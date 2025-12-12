@@ -14,11 +14,13 @@ import { trackPolicy, untrackPolicy, getTrackedPolicies } from "../trackingActio
 import { submitCommunityScore, getCommunityScore, getUserVote } from "../communityActions"
 import { useRouter, useSearchParams } from "next/navigation"
 import PolicyVersions from "@/components/PolicyVersions"
+import { EducationalDisclaimer } from "@/components/EducationalDisclaimer"
 
 type AnalysisStep = "input" | "searching" | "processing" | "results"
 type InputMethod = "file" | "url" | "paste"
 type AnalysisMode = "single" | "comprehensive"
-type FindingCategory = "THREAT" | "WARNING" | "CAUTION" | "NORMAL" | "GOOD" | "BRILLIANT"
+// Educational terminology + legacy support for backwards compatibility
+type FindingCategory = "CONCERNING" | "NOTABLE" | "ATTENTION" | "STANDARD" | "POSITIVE" | "EXCELLENT" | "THREAT" | "WARNING" | "CAUTION" | "NORMAL" | "GOOD" | "BRILLIANT"
 
 interface LabeledFinding {
   category: FindingCategory;
@@ -45,7 +47,12 @@ interface PolicyAnalysisResult {
   error?: string;
 }
 
-// Category styling configuration
+/**
+ * Category styling configuration
+ * 
+ * LEGAL NOTE: Categories have been renamed from legal-sounding terms to educational terms
+ * to avoid unauthorized practice of law concerns. Legacy names are preserved for backwards compatibility.
+ */
 const FINDING_CATEGORY_CONFIG: Record<FindingCategory, {
   label: string;
   bgColor: string;
@@ -53,43 +60,87 @@ const FINDING_CATEGORY_CONFIG: Record<FindingCategory, {
   borderColor: string;
   icon: React.ComponentType<{ className?: string }>;
 }> = {
+  // New educational terminology
+  CONCERNING: {
+    label: "CONCERNING",
+    bgColor: "bg-red-500/10",
+    textColor: "text-red-500",
+    borderColor: "border-red-500/30",
+    icon: AlertOctagon
+  },
+  NOTABLE: {
+    label: "NOTABLE",
+    bgColor: "bg-orange-500/10",
+    textColor: "text-orange-400",
+    borderColor: "border-orange-500/30",
+    icon: AlertTriangle
+  },
+  ATTENTION: {
+    label: "ATTENTION",
+    bgColor: "bg-yellow-500/10",
+    textColor: "text-yellow-400",
+    borderColor: "border-yellow-500/30",
+    icon: CircleAlert
+  },
+  STANDARD: {
+    label: "STANDARD",
+    bgColor: "bg-slate-500/10",
+    textColor: "text-slate-400",
+    borderColor: "border-slate-500/30",
+    icon: Info
+  },
+  POSITIVE: {
+    label: "POSITIVE",
+    bgColor: "bg-green-500/10",
+    textColor: "text-green-400",
+    borderColor: "border-green-500/30",
+    icon: CircleCheck
+  },
+  EXCELLENT: {
+    label: "EXCELLENT",
+    bgColor: "bg-cyan-500/10",
+    textColor: "text-cyan-400",
+    borderColor: "border-cyan-500/30",
+    icon: Sparkles
+  },
+  // Legacy categories (preserved for backwards compatibility with cached analyses)
   THREAT: {
-    label: "THREAT",
+    label: "CONCERNING",  // Display as new name
     bgColor: "bg-red-500/10",
     textColor: "text-red-500",
     borderColor: "border-red-500/30",
     icon: AlertOctagon
   },
   WARNING: {
-    label: "WARNING",
+    label: "NOTABLE",  // Display as new name
     bgColor: "bg-orange-500/10",
     textColor: "text-orange-400",
     borderColor: "border-orange-500/30",
     icon: AlertTriangle
   },
   CAUTION: {
-    label: "CAUTION",
+    label: "ATTENTION",  // Display as new name
     bgColor: "bg-yellow-500/10",
     textColor: "text-yellow-400",
     borderColor: "border-yellow-500/30",
     icon: CircleAlert
   },
   NORMAL: {
-    label: "NORMAL",
+    label: "STANDARD",  // Display as new name
     bgColor: "bg-slate-500/10",
     textColor: "text-slate-400",
     borderColor: "border-slate-500/30",
     icon: Info
   },
   GOOD: {
-    label: "GOOD",
+    label: "POSITIVE",  // Display as new name
     bgColor: "bg-green-500/10",
     textColor: "text-green-400",
     borderColor: "border-green-500/30",
     icon: CircleCheck
   },
   BRILLIANT: {
-    label: "BRILLIANT",
+    label: "EXCELLENT",  // Display as new name
     bgColor: "bg-cyan-500/10",
     textColor: "text-cyan-400",
     borderColor: "border-cyan-500/30",
@@ -97,8 +148,15 @@ const FINDING_CATEGORY_CONFIG: Record<FindingCategory, {
   },
 };
 
-// Sort order for findings (most severe first)
-const CATEGORY_SORT_ORDER: FindingCategory[] = ["THREAT", "WARNING", "CAUTION", "NORMAL", "GOOD", "BRILLIANT"];
+// Sort order for findings (most impactful first) - supports both new and legacy categories
+const CATEGORY_SORT_ORDER: FindingCategory[] = [
+  "CONCERNING", "THREAT",
+  "NOTABLE", "WARNING",
+  "ATTENTION", "CAUTION",
+  "STANDARD", "NORMAL",
+  "POSITIVE", "GOOD",
+  "EXCELLENT", "BRILLIANT"
+];
 
 // Helper to extract sections from raw policy text for navigation
 interface PolicySection {
@@ -928,6 +986,9 @@ function AnalyzeContent() {
               <h1 className="text-4xl font-bold text-foreground">
                 {analysisMode === "comprehensive" && currentPolicyResult ? currentPolicyResult.name : "Analysis Results"}
               </h1>
+
+              {/* Educational Disclaimer - Critical for legal protection */}
+              <EducationalDisclaimer />
               {/* Source URL Link - Always link to original policy, not just domain */}
               {(sourceUrl || (analysisMode === "comprehensive" && currentPolicyResult?.url)) && (
                 <div className="flex items-center gap-2">

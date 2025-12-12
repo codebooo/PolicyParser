@@ -1,24 +1,55 @@
 import { z } from 'zod';
 
 /**
- * Category labels for key findings, matching the UI color scheme:
- * - THREAT: Critical privacy violations, data sales, severe security risks (red)
- * - WARNING: Major concerns like broad data sharing, indefinite retention (orange)
- * - CAUTION: Minor issues or vague wording requiring attention (yellow)
- * - NORMAL: Standard industry practices, neither good nor bad (gray)
- * - GOOD: Positive features like opt-outs, data deletion rights (green)
- * - BRILLIANT: Exceptional user protection going above and beyond (cyan)
+ * Category labels for key findings (Educational terminology)
+ * 
+ * LEGAL NOTE: These categories are designed to be educational summaries,
+ * NOT legal assessments or risk ratings. This is intentional to avoid
+ * unauthorized practice of law concerns.
+ * 
+ * UI color mapping:
+ * - CONCERNING: High-impact privacy practices (red)
+ * - NOTABLE: Medium-impact practices users should know about (orange)
+ * - ATTENTION: Minor points worth noting (yellow)
+ * - STANDARD: Common industry practices (gray)
+ * - POSITIVE: User-friendly features (green)
+ * - EXCELLENT: Above-standard transparency (cyan)
+ * 
+ * Legacy support: Old categories are mapped for backwards compatibility
  */
 export const FindingCategory = z.enum([
-    'THREAT',
-    'WARNING', 
-    'CAUTION',
-    'NORMAL',
-    'GOOD',
-    'BRILLIANT'
+    // New educational terminology
+    'CONCERNING',
+    'NOTABLE',
+    'ATTENTION',
+    'STANDARD',
+    'POSITIVE',
+    'EXCELLENT',
+    // Legacy support (map to new in UI)
+    'THREAT',    // → CONCERNING
+    'WARNING',   // → NOTABLE
+    'CAUTION',   // → ATTENTION
+    'NORMAL',    // → STANDARD
+    'GOOD',      // → POSITIVE
+    'BRILLIANT'  // → EXCELLENT
 ]);
 
 export type FindingCategoryType = z.infer<typeof FindingCategory>;
+
+/**
+ * Maps legacy category names to new educational terminology
+ */
+export const mapLegacyCategory = (category: FindingCategoryType): FindingCategoryType => {
+    const legacyMap: Record<string, FindingCategoryType> = {
+        'THREAT': 'CONCERNING',
+        'WARNING': 'NOTABLE',
+        'CAUTION': 'ATTENTION',
+        'NORMAL': 'STANDARD',
+        'GOOD': 'POSITIVE',
+        'BRILLIANT': 'EXCELLENT',
+    };
+    return legacyMap[category] || category;
+};
 
 export const LabeledFindingSchema = z.object({
     category: FindingCategory,

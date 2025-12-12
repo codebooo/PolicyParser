@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
-import { User, LogOut, Settings, Bell, LayoutDashboard, CheckCircle2, AlertTriangle, Info, X } from "lucide-react";
+import { User, LogOut, Settings, Bell, LayoutDashboard, CheckCircle2, AlertTriangle, Info, X, Shield } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface Notification {
@@ -238,6 +238,14 @@ export function UserNav({ user }: { user: any }) {
                                     Settings
                                 </button>
                             </Link>
+                            {user.email === 'policyparser.admin@gmail.com' && (
+                                <Link href="/admin">
+                                    <button className="w-full text-left px-4 py-2 text-sm text-primary hover:text-primary/80 hover:bg-primary/10 flex items-center gap-2 transition-colors">
+                                        <Shield className="h-4 w-4" />
+                                        Admin Dashboard
+                                    </button>
+                                </Link>
+                            )}
                         </div>
 
                         <div className="border-t border-white/5 py-1">

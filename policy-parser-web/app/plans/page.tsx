@@ -56,6 +56,7 @@ export default function PlansPage() {
                             <li className="flex items-center gap-2"><Check className="h-4 w-4 text-green-400" /> Risk Detection</li>
                             <li className="flex items-center gap-2 text-muted-foreground"><X className="h-4 w-4" /> Expert Mode</li>
                             <li className="flex items-center gap-2 text-muted-foreground"><X className="h-4 w-4" /> Mass Analysis</li>
+                            <li className="flex items-center gap-2 text-muted-foreground"><X className="h-4 w-4" /> Policy Tracking & Alerts</li>
                             <li className="flex items-center gap-2 text-muted-foreground"><X className="h-4 w-4" /> Analysis History</li>
                         </ul>
                     </CardContent>
@@ -79,6 +80,7 @@ export default function PlansPage() {
                             <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Everything in Free</li>
                             <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Expert Mode (Full Site Scan)</li>
                             <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Mass Analysis (50+ sites)</li>
+                            <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Policy Tracking & Alerts</li>
                             <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Unlimited History</li>
                             <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Priority Support</li>
                         </ul>

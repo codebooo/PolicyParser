@@ -54,13 +54,17 @@ export interface CacheCheckResult {
  * Check if a policy has been analyzed and is still up to date
  * Returns cached analysis if available and current, otherwise indicates need for new analysis
  */
+/**
+ * Check if a policy has been analyzed and is still up to date
+ * Returns cached analysis if available and current, otherwise indicates need for new analysis
+ */
 export async function checkPolicyCache(
     domain: string,
     policyType: string = 'privacy'
 ): Promise<CacheCheckResult> {
     const supabase = await createClient();
     const cleanDomain = domain.replace(/^www\./, '').toLowerCase();
-    
+
     logger.info(`[PolicyCache] Checking cache for ${cleanDomain}/${policyType}`);
 
     try {
@@ -79,20 +83,47 @@ export async function checkPolicyCache(
             logger.error('[PolicyCache] Error fetching cached version', cacheError);
         }
 
-        // Step 2: Fetch current policy to get hash
+        if (!latestVersion) {
+            return {
+                isCached: false,
+                isUpToDate: false,
+                message: 'No cached analysis found. Will perform fresh analysis.'
+            };
+        }
+
+        // OPTIMIZATION: Check TTL (Time To Live)
+        // If cache is less than 7 days old, assume it's up to date and SKIP live fetch
+        const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+        const analyzedAt = new Date(latestVersion.analyzed_at).getTime();
+        const now = Date.now();
+        const age = now - analyzedAt;
+
+        if (age < CACHE_TTL_MS) {
+            logger.info(`[PolicyCache] Cache is fresh (${Math.round(age / 1000 / 60)} mins old). Skipping live fetch.`);
+            return {
+                isCached: true,
+                isUpToDate: true,
+                cachedVersion: latestVersion as PolicyVersionDetail,
+                message: 'Cached analysis is recent (< 7 days). Using cached results.'
+            };
+        }
+
+        logger.info(`[PolicyCache] Cache is stale (${Math.round(age / 1000 / 60 / 60 / 24)} days old). Verifying with live fetch...`);
+
+        // Step 2: Fetch current policy to get hash (only if cache is stale)
         let currentHash: string | undefined;
         let currentUrl: string | undefined;
-        
+
         try {
             const identity = await identifyTarget(cleanDomain);
             const engine = new PolicyDiscoveryEngine();
             const candidate = await engine.discover(identity.cleanDomain);
-            
+
             if (candidate) {
                 currentUrl = candidate.url;
                 const extracted = await extractPolicyContent(candidate.url);
                 currentHash = hashContent(extracted.markdown);
-                
+
                 logger.info(`[PolicyCache] Current policy hash: ${currentHash.substring(0, 16)}...`);
             }
         } catch (fetchError) {
@@ -100,18 +131,13 @@ export async function checkPolicyCache(
         }
 
         // Step 3: Compare
-        if (!latestVersion) {
-            return {
-                isCached: false,
-                isUpToDate: false,
-                currentHash,
-                message: 'No cached analysis found. Will perform fresh analysis.'
-            };
-        }
-
         // Check if cache is up to date
         if (currentHash && latestVersion.content_hash === currentHash) {
-            logger.info('[PolicyCache] Cache is UP TO DATE!');
+            logger.info('[PolicyCache] Cache is UP TO DATE (Hash match)!');
+
+            // Optional: Touch the analyzed_at date to refresh TTL? 
+            // For now, we just return it.
+
             return {
                 isCached: true,
                 isUpToDate: true,
@@ -156,7 +182,7 @@ export async function savePolicyVersion(
     const cleanDomain = domain.replace(/^www\./, '').toLowerCase();
     const contentHash = hashContent(rawText);
     const wordCount = getWordCount(rawText);
-    
+
     logger.info(`[PolicyCache] Saving new version for ${cleanDomain}/${policyType}`);
 
     try {
@@ -324,7 +350,7 @@ export async function comparePolicyVersions(
         // Simple text diff (paragraph-based)
         const oldParagraphs = (olderVersion.raw_text || '').split(/\n\n+/).filter(p => p.trim());
         const newParagraphs = (newerVersion.raw_text || '').split(/\n\n+/).filter(p => p.trim());
-        
+
         const oldSet = new Set(oldParagraphs.map(p => p.trim().toLowerCase()));
         const newSet = new Set(newParagraphs.map(p => p.trim().toLowerCase()));
 
@@ -335,12 +361,12 @@ export async function comparePolicyVersions(
         // Analysis diff
         const analysisDiff: { key: string; oldValue: any; newValue: any; changed: boolean }[] = [];
         const keysToCompare = ['summary', 'score', 'data_collected', 'third_party_sharing', 'user_rights'];
-        
+
         for (const key of keysToCompare) {
             const oldVal = olderVersion.analysis_data?.[key];
             const newVal = newerVersion.analysis_data?.[key];
             const changed = JSON.stringify(oldVal) !== JSON.stringify(newVal);
-            
+
             analysisDiff.push({
                 key,
                 oldValue: oldVal,
@@ -395,10 +421,10 @@ export async function analyzeWithCaching(
         // Step 1: Check cache (unless force refresh)
         if (!forceRefresh) {
             const cacheCheck = await checkPolicyCache(domain, policyType);
-            
+
             if (cacheCheck.isCached && cacheCheck.isUpToDate && cacheCheck.cachedVersion) {
                 logger.info(`[AnalyzeWithCache] CACHE HIT! Returning cached analysis`);
-                
+
                 // Return the cached analysis data
                 return {
                     success: true,
@@ -413,13 +439,13 @@ export async function analyzeWithCaching(
                     versionId: cacheCheck.cachedVersion.id
                 };
             }
-            
+
             logger.info(`[AnalyzeWithCache] Cache miss or outdated: ${cacheCheck.message}`);
         }
 
         // Step 2: Perform fresh analysis
         logger.info(`[AnalyzeWithCache] Performing fresh analysis...`);
-        
+
         const engine = new PolicyDiscoveryEngine();
         const candidate = await engine.discover(domain);
 
@@ -428,7 +454,7 @@ export async function analyzeWithCaching(
         }
 
         const extracted = await extractPolicyContent(candidate.url);
-        
+
         const { object: analysis } = await generateObject({
             model: getGeminiModel(),
             system: SYSTEM_PROMPT,
@@ -484,13 +510,13 @@ export async function getCachedAnalysisMultiple(
 }> {
     const supabase = await createClient();
     const cleanDomain = domain.replace(/^www\./, '').toLowerCase();
-    
+
     const cached: { type: string; analysis: any; versionId: string }[] = [];
     const needsAnalysis: string[] = [];
 
     for (const policyType of policyTypes) {
         const cacheCheck = await checkPolicyCache(cleanDomain, policyType);
-        
+
         if (cacheCheck.isCached && cacheCheck.isUpToDate && cacheCheck.cachedVersion) {
             cached.push({
                 type: policyType,

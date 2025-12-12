@@ -84,16 +84,18 @@ const BLOCKED_URL_PATTERNS = [
 ];
 
 /**
- * Domains that require Googlebot user-agent to fetch content
- * (they block regular browser requests but allow search engine bots)
+ * LEGAL NOTICE: Googlebot impersonation removed (December 2024)
+ * 
+ * Impersonating search engine bots may violate the Computer Fraud and Abuse Act (CFAA)
+ * by constituting "unauthorized access" or access that "exceeds authorization."
+ * 
+ * Sites that block regular browser requests will:
+ * 1. Fail gracefully with a clear error message
+ * 2. Fall back to Wayback Machine/Google Cache if available
+ * 
+ * Users can still manually paste policy text from these sites.
  */
-const BOT_REQUIRED_DOMAINS = [
-    'facebook.com',
-    'instagram.com',
-    'whatsapp.com',
-    'threads.net',
-    'meta.com',
-];
+const BOT_REQUIRED_DOMAINS: string[] = []; // Disabled for legal compliance
 
 /**
  * Domains with aggressive anti-bot protection that may need special handling
@@ -284,6 +286,9 @@ async function cascadeFallbacks(url: string): Promise<{ body: string; finalUrl: 
 
 /**
  * Alternative user agents to try when initial request fails
+ * 
+ * LEGAL NOTE: Only legitimate browser user agents are used.
+ * Googlebot impersonation has been removed to avoid potential CFAA violations.
  */
 const FALLBACK_USER_AGENTS = [
     // Chrome on Windows (most common)
@@ -296,8 +301,7 @@ const FALLBACK_USER_AGENTS = [
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15',
     // Edge on Windows
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0',
-    // Googlebot (last resort)
-    'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+    // Note: Googlebot UA removed for legal compliance - use Wayback Machine fallback instead
 ];
 
 /**
@@ -333,7 +337,9 @@ const ENGLISH_LOCALE_REPLACEMENTS: [RegExp, string][] = [
     [/\/(de|fr|es|it|pt|nl|pl|ru|ja|ko|zh|ar|tr|sv|no|da|fi)(-[a-z]{2})?\//i, '/en-us/'],
 ];
 
-const GOOGLEBOT_UA = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+// REMOVED: Googlebot impersonation disabled for legal compliance
+// const GOOGLEBOT_UA = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+const GOOGLEBOT_UA = ''; // Disabled - sites will use browser UA or fail to Wayback fallback
 
 /**
  * Validates that a URL is not an authentication/login page
