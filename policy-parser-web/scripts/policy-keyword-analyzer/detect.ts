@@ -18,6 +18,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { spawn } from 'child_process';
+import * as cheerio from 'cheerio';
 
 // Configuration
 const CONFIG = {
@@ -133,6 +134,75 @@ interface DetectionResult {
 }
 
 /**
+ * Extract actual rendered text content from HTML using Cheerio.
+ * Removes scripts, styles, navigation, footers, and other non-content elements.
+ */
+function extractTextFromHtml(html: string): string {
+    const $ = cheerio.load(html);
+    
+    // Remove unwanted elements that don't contain policy content
+    $('script, style, noscript, iframe, svg, canvas').remove();
+    $('nav, header, footer, aside, menu').remove();
+    $('[role="navigation"], [role="banner"], [role="contentinfo"]').remove();
+    $('button, input, select, textarea, form').remove();
+    $('.cookie-banner, .cookie-consent, .privacy-banner').remove();
+    $('.nav, .navbar, .navigation, .menu, .sidebar').remove();
+    $('.footer, .header, .breadcrumb, .social-share').remove();
+    $('[class*="cookie"], [class*="banner"], [class*="popup"]').remove();
+    $('[id*="cookie"], [id*="banner"], [id*="popup"]').remove();
+    
+    // Get text content from the remaining elements
+    // Focus on main content areas first
+    let text = '';
+    
+    // Try to find main content containers
+    const mainSelectors = [
+        'main',
+        'article', 
+        '[role="main"]',
+        '.content',
+        '.main-content',
+        '.policy-content',
+        '.privacy-content',
+        '#content',
+        '#main',
+        '.page-content',
+        '.entry-content'
+    ];
+    
+    let mainContent = '';
+    for (const selector of mainSelectors) {
+        const element = $(selector);
+        if (element.length > 0) {
+            mainContent = element.text();
+            if (mainContent.length > 500) {
+                break;
+            }
+        }
+    }
+    
+    // If no main content found, fall back to body
+    if (mainContent.length > 500) {
+        text = mainContent;
+    } else {
+        text = $('body').text() || $.root().text();
+    }
+    
+    return text;
+}
+
+/**
+ * Preprocess text - extract from HTML if needed
+ */
+function preprocessText(text: string): string {
+    // If the text looks like HTML, extract content properly
+    if (text.includes('<!DOCTYPE') || text.includes('<html') || (text.includes('<head') && text.includes('<body'))) {
+        return extractTextFromHtml(text);
+    }
+    return text;
+}
+
+/**
  * Normalize text for keyword matching
  */
 function normalizeText(text: string): string {
@@ -244,7 +314,10 @@ function detectDocumentType(text: string): { type: string | null; confidence: nu
 /**
  * Main detection function
  */
-export function detectPolicy(text: string): DetectionResult {
+export function detectPolicy(rawText: string): DetectionResult {
+    // Preprocess HTML if needed
+    const text = preprocessText(rawText);
+    
     if (text.length < CONFIG.minTextLength) {
         return {
             isPolicy: false,
@@ -514,7 +587,7 @@ Options:
 }
 
 // Export for use as a module
-export { detectPolicy, detectWithAI, POLICY_KEYWORDS, DOCUMENT_TYPES };
+export { detectWithAI, POLICY_KEYWORDS, DOCUMENT_TYPES };
 
 // Run CLI if executed directly
 if (require.main === module) {

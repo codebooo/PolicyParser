@@ -8,7 +8,7 @@
  * 
  * Usage: npx ts-node analyze.ts
  * 
- * Requires: Ollama with deepseek-v3.1:671b-cloud model
+ * Requires: Ollama with deepseek-r1:671b model
  */
 
 import * as fs from 'fs';
@@ -16,6 +16,7 @@ import * as path from 'path';
 import * as readline from 'readline';
 import { exec, spawn } from 'child_process';
 import { promisify } from 'util';
+import * as cheerio from 'cheerio';
 
 const execAsync = promisify(exec);
 
@@ -96,9 +97,73 @@ function loadExcludeList(): Set<string> {
     return excludeSet;
 }
 
-function cleanText(text: string): string {
-    // Remove HTML tags
-    text = text.replace(/<[^>]*>/g, ' ');
+/**
+ * Extract actual rendered text content from HTML using Cheerio.
+ * Removes scripts, styles, navigation, footers, and other non-content elements.
+ */
+function extractTextFromHtml(html: string): string {
+    const $ = cheerio.load(html);
+    
+    // Remove unwanted elements that don't contain policy content
+    $('script, style, noscript, iframe, svg, canvas').remove();
+    $('nav, header, footer, aside, menu').remove();
+    $('[role="navigation"], [role="banner"], [role="contentinfo"]').remove();
+    $('button, input, select, textarea, form').remove();
+    $('.cookie-banner, .cookie-consent, .privacy-banner').remove();
+    $('.nav, .navbar, .navigation, .menu, .sidebar').remove();
+    $('.footer, .header, .breadcrumb, .social-share').remove();
+    $('[class*="cookie"], [class*="banner"], [class*="popup"]').remove();
+    $('[id*="cookie"], [id*="banner"], [id*="popup"]').remove();
+    
+    // Get text content from the remaining elements
+    // Focus on main content areas first
+    let text = '';
+    
+    // Try to find main content containers
+    const mainSelectors = [
+        'main',
+        'article', 
+        '[role="main"]',
+        '.content',
+        '.main-content',
+        '.policy-content',
+        '.privacy-content',
+        '#content',
+        '#main',
+        '.page-content',
+        '.entry-content'
+    ];
+    
+    let mainContent = '';
+    for (const selector of mainSelectors) {
+        const element = $(selector);
+        if (element.length > 0) {
+            mainContent = element.text();
+            if (mainContent.length > 500) {
+                break;
+            }
+        }
+    }
+    
+    // If no main content found, fall back to body
+    if (mainContent.length > 500) {
+        text = mainContent;
+    } else {
+        text = $('body').text() || $.root().text();
+    }
+    
+    return text;
+}
+
+function cleanText(text: string, isHtml: boolean = false): string {
+    // If the text looks like HTML, extract content properly
+    if (isHtml || text.includes('<!DOCTYPE') || text.includes('<html') || (text.includes('<head') && text.includes('<body'))) {
+        text = extractTextFromHtml(text);
+    } else {
+        // For non-HTML content, just remove any stray HTML tags
+        text = text.replace(/<[^>]*>/g, ' ');
+    }
+    
     // Remove URLs
     text = text.replace(/https?:\/\/[^\s]+/g, ' ');
     // Remove email addresses

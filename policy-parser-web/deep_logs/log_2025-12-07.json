@@ -1,0 +1,2345 @@
+[
+  {
+    "timestamp": "2025-12-07T12:29:05.621Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.wilhelm-tel.de/",
+      "cleanDomain": "wilhelm-tel.de",
+      "rootDomain": "wilhelm-tel.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:29:05.645Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for wilhelm-tel.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:05.930Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:05.932Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:05.933Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.137Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 15, Trained on: 455 examples"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.138Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.140Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.141Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.142Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.143Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.145Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.146Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.148Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.150Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1992ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.152Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.153Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.154Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1988ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.155Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.156Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1986ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.157Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1985ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.159Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.160Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.162Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.163Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.166Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1976ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.168Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.169Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.170Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.172Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.173Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1969ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.174Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.175Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1967ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.176Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.177Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1965ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.178Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1964ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.179Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1963ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.181Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1961ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.183Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.189Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.194Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 5ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.952Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 811ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:06.962Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 0 candidates in 779ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:09.473Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 3328ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:11.189Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 5017ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:11.192Z",
+    "level": "error",
+    "message": "[Jarvis W2] Strategy homepage_crawl failed",
+    "data": "Timeout awaiting 'request' for 3000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:11.194Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11985ms for wilhelm-tel.de (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:11.198Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 0 candidates in 5046ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:11.202Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5039ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:11.204Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 5028ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:16.196Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:16.198Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:16.202Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.235Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://wilhelm-tel.de/datenschutz (score: 0.96)"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.482Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 3 policies in 3280ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.484Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:3 -> direct:2 -> validated:3"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.486Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 3 policies"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.487Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 13554ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://wilhelm-tel.de/datenschutz",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9602746419454309
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.490Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.627Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://wilhelm-tel.de/datenschutz with UA #1"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.629Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 84638,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 85422
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.648Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 68904
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.808Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutz",
+      "length": 60627
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.832Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 63285
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.833Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://wilhelm-tel.de/datenschutz",
+    "data": {
+      "title": "Datenschutz",
+      "markdownLength": 63285
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.836Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 60627
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:29:19.837Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:23.987Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1705ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:25.821Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1880ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:27.851Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1861ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:29:29.843Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 0 candidates in 23695ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:28.400Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for wilhelm-tel.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:28.882Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version e65598e5-2371-453e-bbf0-6be5d4ebcb03"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:28.884Z",
+    "level": "info",
+    "message": "Saved to version cache: e65598e5-2371-453e-bbf0-6be5d4ebcb03"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:29.351Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for wilhelm-tel.de (success: true)"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:36.259Z",
+    "level": "info",
+    "message": "[Feedback] Received feedback for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:36.546Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://wilhelm-tel.de/datenschutz with UA #1"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:36.900Z",
+    "level": "info",
+    "message": "[Carl] Saved brain - Gen: 16"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:36.902Z",
+    "level": "info",
+    "message": "[Carl] Trained on POSITIVE example. Gen: 16"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:36.903Z",
+    "level": "info",
+    "message": "[Feedback] Carl trained positive on https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:36.907Z",
+    "level": "info",
+    "message": "[AnalysisStore] Updated feedback for wilhelm-tel.de: positive"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:40.563Z",
+    "level": "info",
+    "message": "Input 'Rollei' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-07T12:30:41.240Z",
+    "level": "info",
+    "message": "Resolved 'Rollei' to 'rollei.de'"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:41.260Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Rollei",
+      "cleanDomain": "rollei.de",
+      "rootDomain": "rollei.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:30:41.262Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for rollei.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:41.388Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is fresh (758 mins old). Skipping live fetch."
+  },
+  {
+    "timestamp": "2025-12-07T12:30:41.390Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:53.430Z",
+    "level": "info",
+    "message": "Input 'Xiami' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-07T12:30:54.439Z",
+    "level": "info",
+    "message": "Resolved 'Xiami' to 'mi.com'"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.322Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Xiami",
+      "cleanDomain": "mi.com",
+      "rootDomain": "mi.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.324Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for mi.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.675Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.677Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.678Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.679Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.680Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.682Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.684Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.685Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.686Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.687Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1997ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.690Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.692Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1992ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.693Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.694Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1990ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.695Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.696Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1988ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.697Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.698Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1986ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.700Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1984ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.701Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.702Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.703Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.704Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.705Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1979ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.706Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.708Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1976ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.709Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.709Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1975ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.710Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.711Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.712Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.713Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1971ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.715Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1969ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.716Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.718Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.719Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.720Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:55.723Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 3ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:56.455Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 3 candidates in 736ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:59.181Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 3497ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:30:59.246Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 3564ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:00.051Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 12663ms for mi.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:00.714Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 2 candidates in 5011ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:00.717Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 2 candidates in 5008ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:00.720Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 5033ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:00.762Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 4 candidates in 5069ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:02.580Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 6868ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:05.726Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:05.727Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:05.728Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:09.207Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track terms: https://www.mi.com/de/support/terms/term-of-use/ (score: 0.98)"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:09.209Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://www.mi.com/de/support/policy/privacy/ (score: 0.98)"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:10.843Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 4 policies in 5115ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:10.844Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:0 -> validated:4"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:10.845Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 4 policies"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:10.847Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 15168ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://www.mi.com/de/support/policy/privacy/",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9777806319313197
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:31:10.849Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.mi.com/de/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:11.934Z",
+    "level": "info",
+    "message": "[fetchResource] Detected non-English locale redirect: https://www.mi.com/de/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:11.935Z",
+    "level": "info",
+    "message": "[fetchResource] Trying English URL: https://www.mi.com/us/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:13.345Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched English version from: https://www.mi.com/us/errors/404"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:13.347Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.mi.com/de/support/policy/privacy/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:13.348Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 31766,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 31767
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:31:13.365Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 4781
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:31:13.483Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: insufficient text extracted"
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:31:13.485Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse page content: Failed to parse content: insufficient text extracted",
+      "stack": "Error: Failed to parse page content: Failed to parse content: insufficient text extracted\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:9941:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11376:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:31:13.491Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for Xiami (success: false)"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:17.407Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 13ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:31:22.612Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 1 candidates in 26922ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:06.669Z",
+    "level": "info",
+    "message": "Input 'Xiaomi' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.069Z",
+    "level": "info",
+    "message": "Resolved 'Xiaomi' to 'mi.com'"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.072Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Xiaomi",
+      "cleanDomain": "mi.com",
+      "rootDomain": "mi.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.092Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for mi.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.599Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.601Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.603Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.856Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 16, Trained on: 456 examples"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.858Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.859Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.861Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.863Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.864Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.868Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.870Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1993ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.873Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.874Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.876Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.877Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1986ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.879Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1984ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.880Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.882Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.885Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.887Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1976ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.891Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.892Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1971ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.893Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.894Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1969ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.895Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.897Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.898Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1965ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.902Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.903Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1960ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.905Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1958ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.907Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1956ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.908Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.909Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1954ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.910Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.911Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1952ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.912Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1951ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.914Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.918Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:08.920Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 2ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:09.797Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 3 candidates in 882ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:12.683Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 3822ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:13.914Z",
+    "level": "error",
+    "message": "[Jarvis W2] Strategy homepage_crawl failed",
+    "data": "Timeout awaiting 'request' for 3000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:13.918Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 5050ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:14.571Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 1 candidates in 5668ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:14.663Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 4 candidates in 5787ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:14.822Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 2 candidates in 5914ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:15.588Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 10311ms for mi.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:16.413Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 2 candidates in 7520ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:18.929Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:18.930Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:18.934Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:22.947Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track terms: https://www.mi.com/de/support/terms/term-of-use/ (score: 0.98)"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:22.948Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://www.mi.com/de/support/policy/privacy/ (score: 0.98)"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:24.323Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 4 policies in 5389ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:24.324Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:0 -> validated:4"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:24.326Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 4 policies"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:24.328Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 15725ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://www.mi.com/de/support/policy/privacy/",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9777806319313197
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:35:24.331Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.mi.com/de/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:24.890Z",
+    "level": "info",
+    "message": "[fetchResource] Detected non-English locale redirect: https://www.mi.com/de/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:24.891Z",
+    "level": "info",
+    "message": "[fetchResource] Trying English URL: https://www.mi.com/us/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:24.893Z",
+    "level": "info",
+    "message": "[fetcher] Rate limiting: waiting 441ms before request to www.mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.374Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched English version from: https://www.mi.com/us/errors/404"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.376Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.mi.com/de/support/policy/privacy/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.378Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 31767,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 31768
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.387Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 4781
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.524Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "404 - Xiaomi United States",
+      "length": 146
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.530Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 146
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.531Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Content too short",
+    "data": {
+      "markdownLength": 146,
+      "url": "https://www.mi.com/de/support/policy/privacy/",
+      "title": "404 - Xiaomi United States",
+      "rawHtmlLength": 31767
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.534Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Extracted content is too short (146 chars). The page may be a redirect, require authentication, or not contain a policy document.",
+      "stack": "Error: Extracted content is too short (146 chars). The page may be a redirect, require authentication, or not contain a policy document.\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:9967:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11381:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:35:26.540Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for Xiaomi (success: false)"
+  },
+  {
+    "timestamp": "2025-12-07T12:35:37.961Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 1 candidates in 29088ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:08.714Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.mi.com/global/about/privacy/",
+      "cleanDomain": "mi.com",
+      "rootDomain": "mi.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:46:08.729Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for mi.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.663Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.665Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.666Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.667Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.669Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.671Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.673Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.674Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.675Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.676Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1997ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.678Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.679Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1994ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.680Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.681Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1992ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.683Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1990ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.684Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.686Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.689Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1984ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.690Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.692Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.693Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.694Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.695Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.696Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.697Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1976ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.698Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1975ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.700Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.701Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.703Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1970ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.705Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.706Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.707Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.708Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1965ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.710Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1963ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.711Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1962ms before request to mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.712Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.714Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:09.716Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 2ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:10.535Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 3 candidates in 823ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:12.678Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 3007ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:13.656Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 3983ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:14.729Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5035ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:14.731Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 2 candidates in 5025ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:15.312Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 12 candidates in 5637ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:15.428Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 2 candidates in 5728ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:15.523Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 4 candidates in 5843ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:16.235Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 10474ms for mi.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:19.718Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:19.720Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:19.722Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:23.736Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track terms: https://www.mi.com/de/support/terms/term-of-use/ (score: 0.98)"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:23.738Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://www.mi.com/de/support/policy/privacy/ (score: 0.98)"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:25.187Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 4 policies in 5465ms"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:25.189Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:0 -> validated:4"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:25.190Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 4 policies"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:25.191Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 15526ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://www.mi.com/de/support/policy/privacy/",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9777806319313197
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:46:25.192Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.mi.com/de/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:26.416Z",
+    "level": "info",
+    "message": "[fetchResource] Detected non-English locale redirect: https://www.mi.com/de/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:26.418Z",
+    "level": "info",
+    "message": "[fetchResource] Trying English URL: https://www.mi.com/us/support/policy/privacy/"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.116Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched English version from: https://www.mi.com/us/errors/404"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.118Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.mi.com/de/support/policy/privacy/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.121Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 31767,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 31768
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.141Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 4781
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.225Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "404 - Xiaomi United States",
+      "length": 146
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.228Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 146
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.229Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Content too short",
+    "data": {
+      "markdownLength": 146,
+      "url": "https://www.mi.com/de/support/policy/privacy/",
+      "title": "404 - Xiaomi United States",
+      "rawHtmlLength": 31767
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.231Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Extracted content is too short (146 chars). The page may be a redirect, require authentication, or not contain a policy document.",
+      "stack": "Error: Extracted content is too short (146 chars). The page may be a redirect, require authentication, or not contain a policy document.\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:9967:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11381:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-07T12:46:28.237Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for https://www.mi.com/global/about/privacy/ (success: false)"
+  },
+  {
+    "timestamp": "2025-12-07T12:46:38.650Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 1 candidates in 28972ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:03:58.952Z",
+    "level": "info",
+    "message": "Input 'Xiaomi' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-07T13:04:02.266Z",
+    "level": "info",
+    "message": "Resolved 'Xiaomi' to 'mi.com'"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:02.592Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Xiaomi",
+      "cleanDomain": "mi.com",
+      "rootDomain": "mi.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:04:02.608Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for mi.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:03.659Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:03.661Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: mi.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:03.662Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:03.663Z",
+    "level": "info",
+    "message": "[Discovery] Found 1 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:03.668Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 8ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://privacy.mi.com/all/en_US/",
+      "confidence": "high",
+      "source": "special_domain"
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:04:03.670Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://privacy.mi.com/all/en_US/"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:06.795Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://privacy.mi.com/all/en_US/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:06.797Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 73660,
+      "contentType": "text/html",
+      "bufferSize": 74126
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:04:06.830Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 67120
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:04:06.937Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Xiaomi Privacy",
+      "length": 56835
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:04:06.965Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 59704
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:04:06.967Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://privacy.mi.com/all/en_US/",
+    "data": {
+      "title": "Xiaomi Privacy",
+      "markdownLength": 59704
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:04:06.969Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 56835
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:04:06.970Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:50.621Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for mi.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:51.818Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 62b37b9e-b7e3-45c3-b571-0b6fab10dd77"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:51.820Z",
+    "level": "info",
+    "message": "Saved to version cache: 62b37b9e-b7e3-45c3-b571-0b6fab10dd77"
+  },
+  {
+    "timestamp": "2025-12-07T13:04:53.012Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for mi.com (success: true)"
+  },
+  {
+    "timestamp": "2025-12-07T13:20:22.319Z",
+    "level": "info",
+    "message": "Input 'Rollei' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-07T13:20:23.986Z",
+    "level": "info",
+    "message": "Resolved 'Rollei' to 'rollei.de'"
+  },
+  {
+    "timestamp": "2025-12-07T13:20:24.122Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Rollei",
+      "cleanDomain": "rollei.de",
+      "rootDomain": "rollei.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:20:24.125Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for rollei.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T13:20:25.531Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is fresh (808 mins old). Skipping live fetch."
+  },
+  {
+    "timestamp": "2025-12-07T13:20:25.532Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:00.585Z",
+    "level": "info",
+    "message": "Input 'Rollei' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-07T13:22:02.534Z",
+    "level": "info",
+    "message": "Resolved 'Rollei' to 'rollei.de'"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:02.536Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Rollei",
+      "cleanDomain": "rollei.de",
+      "rootDomain": "rollei.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:02.540Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for rollei.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:03.073Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is fresh (809 mins old). Skipping live fetch."
+  },
+  {
+    "timestamp": "2025-12-07T13:22:03.075Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:07.355Z",
+    "level": "info",
+    "message": "Input 'Githubn' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-07T13:22:09.002Z",
+    "level": "info",
+    "message": "Resolved 'Githubn' to 'github.com'"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:09.132Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Githubn",
+      "cleanDomain": "github.com",
+      "rootDomain": "github.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:09.135Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for github.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.016Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.017Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.019Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.547Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 16, Trained on: 456 examples"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.548Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.550Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.551Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.553Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.554Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.555Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.557Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.558Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.561Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1992ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.564Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.566Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.568Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1985ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.569Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1984ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.572Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.574Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1979ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.575Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.576Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.579Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.581Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.582Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1971ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.584Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1969ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.585Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.587Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.588Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.589Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1964ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.591Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1962ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.592Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1961ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.593Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.597Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1956ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.599Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1955ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.600Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.602Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1951ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.603Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.605Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:10.607Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 2ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:11.081Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 0 candidates in 478ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:12.551Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 2000ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:13.030Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 2477ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:13.454Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2899ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:15.609Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 1 candidates in 5021ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:15.613Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 2 candidates in 5032ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:15.616Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 5023ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:15.623Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11971ms for github.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:15.627Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 6 candidates in 5063ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:20.619Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:20.621Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:20.624Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:24.051Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track terms: https://docs.github.com/site-policy/github-terms/github-terms-of-service (score: 0.98)"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:24.053Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement (score: 0.98)"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:24.638Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 4 policies in 4014ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:24.640Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:2 -> validated:4"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:24.642Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 4 policies"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:24.643Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 14625ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9834535692754987
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:24.646Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:25.246Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://docs.github.com/site-policy/privacy-policies/github-privacy-statement with UA #1"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:25.248Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 218495,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 218746
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:25.287Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 67131
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:25.372Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "length": 40432
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:25.384Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 43766
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:25.386Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://docs.github.com/site-policy/privacy-policies/github-privacy-statement",
+    "data": {
+      "title": "GitHub General Privacy Statement - GitHub Docs",
+      "markdownLength": 43766
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:25.388Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 40432
+    }
+  },
+  {
+    "timestamp": "2025-12-07T13:22:25.389Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:28.440Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 1 candidates in 17882ms"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:54.149Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for github.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:55.382Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 81226301-a188-43e5-8fb0-0d639d417840"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:55.384Z",
+    "level": "info",
+    "message": "Saved to version cache: 81226301-a188-43e5-8fb0-0d639d417840"
+  },
+  {
+    "timestamp": "2025-12-07T13:22:56.198Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for github.com (success: true)"
+  },
+  {
+    "timestamp": "2025-12-07T13:32:30.321Z",
+    "level": "info",
+    "message": "[Feedback] Received feedback for github.com"
+  },
+  {
+    "timestamp": "2025-12-07T13:32:31.017Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://docs.github.com/site-policy/privacy-policies/github-privacy-statement with UA #1"
+  },
+  {
+    "timestamp": "2025-12-07T13:32:32.351Z",
+    "level": "info",
+    "message": "[Carl] Saved brain - Gen: 17"
+  },
+  {
+    "timestamp": "2025-12-07T13:32:32.355Z",
+    "level": "info",
+    "message": "[Carl] Trained on POSITIVE example. Gen: 17"
+  },
+  {
+    "timestamp": "2025-12-07T13:32:32.357Z",
+    "level": "info",
+    "message": "[Feedback] Carl trained positive on https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+  },
+  {
+    "timestamp": "2025-12-07T13:32:32.373Z",
+    "level": "info",
+    "message": "[AnalysisStore] Updated feedback for github.com: positive"
+  }
+]

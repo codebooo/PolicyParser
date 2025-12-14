@@ -1,0 +1,5169 @@
+[
+  {
+    "timestamp": "2025-12-03T20:24:25.317Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1118ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:26.593Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Quick reject: Appears to be a Facebook page"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:26.596Z",
+    "level": "info",
+    "message": "[discovery] Top candidate failed content validation, searching deeper..."
+  },
+  {
+    "timestamp": "2025-12-03T20:24:26.600Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1842ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:27.157Z",
+    "level": "warn",
+    "message": "[fetcher] Request error on https://iphh.net/de/datenschutz.html: Timeout awaiting 'request' for 15000ms, attempt 3/3"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:27.159Z",
+    "level": "error",
+    "message": "Failed to fetch resource from https://iphh.net/de/datenschutz.html",
+    "data": "Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:27.161Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to fetch resource from https://iphh.net/de/datenschutz.html",
+    "data": {
+      "error": "Failed to fetch content: Timeout awaiting 'request' for 15000ms"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:24:27.163Z",
+    "level": "warn",
+    "message": "[PolicyCache] Could not fetch current policy for comparison",
+    "data": {
+      "message": "Failed to fetch content: Timeout awaiting 'request' for 15000ms",
+      "stack": "Error: Failed to fetch content: Timeout awaiting 'request' for 15000ms\n    at fetchResource (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:3465:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:7638:24)\n    at async checkPolicyCache (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:8237:35)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:9020:33"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:24:27.165Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:27.167Z",
+    "level": "info",
+    "message": "Starting discovery for iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:27.172Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:28.608Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://wilhelm-tel.de/impressum",
+    "data": {
+      "isValid": true,
+      "confidence": 96,
+      "keywords": 9,
+      "bigrams": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:24:28.611Z",
+    "level": "info",
+    "message": "[discovery] Found valid policy at https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:28.612Z",
+    "level": "info",
+    "message": "Running deep link scan from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:28.614Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://wilhelm-tel.de/impressum (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:28.616Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:28.618Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1831ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:30.584Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:30.592Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 2 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:30.594Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:30.596Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1860ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:32.643Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:32.653Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 9 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:32.656Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:32.659Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14814ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:47.833Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1814ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:50.027Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1624ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:51.799Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1857ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:53.834Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1828ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:55.827Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1854ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:57.837Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14848ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:58.244Z",
+    "level": "error",
+    "message": "HomepageScraper: Error fetching https://iphh.net",
+    "data": "Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:58.247Z",
+    "level": "info",
+    "message": "Running strategy: DirectFetchStrategy"
+  },
+  {
+    "timestamp": "2025-12-03T20:24:58.249Z",
+    "level": "info",
+    "message": "DirectFetch: Fetching main page https://iphh.net to scan footer"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:13.182Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1848ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:13.275Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching main page: Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:13.278Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 2000ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:13.280Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1998ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:13.282Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:13.284Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1994ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:15.364Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1682ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:17.223Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1834ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:19.211Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1852ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:21.228Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1849ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:23.236Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14843ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:25.319Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.306Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.310Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy-policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.312Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy-policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.315Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy/policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.317Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2968ms for iphh.net (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.321Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2964ms for iphh.net (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.324Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2961ms for iphh.net (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.327Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2958ms for iphh.net (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:27.329Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2956ms for iphh.net (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:38.165Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1843ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:40.389Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1628ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.194Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1839ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.361Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/legal/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.473Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/about/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.488Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy/policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.707Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/legal/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.710Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/about/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.712Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 2000ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.714Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1998ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.716Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:42.718Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1994ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:44.208Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1836ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:46.198Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1851ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:48.213Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14847ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:54.755Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/policies/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.747Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/policies/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.751Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy/center: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.753Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy/center: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.757Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacycenter: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.759Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2971ms for iphh.net (6 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.761Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2969ms for iphh.net (6 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.763Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2967ms for iphh.net (6 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.766Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2964ms for iphh.net (6 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:25:56.767Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 2963ms for iphh.net (6 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:03.516Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1847ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:05.694Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1688ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.541Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: https://wilhelm-tel.de/datenschutz (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.543Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.545Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://wilhelm-tel.de/impressum",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-03T20:24:25.312Z",
+      "methodDetail": "Content-validated alternative: Found \"Impressum\" in footer (score: 100)"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.548Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.747Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 22919,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 22981
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.771Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 7276
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.885Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Impressum",
+      "length": 3888
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.898Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 4272
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.900Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://wilhelm-tel.de/impressum",
+    "data": {
+      "title": "Impressum",
+      "markdownLength": 4272
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.905Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 6c247196f064a5af..."
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.908Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is UP TO DATE!"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:07.912Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:12.076Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacycenter: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:12.123Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacypolicy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:12.138Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/help/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:12.185Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/help/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:12.264Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacypolicy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:12.266Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 2000ms before request to iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:24.294Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy_policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:26.296Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy_policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:26.298Z",
+    "level": "info",
+    "message": "Running strategy: StandardPathStrategy"
+  },
+  {
+    "timestamp": "2025-12-03T20:26:31.333Z",
+    "level": "info",
+    "message": "Running strategy: SitemapStrategy"
+  },
+  {
+    "timestamp": "2025-12-03T20:27:22.689Z",
+    "level": "info",
+    "message": "Running strategy: SearchFallbackStrategy"
+  },
+  {
+    "timestamp": "2025-12-03T20:27:22.887Z",
+    "level": "info",
+    "message": "DuckDuckGo returned status 403"
+  },
+  {
+    "timestamp": "2025-12-03T20:27:23.199Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Could not find a privacy policy for iphh.net",
+      "stack": "Error: Could not find a privacy policy for iphh.net\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:9057:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:37:00.979Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.iphh.net/de/start.html",
+      "cleanDomain": "iphh.net",
+      "rootDomain": "iphh.net",
+      "tld": "net",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:37:00.996Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for iphh.net/privacy"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:01.531Z",
+    "level": "info",
+    "message": "Starting discovery for iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:01.533Z",
+    "level": "info",
+    "message": "Found SPECIAL_DOMAIN config for iphh.net: https://www.iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:01.536Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:16.561Z",
+    "level": "warn",
+    "message": "[fetcher] Request error on https://www.iphh.net/de/datenschutz.html: Timeout awaiting 'request' for 15000ms, attempt 1/3"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:33.423Z",
+    "level": "info",
+    "message": "[Queue] Added 4 domains to queue"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:33.902Z",
+    "level": "warn",
+    "message": "[fetcher] Request error on https://www.iphh.net/de/datenschutz.html: Timeout awaiting 'request' for 15000ms, attempt 2/3"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:34.946Z",
+    "level": "info",
+    "message": "[Queue] Processing https://www.hansa-projekt.de/..."
+  },
+  {
+    "timestamp": "2025-12-03T20:37:34.948Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting intelligent discovery for: https://www.hansa-projekt.de/"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.000Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.005Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Starting intelligent discovery for: hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.179Z",
+    "level": "info",
+    "message": "[NeuralNetwork] No saved model found, using random weights"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.290Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 0"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.292Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 1: Special domain lookup"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.295Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 2: Deep footer crawling"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.808Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5: Content validation"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.812Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Validation fetch failed for mailto:info@hansa-projekt.de: Unsupported protocol: mailto:"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:35.814Z",
+    "level": "warn",
+    "message": "[PolicyDiscovery] Failed validation for ai: mailto:info@hansa-projekt.de - not a real policy"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:36.708Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Insufficient keywords for privacy: 2/13 (need 3)"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:36.711Z",
+    "level": "warn",
+    "message": "[PolicyDiscovery] Failed validation for privacy: https://hansa-projekt.de/datenschutz - not a real policy"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:36.713Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5.5: Deep link scanning for actual policy pages"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:36.715Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 6: Search engine fallback"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:36.910Z",
+    "level": "error",
+    "message": "[PolicyDiscovery] Search fallback failed for privacy",
+    "data": "Request failed with status code 403 (Forbidden): GET https://html.duckduckgo.com/html/?q=%22privacy%20policy%22%20site%3Ahansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:37.005Z",
+    "level": "error",
+    "message": "[PolicyDiscovery] Search fallback failed for terms",
+    "data": "Request failed with status code 403 (Forbidden): GET https://html.duckduckgo.com/html/?q=%22terms%20of%20service%22%20OR%20%22terms%20of%20use%22%20site%3Ahansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:37.010Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Complete! Found 0 validated policies in 2005ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:37.013Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special_domains:0 -> footer_crawl:2 -> validation:0/2 -> deep_scan:0 -> search:0"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:37.016Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Intelligent discovery complete! Found 0 validated policies"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:37.018Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phases: special_domains:0 -> footer_crawl:2 -> validation:0/2 -> deep_scan:0 -> search:0"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:38.517Z",
+    "level": "info",
+    "message": "[Queue] Processing https://www.iphh.net/de/start.html..."
+  },
+  {
+    "timestamp": "2025-12-03T20:37:38.520Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting intelligent discovery for: https://www.iphh.net/de/start.html"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:38.522Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:38.527Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Starting intelligent discovery for: iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:38.755Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 0"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:38.760Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 1: Special domain lookup"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.058Z",
+    "level": "warn",
+    "message": "[fetcher] Request error on https://www.iphh.net/de/datenschutz.html: Timeout awaiting 'request' for 15000ms, attempt 3/3"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.060Z",
+    "level": "error",
+    "message": "Failed to fetch resource from https://www.iphh.net/de/datenschutz.html",
+    "data": "Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.063Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to fetch resource from https://www.iphh.net/de/datenschutz.html",
+    "data": {
+      "error": "Failed to fetch content: Timeout awaiting 'request' for 15000ms"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.064Z",
+    "level": "warn",
+    "message": "[PolicyCache] Could not fetch current policy for comparison",
+    "data": {
+      "message": "Failed to fetch content: Timeout awaiting 'request' for 15000ms",
+      "stack": "Error: Failed to fetch content: Timeout awaiting 'request' for 15000ms\n    at fetchResource (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:3471:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:7644:24)\n    at async checkPolicyCache (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:8243:35)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:9026:33"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.066Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.069Z",
+    "level": "info",
+    "message": "Starting discovery for iphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.071Z",
+    "level": "info",
+    "message": "Found SPECIAL_DOMAIN config for iphh.net: https://www.iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.074Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://www.iphh.net/de/datenschutz.html",
+      "source": "special_domain",
+      "confidence": 99,
+      "foundAt": "2025-12-03T20:37:53.073Z",
+      "methodDetail": "Special domain configuration for iphh.net"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:37:53.077Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:55.919Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Special domain URL failed: https://www.iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-03T20:37:55.921Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 2: Deep footer crawling"
+  },
+  {
+    "timestamp": "2025-12-03T20:38:08.102Z",
+    "level": "warn",
+    "message": "[fetcher] Request error on https://www.iphh.net/de/datenschutz.html: Timeout awaiting 'request' for 15000ms, attempt 1/3"
+  },
+  {
+    "timestamp": "2025-12-03T20:38:25.180Z",
+    "level": "warn",
+    "message": "[fetcher] Request error on https://www.iphh.net/de/datenschutz.html: Timeout awaiting 'request' for 15000ms, attempt 2/3"
+  },
+  {
+    "timestamp": "2025-12-03T20:38:44.181Z",
+    "level": "error",
+    "message": "[PolicyDiscovery] Footer crawl failed",
+    "data": "Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:38:44.183Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 3: Legal hub discovery"
+  },
+  {
+    "timestamp": "2025-12-03T20:38:44.461Z",
+    "level": "warn",
+    "message": "[fetcher] Request error on https://www.iphh.net/de/datenschutz.html: Timeout awaiting 'request' for 15000ms, attempt 3/3"
+  },
+  {
+    "timestamp": "2025-12-03T20:38:44.463Z",
+    "level": "error",
+    "message": "Failed to fetch resource from https://www.iphh.net/de/datenschutz.html",
+    "data": "Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:38:44.465Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to fetch resource from https://www.iphh.net/de/datenschutz.html",
+    "data": {
+      "error": "Failed to fetch content: Timeout awaiting 'request' for 15000ms"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:38:44.467Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to fetch content: Timeout awaiting 'request' for 15000ms",
+      "stack": "Error: Failed to fetch content: Timeout awaiting 'request' for 15000ms\n    at fetchResource (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:3471:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:7644:24)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__1d3b7d7a._.js:9073:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:39:44.341Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 4: Sitemap parsing"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.408Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5: Content validation"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.411Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5.5: Deep link scanning for actual policy pages"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.415Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 6: Search engine fallback"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.595Z",
+    "level": "error",
+    "message": "[PolicyDiscovery] Search fallback failed for privacy",
+    "data": "Request failed with status code 403 (Forbidden): GET https://html.duckduckgo.com/html/?q=%22privacy%20policy%22%20site%3Aiphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.677Z",
+    "level": "error",
+    "message": "[PolicyDiscovery] Search fallback failed for terms",
+    "data": "Request failed with status code 403 (Forbidden): GET https://html.duckduckgo.com/html/?q=%22terms%20of%20service%22%20OR%20%22terms%20of%20use%22%20site%3Aiphh.net"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.680Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Complete! Found 0 validated policies in 156153ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.682Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special_domains:0 -> footer_crawl:0 -> legal_hubs:0 -> sitemap:0 -> validation:0/0 -> deep_scan:0 -> search:0"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.684Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Intelligent discovery complete! Found 0 validated policies"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:14.686Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phases: special_domains:0 -> footer_crawl:0 -> legal_hubs:0 -> sitemap:0 -> validation:0/0 -> deep_scan:0 -> search:0"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.039Z",
+    "level": "info",
+    "message": "[Queue] Processing https://atlasedge.com/de/..."
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.042Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting intelligent discovery for: https://atlasedge.com/de/"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.100Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.102Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Starting intelligent discovery for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.207Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 0"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.210Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 1: Special domain lookup"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.212Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 2: Deep footer crawling"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.551Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5: Content validation"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.837Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Insufficient keywords for ai: 1/8 (need 2)"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:22.840Z",
+    "level": "warn",
+    "message": "[PolicyDiscovery] Failed validation for ai: http://atlasedge.com/sustainability/ - not a real policy"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.138Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Insufficient keywords for privacy: 0/13 (need 3)"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.142Z",
+    "level": "warn",
+    "message": "[PolicyDiscovery] Failed validation for privacy: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf - not a real policy"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.331Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Insufficient keywords for security: 0/10 (need 3)"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.334Z",
+    "level": "warn",
+    "message": "[PolicyDiscovery] Failed validation for security: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf - not a real policy"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.452Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Validated acceptable_use: https://atlasedge.com/acceptable-use-policy/"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.455Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5.5: Deep link scanning for actual policy pages"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.458Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 6: Search engine fallback"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.618Z",
+    "level": "error",
+    "message": "[PolicyDiscovery] Search fallback failed for privacy",
+    "data": "Request failed with status code 403 (Forbidden): GET https://html.duckduckgo.com/html/?q=%22privacy%20policy%22%20site%3Aatlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.702Z",
+    "level": "error",
+    "message": "[PolicyDiscovery] Search fallback failed for terms",
+    "data": "Request failed with status code 403 (Forbidden): GET https://html.duckduckgo.com/html/?q=%22terms%20of%20service%22%20OR%20%22terms%20of%20use%22%20site%3Aatlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.705Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Complete! Found 1 validated policies in 1603ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.707Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special_domains:0 -> footer_crawl:4 -> validation:1/4 -> deep_scan:0 -> search:0"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.710Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Intelligent discovery complete! Found 1 validated policies"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:23.713Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phases: special_domains:0 -> footer_crawl:4 -> validation:1/4 -> deep_scan:0 -> search:0"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:25.693Z",
+    "level": "info",
+    "message": "[Queue] Processing https://www.wilhelm-tel.de/..."
+  },
+  {
+    "timestamp": "2025-12-03T20:40:25.696Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Starting intelligent discovery for: https://www.wilhelm-tel.de/"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:25.737Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:25.741Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Starting intelligent discovery for: wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:25.833Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 0"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:25.836Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 1: Special domain lookup"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:25.838Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 2: Deep footer crawling"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:26.741Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5: Content validation"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.008Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Content too short for ai: 594 chars"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.012Z",
+    "level": "warn",
+    "message": "[PolicyDiscovery] Failed validation for ai: https://webmail.wtnet.de/ - not a real policy"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.244Z",
+    "level": "debug",
+    "message": "[PolicyDiscovery] Insufficient keywords for terms: 0/13 (need 3)"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.246Z",
+    "level": "warn",
+    "message": "[PolicyDiscovery] Failed validation for terms: https://wilhelm-tel.de/agb - not a real policy"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.384Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Validated privacy: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.390Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 5.5: Deep link scanning for actual policy pages"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.395Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://wilhelm-tel.de/datenschutz (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.398Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.540Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.555Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 9 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.560Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:27.562Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1838ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:29.560Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1851ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:31.570Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1849ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:33.596Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1830ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:35.591Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14841ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:50.691Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1841ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:52.916Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1626ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:54.694Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1853ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:56.707Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1846ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:40:58.718Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1839ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:00.720Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14844ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:15.760Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1844ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:17.984Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1634ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:19.774Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1853ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:21.810Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1834ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:23.804Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1847ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:25.815Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14842ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:40.995Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1842ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:43.222Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1625ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:45.017Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1852ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:47.034Z",
+    "level": "info",
+    "message": "[DeepScanner] No deeper policy found, original URL is best"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:47.036Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phase 6: Search engine fallback"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:47.243Z",
+    "level": "error",
+    "message": "[PolicyDiscovery] Search fallback failed for terms",
+    "data": "Request failed with status code 403 (Forbidden): GET https://html.duckduckgo.com/html/?q=%22terms%20of%20service%22%20OR%20%22terms%20of%20use%22%20site%3Awilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:47.245Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Complete! Found 1 validated policies in 81504ms"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:47.248Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special_domains:0 -> footer_crawl:3 -> validation:1/3 -> deep_scan:0 -> search:0"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:47.251Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Intelligent discovery complete! Found 1 validated policies"
+  },
+  {
+    "timestamp": "2025-12-03T20:41:47.253Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Phases: special_domains:0 -> footer_crawl:3 -> validation:1/3 -> deep_scan:0 -> search:0"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:21.204Z",
+    "level": "info",
+    "message": "Cleared null items from cache"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:31.205Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.wilhelm-tel.de/",
+      "cleanDomain": "wilhelm-tel.de",
+      "rootDomain": "wilhelm-tel.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:46:31.223Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for wilhelm-tel.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:31.423Z",
+    "level": "info",
+    "message": "Starting discovery for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:31.426Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:32.209Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 2 unique privacy-related links on wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:32.213Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:32.216Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-03T20:46:32.218Z",
+    "level": "info",
+    "message": "[discovery] Validating top candidate content: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:32.220Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1209ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:33.589Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Quick reject: Appears to be a Facebook page"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:33.592Z",
+    "level": "info",
+    "message": "[discovery] Top candidate failed content validation, searching deeper..."
+  },
+  {
+    "timestamp": "2025-12-03T20:46:33.598Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1842ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:35.590Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://wilhelm-tel.de/impressum",
+    "data": {
+      "isValid": true,
+      "confidence": 96,
+      "keywords": 9,
+      "bigrams": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:46:35.593Z",
+    "level": "info",
+    "message": "[discovery] Found valid policy at https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:35.595Z",
+    "level": "info",
+    "message": "Running deep link scan from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:35.598Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://wilhelm-tel.de/impressum (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:35.600Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:35.603Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1855ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:37.622Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:37.632Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 2 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:37.635Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:37.638Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1823ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:39.628Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:39.639Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 9 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:39.642Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:39.646Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14818ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:54.939Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1818ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:57.155Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1617ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:46:58.938Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1842ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:00.934Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1851ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:02.954Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1840ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:04.952Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14847ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:20.277Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1847ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:22.515Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1626ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:24.301Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1848ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:26.327Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1837ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:28.325Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1847ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:30.323Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14853ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:45.292Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1853ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:47.518Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1639ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:49.329Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1835ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:51.324Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1843ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:53.335Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1839ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:47:55.340Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14849ms for wilhelm-tel.de (5 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-03T20:48:10.510Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1849ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:48:12.728Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1637ms before request to wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.542Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: https://wilhelm-tel.de/datenschutz (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.545Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.549Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://wilhelm-tel.de/impressum",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-03T20:46:32.213Z",
+      "methodDetail": "Content-validated alternative: Found \"Impressum\" in footer (score: 100)"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.553Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.677Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 22919,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 22981
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.711Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 7276
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.814Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Impressum",
+      "length": 3888
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.829Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 4272
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.832Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://wilhelm-tel.de/impressum",
+    "data": {
+      "title": "Impressum",
+      "markdownLength": 4272
+    }
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.836Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 6c247196f064a5af..."
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.839Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is UP TO DATE!"
+  },
+  {
+    "timestamp": "2025-12-03T20:48:14.841Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  },
+  {
+    "timestamp": "2025-12-03T21:23:58.360Z",
+    "level": "error",
+    "message": "[NeuralNetwork] Failed to load weights",
+    "data": {
+      "message": "Cannot read properties of undefined (reading 'length')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'length')\n    at NeuralNetwork.load (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__82526d99._.js:8858:191)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async getBrainStats (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__82526d99._.js:9831:5)\n    at async executeActionAndPrepareForRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:35:4449)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:35:2264\n    at async handleAction (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:34:23622)\n    at async renderToHTMLOrFlightImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:40:41714)\n    at async doRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8080:28)\n    at async AppPageRouteModule.handleResponse (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:42:63162)\n    at async handleResponse (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8286:32)\n    at async handler (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8657:20)\n    at async DevServer.renderToResponseWithComponentsImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1413:9)\n    at async DevServer.renderPageComponent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1465:24)\n    at async DevServer.renderToResponseImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1515:32)\n    at async DevServer.pipeImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1021:25)\n    at async NextNodeServer.handleCatchallRenderRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\next-server.js:394:17)\n    at async DevServer.handleRequestImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:912:17)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\dev\\next-dev-server.js:382:20\n    at async Span.traceAsyncFn (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\trace\\trace.js:157:20)\n    at async DevServer.handleRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\dev\\next-dev-server.js:378:24)\n    at async invokeRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:240:21)\n    at async handleRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:436:24)\n    at async requestHandlerImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:484:13)\n    at async Server.requestListener (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\start-server.js:226:13)"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T21:24:31.012Z",
+    "level": "error",
+    "message": "[NeuralNetwork] Failed to load weights",
+    "data": {
+      "message": "Cannot read properties of undefined (reading 'length')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'length')\n    at NeuralNetwork.load (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__82526d99._.js:8858:191)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async testBrainPrediction (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__82526d99._.js:9840:5)\n    at async executeActionAndPrepareForRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:35:4449)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:35:2264\n    at async handleAction (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:34:23622)\n    at async renderToHTMLOrFlightImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:40:41714)\n    at async doRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8080:28)\n    at async AppPageRouteModule.handleResponse (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:42:63162)\n    at async handleResponse (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8286:32)\n    at async handler (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8657:20)\n    at async DevServer.renderToResponseWithComponentsImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1413:9)\n    at async DevServer.renderPageComponent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1465:24)\n    at async DevServer.renderToResponseImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1515:32)\n    at async DevServer.pipeImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1021:25)\n    at async NextNodeServer.handleCatchallRenderRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\next-server.js:394:17)\n    at async DevServer.handleRequestImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:912:17)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\dev\\next-dev-server.js:382:20\n    at async Span.traceAsyncFn (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\trace\\trace.js:157:20)\n    at async DevServer.handleRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\dev\\next-dev-server.js:378:24)\n    at async invokeRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:240:21)\n    at async handleRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:436:24)\n    at async requestHandlerImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:484:13)\n    at async Server.requestListener (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\start-server.js:226:13)"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T21:24:35.946Z",
+    "level": "error",
+    "message": "[NeuralNetwork] Failed to load weights",
+    "data": {
+      "message": "Cannot read properties of undefined (reading 'length')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'length')\n    at NeuralNetwork.load (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__82526d99._.js:8858:191)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeuralNetwork.train (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__82526d99._.js:8938:9)\n    at async trainBrain (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__82526d99._.js:9851:5)\n    at async executeActionAndPrepareForRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:35:4449)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:35:2264\n    at async handleAction (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:34:23622)\n    at async renderToHTMLOrFlightImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:40:41714)\n    at async doRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8080:28)\n    at async AppPageRouteModule.handleResponse (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\compiled\\next-server\\app-page-turbo.runtime.dev.js:42:63162)\n    at async handleResponse (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8286:32)\n    at async handler (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_next_dist_660e09bd._.js:8657:20)\n    at async DevServer.renderToResponseWithComponentsImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1413:9)\n    at async DevServer.renderPageComponent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1465:24)\n    at async DevServer.renderToResponseImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1515:32)\n    at async DevServer.pipeImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:1021:25)\n    at async NextNodeServer.handleCatchallRenderRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\next-server.js:394:17)\n    at async DevServer.handleRequestImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\base-server.js:912:17)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\dev\\next-dev-server.js:382:20\n    at async Span.traceAsyncFn (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\trace\\trace.js:157:20)\n    at async DevServer.handleRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\dev\\next-dev-server.js:378:24)\n    at async invokeRender (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:240:21)\n    at async handleRequest (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:436:24)\n    at async requestHandlerImpl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\router-server.js:484:13)\n    at async Server.requestListener (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\dist\\server\\lib\\start-server.js:226:13)"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T21:24:36.190Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 1"
+  },
+  {
+    "timestamp": "2025-12-03T21:24:36.193Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 1"
+  },
+  {
+    "timestamp": "2025-12-03T21:24:36.458Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 1"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:03.126Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 1"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:15.953Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 1"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:17.122Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 1"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:17.214Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 2"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:17.217Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 2"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:17.470Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 2"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:24.749Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 2"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:40.179Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 2"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:42.909Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 2"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:43.038Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 3"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:43.041Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 3"
+  },
+  {
+    "timestamp": "2025-12-03T21:25:43.256Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 3"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:06.383Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 3"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:14.108Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 3"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:14.208Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 4"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:14.210Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 4"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:14.415Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 4"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:36.266Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 4"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:37.522Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 4"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:37.614Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 5"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:37.618Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 5"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:37.810Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 5"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:39.083Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 5"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:39.182Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 6"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:39.185Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 6"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:39.381Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 6"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:40.115Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 6"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:40.266Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 7"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:40.268Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 7"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:40.445Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 7"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:40.847Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 7"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:40.953Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 8"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:40.955Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 8"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:41.210Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 8"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:41.404Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 8"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:41.498Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 9"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:41.501Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 9"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:41.625Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 9"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:41.966Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 9"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:42.052Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 10"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:42.055Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 10"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:42.243Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 10"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:42.461Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 10"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:42.550Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 11"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:42.553Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 11"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:42.748Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 11"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.006Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 11"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.100Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 12"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.103Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 12"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.289Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 12"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.533Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 12"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.619Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 13"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.621Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 13"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.745Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 13"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:43.938Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 13"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:44.030Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 14"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:44.033Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 14"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:44.220Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 14"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:44.557Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 14"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:44.648Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 15"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:44.651Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 15"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:44.856Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 15"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:45.210Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 15"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:45.299Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 16"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:45.302Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 16"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:45.498Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 16"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:45.744Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 16"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:45.835Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 17"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:45.838Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 17"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:46.014Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 17"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:46.283Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 17"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:46.400Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 18"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:46.403Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 18"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:46.596Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 18"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:46.828Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 18"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:46.909Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 19"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:46.912Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 19"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:47.131Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 19"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:47.347Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 19"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:47.436Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 20"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:47.439Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 20"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:47.569Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 20"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:47.918Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 20"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:48.017Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 21"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:48.019Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 21"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:48.203Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 21"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:48.464Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 21"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:48.551Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 22"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:48.554Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 22"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:48.745Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 22"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:48.975Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 22"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:49.059Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 23"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:49.061Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 23"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:49.242Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 23"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:49.512Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 23"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:49.597Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 24"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:49.600Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 24"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:49.785Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 24"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:50.085Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 24"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:50.173Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 25"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:50.176Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 25"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:50.368Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 25"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:50.685Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 25"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:50.790Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 26"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:50.794Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 26"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:50.910Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 26"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:51.211Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 26"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:51.297Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 27"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:51.299Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 27"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:51.478Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 27"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:51.732Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 27"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:51.815Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 28"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:51.818Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 28"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:51.945Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 28"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:52.282Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 28"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:52.370Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 29"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:52.373Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 29"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:52.548Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 29"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:52.829Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 29"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:52.909Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 30"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:52.911Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 30"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:53.093Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 30"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:53.891Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 30"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:53.982Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 31"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:53.984Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 31"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:54.191Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 31"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:54.468Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 31"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:54.552Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 32"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:54.554Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 32"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:54.737Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 32"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:54.995Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 32"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:55.099Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 33"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:55.101Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 33"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:55.326Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 33"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:55.530Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 33"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:55.617Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 34"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:55.620Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 34"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:55.748Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 34"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:56.103Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 34"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:56.200Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 35"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:56.202Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 35"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:56.389Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 35"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:56.664Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 35"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:56.744Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 36"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:56.747Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 36"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:56.961Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 36"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:57.186Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 36"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:57.281Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 37"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:57.283Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 37"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:57.493Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 37"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:57.734Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 37"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:57.827Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 38"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:57.830Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 38"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:58.023Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 38"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:58.284Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 38"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:58.376Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 39"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:58.379Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 39"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:58.578Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 39"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:58.825Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 39"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:58.912Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 40"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:58.915Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 40"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:59.097Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 40"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:59.382Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 40"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:59.478Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 41"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:59.481Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 41"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:59.677Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 41"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:59.915Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 41"
+  },
+  {
+    "timestamp": "2025-12-03T21:26:59.998Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 42"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:00.002Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 42"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:00.278Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 42"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:00.471Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 42"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:00.561Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 43"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:00.564Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 43"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:00.769Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 43"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:01.041Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 43"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:01.135Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 44"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:01.137Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 44"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:01.327Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 44"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:01.557Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 44"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:01.646Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 45"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:01.648Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 45"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:01.839Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 45"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:02.067Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 45"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:02.147Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 46"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:02.150Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 46"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:02.324Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 46"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:02.648Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 46"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:02.747Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 47"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:02.750Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 47"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:02.950Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 47"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:03.211Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 47"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:03.294Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 48"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:03.297Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 48"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:03.520Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 48"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:03.719Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 48"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:03.810Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 49"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:03.813Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 49"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.072Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 49"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.264Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 49"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.361Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 50"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.364Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 50"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.496Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 50"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.786Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 50"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.872Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 51"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.876Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 51"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:04.998Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 51"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:05.371Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 51"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:05.457Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 52"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:05.460Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 52"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:05.656Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 52"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:05.912Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 52"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:06.001Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 53"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:06.004Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 53"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:06.193Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 53"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:06.426Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 53"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:06.515Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 54"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:06.518Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 54"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:06.702Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 54"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:08.358Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 54"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:08.443Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 55"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:08.445Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 55"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:08.627Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 55"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:08.833Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 55"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:08.913Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 56"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:08.916Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 56"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:09.045Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 56"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:09.234Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 56"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:09.312Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 57"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:09.314Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 57"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:09.605Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 57"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:09.859Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 57"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:09.941Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 58"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:09.945Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 58"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:10.133Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 58"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:10.339Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 58"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:10.426Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 59"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:10.429Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 59"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:10.626Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 59"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:10.820Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 59"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:10.911Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 60"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:10.913Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 60"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:11.101Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 60"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:11.324Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 60"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:11.409Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 61"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:11.412Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 61"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:11.633Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 61"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:11.834Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 61"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:11.915Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 62"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:11.917Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 62"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.099Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 62"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.293Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 62"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.378Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 63"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.380Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 63"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.564Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 63"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.768Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 63"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.851Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 64"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.853Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 64"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:12.974Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 64"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:13.230Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 64"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:13.311Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 65"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:13.314Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 65"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:13.491Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 65"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:13.794Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 65"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:13.877Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 66"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:13.880Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 66"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.012Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 66"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.225Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 66"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.309Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 67"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.312Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 67"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.493Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 67"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.770Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 67"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.856Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 68"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.860Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 68"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:14.991Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 68"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:15.230Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 68"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:15.325Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 69"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:15.328Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 69"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:15.508Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 69"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:15.748Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 69"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:15.828Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 70"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:15.830Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 70"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:16.027Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 70"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:16.302Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 70"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:16.384Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 71"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:16.386Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 71"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:16.572Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 71"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:16.845Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 71"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:16.923Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 72"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:16.927Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 72"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:17.110Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 72"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:17.316Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 72"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:17.399Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 73"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:17.401Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 73"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:17.582Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 73"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:17.809Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 73"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:17.891Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 74"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:17.894Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 74"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:18.100Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 74"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:18.374Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 74"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:18.457Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 75"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:18.460Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 75"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:18.634Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 75"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:18.875Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 75"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:18.956Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 76"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:18.959Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 76"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:19.161Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 76"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:19.486Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 76"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:19.565Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 77"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:19.568Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 77"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:19.702Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 77"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:20.189Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 77"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:20.271Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 78"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:20.275Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 78"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:20.470Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 78"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:20.975Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 78"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:21.054Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 79"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:21.058Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 79"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:21.241Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 79"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:21.727Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 79"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:21.809Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 80"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:21.811Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 80"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:21.928Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 80"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:22.313Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 80"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:22.393Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 81"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:22.396Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 81"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:22.573Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 81"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:22.777Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 81"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:22.864Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 82"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:22.867Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 82"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:22.987Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 82"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:23.260Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 82"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:23.339Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 83"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:23.342Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 83"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:23.533Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 83"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:23.724Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 83"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:23.806Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 84"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:23.811Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 84"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:23.993Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 84"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:24.340Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 84"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:24.452Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 85"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:24.455Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 85"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:24.634Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 85"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:24.985Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 85"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:25.066Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 86"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:25.069Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 86"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:25.252Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 86"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:25.520Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 86"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:25.613Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 87"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:25.615Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 87"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:25.794Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 87"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:26.087Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 87"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:26.178Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 88"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:26.181Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 88"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:26.364Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 88"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:26.734Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 88"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:26.813Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 89"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:26.815Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 89"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.008Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 89"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.260Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 89"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.340Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 90"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.344Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 90"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.525Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 90"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.728Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 90"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.810Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 91"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.813Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 91"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:27.955Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 91"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:32.419Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 91"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:33.311Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 91"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:34.521Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 91"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:36.337Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 91"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:36.835Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 92"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:36.837Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 92"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:37.616Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 92"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:46.786Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 92"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:52.175Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 92"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:52.256Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 93"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:52.260Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 93"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:52.426Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 93"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:54.033Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 93"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:54.114Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 94"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:54.117Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 94"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:54.272Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 94"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:54.997Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 94"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:55.071Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 95"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:55.074Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 95"
+  },
+  {
+    "timestamp": "2025-12-03T21:27:55.203Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 95"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:34.106Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 95"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:35.261Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 95"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:35.345Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 96"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:35.348Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 96"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:35.772Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 96"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:38.161Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 96"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:38.244Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 97"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:38.248Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 97"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:38.443Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 97"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:38.968Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 97"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:39.051Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 98"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:39.054Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 98"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:39.234Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 98"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:39.678Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 98"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:39.765Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 99"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:39.767Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 99"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:39.969Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 99"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:40.281Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 99"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:40.363Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 100"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:40.365Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 100"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:40.571Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 100"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:40.806Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 100"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:40.897Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 101"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:40.899Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 101"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:41.079Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 101"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:41.368Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 101"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:41.452Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 102"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:41.454Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 102"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:41.578Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 102"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:41.877Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 102"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:41.968Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 103"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:41.970Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 103"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:42.150Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 103"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:42.405Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 103"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:42.489Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 104"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:42.493Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 104"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:42.630Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 104"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:42.965Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 104"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:43.054Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 105"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:43.056Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 105"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:43.261Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 105"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:43.480Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 105"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:43.561Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 106"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:43.564Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 106"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:43.759Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 106"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:44.011Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 106"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:44.092Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 107"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:44.095Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 107"
+  },
+  {
+    "timestamp": "2025-12-03T21:28:44.213Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 107"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:09.876Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 107"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:11.987Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 107"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:12.073Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 108"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:12.077Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 108"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:12.267Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 108"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:13.483Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 108"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:13.558Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 109"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:13.561Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 109"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:13.739Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 109"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:14.100Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 109"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:14.182Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 110"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:14.184Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 110"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:14.295Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 110"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:14.650Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 110"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:14.725Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 111"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:14.730Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 111"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:14.927Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 111"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:15.147Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 111"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:15.228Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 112"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:15.232Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 112"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:15.410Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 112"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:15.685Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 112"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:15.765Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 113"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:15.767Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 113"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:15.950Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 113"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:16.248Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 113"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:16.326Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 114"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:16.330Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 114"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:16.444Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 114"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:16.818Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 114"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:16.898Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 115"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:16.901Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 115"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:17.098Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 115"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:17.393Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 115"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:17.475Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 116"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:17.478Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 116"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:17.662Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 116"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:18.449Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 116"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:18.528Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 117"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:18.531Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 117"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:18.721Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 117"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:19.004Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 117"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:19.087Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 118"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:19.090Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 118"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:19.290Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 118"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:19.517Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 118"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:19.605Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 119"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:19.609Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 119"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:19.720Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 119"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:20.061Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 119"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:20.148Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 120"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:20.150Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 120"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:20.334Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 120"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:20.586Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 120"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:20.664Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 121"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:20.667Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 121"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:20.786Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 121"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:21.035Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 121"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:21.111Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 122"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:21.113Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 122"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:21.236Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 122"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:21.476Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 122"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:21.553Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 123"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:21.557Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 123"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:21.750Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 123"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:23.148Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 123"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:23.222Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 124"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:23.226Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 124"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:23.401Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 124"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:23.739Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 124"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:23.822Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 125"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:23.825Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 125"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:24.002Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 125"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:24.198Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 125"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:24.321Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 126"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:24.324Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 126"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:24.516Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 126"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:24.997Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 126"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:25.078Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 127"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:25.081Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 127"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:27.717Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 127"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:31.168Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 127"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:31.245Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 128"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:31.247Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 128"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:31.427Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 128"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:31.808Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 128"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:31.887Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 129"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:31.892Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 129"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:32.088Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 129"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:32.415Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 129"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:32.497Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 130"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:32.499Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 130"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:32.714Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 130"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:33.085Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 130"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:33.164Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 131"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:33.167Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 131"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:33.360Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 131"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:33.697Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 131"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:33.776Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 132"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:33.779Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 132"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:33.999Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 132"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:34.348Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 132"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:34.422Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 133"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:34.425Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 133"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:34.632Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 133"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:35.009Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 133"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:35.089Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 134"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:35.093Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 134"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:35.288Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 134"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:35.633Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 134"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:35.713Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 135"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:35.716Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 135"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:35.912Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 135"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:39.141Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 135"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:39.217Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 136"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:39.220Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 136"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:39.353Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 136"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:39.728Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 136"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:39.805Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 137"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:39.809Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 137"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:39.934Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 137"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:40.282Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 137"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:40.364Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 138"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:40.367Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 138"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:40.549Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 138"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:40.797Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 138"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:40.876Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 139"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:40.879Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 139"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:40.989Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 139"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:41.281Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 139"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:41.362Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 140"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:41.365Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 140"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:41.543Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 140"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:41.918Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 140"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:41.997Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 141"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:41.999Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 141"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:42.176Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 141"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:42.383Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 141"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:42.459Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 142"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:42.462Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 142"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:42.662Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 142"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.018Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 142"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.095Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 143"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.098Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 143"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.326Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 143"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.574Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 143"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.654Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 144"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.657Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 144"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.781Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 144"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:43.985Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 144"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:44.065Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 145"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:44.067Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 145"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:44.263Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 145"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:44.587Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 145"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:44.665Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 146"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:44.667Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 146"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:44.788Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 146"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:45.212Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 146"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:45.296Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 147"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:45.298Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 147"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:45.487Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 147"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:45.809Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 147"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:45.888Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 148"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:45.891Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 148"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:46.074Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 148"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:46.410Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 148"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:46.485Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 149"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:46.487Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 149"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:46.660Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 149"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:48.986Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 149"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:49.063Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 150"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:49.066Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 150"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:49.190Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 150"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:49.604Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 150"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:49.683Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 151"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:49.685Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 151"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:49.870Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 151"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:50.153Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 151"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:50.229Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 152"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:50.231Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 152"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:50.409Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 152"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:50.723Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 152"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:50.802Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 153"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:50.804Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 153"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:50.982Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 153"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:51.466Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 153"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:51.543Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 154"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:51.545Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 154"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:51.733Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 154"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:52.028Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 154"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:52.106Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 155"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:52.110Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 155"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:52.305Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 155"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:52.542Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 155"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:52.703Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:52.705Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 0. New Gen: 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:52.903Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:53.968Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:55.281Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:55.900Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:29:56.896Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:22.507Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:33.761Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:35.010Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 156"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:35.094Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 157"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:35.097Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 157"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:35.309Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 157"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:35.693Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 157"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:35.828Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 158"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:35.831Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 158"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:36.000Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 158"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:36.297Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 158"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:36.378Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 159"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:36.380Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 159"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:36.592Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 159"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:37.206Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 159"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:37.296Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 160"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:37.299Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 160"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:37.481Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 160"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:37.825Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 160"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:37.948Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 161"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:37.950Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 161"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:38.128Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 161"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:38.418Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 161"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:38.501Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 162"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:38.503Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 162"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:38.700Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 162"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:38.981Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 162"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:39.063Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Saved generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:39.065Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Trained on target 1. New Gen: 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:30:39.246Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:08.343Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:16.845Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:17.855Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:18.337Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:18.560Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:18.788Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:24.288Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:26.028Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:27.195Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:29.764Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:39.748Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.wilhelm-tel.de/",
+      "cleanDomain": "wilhelm-tel.de",
+      "rootDomain": "wilhelm-tel.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-03T21:31:39.764Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for wilhelm-tel.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:39.950Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is fresh (2912 mins old). Skipping live fetch."
+  },
+  {
+    "timestamp": "2025-12-03T21:31:39.952Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:47.779Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-03T21:31:47.783Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-03T21:31:47.903Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is fresh (314 mins old). Skipping live fetch."
+  },
+  {
+    "timestamp": "2025-12-03T21:31:47.906Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  },
+  {
+    "timestamp": "2025-12-03T21:53:49.550Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:54:01.260Z",
+    "level": "info",
+    "message": "Cleared 7 items from cache"
+  },
+  {
+    "timestamp": "2025-12-03T21:54:01.806Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:54:03.644Z",
+    "level": "error",
+    "message": "Failed to get recent analyses",
+    "data": {
+      "code": "42703",
+      "details": null,
+      "hint": null,
+      "message": "column analyses.company_name does not exist"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T21:54:04.915Z",
+    "level": "error",
+    "message": "Failed to get users",
+    "data": {
+      "code": "42703",
+      "details": null,
+      "hint": null,
+      "message": "column profiles.display_name does not exist"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T21:54:08.555Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:54:08.776Z",
+    "level": "info",
+    "message": "[NeuralNetwork] Loaded generation 163"
+  },
+  {
+    "timestamp": "2025-12-03T21:54:17.702Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.wilhelm-tel.de/",
+      "cleanDomain": "wilhelm-tel.de",
+      "rootDomain": "wilhelm-tel.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-03T21:54:17.726Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for wilhelm-tel.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-03T21:54:17.941Z",
+    "level": "info",
+    "message": "[PolicyCache] Cache is fresh (2935 mins old). Skipping live fetch."
+  },
+  {
+    "timestamp": "2025-12-03T21:54:17.943Z",
+    "level": "info",
+    "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  }
+]

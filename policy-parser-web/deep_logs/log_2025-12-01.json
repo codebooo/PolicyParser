@@ -1177,5 +1177,1831 @@
     "timestamp": "2025-12-01T18:45:22.916Z",
     "level": "info",
     "message": "🎉 CACHE HIT! Using cached analysis - saving API credits!"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:06.740Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.hansa-projekt.de/",
+      "cleanDomain": "hansa-projekt.de",
+      "rootDomain": "hansa-projekt.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:06.762Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for hansa-projekt.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:07.102Z",
+    "level": "info",
+    "message": "Starting discovery for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:07.103Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:07.580Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 2 unique privacy-related links on hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:07.583Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:07.585Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T20:52:07.586Z",
+    "level": "info",
+    "message": "[discovery] Validating top candidate content: https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.379Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://hansa-projekt.de/datenschutz",
+    "data": {
+      "isValid": true,
+      "confidence": 100,
+      "keywords": 18,
+      "bigrams": 5
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.380Z",
+    "level": "info",
+    "message": "[discovery] Content validation PASSED for https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.382Z",
+    "level": "info",
+    "message": "Running deep link scan from https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.384Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://hansa-projekt.de/datenschutz (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.386Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.745Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.752Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 3 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.754Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://hansa-projekt.de/impressum/"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.858Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.865Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 2 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:08.867Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://hansa-projekt.de/_wp_link_placeholder"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:09.221Z",
+    "level": "info",
+    "message": "[DeepScanner] Page returned 404"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:09.223Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:14.854Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: https://hansa-projekt.de/impressum/ (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:14.855Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:14.857Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://hansa-projekt.de/datenschutz",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:52:07.583Z",
+      "methodDetail": "Found \"DATENSCHUTZ\" in footer (score: 175) (content validated: 100%)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:14.858Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.226Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 116119
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.241Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 45945
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.417Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutz – HANSA PROJEKT",
+      "length": 26028
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.429Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 26516
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.430Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://hansa-projekt.de/datenschutz",
+    "data": {
+      "title": "Datenschutz – HANSA PROJEKT",
+      "markdownLength": 26516
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.436Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: a7ee2af9372e6186..."
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.439Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.442Z",
+    "level": "info",
+    "message": "Starting discovery for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.444Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.575Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 2 unique privacy-related links on hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.577Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.578Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.579Z",
+    "level": "info",
+    "message": "[discovery] Validating top candidate content: https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.975Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://hansa-projekt.de/datenschutz",
+    "data": {
+      "isValid": true,
+      "confidence": 100,
+      "keywords": 18,
+      "bigrams": 5
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.976Z",
+    "level": "info",
+    "message": "[discovery] Content validation PASSED for https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.978Z",
+    "level": "info",
+    "message": "Running deep link scan from https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.980Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://hansa-projekt.de/datenschutz (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:15.981Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:16.308Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:16.313Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 3 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:16.314Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://hansa-projekt.de/impressum/"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:16.444Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:16.451Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 2 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:16.452Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://hansa-projekt.de/_wp_link_placeholder"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:16.886Z",
+    "level": "info",
+    "message": "[DeepScanner] Page returned 404"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:16.887Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.286Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: https://hansa-projekt.de/impressum/ (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.287Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.289Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://hansa-projekt.de/datenschutz",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:52:15.576Z",
+      "methodDetail": "Found \"DATENSCHUTZ\" in footer (score: 175) (content validated: 100%)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.290Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://hansa-projekt.de/datenschutz",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:52:15.576Z",
+      "methodDetail": "Found \"DATENSCHUTZ\" in footer (score: 175) (content validated: 100%)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.291Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.681Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 116119
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.695Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 45945
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.788Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutz – HANSA PROJEKT",
+      "length": 26028
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.794Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 26516
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.795Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://hansa-projekt.de/datenschutz",
+    "data": {
+      "title": "Datenschutz – HANSA PROJEKT",
+      "markdownLength": 26516
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.797Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 26028
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:52:23.803Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:52.109Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for hansa-projekt.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:52.849Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version f13b5145-fa33-4ab9-89f2-07d2240f3c27"
+  },
+  {
+    "timestamp": "2025-12-01T20:52:52.851Z",
+    "level": "info",
+    "message": "Saved to version cache: f13b5145-fa33-4ab9-89f2-07d2240f3c27"
+  },
+  {
+    "timestamp": "2025-12-01T20:53:58.237Z",
+    "level": "info",
+    "message": "[PolicyVersions] Fetching history for hansa-projekt.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:32.751Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.iphh.net/de/start.html",
+      "cleanDomain": "iphh.net",
+      "rootDomain": "iphh.net",
+      "tld": "net",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:54:32.754Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for iphh.net/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:32.937Z",
+    "level": "info",
+    "message": "Starting discovery for iphh.net"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:32.939Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.160Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 1 unique privacy-related links on iphh.net"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.162Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 1 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.164Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.165Z",
+    "level": "info",
+    "message": "[discovery] Validating top candidate content: https://iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.703Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://iphh.net/de/datenschutz.html",
+    "data": {
+      "isValid": true,
+      "confidence": 100,
+      "keywords": 24,
+      "bigrams": 3
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.704Z",
+    "level": "info",
+    "message": "[discovery] Content validation PASSED for https://iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.706Z",
+    "level": "info",
+    "message": "Running deep link scan from https://iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.707Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://iphh.net/de/datenschutz.html (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:34.709Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:35.244Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:35.263Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 4 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:35.266Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://iphh.net/de/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:35.811Z",
+    "level": "info",
+    "message": "[DeepScanner] Page returned 404"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:35.813Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://iphh.net/de/de/impressum.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:36.308Z",
+    "level": "info",
+    "message": "[DeepScanner] Page returned 404"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:36.310Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://www.iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:36.764Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:36.803Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 4 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:36.805Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://www.iphh.net/de/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:37.212Z",
+    "level": "info",
+    "message": "[DeepScanner] Page returned 404"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:37.214Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://www.iphh.net/de/de/impressum.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:37.666Z",
+    "level": "info",
+    "message": "[DeepScanner] Page returned 404"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:37.668Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://www.iphh.net/de/files/iphh_public_keys/Datenschutzbeauftrager-5D21DC4A-Public.asc"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:38.122Z",
+    "level": "info",
+    "message": "[DeepScanner] Page returned 404"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:38.123Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://iphh.net/de/files/iphh_public_keys/Datenschutzbeauftrager-5D21DC4A-Public.asc"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:38.612Z",
+    "level": "info",
+    "message": "[DeepScanner] Page returned 404"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:38.613Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:47.094Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: https://iphh.net/de/de/datenschutz.html (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:47.096Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:47.097Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://iphh.net/de/datenschutz.html",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:54:34.162Z",
+      "methodDetail": "Found \"Data Protection\" in body (score: 160) (content validated: 100%)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:54:47.099Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:47.629Z",
+    "level": "info",
+    "message": "[fetchHtml] Detected non-English locale redirect: https://www.iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:47.631Z",
+    "level": "info",
+    "message": "[fetchHtml] Trying English URL: https://www.iphh.net/us/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:48.076Z",
+    "level": "debug",
+    "message": "[fetchHtml] English variant https://www.iphh.net/us/datenschutz.html failed: Request failed with status code 404 (Not Found): GET https://www.iphh.net/us/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:48.077Z",
+    "level": "info",
+    "message": "[fetchHtml] Trying English URL: https://www.iphh.net/en/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:48.509Z",
+    "level": "debug",
+    "message": "[fetchHtml] English variant https://www.iphh.net/en/datenschutz.html failed: Request failed with status code 404 (Not Found): GET https://www.iphh.net/en/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:54:48.511Z",
+    "level": "info",
+    "message": "[fetchHtml] Trying English URL: https://www.iphh.net/en-us/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:55:36.868Z",
+    "level": "debug",
+    "message": "[fetchHtml] English variant https://www.iphh.net/en-us/datenschutz.html failed: Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:55:36.870Z",
+    "level": "warn",
+    "message": "[fetchHtml] Could not find English version, using localized content from: https://www.iphh.net/de/datenschutz.html"
+  },
+  {
+    "timestamp": "2025-12-01T20:55:36.872Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 124055
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:55:36.945Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 52076
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:55:37.055Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutz - IPHH Internet Port Hamburg",
+      "length": 33159
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:55:37.067Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 33946
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:55:37.069Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://iphh.net/de/datenschutz.html",
+    "data": {
+      "title": "Datenschutz - IPHH Internet Port Hamburg",
+      "markdownLength": 33946
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:55:37.071Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 7e3cdfbd30490984..."
+  },
+  {
+    "timestamp": "2025-12-01T20:55:37.072Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-01T20:55:37.074Z",
+    "level": "info",
+    "message": "Starting discovery for iphh.net"
+  },
+  {
+    "timestamp": "2025-12-01T20:55:37.075Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:56:25.307Z",
+    "level": "error",
+    "message": "HomepageScraper: Error fetching https://iphh.net",
+    "data": "Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:56:25.309Z",
+    "level": "info",
+    "message": "Running strategy: DirectFetchStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:56:25.311Z",
+    "level": "info",
+    "message": "DirectFetch: Fetching main page https://iphh.net to scan footer"
+  },
+  {
+    "timestamp": "2025-12-01T20:56:56.425Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching main page: Timeout awaiting 'request' for 15000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:21.502Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy-policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:21.504Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:21.520Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:21.580Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy/policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:21.582Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy-policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:46.668Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/legal/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:46.671Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/legal/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:46.713Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy/policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:46.715Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/about/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:57:46.719Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/about/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:11.795Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/policies/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:11.797Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacycenter: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:11.800Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy/center: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:11.859Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy/center: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:11.863Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/policies/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:32.951Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:32.956Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.111Z",
+    "level": "info",
+    "message": "Starting discovery for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.112Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.355Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 3 unique privacy-related links on atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.357Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 3 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.358Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.360Z",
+    "level": "info",
+    "message": "[discovery] Validating top candidate content: https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.474Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://atlasedge.com/data-protection/",
+    "data": {
+      "isValid": true,
+      "confidence": 100,
+      "keywords": 19,
+      "bigrams": 6
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.476Z",
+    "level": "info",
+    "message": "[discovery] Content validation PASSED for https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.478Z",
+    "level": "info",
+    "message": "Running deep link scan from https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.479Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://atlasedge.com/data-protection/ (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.481Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.566Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.608Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 5 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.611Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.860Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.863Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 0 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.865Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://atlasedge.com/legal-notices/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.974Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.995Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 5 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:33.998Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/documents/AtlasEdge%20Procurement%20GTCs%20v01.09.21.pdf"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.171Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=false"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.173Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 0 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.174Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/acceptable-use-policy/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.306Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.332Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 4 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.335Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://atlasedge.com/de/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.422Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.438Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 6 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.455Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/de/impressum/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.535Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.549Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 5 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.551Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/de/legal-notices/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.822Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.838Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 6 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.842Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/de/acceptable-use-policy/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.917Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.932Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 5 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:34.938Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:36.939Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacypolicy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:36.941Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/help/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:36.954Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/help/privacy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:36.985Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacypolicy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:36.988Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacycenter: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:40.829Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:40.831Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:40.832Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://atlasedge.com/data-protection/",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:58:33.357Z",
+      "methodDetail": "Found \"Data protection\" in footer (score: 100) (content validated: 100%)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:40.834Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.043Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 70396
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.049Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 18011
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.139Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "AtlasEdge Data Protection: Your Privacy Ensured",
+      "length": 12206
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.145Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 12495
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.146Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://atlasedge.com/data-protection/",
+    "data": {
+      "title": "AtlasEdge Data Protection: Your Privacy Ensured",
+      "markdownLength": 12495
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.150Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: f3d8ff47307206a5..."
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.160Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.162Z",
+    "level": "info",
+    "message": "Starting discovery for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.165Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.363Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 3 unique privacy-related links on atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.365Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 3 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.367Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.370Z",
+    "level": "info",
+    "message": "[discovery] Validating top candidate content: https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.537Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://atlasedge.com/data-protection/",
+    "data": {
+      "isValid": true,
+      "confidence": 100,
+      "keywords": 19,
+      "bigrams": 6
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.539Z",
+    "level": "info",
+    "message": "[discovery] Content validation PASSED for https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.540Z",
+    "level": "info",
+    "message": "Running deep link scan from https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.542Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://atlasedge.com/data-protection/ (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.544Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.656Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.669Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 5 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.671Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.915Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.918Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 0 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:41.921Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://atlasedge.com/legal-notices/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.050Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.078Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 5 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.080Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/documents/AtlasEdge%20Procurement%20GTCs%20v01.09.21.pdf"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.438Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=false"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.440Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 0 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.442Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/acceptable-use-policy/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.532Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.551Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 4 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.558Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://atlasedge.com/de/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.673Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.690Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 6 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.695Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/de/impressum/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.775Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.791Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 5 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.793Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/de/legal-notices/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.872Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.888Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 6 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:42.894Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 2: https://atlasedge.com/de/acceptable-use-policy/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:43.005Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:43.020Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 5 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:43.022Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:46.935Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:46.937Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:46.939Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://atlasedge.com/data-protection/",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:58:41.365Z",
+      "methodDetail": "Found \"Data protection\" in footer (score: 100) (content validated: 100%)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:46.941Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://atlasedge.com/data-protection/",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:58:41.365Z",
+      "methodDetail": "Found \"Data protection\" in footer (score: 100) (content validated: 100%)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:46.943Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:50.320Z",
+    "level": "error",
+    "message": "Failed to fetch HTML from https://atlasedge.com/data-protection/",
+    "data": "Request failed with status code 429 (Too Many Requests): GET https://atlasedge.com/data-protection/"
+  },
+  {
+    "timestamp": "2025-12-01T20:58:50.322Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to fetch HTML from https://atlasedge.com/data-protection/",
+    "data": {
+      "error": "Failed to fetch content: Request failed with status code 429 (Too Many Requests): GET https://atlasedge.com/data-protection/"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:58:50.324Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to fetch content: Request failed with status code 429 (Too Many Requests): GET https://atlasedge.com/data-protection/",
+      "stack": "Error: Failed to fetch content: Request failed with status code 429 (Too Many Requests): GET https://atlasedge.com/data-protection/\n    at fetchHtml (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__18c429d8._.js:3202:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__18c429d8._.js:7179:19)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__18c429d8._.js:8258:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:02.047Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://www.iphh.net/privacy_policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:02.126Z",
+    "level": "info",
+    "message": "DirectFetch: Error fetching https://iphh.net/privacy_policy: Timeout awaiting 'request' for 12000ms"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:02.129Z",
+    "level": "info",
+    "message": "Running strategy: StandardPathStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:07.169Z",
+    "level": "info",
+    "message": "Running strategy: SitemapStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:07.497Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.wilhelm-tel.de/",
+      "cleanDomain": "wilhelm-tel.de",
+      "rootDomain": "wilhelm-tel.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:07.501Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for wilhelm-tel.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:07.729Z",
+    "level": "info",
+    "message": "Starting discovery for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:07.731Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.511Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 2 unique privacy-related links on wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.514Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.516Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.519Z",
+    "level": "info",
+    "message": "[discovery] Validating top candidate content: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.635Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Quick reject: Appears to be a Facebook page"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.637Z",
+    "level": "info",
+    "message": "[discovery] Top candidate failed content validation, searching deeper..."
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.754Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://wilhelm-tel.de/impressum",
+    "data": {
+      "isValid": true,
+      "confidence": 96,
+      "keywords": 9,
+      "bigrams": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.756Z",
+    "level": "info",
+    "message": "[discovery] Found valid policy at https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.757Z",
+    "level": "info",
+    "message": "Running deep link scan from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.759Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://wilhelm-tel.de/impressum (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.760Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.871Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.879Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 2 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:08.881Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:09.012Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:09.021Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 9 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:09.026Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.255Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: https://wilhelm-tel.de/datenschutz (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.257Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.259Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://wilhelm-tel.de/impressum",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:59:08.514Z",
+      "methodDetail": "Content-validated alternative: Found \"Impressum\" in footer (score: 100)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.261Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.367Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 22919
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.372Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 7276
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.418Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Impressum",
+      "length": 3888
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.425Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 4272
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.427Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://wilhelm-tel.de/impressum",
+    "data": {
+      "title": "Impressum",
+      "markdownLength": 4272
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.429Z",
+    "level": "info",
+    "message": "[PolicyCache] Current policy hash: 6c247196f064a5af..."
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.431Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.432Z",
+    "level": "info",
+    "message": "Starting discovery for wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.435Z",
+    "level": "info",
+    "message": "Running strategy: HomepageScraperStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.890Z",
+    "level": "info",
+    "message": "HomepageScraper: Found 2 unique privacy-related links on wilhelm-tel.de"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.892Z",
+    "level": "info",
+    "message": "Strategy HomepageScraperStrategy found 2 candidates"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.894Z",
+    "level": "info",
+    "message": "Found high-confidence match (98), stopping early."
+  },
+  {
+    "timestamp": "2025-12-01T20:59:11.895Z",
+    "level": "info",
+    "message": "[discovery] Validating top candidate content: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.013Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Quick reject: Appears to be a Facebook page"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.016Z",
+    "level": "info",
+    "message": "[discovery] Top candidate failed content validation, searching deeper..."
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.128Z",
+    "level": "info",
+    "message": "[validateCandidateContent] Validation result for https://wilhelm-tel.de/impressum",
+    "data": {
+      "isValid": true,
+      "confidence": 96,
+      "keywords": 9,
+      "bigrams": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.130Z",
+    "level": "info",
+    "message": "[discovery] Found valid policy at https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.131Z",
+    "level": "info",
+    "message": "Running deep link scan from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.132Z",
+    "level": "info",
+    "message": "[DeepScanner] Starting deep scan from https://wilhelm-tel.de/impressum (max depth: 2)"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.135Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 0: https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.252Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=false, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.259Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 2 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.261Z",
+    "level": "info",
+    "message": "[DeepScanner] Scanning page at depth 1: https://wilhelm-tel.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.393Z",
+    "level": "info",
+    "message": "[DeepScanner] Page analysis: isActualPolicy=true, isHubPage=true"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.400Z",
+    "level": "info",
+    "message": "[DeepScanner] Found 9 potential policy links"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:12.403Z",
+    "level": "info",
+    "message": "[DeepScanner] Trying known nested paths from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.635Z",
+    "level": "info",
+    "message": "[DeepScanner] Found better policy: https://wilhelm-tel.de/datenschutz (confidence: 98)"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.637Z",
+    "level": "info",
+    "message": "Deep scan did not find better URL, using https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.640Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://wilhelm-tel.de/impressum",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:59:11.892Z",
+      "methodDetail": "Content-validated alternative: Found \"Impressum\" in footer (score: 100)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.641Z",
+    "level": "info",
+    "message": "Policy found",
+    "data": {
+      "url": "https://wilhelm-tel.de/impressum",
+      "source": "footer_link",
+      "confidence": 98,
+      "foundAt": "2025-12-01T20:59:11.892Z",
+      "methodDetail": "Content-validated alternative: Found \"Impressum\" in footer (score: 100)"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.644Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://wilhelm-tel.de/impressum"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.758Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched HTML",
+    "data": {
+      "length": 22919
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.762Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 7276
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.809Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Impressum",
+      "length": 3888
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.817Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 4272
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.820Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://wilhelm-tel.de/impressum",
+    "data": {
+      "title": "Impressum",
+      "markdownLength": 4272
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.826Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 3888
+    }
+  },
+  {
+    "timestamp": "2025-12-01T20:59:14.829Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:34.290Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for wilhelm-tel.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:34.437Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 6eebd674-e25f-4bcd-97c9-6fe206c935c0"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:34.440Z",
+    "level": "info",
+    "message": "Saved to version cache: 6eebd674-e25f-4bcd-97c9-6fe206c935c0"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:58.531Z",
+    "level": "info",
+    "message": "Running strategy: SearchFallbackStrategy"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:58.712Z",
+    "level": "info",
+    "message": "DuckDuckGo returned status 202"
+  },
+  {
+    "timestamp": "2025-12-01T20:59:59.297Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Could not find a privacy policy for iphh.net",
+      "stack": "Error: Could not find a privacy policy for iphh.net\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__18c429d8._.js:8248:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
   }
 ]

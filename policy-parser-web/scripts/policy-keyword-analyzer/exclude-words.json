@@ -224,5 +224,123 @@
   ],
   "single_chars_and_symbols": [
     "x", "y", "z", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w"
+  ],
+  "german_articles": [
+    "der", "die", "das", "den", "dem", "des", "ein", "eine", "einer", "einem", "einen", "eines"
+  ],
+  "german_pronouns": [
+    "ich", "du", "er", "sie", "es", "wir", "ihr", "sie", "man",
+    "mein", "meine", "meiner", "meinem", "meinen", "meines",
+    "dein", "deine", "deiner", "deinem", "deinen", "deines",
+    "sein", "seine", "seiner", "seinem", "seinen", "seines",
+    "ihr", "ihre", "ihrer", "ihrem", "ihren", "ihres",
+    "unser", "unsere", "unserer", "unserem", "unseren", "unseres",
+    "euer", "eure", "eurer", "eurem", "euren", "eures",
+    "sich", "mich", "dich", "uns", "euch", "ihnen",
+    "dieser", "diese", "dieses", "diesem", "diesen",
+    "jener", "jene", "jenes", "jenem", "jenen",
+    "welcher", "welche", "welches", "welchem", "welchen",
+    "was", "wer", "wem", "wen", "wessen"
+  ],
+  "german_prepositions": [
+    "in", "an", "auf", "bei", "mit", "nach", "von", "zu", "aus",
+    "durch", "für", "gegen", "ohne", "um", "unter", "über",
+    "vor", "hinter", "neben", "zwischen", "außer", "seit", "trotz",
+    "wegen", "während", "innerhalb", "außerhalb", "statt", "anstatt",
+    "bis", "entlang", "gegenüber", "gemäß", "laut", "samt", "zufolge"
+  ],
+  "german_conjunctions": [
+    "und", "oder", "aber", "denn", "sondern", "doch", "jedoch",
+    "weil", "da", "obwohl", "obgleich", "wenn", "falls", "als", "ob",
+    "dass", "damit", "sodass", "bevor", "nachdem", "während", "sobald",
+    "solange", "bis", "seit", "seitdem", "indem", "sowohl", "als auch",
+    "weder", "noch", "entweder", "soweit", "sofern", "insofern"
+  ],
+  "german_common_verbs": [
+    "sein", "ist", "sind", "war", "waren", "gewesen", "bin", "bist",
+    "haben", "hat", "habe", "habt", "hatte", "hatten", "gehabt",
+    "werden", "wird", "werde", "werdet", "wurde", "wurden", "geworden",
+    "können", "kann", "kannst", "könnt", "konnte", "konnten", "gekonnt",
+    "müssen", "muss", "musst", "müsst", "musste", "mussten", "gemusst",
+    "sollen", "soll", "sollst", "sollt", "sollte", "sollten", "gesollt",
+    "wollen", "will", "willst", "wollt", "wollte", "wollten", "gewollt",
+    "dürfen", "darf", "darfst", "dürft", "durfte", "durften", "gedurft",
+    "mögen", "mag", "magst", "mögt", "mochte", "mochten", "gemocht",
+    "gehen", "geht", "ging", "gingen", "gegangen",
+    "kommen", "kommt", "kam", "kamen", "gekommen",
+    "machen", "macht", "machte", "machten", "gemacht",
+    "geben", "gibt", "gab", "gaben", "gegeben",
+    "nehmen", "nimmt", "nahm", "nahmen", "genommen",
+    "finden", "findet", "fand", "fanden", "gefunden",
+    "stehen", "steht", "stand", "standen", "gestanden",
+    "liegen", "liegt", "lag", "lagen", "gelegen",
+    "bleiben", "bleibt", "blieb", "blieben", "geblieben",
+    "lassen", "lässt", "ließ", "ließen", "gelassen",
+    "heißen", "heißt", "hieß", "hießen", "geheißen",
+    "sehen", "sieht", "sah", "sahen", "gesehen",
+    "wissen", "weiß", "weißt", "wisst", "wusste", "wussten", "gewusst"
+  ],
+  "german_common_adjectives_adverbs": [
+    "groß", "klein", "gut", "schlecht", "neu", "alt", "jung", "lang", "kurz",
+    "hoch", "niedrig", "schnell", "langsam", "früh", "spät", "viel", "wenig",
+    "mehr", "weniger", "andere", "anderen", "anderem", "anderer", "anderes",
+    "gleich", "gleiche", "gleichen", "gleichem", "gleicher", "gleiches",
+    "ganz", "ganze", "ganzen", "ganzem", "ganzer", "ganzes",
+    "alle", "allem", "allen", "aller", "alles",
+    "jede", "jedem", "jeden", "jeder", "jedes",
+    "keine", "keinem", "keinen", "keiner", "keines",
+    "sehr", "auch", "noch", "schon", "immer", "nie", "niemals",
+    "hier", "dort", "da", "wo", "wann", "wie", "warum", "weshalb",
+    "nur", "erst", "bereits", "gerade", "sofort", "dann", "nun",
+    "heute", "morgen", "gestern", "jetzt", "bald", "später", "früher",
+    "wieder", "weiter", "weitere", "weiteren", "weiterem", "weiterer", "weiteres",
+    "eigentlich", "tatsächlich", "wirklich", "ziemlich", "etwa", "ungefähr",
+    "bestimmt", "bestimmte", "bestimmten", "bestimmtem", "bestimmter", "bestimmtes",
+    "möglich", "mögliche", "möglichen", "möglichem", "möglicher", "mögliches",
+    "verschiedene", "verschiedenen", "verschiedenem", "verschiedener", "verschiedenes"
+  ],
+  "german_misc_filler": [
+    "bzw", "usw", "etc", "ggf", "evtl", "ca", "inkl", "exkl", "max", "min",
+    "sowie", "jedoch", "außerdem", "deshalb", "daher", "darum", "deswegen",
+    "folgende", "folgenden", "folgendem", "folgender", "folgendes",
+    "genannte", "genannten", "genanntem", "genannter", "genanntes",
+    "entsprechende", "entsprechenden", "entsprechendem", "entsprechender", "entsprechendes",
+    "jeweilige", "jeweiligen", "jeweiligem", "jeweiliger", "jeweiliges",
+    "sogenannte", "sogenannten", "sogenanntem", "sogenannter", "sogenanntes", "sog",
+    "insbesondere", "beispielsweise", "grundsätzlich", "gegebenenfalls",
+    "selbst", "dabei", "hierbei", "wobei", "dadurch", "hierdurch", "wodurch",
+    "dazu", "hierzu", "wozu", "davon", "hiervon", "wovon",
+    "dafür", "hierfür", "wofür", "damit", "hiermit", "womit",
+    "darauf", "hierauf", "worauf", "darin", "hierin", "worin",
+    "darüber", "hierüber", "worüber", "darunter", "hierunter", "worunter",
+    "davor", "hiervor", "wovor", "danach", "hiernach", "wonach",
+    "daran", "hieran", "woran", "dabei", "hierbei", "wobei"
+  ],
+  "german_truncated_words": [
+    "nnen", "ber", "nder", "rung", "lich", "glich", "isch", "ischen",
+    "ung", "ungen", "heit", "keit", "schaft", "schaften",
+    "gem", "abs", "lit", "hrt", "scht", "gel", "dar", "verf",
+    "erf", "erm", "gew", "llen", "ssen", "nden", "gen", "hrung",
+    "gung", "llung", "ger", "erm", "nger", "schen", "europ",
+    "bertragung", "bermittlung", "bermittelt", "erhalb",
+    "glicht", "glichkeit", "glichkeiten", "nahmen"
+  ],
+  "company_brand_names": [
+    "google", "facebook", "amazon", "apple", "microsoft", "twitter", "youtube",
+    "linkedin", "instagram", "whatsapp", "tiktok", "netflix", "spotify",
+    "uber", "airbnb", "paypal", "ebay", "github", "meta", "vimeo",
+    "zoom", "slack", "discord", "reddit", "pinterest", "snapchat",
+    "adobe", "oracle", "salesforce", "ibm", "intel", "cisco", "samsung",
+    "sony", "nintendo", "visa", "mastercard", "amex", "stripe",
+    "tagesschau", "ndr", "proshop", "zoho", "hotjar", "xing", "modrinth", "perplexity"
+  ],
+  "location_names": [
+    "usa", "california", "ireland", "dublin", "switzerland", "york",
+    "san", "mountain", "amphitheatre", "gordon", "barrow", "united", "kingdom",
+    "european", "canada", "eea", "ewr", "irland"
+  ],
+  "legal_abbreviations": [
+    "inc", "ltd", "llc", "corp", "gmbh", "ag", "plc", "co",
+    "dsgvo", "gdpr", "ccpa", "dpf", "eu-u", "swiss-u"
   ]
 }

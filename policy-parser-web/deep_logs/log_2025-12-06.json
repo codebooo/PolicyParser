@@ -1,0 +1,5036 @@
+[
+  {
+    "timestamp": "2025-12-06T10:45:07.571Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: google.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.573Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.574Z",
+    "level": "info",
+    "message": "[Jarvis] ⚡ Found 2 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.576Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.577Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.579Z",
+    "level": "error",
+    "message": "[Carl] Failed to load brain",
+    "data": {
+      "message": "`cookies` was called outside a request scope. Read more: https://nextjs.org/docs/messages/next-dynamic-api-wrong-context",
+      "stack": "Error: `cookies` was called outside a request scope. Read more: https://nextjs.org/docs/messages/next-dynamic-api-wrong-context\n    at throwForMissingRequestStore (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\src\\server\\app-render\\work-unit-async-storage.external.ts:343:9)\n    at cookies (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\node_modules\\next\\src\\server\\request\\cookies.ts:141:30)\n    at createClient (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\utils\\supabase\\server.ts:5:31)\n    at Carl.load (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\carl\\Carl.ts:392:36)\n    at getCarl (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\carl\\Carl.ts:621:28)\n    at JarvisWorker.init (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\jarvis\\JarvisWorker.ts:81:31)\n    at Jarvis.initializeWorkers (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\jarvis\\Jarvis.ts:214:26)\n    at Jarvis.discover (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\jarvis\\Jarvis.ts:110:24)\n    at discoverWithJarvis (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\jarvis\\Jarvis.ts:330:19)\n    at runTests (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\scripts\\test-jarvis.ts:37:34)"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.584Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.585Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.586Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.588Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.589Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.591Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.592Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.593Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.594Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1994ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.595Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.596Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1992ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.596Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1992ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.597Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1991ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.598Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1990ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.599Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.600Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1988ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.601Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.602Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1986ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.603Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.604Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1984ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.605Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.606Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.607Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.608Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.609Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1979ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.610Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.611Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.611Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.612Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1976ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.613Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1975ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.614Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.615Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.615Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.619Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.628Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 9ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:07.894Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 4 candidates in 308ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:08.419Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 3 candidates in 804ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:09.726Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2135ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:09.921Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14703ms for github.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:10.967Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 2 candidates in 3359ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:12.641Z",
+    "level": "error",
+    "message": "[Jarvis W2] Strategy homepage_crawl failed",
+    "data": "Timeout awaiting 'request' for 3000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:12.645Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5042ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:12.646Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 5035ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:12.648Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 3 candidates in 5053ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.626Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.627Z",
+    "level": "error",
+    "message": "[Jarvis] ❌ Discovery failed",
+    "data": {
+      "message": "Discovery timeout after 15000ms",
+      "stack": "Error: Discovery timeout after 15000ms\n    at Timeout._onTimeout (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\jarvis\\Jarvis.ts:268:24)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.629Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: openai.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.630Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.631Z",
+    "level": "info",
+    "message": "[Jarvis] ⚡ Found 2 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.634Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.635Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.636Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.637Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.638Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.639Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.640Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.642Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.643Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.644Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.645Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1994ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.646Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.647Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1992ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.648Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1991ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.649Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1990ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.650Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.651Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1988ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.652Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.653Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1986ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.654Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1985ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.655Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.656Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.657Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.658Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.659Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.660Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.661Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.662Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.663Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1976ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.663Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.664Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1975ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.665Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.666Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.667Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.668Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.669Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.672Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 3ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:22.774Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 0 candidates in 136ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:23.487Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 3 candidates in 819ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:24.756Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2114ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:24.831Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1703ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:25.764Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 3104ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:25.767Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 0 candidates in 3128ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:26.941Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 10 candidates in 19348ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:27.683Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 0 candidates in 5037ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:27.685Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11985ms for stackoverflow.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:27.698Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5043ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:27.700Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 5037ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.683Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.684Z",
+    "level": "error",
+    "message": "[Jarvis] ❌ Discovery failed",
+    "data": {
+      "message": "Discovery timeout after 15000ms",
+      "stack": "Error: Discovery timeout after 15000ms\n    at Timeout._onTimeout (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\jarvis\\Jarvis.ts:268:24)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.686Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: microsoft.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.687Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.690Z",
+    "level": "info",
+    "message": "[Jarvis] ⚡ Found 2 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.692Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: amazon.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.694Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.695Z",
+    "level": "info",
+    "message": "[Jarvis] ⚡ Found 2 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.697Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: apple.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.698Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.699Z",
+    "level": "info",
+    "message": "[Jarvis] ⚡ Found 2 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.700Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: netflix.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.701Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.702Z",
+    "level": "info",
+    "message": "[Jarvis] ⚡ Found 2 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.705Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.707Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.708Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.709Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.710Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.711Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.712Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.713Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.714Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1997ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.715Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.716Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1995ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.717Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.718Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1993ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.719Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1992ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.720Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1991ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.721Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1990ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.722Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.723Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1988ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.724Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.726Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1985ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.727Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.728Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.729Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.730Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.731Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.732Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.733Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.734Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.734Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.735Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.736Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1975ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.737Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.738Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.740Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1971ms before request to github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.741Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.742Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for github.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.744Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 2ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.947Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 4 candidates in 237ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:37.952Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 0 candidates in 211ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:40.225Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1907ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:42.213Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1928ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:42.766Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 5039ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:42.768Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 5036ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:42.770Z",
+    "level": "error",
+    "message": "[Jarvis W2] Strategy homepage_crawl failed",
+    "data": "Timeout awaiting 'request' for 3000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:42.772Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 5059ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:42.773Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11975ms for github.com (24 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:42.775Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 7 candidates in 5058ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:42.777Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 5042ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:44.232Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1925ms before request to stackoverflow.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:46.242Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 0 candidates in 23598ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:52.749Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 15000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:45:52.751Z",
+    "level": "error",
+    "message": "[Jarvis] ❌ Discovery failed",
+    "data": {
+      "message": "Discovery timeout after 15000ms",
+      "stack": "Error: Discovery timeout after 15000ms\n    at Timeout._onTimeout (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\app\\lib\\jarvis\\Jarvis.ts:268:24)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:45:55.225Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 10 candidates in 17510ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:43.644Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:51:43.666Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:43.990Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:43.992Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:43.994Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.153Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 14, Trained on: 454 examples"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.155Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.157Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.160Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.163Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.164Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.166Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.167Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.169Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.170Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1993ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.172Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.173Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1990ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.177Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1986ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.180Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.181Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.182Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.183Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.184Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1979ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.186Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.187Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.188Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1975ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.190Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.192Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1971ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.194Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1969ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.195Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.196Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1967ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.198Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1965ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.200Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1963ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.201Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.202Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1961ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.203Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1960ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.205Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1958ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.206Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1957ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.209Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.213Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.217Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 4ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.446Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 286ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:44.996Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 787ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:46.382Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 2219ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:46.719Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2553ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:48.010Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 2 candidates in 3841ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:49.210Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 5015ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:49.212Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 5011ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:49.461Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 5274ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:49.835Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 1 candidates in 5663ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:49.837Z",
+    "level": "info",
+    "message": "[Jarvis] 📦 Collected 8 total candidates"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:49.838Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ Discovery complete! Found 4 policies in 5846ms"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:49.839Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 5846ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf",
+      "confidence": "medium",
+      "source": "footer_link",
+      "neuralScore": 0.9732384766450641
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:51:49.841Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:50.057Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:50.060Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 315396,
+      "contentType": "application/pdf",
+      "bufferSize": 331343
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:51:50.061Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Detected PDF content for http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T10:51:50.063Z",
+    "level": "error",
+    "message": "[parsePdf] Failed to parse PDF",
+    "data": {
+      "message": "Setting up fake worker failed: \"Cannot find module as expression is too dynamic\".",
+      "stack": "Error: Setting up fake worker failed: \"Cannot find module as expression is too dynamic\".\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_pdf-parse_dist_pdf-parse_cjs_index_cjs_c6809733._.js:12222:28\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:51:50.065Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse PDF",
+    "data": {
+      "error": "Failed to parse PDF: Setting up fake worker failed: \"Cannot find module as expression is too dynamic\"."
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:51:50.066Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse PDF content: Failed to parse PDF: Setting up fake worker failed: \"Cannot find module as expression is too dynamic\".",
+      "stack": "Error: Failed to parse PDF content: Failed to parse PDF: Setting up fake worker failed: \"Cannot find module as expression is too dynamic\".\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9860:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11160:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T10:51:54.224Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:25.911Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:25.928Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:26.744Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:26.746Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:26.748Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.014Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 14, Trained on: 454 examples"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.017Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.019Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.021Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.024Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.026Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1998ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.029Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.031Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1993ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.036Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.039Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1985ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.041Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.042Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.044Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.046Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.050Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.053Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1971ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.055Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1969ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.058Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.059Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1965ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.061Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.063Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1961ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.065Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1959ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.068Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1956ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.071Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.072Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.074Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1950ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.076Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1948ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.078Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1946ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.091Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.093Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1931ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.094Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1930ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.095Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1929ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.097Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1927ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.100Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.105Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.110Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 5ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.340Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 319ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:27.860Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 760ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:30.112Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 2 candidates in 3076ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:30.536Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 3512ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.080Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5019ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.084Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 4993ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.086Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 2 candidates in 5045ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.088Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 5059ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.089Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 5017ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.091Z",
+    "level": "info",
+    "message": "[Jarvis] 📦 Collected 8 total candidates"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.092Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ Discovery complete! Found 3 policies in 5346ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.094Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 5346ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf",
+      "confidence": "medium",
+      "source": "footer_link",
+      "neuralScore": 0.9732384766450641
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.095Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.262Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.264Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 315396,
+      "contentType": "application/pdf",
+      "bufferSize": 331343
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.266Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Detected PDF content for http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.308Z",
+    "level": "error",
+    "message": "[parsePdf] Failed to parse PDF",
+    "data": {
+      "message": "DOMMatrix is not defined",
+      "stack": "ReferenceError: DOMMatrix is not defined\n    at module evaluation (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_pdf-parse_dist_pdf-parse_cjs_index_cjs_c6809733._.js:8913:21)\n    at instantiateModule (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[turbopack]_runtime.js:715:9)\n    at getOrInstantiateModuleFromParent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[turbopack]_runtime.js:738:12)\n    at Context.commonJsRequire [as r] (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[turbopack]_runtime.js:249:12)\n    at parsePdf (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9772:48)\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9841:178)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11156:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.309Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse PDF",
+    "data": {
+      "error": "Failed to parse PDF: DOMMatrix is not defined"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.311Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse PDF content: Failed to parse PDF: DOMMatrix is not defined",
+      "stack": "Error: Failed to parse PDF content: Failed to parse PDF: DOMMatrix is not defined\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9856:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11156:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.369Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.371Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.635Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.637Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.638Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.640Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.641Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.642Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.644Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11425ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.645Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.649Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11420ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.652Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.653Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11416ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.654Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.655Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11414ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.657Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.658Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11411ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.660Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11409ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.661Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11408ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.662Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11407ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.663Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11406ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.665Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11404ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.668Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11401ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.669Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11400ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.671Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.672Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11397ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.674Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11395ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.675Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11394ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.676Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11393ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.678Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.679Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11390ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.681Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11388ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.684Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11385ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.686Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.687Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11382ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.689Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11380ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.690Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11379ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.691Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11378ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.693Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.695Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:32.697Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 2ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:33.315Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 622ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:37.120Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:42.702Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:42.703Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:42.708Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:44.463Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 11818ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:44.553Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 11911ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:44.601Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 11949ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:45.024Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 2 candidates in 12370ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:45.742Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:45.743Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track security: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:47.494Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 14822ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:47.541Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 2 candidates in 14884ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:47.543Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 14857ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:47.545Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 14867ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.202Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 5 policies in 5494ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.205Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:2 -> validated:5"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.206Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 5 policies"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.208Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 15569ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9732384766450641
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.210Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.345Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.347Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 315396,
+      "contentType": "application/pdf",
+      "bufferSize": 331343
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.349Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Detected PDF content for http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.352Z",
+    "level": "error",
+    "message": "[parsePdf] Failed to parse PDF",
+    "data": {
+      "message": "DOMMatrix is not defined",
+      "stack": "ReferenceError: DOMMatrix is not defined\n    at module evaluation (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_pdf-parse_dist_pdf-parse_cjs_index_cjs_c6809733._.js:8913:21)\n    at instantiateModule (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[turbopack]_runtime.js:715:9)\n    at getOrInstantiateModuleFromParent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[turbopack]_runtime.js:738:12)\n    at Context.commonJsRequire [as r] (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[turbopack]_runtime.js:249:12)\n    at parsePdf (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9772:48)\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9841:178)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11156:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.353Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse PDF",
+    "data": {
+      "error": "Failed to parse PDF: DOMMatrix is not defined"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:16:48.355Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse PDF content: Failed to parse PDF: DOMMatrix is not defined",
+      "stack": "Error: Failed to parse PDF content: Failed to parse PDF: DOMMatrix is not defined\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9856:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11156:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.008Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.029Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.220Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.222Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.224Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.366Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 14, Trained on: 454 examples"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.369Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.371Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.373Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.376Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.378Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1998ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.380Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.382Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1994ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.386Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.389Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.391Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.393Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.395Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.397Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1979ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.398Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.401Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1975ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.404Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.406Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1970ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.408Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.410Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.412Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1964ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.414Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1962ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.415Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1961ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.418Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1958ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.421Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.423Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.426Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1950ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.427Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1949ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.429Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.431Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1945ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.432Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1944ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.436Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1940ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.440Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1936ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.441Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.444Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.448Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 4ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:10.714Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 341ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:11.229Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 788ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:12.621Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 2245ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:13.197Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 2 candidates in 2811ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.428Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 2 candidates in 5036ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.431Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 5021ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.434Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 5013ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.437Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 5057ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.440Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 5011ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.442Z",
+    "level": "info",
+    "message": "[Jarvis] 📦 Collected 8 total candidates"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.444Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ Discovery complete! Found 3 policies in 5222ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.446Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 5222ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf",
+      "confidence": "medium",
+      "source": "footer_link",
+      "neuralScore": 0.9732384766450641
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.448Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.613Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.615Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 315396,
+      "contentType": "application/pdf",
+      "bufferSize": 331343
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.617Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Detected PDF content for http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.635Z",
+    "level": "error",
+    "message": "[parsePdf] Failed to parse PDF",
+    "data": {
+      "message": "pdfParse is not a function",
+      "stack": "TypeError: pdfParse is not a function\n    at parsePdf (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9896:28)\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9963:178)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11278:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.638Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse PDF",
+    "data": {
+      "error": "Failed to parse PDF: pdfParse is not a function"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:27:15.640Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse PDF content: Failed to parse PDF: pdfParse is not a function",
+      "stack": "Error: Failed to parse PDF content: Failed to parse PDF: pdfParse is not a function\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9978:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11278:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:27:20.455Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.351Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.408Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.572Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.575Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.578Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.710Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 14, Trained on: 454 examples"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.713Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.715Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.717Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.719Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.721Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1998ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.723Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.726Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1993ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.728Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.730Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.733Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.735Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1984ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.737Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.739Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.741Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.745Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.747Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.749Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1970ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.750Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1969ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.752Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.755Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1964ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.758Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1962ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.760Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1959ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.762Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1957ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.764Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.767Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1952ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.769Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1950ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.771Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1948ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.773Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.775Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1944ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.777Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1942ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.780Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1939ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.788Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1932ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.790Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.796Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:20.804Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 8ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:21.041Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 324ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:21.497Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 707ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:22.837Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 2118ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:23.031Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2308ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:24.630Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 2 candidates in 3902ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.673Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 4909ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.771Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 5019ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.776Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 2 candidates in 5043ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.778Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 5005ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.781Z",
+    "level": "info",
+    "message": "[Jarvis] 📦 Collected 8 total candidates"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.783Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ Discovery complete! Found 3 policies in 5208ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.785Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 5208ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf",
+      "confidence": "medium",
+      "source": "footer_link",
+      "neuralScore": 0.9732384766450641
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.790Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.968Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.971Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 315396,
+      "contentType": "application/pdf",
+      "bufferSize": 331343
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:41:25.973Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Detected PDF content for http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:41:26.016Z",
+    "level": "error",
+    "message": "[parsePdf] Failed to parse PDF",
+    "data": {
+      "message": "Setting up fake worker failed: \"Cannot find module as expression is too dynamic\".",
+      "stack": "Error: Setting up fake worker failed: \"Cannot find module as expression is too dynamic\".\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_pdf-parse_dist_pdf-parse_cjs_index_cjs_c6809733._.js:12222:28\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:41:26.018Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse PDF",
+    "data": {
+      "error": "Failed to parse PDF: Setting up fake worker failed: \"Cannot find module as expression is too dynamic\"."
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:41:26.021Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse PDF content: Failed to parse PDF: Setting up fake worker failed: \"Cannot find module as expression is too dynamic\".",
+      "stack": "Error: Failed to parse PDF content: Failed to parse PDF: Setting up fake worker failed: \"Cannot find module as expression is too dynamic\".\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9980:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11280:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:41:30.801Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:27.588Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:45:27.618Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:27.882Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:27.885Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:27.888Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.071Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 14, Trained on: 454 examples"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.074Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.078Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.081Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.085Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.087Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1997ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.090Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.095Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1989ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.098Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.100Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1984ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.102Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.105Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1979ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.117Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1967ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.120Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1964ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.123Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1961ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.128Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1956ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.131Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.135Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1950ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.137Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1947ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.139Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.143Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1941ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.150Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1934ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.154Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1930ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.158Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1926ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.163Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.165Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1919ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.168Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1916ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.170Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1914ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.172Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.177Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1907ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.180Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1904ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.182Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1902ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.184Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1900ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.187Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.195Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.204Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 9ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:28.469Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 387ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:29.000Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 813ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:30.610Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 2 candidates in 2512ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:30.679Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 2594ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:30.690Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2600ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:32.789Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 4626ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.165Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 4993ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.168Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5029ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.172Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 1 candidates in 5070ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.176Z",
+    "level": "info",
+    "message": "[Jarvis] 📦 Collected 7 total candidates"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.180Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ Discovery complete! Found 3 policies in 5295ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.189Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 5295ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf",
+      "confidence": "medium",
+      "source": "footer_link",
+      "neuralScore": 0.9732384766450641
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.199Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.422Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.424Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 315396,
+      "contentType": "application/pdf",
+      "bufferSize": 331343
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.427Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Detected PDF content for http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.550Z",
+    "level": "error",
+    "message": "[parsePdf] CRITICAL: PDF parsing failed",
+    "data": {
+      "error": "pdfParse is not a function",
+      "stack": "TypeError: pdfParse is not a function\n    at parsePdf (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9799:28)\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9873:178)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11188:31",
+      "bufferSize": 331343
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.553Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse PDF",
+    "data": {
+      "error": "PDF Parsing Failed: pdfParse is not a function"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:45:33.555Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse PDF content: PDF Parsing Failed: pdfParse is not a function",
+      "stack": "Error: Failed to parse PDF content: PDF Parsing Failed: pdfParse is not a function\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9888:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11188:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:45:38.212Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.252Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://atlasedge.com/de/",
+      "cleanDomain": "atlasedge.com",
+      "rootDomain": "atlasedge.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.281Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.515Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.518Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.520Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.748Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 14, Trained on: 454 examples"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.750Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.753Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.755Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.759Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.762Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1998ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.764Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.766Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1993ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.769Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.771Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1988ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.777Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.782Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.785Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.787Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.793Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.796Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1963ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.799Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1960ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.801Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1958ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.804Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1955ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.807Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.812Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1947ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.815Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1944ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.818Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1941ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.820Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1939ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.824Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.828Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1931ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.831Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1928ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.834Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1925ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.836Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.838Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1921ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.844Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1915ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.850Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1909ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.852Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1907ms before request to atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.855Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.863Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:42.871Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 8ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:43.130Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 375ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:43.586Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 731ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:45.064Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2300ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:46.206Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 3447ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:47.615Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 4791ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:47.818Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 5011ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:47.820Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11980ms for atlasedge.com (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:47.823Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 2 candidates in 5046ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:47.826Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 4990ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:52.966Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:53.247Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:53.391Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:55.471Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:55.476Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track security: http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:55.752Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 5 policies in 2361ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:55.755Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:2 -> validated:5"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:55.761Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 5 policies"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:55.839Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 13243ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9732384766450641
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:52:55.861Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:56.033Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:56.037Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 315396,
+      "contentType": "application/pdf",
+      "bufferSize": 331343
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:52:56.044Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Detected PDF content for http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:56.447Z",
+    "level": "info",
+    "message": "[parsePdf] Extracted 18583 chars from PDF using runtime parser (Pages: undefined)"
+  },
+  {
+    "timestamp": "2025-12-06T11:52:56.449Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 18583
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:52:56.453Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:01.063Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 2 candidates in 18294ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:15.564Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for atlasedge.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:15.976Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 7cdecf5b-a5ac-4a37-8f93-8400f676b92f"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:15.978Z",
+    "level": "info",
+    "message": "Saved to version cache: 7cdecf5b-a5ac-4a37-8f93-8400f676b92f"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:28.004Z",
+    "level": "info",
+    "message": "[Feedback] Received feedback for atlasedge.com"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:28.216Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:28.930Z",
+    "level": "info",
+    "message": "[Carl] Saved brain - Gen: 15"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:28.933Z",
+    "level": "info",
+    "message": "[Carl] Trained on POSITIVE example. Gen: 15"
+  },
+  {
+    "timestamp": "2025-12-06T11:53:28.935Z",
+    "level": "info",
+    "message": "[Feedback] Carl trained positive on http://atlasedge.com/wp-content/uploads/2025/02/AE-Privacy-Statement-v16-.pdf"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.195Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "https://www.hansa-projekt.de/",
+      "cleanDomain": "hansa-projekt.de",
+      "rootDomain": "hansa-projekt.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.199Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for hansa-projekt.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.439Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.442Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.445Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.448Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.450Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.452Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.454Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.458Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.461Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.464Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1990ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.466Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.468Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1986ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.470Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.472Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.476Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.479Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1975ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.481Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.483Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1971ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.486Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.488Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.490Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1964ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.495Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.498Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1956ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.501Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.503Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1951ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.506Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1948ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.509Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.512Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1942ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.515Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1939ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.518Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1936ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.520Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.522Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1932ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.526Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1928ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.530Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1924ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.533Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1921ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.536Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.538Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.545Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 7ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:56.923Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 471ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:57.202Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 0 candidates in 666ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:59.163Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14340ms for hansa-projekt.de (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T11:55:59.169Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2708ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:00.032Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 3523ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:01.517Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5022ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:01.520Z",
+    "level": "error",
+    "message": "[Jarvis W2] Strategy homepage_crawl failed",
+    "data": "Timeout awaiting 'request' for 3000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:01.523Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 5003ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:01.527Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 1 candidates in 5057ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:06.556Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:06.559Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:06.562Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.594Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://hansa-projekt.de/datenschutz (score: 0.96)"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.597Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 1 policies in 3035ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.599Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:2 -> direct:1 -> validated:1"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.600Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 1 policies"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.602Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 13158ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://hansa-projekt.de/datenschutz",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9602746419454309
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.605Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://hansa-projekt.de/datenschutz"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.922Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://hansa-projekt.de/datenschutz with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.925Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 119676,
+      "contentType": "text/html; charset=UTF-8",
+      "bufferSize": 120092
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:56:09.942Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 45771
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:56:10.108Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutz – HANSA PROJEKT",
+      "length": 26028
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:56:10.123Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 26516
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:56:10.126Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://hansa-projekt.de/datenschutz",
+    "data": {
+      "title": "Datenschutz – HANSA PROJEKT",
+      "markdownLength": 26516
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:56:10.129Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 26028
+    }
+  },
+  {
+    "timestamp": "2025-12-06T11:56:10.132Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 2 of 3"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:13.900Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1340ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:15.795Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1450ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:17.626Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1635ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:19.622Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1641ms before request to hansa-projekt.de"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:21.729Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 0 candidates in 25263ms"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:36.208Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for hansa-projekt.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:36.436Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version d24a107b-1863-4d0c-80af-b174d90178cf"
+  },
+  {
+    "timestamp": "2025-12-06T11:56:36.438Z",
+    "level": "info",
+    "message": "Saved to version cache: d24a107b-1863-4d0c-80af-b174d90178cf"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:07.248Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Domain 'iphn.net' does not exist (DNS lookup failed).",
+      "stack": "Error: Domain 'iphn.net' does not exist (DNS lookup failed).\n    at identifyTarget (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:3014:15)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11143:30"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:12.450Z",
+    "level": "info",
+    "message": "Input 'Iphn' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-06T16:19:13.848Z",
+    "level": "info",
+    "message": "Resolved 'Iphn' to 'apple.com'"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:13.870Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Iphn",
+      "cleanDomain": "apple.com",
+      "rootDomain": "apple.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:13.874Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for apple.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.154Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.157Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: apple.com"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.159Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.162Z",
+    "level": "info",
+    "message": "[Jarvis] ⚡ Found 2 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.166Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 8ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://www.apple.com/legal/privacy/",
+      "confidence": "high",
+      "source": "special_domain"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.169Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.apple.com/legal/privacy/"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.286Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.apple.com/legal/privacy/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.288Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 111209,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 111217
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.321Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 8148
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.460Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Legal - Privacy Policy - Apple",
+      "length": 654
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.477Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 589
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.487Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.apple.com/legal/privacy/",
+    "data": {
+      "title": "Legal - Privacy Policy - Apple",
+      "markdownLength": 589
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.492Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 654
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:14.495Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:22.209Z",
+    "level": "info",
+    "message": "Input 'Rollei' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.075Z",
+    "level": "info",
+    "message": "Resolved 'Rollei' to 'rollei.de'"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.111Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Rollei",
+      "cleanDomain": "rollei.de",
+      "rootDomain": "rollei.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.116Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for rollei.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.353Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.355Z",
+    "level": "info",
+    "message": "[Jarvis] 🤖 Starting parallel discovery for: rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.357Z",
+    "level": "info",
+    "message": "[Jarvis] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.510Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 15, Trained on: 455 examples"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.512Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.516Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.518Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.521Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.523Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1998ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.525Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.528Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1993ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.532Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.534Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.537Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.539Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.541Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.544Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1977ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.548Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.551Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1970ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.553Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.556Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1965ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.558Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1963ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.560Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.562Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1959ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.566Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1955ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.569Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1952ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.571Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1950ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.577Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.580Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1942ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.583Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1938ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.586Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1935ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.589Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.590Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1931ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.592Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1929ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.595Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1926ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.599Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1922ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.602Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.605Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.608Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 3ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.841Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for apple.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.942Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 1204f96c-f642-4709-8808-d041cb3857fa"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:23.944Z",
+    "level": "info",
+    "message": "Saved to version cache: 1204f96c-f642-4709-8808-d041cb3857fa"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:24.154Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 636ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:24.238Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 636ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:25.991Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 2470ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:27.110Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 13462ms for rollei.de (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:28.576Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 5051ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:28.579Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 0 candidates in 5042ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:28.582Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 5005ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:28.585Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 4996ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:28.588Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5028ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:33.620Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:33.622Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:33.628Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:36.660Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://rollei.de/pages/datenschutz-cookies (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:36.663Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track cookies: https://rollei.de/pages/datenschutz-cookies (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:37.250Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 4 policies in 3622ms"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:37.252Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:1 -> validated:4"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:37.254Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 4 policies"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:37.257Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 13899ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://rollei.de/pages/datenschutz-cookies",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9654800528079217
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:37.259Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://rollei.de/pages/datenschutz-cookies"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:37.871Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://rollei.de/pages/datenschutz-cookies with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:37.873Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 304545,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 304901
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:37.894Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 25590
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:38.072Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: no privacy-related text found"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:38.076Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse page content: Failed to parse content: no privacy-related text found",
+      "stack": "Error: Failed to parse page content: Failed to parse content: no privacy-related text found\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:9933:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__a6667f5c._.js:11206:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T16:19:40.913Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 462ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T16:19:41.721Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 1 candidates in 18189ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:50.251Z",
+    "level": "info",
+    "message": "Input 'Rollei' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.022Z",
+    "level": "info",
+    "message": "Resolved 'Rollei' to 'rollei.de'"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.048Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Rollei",
+      "cleanDomain": "rollei.de",
+      "rootDomain": "rollei.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.066Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for rollei.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.303Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.307Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.311Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.510Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 15, Trained on: 455 examples"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.513Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.516Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.519Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.522Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.525Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1997ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.527Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.531Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1991ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.534Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.537Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1985ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.539Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.542Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1980ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.546Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1976ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.549Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.553Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1969ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.556Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.559Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1963ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.562Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1960ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.568Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1954ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.570Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.573Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1949ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.576Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1946ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.580Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1942ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.584Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1938ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.587Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.591Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1931ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.594Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1928ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.606Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1916ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.609Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.612Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1911ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.619Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1903ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.622Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1900ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.624Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1898ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.627Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.632Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:51.635Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 3ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:52.259Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 740ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:52.272Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 645ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:53.936Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 1 candidates in 2414ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:54.201Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 14370ms for rollei.de (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:54.987Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 3460ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:56.598Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5027ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:56.602Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 0 candidates in 5063ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:56.605Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 4996ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:25:56.607Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 5020ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:01.634Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:01.636Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:01.643Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:04.680Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://rollei.de/pages/datenschutz-cookies (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:04.682Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track cookies: https://rollei.de/pages/datenschutz-cookies (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:05.209Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 4 policies in 3566ms"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:05.213Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:1 -> validated:4"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:05.216Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 4 policies"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:05.219Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 13909ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://rollei.de/pages/datenschutz-cookies",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9654800528079217
+    }
+  },
+  {
+    "timestamp": "2025-12-06T21:26:05.222Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://rollei.de/pages/datenschutz-cookies"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:05.824Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://rollei.de/pages/datenschutz-cookies with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:05.826Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 304545,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 304901
+    }
+  },
+  {
+    "timestamp": "2025-12-06T21:26:05.890Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 25590
+    }
+  },
+  {
+    "timestamp": "2025-12-06T21:26:06.119Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: no privacy-related text found"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T21:26:06.123Z",
+    "level": "error",
+    "message": "Analysis failed",
+    "data": {
+      "message": "Failed to parse page content: Failed to parse content: no privacy-related text found",
+      "stack": "Error: Failed to parse page content: Failed to parse content: no privacy-related text found\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:9933:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11368:31"
+    }
+  },
+  {
+    "timestamp": "2025-12-06T21:26:06.132Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for Rollei (success: false)"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:08.909Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1370ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T21:26:10.870Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 1 candidates in 19336ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:17.592Z",
+    "level": "info",
+    "message": "Input 'Rollei' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-06T23:52:18.324Z",
+    "level": "info",
+    "message": "Resolved 'Rollei' to 'rollei.de'"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:18.349Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Rollei",
+      "cleanDomain": "rollei.de",
+      "rootDomain": "rollei.de",
+      "tld": "de",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-06T23:52:18.375Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for rollei.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.189Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.193Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.195Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.416Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 15, Trained on: 455 examples"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.419Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.422Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.424Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.427Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.430Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1997ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.434Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.440Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.443Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.446Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.451Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.455Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.459Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1968ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.461Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.465Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1962ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.470Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1957ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.474Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.476Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1951ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.479Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1948ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.485Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.488Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1939ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.494Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1933ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.497Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1931ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.501Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1926ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.506Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.509Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1918ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.512Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1915ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.515Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1912ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.520Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.523Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1904ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.525Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1902ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.528Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1899ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.531Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1896ms before request to rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.536Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.541Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:19.545Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 4ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:20.241Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 1 candidates in 817ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:20.254Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 1 candidates in 718ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:21.925Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2491ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:22.769Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 3263ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:24.496Z",
+    "level": "error",
+    "message": "[Jarvis W2] Strategy homepage_crawl failed",
+    "data": "Timeout awaiting 'request' for 3000ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:24.501Z",
+    "level": "info",
+    "message": "[rateLimiter] Burst protection: waiting 11982ms for rollei.de (23 requests in window)"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:24.504Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 0 candidates in 5053ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:24.508Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 0 candidates in 5023ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:24.511Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 0 candidates in 4991ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:29.555Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 10000ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:29.558Z",
+    "level": "warn",
+    "message": "[Jarvis] ⚠️ Parallel discovery failed, falling back to TURBO engine"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:29.562Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] 🚀 TURBO discovery starting for: rollei.de"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:32.591Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track privacy: https://rollei.de/pages/datenschutz-cookies (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:32.594Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ✓ Fast-track cookies: https://rollei.de/pages/datenschutz-cookies (score: 0.97)"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:33.421Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] ⚡ TURBO complete! Found 4 policies in 3859ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:33.424Z",
+    "level": "info",
+    "message": "[PolicyDiscovery] Phases: special:0 -> crawl:4 -> direct:1 -> validated:4"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:33.428Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ TURBO fallback succeeded! Found 4 policies"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:33.432Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 14236ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://rollei.de/pages/datenschutz-cookies",
+      "confidence": "high",
+      "source": "footer_link",
+      "neuralScore": 0.9654800528079217
+    }
+  },
+  {
+    "timestamp": "2025-12-06T23:52:33.438Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://rollei.de/pages/datenschutz-cookies"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:34.042Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://rollei.de/pages/datenschutz-cookies with UA #1"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:34.045Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 304545,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 304901
+    }
+  },
+  {
+    "timestamp": "2025-12-06T23:52:34.111Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 25590
+    }
+  },
+  {
+    "timestamp": "2025-12-06T23:52:34.381Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Datenschutz & Cookies – Rollei ",
+      "length": 947
+    }
+  },
+  {
+    "timestamp": "2025-12-06T23:52:34.391Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 947
+    }
+  },
+  {
+    "timestamp": "2025-12-06T23:52:34.394Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://rollei.de/pages/datenschutz-cookies",
+    "data": {
+      "title": "Datenschutz & Cookies – Rollei ",
+      "markdownLength": 947
+    }
+  },
+  {
+    "timestamp": "2025-12-06T23:52:34.398Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 947
+    }
+  },
+  {
+    "timestamp": "2025-12-06T23:52:34.402Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 1 of 3"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:37.168Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 1 candidates in 17725ms"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:48.177Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for rollei.de/privacy"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:48.517Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 69a73f25-a890-4501-a671-1867631a035a"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:48.520Z",
+    "level": "info",
+    "message": "Saved to version cache: 69a73f25-a890-4501-a671-1867631a035a"
+  },
+  {
+    "timestamp": "2025-12-06T23:52:48.874Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for rollei.de (success: true)"
+  }
+]

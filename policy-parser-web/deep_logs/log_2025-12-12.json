@@ -1,0 +1,158 @@
+[
+  {
+    "timestamp": "2025-12-12T16:52:10.791Z",
+    "level": "info",
+    "message": "Input 'Spotify' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-12T16:52:10.793Z",
+    "level": "info",
+    "message": "Found 'Spotify' in known companies map: spotify.com"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:10.795Z",
+    "level": "info",
+    "message": "Resolved 'Spotify' to 'spotify.com'"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:10.816Z",
+    "level": "info",
+    "message": "Identity verified",
+    "data": {
+      "originalInput": "Spotify",
+      "cleanDomain": "spotify.com",
+      "rootDomain": "spotify.com",
+      "tld": "com",
+      "isValid": true
+    }
+  },
+  {
+    "timestamp": "2025-12-12T16:52:10.833Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for spotify.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.090Z",
+    "level": "info",
+    "message": "Cache miss or outdated - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.091Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: spotify.com"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.092Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 10000ms"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.094Z",
+    "level": "info",
+    "message": "[Discovery] Found 4 special domain policies"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.095Z",
+    "level": "info",
+    "message": "Policy found by JARVIS in 4ms",
+    "data": {
+      "type": "privacy",
+      "name": "Privacy Policy",
+      "url": "https://www.spotify.com/us/legal/privacy-policy/",
+      "confidence": "high",
+      "source": "special_domain"
+    }
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.097Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.spotify.com/us/legal/privacy-policy/"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.532Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.spotify.com/us/legal/privacy-policy/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.534Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 203647,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 204256
+    }
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.599Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 68307
+    }
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.921Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Privacy Policy - Spotify",
+      "length": 48593
+    }
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.962Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 42186
+    }
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.963Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.spotify.com/us/legal/privacy-policy/",
+    "data": {
+      "title": "Privacy Policy - Spotify",
+      "markdownLength": 42186
+    }
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.965Z",
+    "level": "info",
+    "message": "Content extracted",
+    "data": {
+      "length": 48593
+    }
+  },
+  {
+    "timestamp": "2025-12-12T16:52:11.966Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 1"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:44.527Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for spotify.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:44.827Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 6c4fc7f3-a922-4df2-8de9-4e2b842be0eb"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:44.828Z",
+    "level": "info",
+    "message": "Saved to version cache: 6c4fc7f3-a922-4df2-8de9-4e2b842be0eb"
+  },
+  {
+    "timestamp": "2025-12-12T16:52:45.174Z",
+    "level": "info",
+    "message": "[AnalysisStore] Logged analysis for spotify.com (success: true)"
+  },
+  {
+    "timestamp": "2025-12-12T16:53:06.645Z",
+    "level": "info",
+    "message": "[PolicyVersions] Fetching history for spotify.com/privacy"
+  }
+]

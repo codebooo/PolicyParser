@@ -1,0 +1,2510 @@
+[
+  {
+    "timestamp": "2025-12-14T00:13:29.536Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] 🤖 Starting JARVIS parallel discovery for: Figma"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.538Z",
+    "level": "info",
+    "message": "Input 'Figma' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.539Z",
+    "level": "info",
+    "message": "Found 'Figma' in known companies map: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.541Z",
+    "level": "info",
+    "message": "Resolved 'Figma' to 'figma.com'"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.565Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.567Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.569Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.810Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 17, Trained on: 457 examples"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.811Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.813Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.816Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.819Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.820Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1999ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.822Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.823Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1996ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.825Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.826Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1993ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.828Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.833Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1986ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.835Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1984ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.836Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1983ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.837Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1982ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.838Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1981ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.840Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1979ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.841Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1978ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.843Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1976ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.844Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.845Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1974ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.846Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1973ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.849Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1970ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.853Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.854Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.856Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1964ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.857Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1962ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.859Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1960ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.861Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.862Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1957ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.865Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1954ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.866Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.868Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1951ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.869Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.873Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:29.880Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 7ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:30.580Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 3 candidates in 711ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:30.776Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 2 candidates in 960ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:32.550Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 2 candidates in 2731ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:33.394Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 3572ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:33.585Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 25 candidates in 3760ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:35.687Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 2 candidates in 5859ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:35.961Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 6117ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:35.998Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 6144ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.431Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 6570ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.434Z",
+    "level": "info",
+    "message": "[Jarvis] 📦 Collected 36 total candidates"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.437Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ Discovery complete! Found 5 policies in 6870ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.439Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] 🤖 JARVIS complete! Found 5 policies in 6870ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.442Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Workers: 10, Candidates: 36"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.569Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.575Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.770Z",
+    "level": "info",
+    "message": "Cache miss for Privacy Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:36.773Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/candidate-privacy-notice/"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:37.288Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/candidate-privacy-notice/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:37.293Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 942489,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 942751
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:37.425Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 43820
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:37.718Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Candidate Privacy Notice",
+      "length": 18691
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:37.746Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 19386
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:37.751Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/candidate-privacy-notice/",
+    "data": {
+      "title": "Candidate Privacy Notice",
+      "markdownLength": 19386
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:37.754Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 18691,
+      "title": "Candidate Privacy Notice",
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:37.756Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 1"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:44.195Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis failed",
+    "data": {
+      "error": "Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+      "stack": "AI_RetryError: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n    at _retryWithExponentialBackoff (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:1818:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async fn (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:6903:40)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:1672:28\n    at async generateObject (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:6856:16)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11891:32"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:44.200Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Privacy Policy analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/",
+      "error": "AI analysis failed for Privacy Policy: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+      "stack": "Error: AI analysis failed for Privacy Policy: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11905:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:44.310Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://www.figma.com/legal/tos/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:44.316Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/terms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:44.511Z",
+    "level": "info",
+    "message": "Cache miss for Terms of Service - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:44.513Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/tos/"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:44.886Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 15000ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:45.111Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/tos/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:45.113Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 985924,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 986509
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:45.198Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 61322
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:45.369Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Terms of Service",
+      "length": 34153
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:45.378Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 35345
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:45.382Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/tos/",
+    "data": {
+      "title": "Terms of Service",
+      "markdownLength": 35345
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:45.385Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 34153,
+      "title": "Terms of Service",
+      "url": "https://www.figma.com/legal/tos/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:45.387Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 1"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:51.835Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis failed",
+    "data": {
+      "error": "Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+      "stack": "AI_RetryError: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n    at _retryWithExponentialBackoff (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:1818:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async fn (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:6903:40)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:1672:28\n    at async generateObject (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:6856:16)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11891:32"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:51.836Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Terms of Service analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/tos/",
+      "error": "AI analysis failed for Terms of Service: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+      "stack": "Error: AI analysis failed for Terms of Service: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11905:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:51.949Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:51.955Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/security policy"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:52.171Z",
+    "level": "info",
+    "message": "Cache miss for Security Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:52.172Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/security-resources/"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.138Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/security-resources/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.139Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 886915,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 887009
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.185Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 24289
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.367Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: no privacy-related text found"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.369Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy extraction failed",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/",
+      "error": "Failed to parse page content: Failed to parse content: no privacy-related text found",
+      "stack": "Error: Failed to parse page content: Failed to parse content: no privacy-related text found\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10064:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11867:29"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.370Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/",
+      "error": "Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: no privacy-related text found",
+      "stack": "Error: Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: no privacy-related text found\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11879:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.479Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://figma.com/#main"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.486Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/ai/ml terms"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.559Z",
+    "level": "info",
+    "message": "Cache miss for AI/ML Terms - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:53.561Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://figma.com/#main"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:54.458Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://figma.com/#main with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:13:54.460Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 1252643,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 1252762
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:54.535Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 91286
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:54.667Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "length": 1278
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:54.672Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 6064
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:54.674Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://figma.com/#main",
+    "data": {
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "markdownLength": 6064
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:54.675Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms content extracted successfully",
+    "data": {
+      "length": 1278,
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "url": "https://figma.com/#main"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:13:54.676Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 1"
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.074Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms AI analysis failed",
+    "data": {
+      "error": "Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+      "stack": "AI_RetryError: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n    at _retryWithExponentialBackoff (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:1818:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async fn (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:6903:40)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:1672:28\n    at async generateObject (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:6856:16)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11891:32"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.076Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms analysis failed",
+    "data": {
+      "url": "https://figma.com/#main",
+      "error": "AI analysis failed for AI/ML Terms: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+      "stack": "Error: AI analysis failed for AI/ML Terms: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11905:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.223Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/aup/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.229Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/aup policy"
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.369Z",
+    "level": "info",
+    "message": "Cache miss for Acceptable Use Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.370Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/aup/"
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.824Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/aup/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.826Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 909728,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 909898
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.877Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 31663
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.952Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Acceptable Use Policy",
+      "length": 6899
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.958Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 7540
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:01.960Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/aup/",
+    "data": {
+      "title": "Acceptable Use Policy",
+      "markdownLength": 7540
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:02.013Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy content extracted successfully",
+    "data": {
+      "length": 6899,
+      "title": "Acceptable Use Policy",
+      "url": "https://www.figma.com/legal/aup/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:02.019Z",
+    "level": "info",
+    "message": "Using Gemini API key index: 0 of 1"
+  },
+  {
+    "timestamp": "2025-12-14T00:14:08.425Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy AI analysis failed",
+    "data": {
+      "error": "Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+      "stack": "AI_RetryError: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n    at _retryWithExponentialBackoff (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:1818:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async fn (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:6903:40)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:1672:28\n    at async generateObject (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\node_modules_ai_dist_6ed01bb8._.js:6856:16)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11891:32"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:14:08.431Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/aup/",
+      "error": "AI analysis failed for Acceptable Use Policy: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+      "stack": "Error: AI analysis failed for Acceptable Use Policy: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11905:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:00.176Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] 🤖 Starting JARVIS parallel discovery for: Figma"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:00.208Z",
+    "level": "info",
+    "message": "Input 'Figma' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-14T00:25:00.234Z",
+    "level": "info",
+    "message": "Found 'Figma' in known companies map: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:00.248Z",
+    "level": "info",
+    "message": "Resolved 'Figma' to 'figma.com'"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:00.322Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:00.350Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:00.376Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.272Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 17, Trained on: 457 examples"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.310Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.328Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.400Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.461Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.507Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1953ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.524Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.543Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1917ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.587Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.627Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1833ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.641Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.668Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1792ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.775Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1685ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.779Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1681ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.798Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1662ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.872Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1588ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.929Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1531ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:01.988Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1472ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.142Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1318ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.210Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.291Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1169ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.392Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1068ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.451Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1009ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.507Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 953ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.555Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.592Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 868ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.625Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 835ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.627Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 833ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.686Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.743Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 717ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.804Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 656ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.878Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 582ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.937Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 523ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:02.959Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:03.046Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:03.104Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 58ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:04.108Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 3 candidates in 1149ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:04.478Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2954ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:05.255Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 2 candidates in 3855ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:05.893Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 2 candidates in 4432ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:06.285Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 25 candidates in 4698ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:07.487Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 5277ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:07.541Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 4855ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:07.692Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 2 candidates in 6051ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:07.779Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 5224ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:07.792Z",
+    "level": "info",
+    "message": "[Jarvis] 📦 Collected 36 total candidates"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:07.816Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ Discovery complete! Found 5 policies in 7466ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:07.827Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] 🤖 JARVIS complete! Found 5 policies in 7466ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:07.843Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Workers: 10, Candidates: 36"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:08.175Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:08.194Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:08.545Z",
+    "level": "info",
+    "message": "Cache miss for Privacy Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:08.574Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/candidate-privacy-notice/"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:09.185Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/candidate-privacy-notice/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:09.194Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 942489,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 942751
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:09.455Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 43820
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:10.273Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Candidate Privacy Notice",
+      "length": 18691
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:10.326Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 19386
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:10.344Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/candidate-privacy-notice/",
+    "data": {
+      "title": "Candidate Privacy Notice",
+      "markdownLength": 19386
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:10.352Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 18691,
+      "title": "Candidate Privacy Notice",
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:10.356Z",
+    "level": "info",
+    "message": "[AI] Starting generation with 1/1 keys available"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:10.367Z",
+    "level": "info",
+    "message": "[Gemini] Using API key 1/1 (1 available)"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:10.376Z",
+    "level": "info",
+    "message": "[AI] Attempt 1/1 using key 1"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:17.271Z",
+    "level": "warn",
+    "message": "[Gemini] Key 1/1 quota exhausted. 0 keys remaining."
+  },
+  {
+    "timestamp": "2025-12-14T00:25:17.276Z",
+    "level": "warn",
+    "message": "[AI] Quota exceeded on key 1. 0 keys remaining. Error: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. "
+  },
+  {
+    "timestamp": "2025-12-14T00:25:17.278Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis failed",
+    "data": {
+      "error": "All 1 API keys have hit their quota limits. Please try again in 15 minutes.",
+      "stack": "Error: All 1 API keys have hit their quota limits. Please try again in 15 minutes.\n    at generateWithRetry (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11548:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12060:32"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:17.282Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Privacy Policy analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/",
+      "error": "AI analysis failed for Privacy Policy: All 1 API keys have hit their quota limits. Please try again in 15 minutes.",
+      "stack": "Error: AI analysis failed for Privacy Policy: All 1 API keys have hit their quota limits. Please try again in 15 minutes.\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12073:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:17.625Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://www.figma.com/legal/tos/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:17.636Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/terms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:17.926Z",
+    "level": "info",
+    "message": "Cache miss for Terms of Service - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:17.935Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/tos/"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:18.078Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 15000ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:18.343Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/tos/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:18.377Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 985924,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 986509
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:18.643Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 61322
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:18.970Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Terms of Service",
+      "length": 34153
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.008Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 35345
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.011Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/tos/",
+    "data": {
+      "title": "Terms of Service",
+      "markdownLength": 35345
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.024Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 34153,
+      "title": "Terms of Service",
+      "url": "https://www.figma.com/legal/tos/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.066Z",
+    "level": "info",
+    "message": "[AI] Starting generation with 0/1 keys available"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.206Z",
+    "level": "error",
+    "message": "[Gemini] All 1 API keys are exhausted!"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.244Z",
+    "level": "error",
+    "message": "[AI] Non-quota error: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys."
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.327Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis failed",
+    "data": {
+      "error": "All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.",
+      "stack": "Error: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.\n    at getGeminiProvider (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10624:15)\n    at getGeminiModel (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10635:20)\n    at generateWithRetry (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11527:172)\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12060:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.377Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Terms of Service analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/tos/",
+      "error": "AI analysis failed for Terms of Service: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.",
+      "stack": "Error: AI analysis failed for Terms of Service: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12073:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.589Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.622Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/security policy"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.831Z",
+    "level": "info",
+    "message": "Cache miss for Security Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:19.839Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/security-resources/"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:20.284Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/security-resources/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:20.292Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 886915,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 887009
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:20.497Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 24289
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:21.245Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: no privacy-related text found"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:21.256Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy extraction failed",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/",
+      "error": "Failed to parse page content: Failed to parse content: no privacy-related text found",
+      "stack": "Error: Failed to parse page content: Failed to parse content: no privacy-related text found\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10064:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12036:29"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:21.260Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/",
+      "error": "Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: no privacy-related text found",
+      "stack": "Error: Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: no privacy-related text found\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12048:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:21.677Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://figma.com/#main"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:21.726Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/ai/ml terms"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:21.979Z",
+    "level": "info",
+    "message": "Cache miss for AI/ML Terms - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:21.987Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://figma.com/#main"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:22.623Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://figma.com/#main with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:22.627Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 1252643,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 1252762
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:22.908Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 91286
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.459Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "length": 1278
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.491Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 6064
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.494Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://figma.com/#main",
+    "data": {
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "markdownLength": 6064
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.516Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms content extracted successfully",
+    "data": {
+      "length": 1278,
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "url": "https://figma.com/#main"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.523Z",
+    "level": "info",
+    "message": "[AI] Starting generation with 0/1 keys available"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.542Z",
+    "level": "error",
+    "message": "[Gemini] All 1 API keys are exhausted!"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.571Z",
+    "level": "error",
+    "message": "[AI] Non-quota error: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys."
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.623Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms AI analysis failed",
+    "data": {
+      "error": "All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.",
+      "stack": "Error: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.\n    at getGeminiProvider (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10624:15)\n    at getGeminiModel (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10635:20)\n    at generateWithRetry (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11527:172)\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12060:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.626Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms analysis failed",
+    "data": {
+      "url": "https://figma.com/#main",
+      "error": "AI analysis failed for AI/ML Terms: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.",
+      "stack": "Error: AI analysis failed for AI/ML Terms: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12073:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.918Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/aup/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:23.931Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/aup policy"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:24.184Z",
+    "level": "info",
+    "message": "Cache miss for Acceptable Use Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:24.231Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/aup/"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:24.658Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/aup/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:24.678Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 909728,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 909898
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:24.901Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 31663
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.048Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Acceptable Use Policy",
+      "length": 6899
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.058Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 7540
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.060Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/aup/",
+    "data": {
+      "title": "Acceptable Use Policy",
+      "markdownLength": 7540
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.083Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy content extracted successfully",
+    "data": {
+      "length": 6899,
+      "title": "Acceptable Use Policy",
+      "url": "https://www.figma.com/legal/aup/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.089Z",
+    "level": "info",
+    "message": "[AI] Starting generation with 0/1 keys available"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.103Z",
+    "level": "error",
+    "message": "[Gemini] All 1 API keys are exhausted!"
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.138Z",
+    "level": "error",
+    "message": "[AI] Non-quota error: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys."
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.144Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy AI analysis failed",
+    "data": {
+      "error": "All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.",
+      "stack": "Error: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.\n    at getGeminiProvider (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10624:15)\n    at getGeminiModel (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10635:20)\n    at generateWithRetry (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:11527:172)\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12060:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:25:25.151Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/aup/",
+      "error": "AI analysis failed for Acceptable Use Policy: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.",
+      "stack": "Error: AI analysis failed for Acceptable Use Policy: All Gemini API keys are exhausted. Please wait 15 minutes or add more keys.\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12073:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.639Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] 🤖 Starting JARVIS parallel discovery for: Figma"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.642Z",
+    "level": "info",
+    "message": "Input 'Figma' is not a domain. Resolving via search..."
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.645Z",
+    "level": "info",
+    "message": "Found 'Figma' in known companies map: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.650Z",
+    "level": "info",
+    "message": "Resolved 'Figma' to 'figma.com'"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.673Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Resolved domain: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.676Z",
+    "level": "info",
+    "message": "[Discovery] Starting parallel search for: figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.678Z",
+    "level": "info",
+    "message": "[Discovery] Workers: 10, Timeout: 15000ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.015Z",
+    "level": "info",
+    "message": "[Carl] Loaded brain - Gen: 17, Trained on: 457 examples"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.019Z",
+    "level": "info",
+    "message": "[Jarvis] Initialized 10 workers"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.022Z",
+    "level": "info",
+    "message": "[Jarvis] 🚀 Launching 10 parallel tasks"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.025Z",
+    "level": "info",
+    "message": "[Jarvis W1] Starting homepage_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.028Z",
+    "level": "info",
+    "message": "[Jarvis W2] Starting homepage_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.042Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1987ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.053Z",
+    "level": "info",
+    "message": "[Jarvis W3] Starting sitemap_parse for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.056Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1972ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.059Z",
+    "level": "info",
+    "message": "[Jarvis W4] Starting legal_hub_crawl for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.062Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1966ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.067Z",
+    "level": "info",
+    "message": "[Jarvis W5] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.070Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1958ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.076Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1952ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.093Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1935ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.101Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1927ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.104Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1924ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.108Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1920ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.118Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1910ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.132Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1896ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.140Z",
+    "level": "info",
+    "message": "[Jarvis W6] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.152Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1876ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.162Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1866ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.169Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1859ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.176Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1852ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.190Z",
+    "level": "info",
+    "message": "[Jarvis W7] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.229Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1799ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.260Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1768ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.266Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1763ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.269Z",
+    "level": "info",
+    "message": "[Jarvis W8] Starting direct_probe for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.274Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1754ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.304Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1724ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.309Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1719ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.333Z",
+    "level": "debug",
+    "message": "[rateLimiter] Rate limiting: waiting 1695ms before request to figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.337Z",
+    "level": "info",
+    "message": "[Jarvis W9] Starting search_engine for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.360Z",
+    "level": "info",
+    "message": "[Jarvis W10] Starting deep_scan for figma.com"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.370Z",
+    "level": "info",
+    "message": "[Jarvis W10] Found 0 candidates in 10ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.076Z",
+    "level": "info",
+    "message": "[Jarvis W9] Found 3 candidates in 739ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.474Z",
+    "level": "info",
+    "message": "[Jarvis W1] Found 2 candidates in 1449ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:38.737Z",
+    "level": "info",
+    "message": "[Jarvis W3] Found 0 candidates in 2684ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:39.019Z",
+    "level": "info",
+    "message": "[Jarvis W2] Found 2 candidates in 2991ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:39.605Z",
+    "level": "info",
+    "message": "[Jarvis W4] Found 25 candidates in 3546ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.275Z",
+    "level": "info",
+    "message": "[Jarvis W8] Found 1 candidates in 4006ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.354Z",
+    "level": "info",
+    "message": "[Jarvis W5] Found 2 candidates in 4287ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.618Z",
+    "level": "info",
+    "message": "[Jarvis W6] Found 1 candidates in 4478ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.737Z",
+    "level": "info",
+    "message": "[Jarvis W7] Found 0 candidates in 4547ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.739Z",
+    "level": "info",
+    "message": "[Jarvis] 📦 Collected 36 total candidates"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.742Z",
+    "level": "info",
+    "message": "[Jarvis] ✅ Discovery complete! Found 5 policies in 5066ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.744Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] 🤖 JARVIS complete! Found 5 policies in 5066ms"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.745Z",
+    "level": "info",
+    "message": "[discoverAllPolicies] Workers: 10, Candidates: 36"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.901Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Privacy Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:40.906Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.118Z",
+    "level": "info",
+    "message": "Cache miss for Privacy Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.121Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/candidate-privacy-notice/"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.455Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/candidate-privacy-notice/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.457Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 942489,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 942751
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.543Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 43820
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.743Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Candidate Privacy Notice",
+      "length": 18691
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.762Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 19386
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.769Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/candidate-privacy-notice/",
+    "data": {
+      "title": "Candidate Privacy Notice",
+      "markdownLength": 19386
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.786Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy content extracted successfully",
+    "data": {
+      "length": 18691,
+      "title": "Candidate Privacy Notice",
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.790Z",
+    "level": "info",
+    "message": "[Gemini] Loaded 4 API key(s) from GEMINI_API_KEY"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.793Z",
+    "level": "info",
+    "message": "[AI] Starting generation with 4/4 keys available"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.795Z",
+    "level": "info",
+    "message": "[Gemini] Using API key 1/4 (4 available)"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:41.799Z",
+    "level": "info",
+    "message": "[AI] Attempt 1/4 using key 1"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:48.524Z",
+    "level": "warn",
+    "message": "[Gemini] Key 1/4 quota exhausted. 3 keys remaining."
+  },
+  {
+    "timestamp": "2025-12-14T00:59:48.526Z",
+    "level": "warn",
+    "message": "[AI] Quota exceeded on key 1. 3 keys remaining. Error: Failed after 3 attempts. Last error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. "
+  },
+  {
+    "timestamp": "2025-12-14T00:59:48.528Z",
+    "level": "info",
+    "message": "[Gemini] Using API key 2/4 (3 available)"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:48.531Z",
+    "level": "info",
+    "message": "[AI] Attempt 2/4 using key 2"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:51.365Z",
+    "level": "warn",
+    "message": "[Jarvis] ⏱️ Timeout after 15000ms"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:17.928Z",
+    "level": "info",
+    "message": "[AI] Success with key 2"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:17.931Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:17.938Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for figma.com/privacy"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:18.229Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 4bb0a202-5a44-4bba-a7eb-0ef7d29d9ec3"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:18.232Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Privacy Policy complete",
+    "data": {
+      "score": 74,
+      "url": "https://www.figma.com/legal/candidate-privacy-notice/",
+      "versionId": "4bb0a202-5a44-4bba-a7eb-0ef7d29d9ec3"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:18.366Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Terms of Service",
+    "data": {
+      "url": "https://www.figma.com/legal/tos/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:18.371Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/terms"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:18.507Z",
+    "level": "info",
+    "message": "Cache miss for Terms of Service - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:18.509Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/tos/"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:18.878Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/tos/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:18.881Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 985924,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 986509
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:19.072Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 61322
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:19.235Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Terms of Service",
+      "length": 34153
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:19.242Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 35345
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:19.244Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/tos/",
+    "data": {
+      "title": "Terms of Service",
+      "markdownLength": 35345
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:19.254Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service content extracted successfully",
+    "data": {
+      "length": 34153,
+      "title": "Terms of Service",
+      "url": "https://www.figma.com/legal/tos/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:19.270Z",
+    "level": "info",
+    "message": "[AI] Starting generation with 3/4 keys available"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:19.272Z",
+    "level": "info",
+    "message": "[Gemini] Using API key 3/4 (3 available)"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:19.274Z",
+    "level": "info",
+    "message": "[AI] Attempt 1/4 using key 3"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:31.819Z",
+    "level": "info",
+    "message": "[AI] Success with key 3"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:31.821Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service AI analysis complete"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:31.825Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for figma.com/terms"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:32.115Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 2334fb50-2b9b-4fad-aca0-f926bc7a7acf"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:32.117Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Terms of Service complete",
+    "data": {
+      "score": 74,
+      "url": "https://www.figma.com/legal/tos/",
+      "versionId": "2334fb50-2b9b-4fad-aca0-f926bc7a7acf"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:32.246Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Security Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:32.253Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/security policy"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:32.387Z",
+    "level": "info",
+    "message": "Cache miss for Security Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:32.389Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/security-resources/"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.018Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/security-resources/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.020Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 886915,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 887009
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.118Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 24289
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.304Z",
+    "level": "error",
+    "message": "[extractPolicyContent] Failed to parse content",
+    "data": {
+      "error": "Failed to parse content: no privacy-related text found"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.307Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy extraction failed",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/",
+      "error": "Failed to parse page content: Failed to parse content: no privacy-related text found",
+      "stack": "Error: Failed to parse page content: Failed to parse content: no privacy-related text found\n    at extractPolicyContent (C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:10064:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12055:29"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.310Z",
+    "level": "error",
+    "message": "[analyzeSpecificPolicy] Security Policy analysis failed",
+    "data": {
+      "url": "https://www.figma.com/legal/security-resources/",
+      "error": "Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: no privacy-related text found",
+      "stack": "Error: Failed to extract Security Policy content: Failed to parse page content: Failed to parse content: no privacy-related text found\n    at C:\\Users\\lolbo\\Desktop\\PolicyParser1\\PolicyParser\\policy-parser-web\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__f6e75546._.js:12067:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.442Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for AI/ML Terms",
+    "data": {
+      "url": "https://figma.com/#main"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.448Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/ai/ml terms"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.587Z",
+    "level": "info",
+    "message": "Cache miss for AI/ML Terms - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:33.589Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://figma.com/#main"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.445Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://figma.com/#main with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.448Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 1252643,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 1252762
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.579Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 91286
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.735Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "length": 1278
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.742Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 6064
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.744Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://figma.com/#main",
+    "data": {
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "markdownLength": 6064
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.746Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms content extracted successfully",
+    "data": {
+      "length": 1278,
+      "title": "Figma: The Collaborative Interface Design Tool",
+      "url": "https://figma.com/#main"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.762Z",
+    "level": "info",
+    "message": "[AI] Starting generation with 3/4 keys available"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.769Z",
+    "level": "info",
+    "message": "[Gemini] Using API key 4/4 (3 available)"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:34.772Z",
+    "level": "info",
+    "message": "[AI] Attempt 1/4 using key 4"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:42.959Z",
+    "level": "info",
+    "message": "[AI] Success with key 4"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:42.961Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms AI analysis complete"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:42.966Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for figma.com/ai/ml terms"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:43.167Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version bc8199cb-9d40-4e04-abf8-f27f90148f8e"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:43.169Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] AI/ML Terms complete",
+    "data": {
+      "score": 85,
+      "url": "https://figma.com/#main",
+      "versionId": "bc8199cb-9d40-4e04-abf8-f27f90148f8e"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:43.312Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Starting analysis for Acceptable Use Policy",
+    "data": {
+      "url": "https://www.figma.com/legal/aup/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:43.319Z",
+    "level": "info",
+    "message": "[PolicyCache] Checking cache for figma.com/aup policy"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:43.507Z",
+    "level": "info",
+    "message": "Cache miss for Acceptable Use Policy - performing fresh analysis"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:43.509Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Starting extraction from https://www.figma.com/legal/aup/"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.238Z",
+    "level": "info",
+    "message": "[fetchResource] Successfully fetched https://www.figma.com/legal/aup/ with UA #1"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.242Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Fetched resource",
+    "data": {
+      "length": 909728,
+      "contentType": "text/html; charset=utf-8",
+      "bufferSize": 909898
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.336Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Cleaned HTML",
+    "data": {
+      "length": 31663
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.417Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Parsed content",
+    "data": {
+      "title": "Acceptable Use Policy",
+      "length": 6899
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.421Z",
+    "level": "debug",
+    "message": "[extractPolicyContent] Converted to markdown",
+    "data": {
+      "length": 7540
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.423Z",
+    "level": "info",
+    "message": "[extractPolicyContent] Successfully extracted content from https://www.figma.com/legal/aup/",
+    "data": {
+      "title": "Acceptable Use Policy",
+      "markdownLength": 7540
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.425Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy content extracted successfully",
+    "data": {
+      "length": 6899,
+      "title": "Acceptable Use Policy",
+      "url": "https://www.figma.com/legal/aup/"
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.427Z",
+    "level": "info",
+    "message": "[AI] Starting generation with 3/4 keys available"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.429Z",
+    "level": "info",
+    "message": "[Gemini] Using API key 2/4 (3 available)"
+  },
+  {
+    "timestamp": "2025-12-14T01:00:44.432Z",
+    "level": "info",
+    "message": "[AI] Attempt 1/4 using key 2"
+  },
+  {
+    "timestamp": "2025-12-14T01:01:00.933Z",
+    "level": "info",
+    "message": "[AI] Success with key 2"
+  },
+  {
+    "timestamp": "2025-12-14T01:01:00.936Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy AI analysis complete"
+  },
+  {
+    "timestamp": "2025-12-14T01:01:00.940Z",
+    "level": "info",
+    "message": "[PolicyCache] Saving new version for figma.com/aup policy"
+  },
+  {
+    "timestamp": "2025-12-14T01:01:01.216Z",
+    "level": "info",
+    "message": "[PolicyCache] Saved version 42a0d3f5-5698-4513-9240-738f7a6a74e0"
+  },
+  {
+    "timestamp": "2025-12-14T01:01:01.218Z",
+    "level": "info",
+    "message": "[analyzeSpecificPolicy] Acceptable Use Policy complete",
+    "data": {
+      "score": 82,
+      "url": "https://www.figma.com/legal/aup/",
+      "versionId": "42a0d3f5-5698-4513-9240-738f7a6a74e0"
+    }
+  }
+]
